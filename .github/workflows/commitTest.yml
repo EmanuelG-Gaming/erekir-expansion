@@ -16,11 +16,11 @@ jobs:
       with:
         java-version: 17
     - name: Build mod jar
-      run: ./gradlew deploy
+      run: chmod +x ./gradlew; ./gradlew deploy
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}
+        name: erekir alternate content
         path: build/libs/${{ github.event.repository.name }}.jar
   buildWindows:
     runs-on: windows-latest

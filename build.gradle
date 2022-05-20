@@ -28,12 +28,8 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-
-    //you may uncomment this dependency to properly use Java 17 features while still targeting Java 8.
-    //note that this fails on some systems for as-of-yet unknown reasons - if this happens to you, revert the changes
-    //annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+    compileOnly "com.github.Anuken.MindustryJitpack:core:62a21c395b"
+    compileOnly "com.github.Anuken.Arc:arc-core:dfcb21ce56" 
 }
 
 task jarAndroid{
