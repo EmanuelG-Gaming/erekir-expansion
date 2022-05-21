@@ -63,10 +63,9 @@ public class ErkUnitTypes implements AltContentList{
                 backColor = Color.valueOf("93de7e");
                 trailColor = Color.valueOf("93de7e");
                 frontColor = Color.white;
-                trailLength = 5f;
-                trailSize = 0.7f;
-                despawnEffect = gemHit;
-                hitEffect = gemHit;
+                trailLength = 5;
+                despawnEffect = ErkFx.gemHit;
+                hitEffect = ErkFx.gemHit;
                 shootEffect = Fx.none;
                 width = 6.25f;
                 height = 7f;
