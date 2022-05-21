@@ -21,6 +21,8 @@ public class ErekirExpansion extends Mod{
            ((UnitFactory) Blocks.mechFabricator).plans.add(
                new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 35 * Time.toSeconds, with(Items.beryllium, 300, Items.silicon, 35))
            );
+           // silly
+           Blocks.mechFabricator.configurable = true;
            Blocks.mechFabricator.init(); 
         });
     }
