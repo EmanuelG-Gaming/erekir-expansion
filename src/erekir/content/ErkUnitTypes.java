@@ -5,6 +5,7 @@ import arc.graphics.Color;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.type.unit.ErekirUnitType;
+import mindustry.gen.*;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
@@ -52,6 +53,8 @@ public class ErkUnitTypes implements AltContentList{
           shadowElevation = 0.1f;
           groundLayer = Layer.legUnit - 1f;
           researchCostMultiplier = 0;
+          
+          constructor = LegsUnit::new;
           weapons.add(new Weapon("erekir-expansion-gem-weapon"){{
              reload = 40f;
              mirror = true;
