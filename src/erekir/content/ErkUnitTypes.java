@@ -9,6 +9,7 @@ import mindustry.gen.*;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
+import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
 import erekir.ctype.*;
 
@@ -107,7 +108,7 @@ public class ErkUnitTypes implements AltContentList{
           legLength = 8f;
           lockLegBase = true;
           legContinuousMove = true;
-          legExtensi5f = -3f;
+          legExtension = -3f;
           legBaseOffset = 5f;
           legMaxLength = 1.1f;
           legMinLength = 0.2f;

@@ -1,9 +1,18 @@
 package erekir.entities.bullet;
 
+import arc.util.*;
+import arc.graphics.*;
+import arc.graphics.g2d.*;
 import arc.func.*;
+import arc.math.*;
+import arc.math.Mathf;
+import arc.math.geom.Vec2;
+import mindustry.type.*;
+import mindustry.gen.*;
 import mindustry.entities.*;
-import mindustry.entities.Units;
 import mindustry.entities.bullet.*;
+import mindustry.entities.Units;
+import erekir.content.*;
 
 /** Barrier 2*/
 public class CarapaceBulletType extends BulletType{
@@ -16,6 +25,10 @@ public class CarapaceBulletType extends BulletType{
       frontColor = Color.white;
       backColor = Color.valueOf("93de7e");
       keepVelocity = false;
+      pierce = true;
+      pierceBuilding = true;
+      hittable = false;
+      absorbable = false;
    }
    
    @Override
@@ -28,7 +41,7 @@ public class CarapaceBulletType extends BulletType{
       Tmp.c2.set(backColor);
       Tmp.c2.a = Interp.pow5Out.apply(b.fout());
        
-      Draw.z(Layer.weather);
+      Draw.z(layer);
       Fill.light(b.x, b.y, 24f, (hitSize + 10f) * b.fin(), Tmp.c1, Tmp.c2);
       Draw.reset();
    }
