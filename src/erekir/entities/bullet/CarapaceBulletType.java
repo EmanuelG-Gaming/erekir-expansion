@@ -15,11 +15,11 @@ import mindustry.entities.Units;
 import erekir.content.*;
 
 /** Barrier 2*/
-public class CarapaceBulletType extends BulletType{
+public class CarapaceBulletType extends BasicBulletType{
    public float deflectPower = 0.05f;
    
    public CarapaceBulletType() {
-      super();
+      super(0f, 0);
       speed = 0f;
       width = height = 0f;
       frontColor = Color.white;
@@ -42,7 +42,7 @@ public class CarapaceBulletType extends BulletType{
       Tmp.c2.a = Interp.pow5Out.apply(b.fout());
        
       Draw.z(layer);
-      Fill.light(b.x, b.y, 24f, (hitSize + 10f) * b.fin(), Tmp.c1, Tmp.c2);
+      Fill.light(b.x, b.y, 24, (hitSize + 10f) * b.fin(), Tmp.c1, Tmp.c2);
       Draw.reset();
    }
    
