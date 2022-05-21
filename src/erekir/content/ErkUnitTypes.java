@@ -58,7 +58,7 @@ public class ErkUnitTypes implements ContentList{
                 backColor = Color.valueOf("93de7e");
                 trailColor = Color.valueOf("93de7e");
                 frontColor = Color.white;
-                trailLength: 5f;
+                trailLength = 5f;
                 trailSize = 0.7f;
                 despawnEffect = gemHit;
                 hitEffect = gemHit;

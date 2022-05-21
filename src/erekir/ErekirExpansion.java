@@ -11,7 +11,7 @@ public class ErekirExpansion extends Mod{
     
     private final ContentList[] erekirContent = {
        new ErkUnitTypes()
-    }
+    };
     
     @Override
     public void loadContent() {
