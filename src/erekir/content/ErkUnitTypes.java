@@ -47,7 +47,7 @@ public class ErkUnitTypes implements AltContentList{
           legLengthScl = 0.96f;
           legForwardScl = 1.1f;
           legGroupSize = 3;
-          rippleScale = 0.2;
+          rippleScale = 0.2f;
           
 	        legMoveSpace = 1f;
           hovering = true;
