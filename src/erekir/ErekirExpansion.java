@@ -1,5 +1,6 @@
 package erekir;
 
+import arc.Events;
 import arc.util.Time;
 import arc.util.Log;
 import mindustry.content.*;
@@ -9,6 +10,8 @@ import mindustry.game.EventType.*;
 import erekir.content.*;
 import erekir.ctype.*;
 
+import static mindustry.type.ItemStack.with;
+
 public class ErekirExpansion extends Mod{
 
     public ErekirExpansion() {
@@ -16,7 +19,7 @@ public class ErekirExpansion extends Mod{
         
         Events.on(ContentInitEvent.class, e -> {
            ((UnitFactory) Blocks.mechFabricator).plans.add(
-               new UnitPlan(ErkUnitTypes.gem, (float) 35 * Time.toSeconds, ItemStack.with(Items.beryllium, 300, Items.silicon, 35))
+               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 35 * Time.toSeconds, with(Items.beryllium, 300, Items.silicon, 35))
            );
            Blocks.mechFabricator.init(); 
         });
