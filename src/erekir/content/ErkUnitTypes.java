@@ -17,7 +17,7 @@ import static mindustry.Vars.*;
 public class ErkUnitTypes implements AltContentList{
     public static UnitType
     
-    gem;
+    gem, geode;
     
     @Override
     public void load() {
@@ -85,6 +85,54 @@ public class ErkUnitTypes implements AltContentList{
                  shots = 1;
                  scl = 4.5f;
                  mag = 1.2f;
+             }};
+          }});
+       }};
+       
+       geode = new ErekirUnitType("geode"){{
+          health = 800;
+	        armor = 1;
+	        speed = 0.78f;
+	        hitSize = 10f;
+	        aimDst = 2.4f;
+          range = 160f;
+	        drag = 0.06f;
+	        accel = 0.08f;
+	        flying = false;
+	        rotateSpeed = 1.75f;
+
+          stepShake = 0f;
+
+          legCount = 4;
+          legLength = 8f;
+          lockLegBase = true;
+          legContinuousMove = true;
+          legExtensi5f = -3f;
+          legBaseOffset = 5f;
+          legMaxLength = 1.1f;
+          legMinLength = 0.2f;
+          legLengthScl = 0.95f;
+          legForwardScl = 0.7f;
+            
+	        legMoveSpace = 1f;
+          hovering = true;
+          legPhysicsLayer = false;
+
+          shadowElevation = 0.1f;
+          groundLayer = Layer.legUnit - 1f;
+          researchCostMultiplier = 0;
+          
+          constructor = LegsUnit::create;
+          weapons.add(new Weapon("geodeShield"){{
+             reload = 50f;
+             mirror = false;
+             top = true;
+             x = 0f;
+             y = 0f;
+             shootSound = ErkSounds.fieldRelease;
+             shootCone = 360;
+             shootY = 0f;
+             bullet = new CarapaceBulletType(){{
              }};
           }});
        }};

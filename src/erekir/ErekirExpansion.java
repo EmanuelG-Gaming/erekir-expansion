@@ -1,5 +1,6 @@
 package erekir;
 
+import arc.Core;
 import arc.Events;
 import arc.util.Time;
 import arc.util.Log;
@@ -17,6 +18,8 @@ public class ErekirExpansion extends Mod{
     public ErekirExpansion() {
         Log.info("Loaded Erekir buoyancy");
         
+        Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> ErkSounds.load()));
+      
         Events.on(ContentInitEvent.class, e -> {
            ((UnitFactory) Blocks.mechFabricator).plans.add(
                new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 35 * Time.toSeconds, with(Items.beryllium, 300, Items.silicon, 35))
