@@ -1,5 +1,7 @@
 package erekir;
 
+import arc.util.Log.*;
+import mindustry.ctype.*;
 import mindustry.mod.*;
 import erekir.content.*;
 

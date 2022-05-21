@@ -3,10 +3,13 @@ package erekir.content;
 import arc.graphics.*;
 import arc.graphics.Color;
 import mindustry.graphics.*;
+import mindustry.type.*;
 import mindustry.type.unit.ErekirUnitType;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
 import erekir.entities.pattern.*;
+
+import static mindustry.Vars.*;
 
 public class ErkUnitTypes implements ContentList{
     public static UnitType

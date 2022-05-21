@@ -1,4 +1,4 @@
-package erekir.entities;
+package erekir.entities.pattern;
 
 import arc.math.*;
 import mindustry.entities.pattern.ShootPattern;

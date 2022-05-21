@@ -4,7 +4,7 @@ import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
-import mindustry.entities.Effect.*;
+import mindustry.entities.Effect;
 import mindustry.graphics.*;
 
 public class ErkFx {
