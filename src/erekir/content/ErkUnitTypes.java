@@ -125,7 +125,7 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = LegsUnit::create;
           weapons.add(new Weapon("geodeShield"){{
-             reload = 50f;
+             reload = 250f;
              mirror = false;
              top = true;
              x = 0f;
@@ -134,6 +134,12 @@ public class ErkUnitTypes implements AltContentList{
              shootCone = 360;
              shootY = 0f;
              bullet = new CarapaceBulletType(){{
+                 lifetime = 70f;
+                 hitSize = 65f;
+                 ejectEffect = Fx.none;
+                 hitEffect = Fx.none;
+                 despawnEffect = Fx.none;
+                 pushBackEffect = ErkFx.gemHit;
              }};
           }});
        }};

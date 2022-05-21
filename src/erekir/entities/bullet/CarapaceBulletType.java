@@ -17,9 +17,10 @@ import erekir.content.*;
 /** Barrier 2*/
 public class CarapaceBulletType extends BasicBulletType{
    public float deflectPower = 0.05f;
-   
+   public Effect pushBackEffect = Fx.none;
+
    public CarapaceBulletType() {
-      super(0f, 0);
+      super(0f, 1);
       speed = 0f;
       width = height = 0f;
       frontColor = Color.white;
@@ -59,7 +60,7 @@ public class CarapaceBulletType extends BasicBulletType{
             unit.impulse(Tmp.v1);
             
             if (Mathf.chance(0.2f)) {
-               ErkFx.gemHit.at(unit.x, unit.y, b.angleTo(unit));
+               pushBackEffect.at(unit.x, unit.y, b.angleTo(unit));
             }
          }
        };
