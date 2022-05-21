@@ -22,34 +22,38 @@ public class ErkUnitTypes implements AltContentList{
     @Override
     public void load() {
        gem = new ErekirUnitType("gem"){{
-          health = 800;
+          health = 650;
        	  armor = 1;
 	        speed = 0.78f;
-	        hitSize = 10f;
+	        hitSize = 9.5f;
 	        aimDst = 2.4f;
           range = 160;
 	        drag = 0.06f;
 	        accel = 0.08f;
 	        flying = false;
 	        rotateSpeed = 1.75f;
-
+	        
+          legStraightness = 0.3f;
           stepShake = 0f;
 
-          legCount = 4;
+          legCount = 6;
           legLength = 8f;
           lockLegBase = true;
           legContinuousMove = true;
-          legExtension = -3f;
-          legBaseOffset = 5f;
-          legMinLength = 1.1f;
+          legExtension = -2f;
+          legBaseOffset = 3f;
           legMinLength = 0.2f;
-          legLengthScl = 0.95f;
-          legForwardScl = 0.7f;
-            
+          legMaxLength = 1.1f;
+          legLengthScl = 0.96f;
+          legForwardScl = 1.1f;
+          legGroupSize = 3;
+          rippleScale = 0.2;
+          
 	        legMoveSpace = 1f;
           hovering = true;
           legPhysicsLayer = false;
-
+          allowLegStep = true;
+          
           shadowElevation = 0.1f;
           groundLayer = Layer.legUnit - 1f;
           researchCostMultiplier = 0;

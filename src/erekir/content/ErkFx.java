@@ -10,7 +10,7 @@ import mindustry.graphics.*;
 public class ErkFx {
   public static final Effect
   
-  gemHit = new Effect(55f, e -> {
+  gemHit = new Effect(14f, e -> {
      Draw.color(Pal.heal, Color.valueOf("93de7e"), e.fin());
      Lines.stroke(0.5f + e.fout());
 
