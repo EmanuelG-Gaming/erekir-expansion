@@ -38,7 +38,7 @@ public class CarapaceBulletType extends BulletType{
       super.update(b);
       Cons<Unit> enemies = unit -> {
          if (unit != null && unit.within(b.x, b.y, hitSize) && unit.isValid()) {
-            float overlap = ((Physicsc) unit).hitSize / 2 + ((Physicsc) b).hitSize) - unit.dst(b);
+            float overlap = unit.hitSize / 2 + b.hitSize - unit.dst(b);
              
             Tmp.v1.set(b).sub(unit).nor().scl((overlap + 0.01f) * 60f);
             Tmp.v1.setAngle(b.angleTo(unit));
