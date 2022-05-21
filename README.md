@@ -4,7 +4,7 @@ A Java mod made to add new things to the current Erekir's progression.
 
 > Fun Fact:
 
-I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, as not to harm the mod's reputation.
+I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, so it'll not harm the previous mod's reputation.
 
 # Links
 
