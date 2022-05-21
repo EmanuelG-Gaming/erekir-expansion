@@ -1,5 +1,16 @@
-# Mindustry Java Mod Template
-A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
+# Erekir Expansion
+A Java mod made to add new things to the current Erekir's progression.
+
+
+> Fun Fact:
+
+I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, as not to harm the mod's reputation.
+
+# Links
+
+> Barrier's (an old mod of mine, not working on v7) discord server:
+
+https://discord.gg/34QU3a9J
 
 ## Building for Desktop Testing
 

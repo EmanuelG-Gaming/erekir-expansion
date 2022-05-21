@@ -54,7 +54,7 @@ public class ErkUnitTypes implements AltContentList{
           groundLayer = Layer.legUnit - 1f;
           researchCostMultiplier = 0;
           
-          constructor = LegsUnit::new;
+          constructor = LegsUnit::create;
           weapons.add(new Weapon("erekir-expansion-gem-weapon"){{
              reload = 40f;
              mirror = true;
