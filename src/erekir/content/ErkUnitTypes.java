@@ -7,11 +7,13 @@ import mindustry.type.*;
 import mindustry.type.unit.ErekirUnitType;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
+import mindustry.entities.bullet.*;
 import erekir.entities.pattern.*;
+import erekir.ctype.*;
 
 import static mindustry.Vars.*;
 
-public class ErkUnitTypes implements ContentList{
+public class ErkUnitTypes implements AltContentList{
     public static UnitType
     
     gem;

@@ -1,9 +1,9 @@
 package erekir;
 
-import arc.util.Log.*;
-import mindustry.ctype.*;
+import arc.util.Log;
 import mindustry.mod.*;
 import erekir.content.*;
+import erekir.ctype.*;
 
 public class ErekirExpansion extends Mod{
 
@@ -11,14 +11,14 @@ public class ErekirExpansion extends Mod{
         Log.info("Loaded Erekir buoyancy");
     }
     
-    private final ContentList[] erekirContent = {
+    private final AltContentList[] erekirContent = {
        new ErkUnitTypes()
     };
     
     @Override
     public void loadContent() {
         // load everything from the array
-        for (ContentList list : erekirContent) list.load();
+        for (AltContentList list : erekirContent) list.load();
     }
 
 }
