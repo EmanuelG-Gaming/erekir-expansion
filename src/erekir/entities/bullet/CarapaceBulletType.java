@@ -9,6 +9,7 @@ import arc.math.Mathf;
 import arc.math.geom.Vec2;
 import mindustry.type.*;
 import mindustry.gen.*;
+import mindustry.content.Fx;
 import mindustry.entities.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.Units;
