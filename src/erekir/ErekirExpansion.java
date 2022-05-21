@@ -1,23 +1,22 @@
 package erekir;
 
-import arc.*;
-import arc.util.*;
-import mindustry.*;
-import mindustry.content.*;
-import mindustry.game.EventType.*;
-import mindustry.gen.*;
 import mindustry.mod.*;
-import mindustry.ui.dialogs.*;
+import erekir.content.*;
 
 public class ErekirExpansion extends Mod{
 
     public ErekirExpansion() {
         Log.info("Loaded Erekir buoyancy");
     }
-
+    
+    private final ContentList[] erekirContent = {
+       new ErkUnitTypes()
+    }
+    
     @Override
     public void loadContent() {
-        Log.info("Loading some other erekir content.");
+        // load everything from the array
+        for (ContentList list : erekirContent) list.load();
     }
 
 }
