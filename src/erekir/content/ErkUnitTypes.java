@@ -61,13 +61,13 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = LegsUnit::create;
           weapons.add(new Weapon("erekir-expansion-gem-weapon"){{
-             reload = 40f;
+             reload = 35f;
              mirror = true;
              top = true;
              x = 3.2f;
              y = -1.65f;
              shootCone = 360f;
-             bullet = new BasicBulletType(5f, 17f){{
+             bullet = new BasicBulletType(5f, 9.5f){{
                 backColor = Color.valueOf("93de7e");
                 trailColor = Color.valueOf("93de7e");
                 frontColor = Color.white;
@@ -151,13 +151,13 @@ public class ErkUnitTypes implements AltContentList{
                x = 3.5f;
                y = -1.3f;
                shootSound = Sounds.missile;
-               bullet = new MissileBulletType(3f, 9f){{
+               bullet = new MissileBulletType(3f, 12.5f){{
                   frontColor = Color.white;
                   backColor = Color.valueOf("93de7e");
                   trailColor = Pal.heal;
                   trailChance = 0.45f;
                   splashDamage = 13.5f;
-                  splashDamageRadius = 11f;
+                  splashDamageRadius = 14f;
                   homingRange = 0f;
                   width = 8f;
                   height = 11f;
