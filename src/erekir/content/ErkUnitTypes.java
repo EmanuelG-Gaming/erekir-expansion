@@ -124,24 +124,50 @@ public class ErkUnitTypes implements AltContentList{
           researchCostMultiplier = 0;
           
           constructor = LegsUnit::create;
-          weapons.add(new Weapon("geodeShield"){{
-             reload = 250f;
-             mirror = false;
-             top = true;
-             x = 0f;
-             y = 0f;
-             shootSound = ErkSounds.fieldRelease;
-             shootCone = 360;
-             shootY = 0f;
-             bullet = new CarapaceBulletType(){{
-                 lifetime = 70f;
-                 hitSize = 65f;
-                 ejectEffect = Fx.none;
-                 hitEffect = Fx.none;
-                 despawnEffect = Fx.none;
-                 pushBackEffect = ErkFx.gemHit;
-             }};
-          }});
+          weapons.add(
+             new Weapon("geodeShield"){{
+                reload = 250f;
+                mirror = false;
+                top = true;
+                x = 0f;
+                y = 0f;
+                shootSound = ErkSounds.fieldRelease;
+                shootCone = 360;
+                shootY = 0f;
+                bullet = new CarapaceBulletType(){{
+                   lifetime = 70f;
+                   hitSize = 65f;
+                   layer = Layer.weather;
+                   ejectEffect = Fx.none;
+                   hitEffect = Fx.none;
+                   despawnEffect = Fx.none;
+                   pushBackEffect = ErkFx.gemHit;
+                }};
+            }},
+            new Weapon("geodeMissile"){{
+               reload = 25f;
+               mirror = true;
+               top = true;
+               x = 3.5f;
+               y = -1.3f;
+               shootSound = Sounds.missile;
+               bullet = new MissileBulletType(3f, 9f){{
+                  frontColor = Color.white;
+                  backColor = Color.valueOf("93de7e");
+                  trailColor = Pal.heal;
+                  trailChance = 0.45f;
+                  splashDamage = 13.5f;
+                  splashDamageRadius = 11f;
+                  homingRange = 0f;
+                  width = 8f;
+                  height = 11f;
+                  lifetime = 50f;
+                  //TODO placeholder effect?
+                  hitEffect = ErkFx.gemHit;
+                  despawnEffect = ErkFx.gemHit;
+               }};
+            }}
+          );
        }};
     }
 }

@@ -19,6 +19,7 @@ import erekir.content.*;
 public class CarapaceBulletType extends BasicBulletType{
    public float deflectPower = 0.05f;
    public Effect pushBackEffect = Fx.none;
+   public float emissionChance = 0.35f;
 
    public CarapaceBulletType() {
       super(0f, 1);
@@ -60,7 +61,7 @@ public class CarapaceBulletType extends BasicBulletType{
             unit.vel.setZero();
             unit.impulse(Tmp.v1);
             
-            if (Mathf.chance(0.2f)) {
+            if (Mathf.chance(emissionChance)) {
                pushBackEffect.at(unit.x, unit.y, b.angleTo(unit));
             }
          }

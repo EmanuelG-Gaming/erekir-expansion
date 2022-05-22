@@ -5,7 +5,7 @@ import arc.Events;
 import arc.util.Time;
 import arc.util.Log;
 import mindustry.content.*;
-import mindustry.world.blocks.units.UnitFactory;
+import mindustry.world.blocks.units.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import erekir.content.*;
@@ -26,7 +26,8 @@ public class ErekirExpansion extends Mod{
            );
            // silly
            Blocks.mechFabricator.configurable = true;
-           Blocks.mechFabricator.init(); 
+           Blocks.mechFabricator.init();
+           ((Reconstructor) Blocks.mechRefabricator).addUpgrade(ErkUnitTypes.gem, ErkUnitTypes.geode);
         });
     }
     
