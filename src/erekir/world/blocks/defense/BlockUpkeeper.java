@@ -23,6 +23,8 @@ public class BlockUpkeeper extends Block{
       solid = true;
       drawArrow = false;
       regionRotated1 = 1;
+      
+      envEnabled |= Env.space;
    }
    
    @Override
@@ -32,8 +34,17 @@ public class BlockUpkeeper extends Block{
    
    @Override 
    public void drawPlace(int x, int y, int rotation, boolean valid) {
-      for (int i = 0; i < lanes; i++) {
-         nearbySide(x, y, rotation, i, Tmp.p1);
+      int sized = lanes;
+      for (int i = 0; i < size; i++) {
+        
+         //stealing
+         int px = x - (sized - 1) / 2, py = y - (sized - 1) / 2;
+         switch (rotation) {
+            case 0 -> Tmp.p1.set(px + sized, py + i);
+            case 1 -> Tmp.p1.set(px + i, py + sized);
+            case 2 -> Tmp.p1.set(px - 1, py + i);
+            case 3 -> Tmp.p1.set(px + i, py - 1);
+         }
          
          int j = 0;
          boolean found = false;
