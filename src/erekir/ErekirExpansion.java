@@ -32,6 +32,7 @@ public class ErekirExpansion extends Mod{
     }
     
     private final AltContentList[] erekirContent = {
+       new ErkBlocks(),
        new ErkUnitTypes()
     };
     
