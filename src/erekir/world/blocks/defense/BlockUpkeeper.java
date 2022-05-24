@@ -8,6 +8,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.content.Blocks;
 import mindustry.world.*; 
+import mindustry.world.meta.*;
 
 import static mindustry.Vars.*;
 
@@ -35,11 +36,12 @@ public class BlockUpkeeper extends Block{
    @Override 
    public void drawPlace(int x, int y, int rotation, boolean valid) {
       int sized = lanes;
-      for (int i = 0; i < size; i++) {
+      for (int i = 0; i < sized; i++) {
         
          //stealing
          int px = x - (sized - 1) / 2, py = y - (sized - 1) / 2;
          switch (rotation) {
+            //wait what
             case 0:
                Tmp.p1.set(px + sized, py + i);
                break;
