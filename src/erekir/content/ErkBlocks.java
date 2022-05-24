@@ -1,5 +1,8 @@
 package erekir.content;
 
+import mindustry.type.*;
+import mindustry.content.*;
+import mindustry.content.Items;
 import mindustry.world.*;
 import mindustry.world.meta.*;
 import erekir.ctype.*;

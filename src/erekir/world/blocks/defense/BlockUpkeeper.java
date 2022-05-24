@@ -47,7 +47,7 @@ public class BlockUpkeeper extends Block{
             }
          }
          int len = Math.min(j, range - 1);
-         Drawf.dashLine(found ? Pal.spacing : Pal.remove,
+         Drawf.dashLine(found ? Pal.placing : Pal.remove,
             Tmp.p1.x * tilesize,
             Tmp.p1.y * tilesize,
             (Tmp.p1.x + Geometry.d4x(rotation) * len) * tilesize,
