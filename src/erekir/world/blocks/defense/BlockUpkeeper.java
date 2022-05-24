@@ -40,10 +40,18 @@ public class BlockUpkeeper extends Block{
          //stealing
          int px = x - (sized - 1) / 2, py = y - (sized - 1) / 2;
          switch (rotation) {
-            case 0 -> Tmp.p1.set(px + sized, py + i);
-            case 1 -> Tmp.p1.set(px + i, py + sized);
-            case 2 -> Tmp.p1.set(px - 1, py + i);
-            case 3 -> Tmp.p1.set(px + i, py - 1);
+            case 0:
+               Tmp.p1.set(px + sized, py + i);
+               break;
+            case 1:
+               Tmp.p1.set(px + i, py + sized);
+               break;
+            case 2:
+               Tmp.p1.set(px - 1, py + i);
+               break;
+            case 3: 
+               Tmp.p1.set(px + i, py - 1);
+               break;
          }
          
          int j = 0;
