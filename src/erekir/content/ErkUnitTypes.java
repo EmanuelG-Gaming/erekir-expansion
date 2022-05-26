@@ -18,7 +18,11 @@ import static mindustry.Vars.*;
 public class ErkUnitTypes implements AltContentList{
     public static UnitType
     
-    gem, geode;
+    //ground insect
+    gem, geode,
+    
+    //flying
+    aggregate;
     
     @Override
     public void load() {
@@ -168,6 +172,42 @@ public class ErkUnitTypes implements AltContentList{
                }};
             }}
           );
+       }};
+       
+       aggregate = new ErekirUnitType("aggregate"){{
+          health = 650;
+	        speed = 2.4f;
+ 	        hitSize = 9;
+	        drag = 0.01f;
+	        accel = 0.35f;
+	        flying = true;
+          aimDst = 2f;
+          range = 200f;
+          engineOffset = 5.75f;
+          targetAir = true;
+          
+          constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 15f;
+             mirror = true;
+             top = true;
+             x = 2.3f;
+             y = -0.9f;
+             //flar
+             bullet = new BasicBulletType(3f, 14f){{
+                backColor = Color.valueOf("93de7e");
+                trailColor = Color.valueOf("93de7e");
+                frontColor = Color.white;
+                trailLength = 3;
+                despawnEffect = ErkFx.gemHit;
+                hitEffect = ErkFx.gemHit;
+                shootEffect = Fx.none;
+                smokeEffect = Fx.shootSmallSmoke;
+                width = 6.25f;
+                height = 7f;
+                lifetime = 80f;
+             }};
+          }});
        }};
     }
 }
