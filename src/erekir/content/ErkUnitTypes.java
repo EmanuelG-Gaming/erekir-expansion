@@ -160,15 +160,14 @@ public class ErkUnitTypes implements AltContentList{
                   backColor = Color.valueOf("93de7e");
                   trailColor = Pal.heal;
                   trailChance = 0.45f;
-                  splashDamage = 13.5f;
-                  splashDamageRadius = 14f;
+                  splashDamage = 19.5f;
+                  splashDamageRadius = 17f;
                   homingRange = 0f;
                   width = 8f;
                   height = 11f;
                   lifetime = 50f;
-                  //TODO placeholder effect?
-                  hitEffect = ErkFx.gemHit;
-                  despawnEffect = ErkFx.gemHit;
+                  hitEffect = ErkFx.berylMissileHit;
+                  despawnEffect = ErkFx.berylMissileHit;
                }};
             }}
           );
@@ -198,7 +197,7 @@ public class ErkUnitTypes implements AltContentList{
                 backColor = Color.valueOf("93de7e");
                 trailColor = Color.valueOf("93de7e");
                 frontColor = Color.white;
-                trailLength = 3;
+                trailLength = 5;
                 despawnEffect = ErkFx.gemHit;
                 hitEffect = ErkFx.gemHit;
                 shootEffect = Fx.none;
