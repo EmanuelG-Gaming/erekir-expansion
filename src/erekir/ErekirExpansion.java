@@ -22,10 +22,10 @@ public class ErekirExpansion extends Mod{
       
         Events.on(ContentInitEvent.class, e -> {
            ((UnitFactory) Blocks.mechFabricator).plans.add(
-               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 300, Items.silicon, 50))
+               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 50))
            );
            ((UnitFactory) Blocks.shipFabricator).plans.add(
-               new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 35, Items.graphite, 20))
+               new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
            );
            
            // silly
