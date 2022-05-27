@@ -155,7 +155,7 @@ public class ErkUnitTypes implements AltContentList{
                x = 3.5f;
                y = -1.3f;
                shootSound = Sounds.missile;
-               bullet = new MissileBulletType(3f, 12.5f){{
+               bullet = new MissileBulletType(3f, 16f){{
                   frontColor = Color.white;
                   backColor = Color.valueOf("93de7e");
                   trailColor = Pal.heal;
@@ -194,7 +194,7 @@ public class ErkUnitTypes implements AltContentList{
              x = 2.3f;
              y = -0.9f;
              //flar
-             bullet = new BasicBulletType(3f, 14f){{
+             bullet = new BasicBulletType(3f, 12f){{
                 backColor = Color.valueOf("93de7e");
                 trailColor = Color.valueOf("93de7e");
                 frontColor = Color.white;
