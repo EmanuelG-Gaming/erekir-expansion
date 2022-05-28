@@ -1,6 +1,7 @@
 package erekir.content;
 
 import mindustry.ctype.*;
+import mindustry.content.TechTree;
 
 import static mindustry.content.Blocks.*;
 import static mindustry.content.TechTree.*;
