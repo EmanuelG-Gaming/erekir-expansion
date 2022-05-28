@@ -3,6 +3,6 @@ name: "erekir-expansion"
 author: "Emanuel G"
 main: "erekir.ErekirExpansion"
 description: "A Mindustry mod aimed to add content to the newly-added planet."
-version: "0.2 Pre-Alpha"
+version: "0.3 Pre-Alpha"
 minGameVersion: 136
 java: true

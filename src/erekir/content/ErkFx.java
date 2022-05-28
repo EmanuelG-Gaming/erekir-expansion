@@ -11,8 +11,7 @@ public class ErkFx {
   public static final Effect
   
   gemHit = new Effect(14f, e -> {
-     //TODO change the first color to lerp
-     Draw.color(Pal.heal, Color.valueOf("93de7e"), e.fin());
+     Draw.color(Color.white, Color.valueOf("93de7e"), e.fin());
      Lines.stroke(0.5f + e.fout());
 
      Angles.randLenVectors(e.id, 4, 1f + e.fin() * 15f, e.rotation, 50f, (x, y) -> {
