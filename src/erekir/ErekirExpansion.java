@@ -46,6 +46,7 @@ public class ErekirExpansion extends Mod{
     public void loadContent() {
         // load everything from the array
         for (AltContentList list : erekirContent) list.load();
+        ErkTechTree.load();
     }
 
 }
