@@ -166,8 +166,10 @@ public class ErkUnitTypes implements AltContentList{
                      lifetime = 45f;
                      colorFrom = Pal.heal;
                      colorTo = Color.valueOf("93de7e");
+                     offsetX = 1.25f;
                      offsetY = 2f;
                      particles = 6;
+                     range = 17f;
                   }};
                   homingRange = 0f;
                   width = 8f;
