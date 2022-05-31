@@ -11,6 +11,7 @@ import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
+import erekir.entities.effect.*;
 import erekir.ctype.*;
 
 import static mindustry.Vars.*;
