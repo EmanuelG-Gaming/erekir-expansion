@@ -161,6 +161,13 @@ public class ErkUnitTypes implements AltContentList{
                   trailChance = 0.45f;
                   splashDamage = 19.5f;
                   splashDamageRadius = 17f;
+                  shootEffect = new EllipseEffect(){{
+                     lifetime = 45f;
+                     colorFrom = Pal.heal;
+                     colorTo = Color.valueOf("93de7e");
+                     offsetY = 2f;
+                     particles = 6;
+                  }};
                   homingRange = 0f;
                   width = 8f;
                   height = 11f;
