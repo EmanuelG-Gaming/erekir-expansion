@@ -9,6 +9,7 @@ import mindustry.gen.*;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
+import erekir.graphics.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
@@ -73,8 +74,7 @@ public class ErkUnitTypes implements AltContentList{
              y = -1.65f;
              shootCone = 360f;
              bullet = new BasicBulletType(5f, 9.5f){{
-                backColor = Color.valueOf("93de7e");
-                trailColor = Color.valueOf("93de7e");
+                backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
                 trailLength = 5;
                 despawnEffect = ErkFx.gemHit;
@@ -142,6 +142,8 @@ public class ErkUnitTypes implements AltContentList{
                 bullet = new CarapaceBulletType(){{
                    lifetime = 70f;
                    hitSize = 65f;
+                   frontColor = Color.white;
+                   backColor = ErkPal.greenishBeryl;
                    layer = Layer.weather;
                    ejectEffect = Fx.none;
                    hitEffect = Fx.none;
@@ -158,18 +160,17 @@ public class ErkUnitTypes implements AltContentList{
                shootSound = Sounds.missile;
                bullet = new MissileBulletType(3f, 16f){{
                   frontColor = Color.white;
-                  backColor = trailColor = Color.valueOf("93de7e");
+                  backColor = trailColor = ErkPal.greenishBeryl;
                   trailChance = 0.45f;
                   splashDamage = 19.5f;
                   splashDamageRadius = 17f;
                   shootEffect = new EllipseEffect(){{
-                     lifetime = 45f;
+                     lifetime = 20f;
                      colorFrom = Pal.heal;
-                     colorTo = Color.valueOf("93de7e");
-                     offsetX = 1.25f;
+                     colorTo = ErkPal.greenishBeryl;
                      offsetY = 2f;
                      particles = 6;
-                     range = 17f;
+                     range = 8f;
                   }};
                   homingRange = 0f;
                   width = 8f;
@@ -203,8 +204,7 @@ public class ErkUnitTypes implements AltContentList{
              y = -0.9f;
              //flar
              bullet = new BasicBulletType(3f, 12f){{
-                backColor = Color.valueOf("93de7e");
-                trailColor = Color.valueOf("93de7e");
+                backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
                 trailLength = 5;
                 despawnEffect = ErkFx.gemHit;

@@ -25,8 +25,6 @@ public class CarapaceBulletType extends BasicBulletType{
       super(0f, 1);
       speed = 0f;
       width = height = 0f;
-      frontColor = Color.white;
-      backColor = Color.valueOf("93de7e");
       keepVelocity = false;
       pierce = true;
       pierceBuilding = true;
