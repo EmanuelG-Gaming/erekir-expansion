@@ -24,7 +24,7 @@ public class ErkUnitTypes implements AltContentList{
     gem, geode,
     
     //flying
-    aggregate;
+    aggregate, agglomerate;
     
     @Override
     public void load() {
@@ -96,7 +96,7 @@ public class ErkUnitTypes implements AltContentList{
        }};
        
        geode = new ErekirUnitType("geode"){{
-          health = 800;
+          health = 1200;
 	        armor = 1;
 	        speed = 0.78f;
 	        hitSize = 10f;
@@ -216,6 +216,21 @@ public class ErkUnitTypes implements AltContentList{
                 lifetime = 80f;
              }};
           }});
+       }};
+       
+       agglomerate = new ErekirUnitType("agglomerate"){{
+          health = 900;
+	        speed = 2.1f;
+ 	        hitSize = 12;
+	        drag = 0.03f;
+	        accel = 0.24f;
+	        flying = true;
+          aimDst = 2f;
+          range = 200f;
+          engineOffset = 9.5f;
+          targetAir = true;
+          
+          constructor = UnitEntity::create;
        }};
     }
 }
