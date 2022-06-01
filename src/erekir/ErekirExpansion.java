@@ -22,11 +22,11 @@ public class ErekirExpansion extends Mod{
       
         Events.on(ContentInitEvent.class, e -> {
            addToFabricator(
-              Blocks.mechFabricator,
+              ((UnitFactory) Blocks.mechFabricator),
               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 50))
            );
            addToFabricator(
-              Blocks.shipFabricator,
+              ((UnitFactory) Blocks.shipFabricator),
               new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
            );
            
