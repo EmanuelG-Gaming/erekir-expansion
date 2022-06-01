@@ -21,19 +21,17 @@ public class ErekirExpansion extends Mod{
         Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> ErkSounds.load()));
       
         Events.on(ContentInitEvent.class, e -> {
-           ((UnitFactory) Blocks.mechFabricator).plans.add(
-               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 50))
+           addToFabricator(
+              Blocks.mechFabricator,
+              new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 50))
            );
-           ((UnitFactory) Blocks.shipFabricator).plans.add(
-               new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
+           addToFabricator(
+              Blocks.shipFabricator,
+              new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
            );
            
-           // silly
-           Blocks.mechFabricator.configurable = true;
-           Blocks.shipFabricator.configurable = true;
-           Blocks.mechFabricator.init();
-           Blocks.shipFabricator.init();
            ((Reconstructor) Blocks.mechRefabricator).addUpgrade(ErkUnitTypes.gem, ErkUnitTypes.geode);
+           ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
         });
     }
     
@@ -48,5 +46,11 @@ public class ErekirExpansion extends Mod{
         for (AltContentList list : erekirContent) list.load();
         ErkTechTree.load();
     }
-
+    
+    public void addToFabricator(UnitFactory factory, UnitFactory.UnitPlan plan) {
+        factory.plans.add(plan);
+        
+        factory.configurable = true;
+        factory.init();
+    }
 }
