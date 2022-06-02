@@ -2,7 +2,7 @@ package erekir.ai.types;
 
 import arc.util.*;
 import arc.math.*;
-import arc.math.geom.Vec2;
+import arc.math.geom.*;
 import mindustry.ai.types.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
