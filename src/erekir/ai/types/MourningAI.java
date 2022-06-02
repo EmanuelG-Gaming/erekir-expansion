@@ -24,8 +24,13 @@ public class MourningAI extends AIController{
         if (shooter != null) {
             vec2.set(shooter.x, shooter.y);
         }
-        unit.moveAt(vec.trns(unit.rotation, unit.speed()));
-        circle((Position) vec2, random);
+        
+        if (unit.within(vec2.x, vec2.y, 45f + 15f)) {
+            circle((Position) vec2, random);
+        } else {
+            unit.moveAt(vec.trns(unit.rotation, unit.speed()));
+        }
+        
         Building build = unit.buildOn();
 
         //kill instantly on enemy building contact

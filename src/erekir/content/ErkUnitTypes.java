@@ -227,8 +227,9 @@ public class ErkUnitTypes implements AltContentList{
            engineSize = 1.75f;
            engineOffset = 2.25f;
            engineLayer = Layer.effect;
+           hitSize = 5;
            speed = 3.5f;
-           lifetime = 60f * 6.5f;
+           lifetime = 60f * 2.5f;
            outlineColor = Pal.darkOutline;
            health = 45;
            lowAltitude = true;
@@ -267,11 +268,12 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 20f;
+             reload = 70f;
              mirror = false;
              top = false;
              x = 0f;
              y = 0f;
+             shootY = 0f;
              bullet = new BulletType(){{
                 shootEffect = Fx.none;
                 smokeEffect = Fx.none;
