@@ -9,6 +9,7 @@ import mindustry.gen.*;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.effect.*;
 import erekir.graphics.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
@@ -238,14 +239,14 @@ public class ErkUnitTypes implements AltContentList{
               mirror = false;
               reload = 1f;
               shootOnDeath = true;
-              bullet = new ExplosionBulletType(120f, 25f){{
+              bullet = new ExplosionBulletType(55f, 25f){{
                  shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
                      lifetime = 40f;
                      colorFrom = Color.white;
                      colorTo = ErkPal.greenishBeryl;
                      offsetX = 2f;
                      particles = 15;
-                     range = 38f;
+                     range = 23f;
                  }});
               }};
            }});
