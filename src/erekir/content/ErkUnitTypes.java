@@ -4,7 +4,7 @@ import arc.graphics.*;
 import arc.graphics.Color;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.type.unit.ErekirUnitType;
+import mindustry.type.unit.*;
 import mindustry.gen.*;
 import mindustry.content.Fx;
 import mindustry.ctype.*;
@@ -14,6 +14,7 @@ import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
 import erekir.ctype.*;
+import erekir.ai.types.*;
 
 import static mindustry.Vars.*;
 
@@ -24,7 +25,9 @@ public class ErkUnitTypes implements AltContentList{
     gem, geode,
     
     //flying
-    aggregate, agglomerate;
+    aggregate,
+    //why
+    agglomerateMissile, agglomerate;
     
     @Override
     public void load() {
@@ -218,6 +221,18 @@ public class ErkUnitTypes implements AltContentList{
           }});
        }};
        
+       agglomerateMissile = new MissileUnitType("agglomerate-missile"){{
+           trailColor = engineColor = ErkPal.greenishBeryl;
+           engineSize = 1.75f;
+           engineLayer = Layer.effect;
+           speed = 3.5f;
+           lifetime = 60f * 2.5f;
+           outlineColor = Pal.darkOutline;
+           health = 45;
+           lowAltitude = true;
+           controller = u -> new MourningAI();
+       }};
+       
        agglomerate = new ErekirUnitType("agglomerate"){{
           health = 900;
 	        speed = 2.1f;
@@ -231,6 +246,21 @@ public class ErkUnitTypes implements AltContentList{
           targetAir = true;
           
           constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 20f;
+             mirror = false;
+             top = false;
+             x = 0f;
+             y = 0f;
+             bullet = new BulletType(){{
+                shootEffect = Fx.none;
+                smokeEffect = Fx.none;
+                shake = 1f;
+                speed = 0f;
+                keepVelocity = false;
+                spawnUnit = agglomerateMissile;
+             }};
+          }});
        }};
     }
 }
