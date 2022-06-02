@@ -26,7 +26,7 @@ public class MourningAI extends AIController{
             super.updateMovement();
         }
         else {
-            unit.circle((Position) vec2, random);
+            circle((Position) vec2, random);
         }
 
         Building build = unit.buildOn();
