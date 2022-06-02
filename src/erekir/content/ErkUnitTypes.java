@@ -228,7 +228,7 @@ public class ErkUnitTypes implements AltContentList{
            engineOffset = 2.25f;
            engineLayer = Layer.effect;
            speed = 3.5f;
-           lifetime = 60f * 2.5f;
+           lifetime = 60f * 6.5f;
            outlineColor = Pal.darkOutline;
            health = 45;
            lowAltitude = true;
@@ -240,14 +240,14 @@ public class ErkUnitTypes implements AltContentList{
               mirror = false;
               reload = 1f;
               shootOnDeath = true;
-              bullet = new ExplosionBulletType(55f, 25f){{
+              bullet = new ExplosionBulletType(35f, 25f){{
                  shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
                      lifetime = 40f;
                      colorFrom = Color.white;
                      colorTo = ErkPal.greenishBeryl;
-                     offsetX = 2f;
+                     offsetX = 3f;
                      particles = 15;
-                     range = 23f;
+                     range = 45f;
                  }});
               }};
            }});
