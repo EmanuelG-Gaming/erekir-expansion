@@ -224,6 +224,7 @@ public class ErkUnitTypes implements AltContentList{
        agglomerateMissile = new MissileUnitType("agglomerate-missile"){{
            trailColor = engineColor = ErkPal.greenishBeryl;
            engineSize = 1.75f;
+           engineOffset = 2.25f;
            engineLayer = Layer.effect;
            speed = 3.5f;
            lifetime = 60f * 2.5f;
@@ -231,6 +232,23 @@ public class ErkUnitTypes implements AltContentList{
            health = 45;
            lowAltitude = true;
            controller = u -> new MourningAI();
+           
+           weapons.add(new Weapon(){{
+              shootCone = 360f;
+              mirror = false;
+              reload = 1f;
+              shootOnDeath = true;
+              bullet = new ExplosionBulletType(120f, 25f){{
+                 shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
+                     lifetime = 40f;
+                     colorFrom = Color.white;
+                     colorTo = ErkPal.greenishBeryl;
+                     offsetX = 2f;
+                     particles = 15;
+                     range = 38f;
+                 }});
+              }};
+           }});
        }};
        
        agglomerate = new ErekirUnitType("agglomerate"){{

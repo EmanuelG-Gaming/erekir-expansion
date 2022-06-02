@@ -20,9 +20,9 @@ public class MourningAI extends AIController{
         rand.setSeed(unit.id);
         
         float random = rand.random(36f, 55.5f);
+        vec2.set(shooter.x, shooter.y);
         if (shooter != null) {
             unit.moveAt(vec.trns(unit.rotation, unit.speed()));
-            vec2.set(shooter.x, shooter.y);
             super.updateMovement();
         }
         else {
