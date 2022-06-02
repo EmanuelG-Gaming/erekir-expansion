@@ -232,6 +232,7 @@ public class ErkUnitTypes implements AltContentList{
            outlineColor = Pal.darkOutline;
            health = 45;
            lowAltitude = true;
+           rotateSpeed = 4.35f;
            controller = u -> new MourningAI();
            
            weapons.add(new Weapon(){{

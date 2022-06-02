@@ -20,15 +20,14 @@ public class MourningAI extends AIController{
         rand.setSeed(unit.id);
         
         float random = rand.random(36f, 55.5f);
-        vec2.set(shooter.x, shooter.y);
         if (shooter != null) {
-            unit.moveAt(vec.trns(unit.rotation, unit.speed()));
-            super.updateMovement();
+            vec2.set(shooter.x, shooter.y);
         }
         else {
             circle((Position) vec2, random);
         }
-
+        unit.moveAt(vec.trns(unit.rotation, unit.speed()));
+        
         Building build = unit.buildOn();
 
         //kill instantly on enemy building contact
