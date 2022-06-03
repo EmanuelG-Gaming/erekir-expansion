@@ -6,7 +6,7 @@ import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.type.unit.*;
 import mindustry.gen.*;
-import mindustry.content.Fx;
+import mindustry.content.*;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
@@ -16,6 +16,7 @@ import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
 import erekir.ctype.*;
 import erekir.ai.types.*;
+import erekir.type.ammo.*;
 
 import static mindustry.Vars.*;
 
@@ -265,6 +266,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 200f;
           engineOffset = 9.5f;
           targetAir = true;
+          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 25);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
