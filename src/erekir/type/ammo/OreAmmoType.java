@@ -56,7 +56,7 @@ public class OreAmmoType implements AmmoType{
        Geometry.circle(unitOn.x, unitOn.y, (int) offsetRange, (x, y) -> {
           Tile build = world.tile(x, y);
           if (build != null && build.overlay() == extractOre) {
-              Fx.itemTransfer.at(build.x, build.y, 4, ((OreBlock) extractOre).itemDrop.color, unit);
+              Fx.itemTransfer.at(build.x * tilesize, build.y * tilesize, 4, ((OreBlock) extractOre).itemDrop.color, unit);
               unit.ammo = Math.min(unit.ammo + ammoGain, unit.type.ammoCapacity);
           }
        });
