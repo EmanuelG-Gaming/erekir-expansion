@@ -48,7 +48,7 @@ public class OreAmmoType implements AmmoType{
     
     @Override
     public void resupply(Unit unit) {
-       float offsetRange = unit.hitSize + range;
+       float offsetRange = unit.hitSize / tilesize + range;
       
        Tile unitOn = unit.tileOn();
        
