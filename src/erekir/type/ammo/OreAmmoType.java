@@ -5,6 +5,7 @@ import arc.graphics.*;
 import mindustry.content.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
+import mindustry.world.blocks.environment.*;
 import mindustry.type.ammo.*;
 
 import static mindustry.Vars.*;
@@ -13,7 +14,7 @@ import static mindustry.Vars.*;
  *  Partial thanks to @author Mythril382 */
 public class OreAmmoType extends AmmoType{
     public float range = 75f;
-    public Block extractOre = Blocks.oreCopper;
+    public OreBlock extractOre = Blocks.oreCopper;
     //public float resupplyTime = 5f;
     public int ammoGain = 1;
     public float totalItems = 20;
@@ -40,20 +41,18 @@ public class OreAmmoType extends AmmoType{
     
     @Override
     public Color barColor() {
-       return extractOre instanceof OreBlock ? extractOre.itemDrop.color : Pal.ammo;
+       return extractOre.item.color;
     }
     
     @Override
     public void resupply(Unit unit) {
-       if (!(extractOre instanceof OreBlock ore)) return;
-       
        float offsetRange = unit.hitSize + range;
       
        //TODO won't this lag?
        Geometry.circle(unit.x, unit.y, offsetRange, (x, y) -> {
           Tile build = world.tile(x, y);
           if (build != null && build.overlay() == extractOre) {
-              Fx.itemTransfer.at(build.x, build.y, 4, ore.itemDrop.color, unit);
+              Fx.itemTransfer.at(build.x, build.y, 4, extractOre.itemDrop.color, unit);
               unit.ammo = Math.min(unit.ammo + ammoGain, unit.type.ammoCapacity);
           }
        });
