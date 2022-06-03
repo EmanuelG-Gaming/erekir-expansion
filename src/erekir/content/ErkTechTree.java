@@ -21,6 +21,9 @@ public class ErkTechTree{
        customNodeBranch(mechRefabricator, () -> {
            node(ErkUnitTypes.geode);
        });
+       customNodeBranch(shipRefabricator, () -> {
+           node(ErkUnitTypes.agglomerate);
+       });
    }
    
    // Where's the modded branch?!!? 1 -Antumbra

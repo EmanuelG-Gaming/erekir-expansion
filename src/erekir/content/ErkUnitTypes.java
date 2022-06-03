@@ -228,7 +228,7 @@ public class ErkUnitTypes implements AltContentList{
            engineSize = 1.75f;
            engineOffset = 2.25f;
            engineLayer = Layer.effect;
-           hitSize = 5;
+           hitSize = 3;
            speed = 3.5f;
            lifetime = 60f * 2.5f;
            outlineColor = Pal.darkOutline;
@@ -266,7 +266,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 200f;
           engineOffset = 9.5f;
           targetAir = true;
-          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 25);
+          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 24);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
@@ -282,6 +282,7 @@ public class ErkUnitTypes implements AltContentList{
                 shake = 1f;
                 speed = 0f;
                 keepVelocity = false;
+                ammoMultiplier = 0.25f;
                 spawnUnit = agglomerateMissile;
              }};
           }});
