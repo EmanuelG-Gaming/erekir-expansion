@@ -16,7 +16,7 @@ import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
 import erekir.ctype.*;
 import erekir.ai.types.*;
-import erekir.type.ammo.*;
+import erekir.type.ammo.OreAmmoType;
 
 import static mindustry.Vars.*;
 
