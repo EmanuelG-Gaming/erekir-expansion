@@ -43,7 +43,7 @@ public class OreAmmoType implements AmmoType{
     
     @Override
     public Color barColor() {
-       return ((OreBlock) extractOre).item.color;
+       return ((OreBlock) extractOre).itemDrop.color;
     }
     
     @Override
