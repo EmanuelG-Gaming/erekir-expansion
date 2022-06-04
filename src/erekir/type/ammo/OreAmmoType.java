@@ -48,10 +48,9 @@ public class OreAmmoType implements AmmoType{
     @Override
     public void resupply(Unit unit) {
        float offsetRange = unit.hitSize / tilesize + range;
-      
-       Tile unitOn = unit.tileOn();
+       float ux = unit.x / tilesize, uy = unit.y / tilesize;
        
-       Geometry.circle(unitOn.x, unitOn.y, (int) offsetRange, (x, y) -> {
+       Geometry.circle((int) ux, (int) uy, (int) offsetRange, (x, y) -> {
           Tile build = world.tile(x, y);
           if (build != null && build.overlay() == extractOre) {
               Fx.itemTransfer.at(build.x * tilesize, build.y * tilesize, 4, ((OreBlock) extractOre).itemDrop.color, unit);
