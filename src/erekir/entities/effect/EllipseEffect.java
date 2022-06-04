@@ -9,7 +9,7 @@ import mindustry.entities.*;
 /** Renders particles with an x-y squish. */
 public class EllipseEffect extends Effect{
    /** Auxiliary drawer. */
-   public Cons3<EffectContainer, float, float> drawer = e, dx, dy -> {};
+   public Cons3<EffectContainer, float, float> drawer = (e, dx, dy) -> {};
    
    public Color colorFrom = Color.white, colorTo = Color.white;
    public int particles = 30;
