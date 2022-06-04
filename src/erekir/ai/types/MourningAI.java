@@ -20,14 +20,12 @@ public class MourningAI extends AIController{
         rand.setSeed(unit.id);
         float random = rand.random(36f, 55.5f);
         
-        vec2.set(unit.x, unit.y);
+        //I'll leave it like this for some time
         if (shooter != null) {
             vec2.set(shooter.x, shooter.y);
-        }
-        
-        if (unit.within(vec2.x, vec2.y, 45f + 15f)) {
             circle((Position) vec2, random);
-        } else {
+        }
+        else {
             unit.moveAt(vec.trns(unit.rotation, unit.speed()));
         }
         

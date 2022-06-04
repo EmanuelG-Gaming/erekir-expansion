@@ -2,6 +2,8 @@ package erekir.content;
 
 import arc.graphics.*;
 import arc.graphics.Color;
+import arc.graphics.g2d.*;
+import arc.math.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.type.unit.*;
@@ -250,6 +252,11 @@ public class ErkUnitTypes implements AltContentList{
                      offsetX = 3f;
                      particles = 15;
                      range = 45f;
+                     drawer = e, dx, dy -> {
+                         float angle = Mathf.angle(dx, dy);
+                         Fill.circle(e.x + dx, e.y + dy, 5f / 2f);
+                         Lines.lineAngle(e.x + dx * 2f, e.y + dy * 2f, angle, 5f);
+                     };
                  }});
               }};
            }});
