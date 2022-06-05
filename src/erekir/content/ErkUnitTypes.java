@@ -246,7 +246,7 @@ public class ErkUnitTypes implements AltContentList{
               shootOnDeath = true;
               bullet = new ExplosionBulletType(35f, 25f){{
                  shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
-                     lifetime = 40f;
+                     lifetime = 55f;
                      colorFrom = Color.white;
                      colorTo = ErkPal.greenishBeryl;
                      offsetX = 3f;
@@ -254,8 +254,8 @@ public class ErkUnitTypes implements AltContentList{
                      range = 45f;
                      drawer = (e, dx, dy) -> {
                          float angle = Mathf.angle(dx, dy);
-                         Fill.circle(e.x + dx, e.y + dy, 5f / 2f);
-                         Lines.lineAngle(e.x + dx * 2f, e.y + dy * 2f, angle, 2f + 5f * e.fout(Interp.pow5Out));
+                         Fill.circle(e.x + dx, e.y + dy, 5f * e.fout(Interp.pow5Out) / 2f + 2f);
+                         Lines.lineAngle(e.x + dx * 2f, e.y + dy * 2f, angle, 5f * e.fout() + 1.5f);
                      };
                  }});
               }};
@@ -273,7 +273,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 200f;
           engineOffset = 9.5f;
           targetAir = true;
-          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 24);
+          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 8);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
