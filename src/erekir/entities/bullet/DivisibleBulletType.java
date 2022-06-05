@@ -21,7 +21,7 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnSoundMin = 0.9f;
    public float spawnSoundMax = 1.1f;
    
-   private static BulletType currentBullet = BulletTypes.none;
+   private static BulletType currentBullet = Bullets.placeholder;
    
    public DivisibleBulletType(float speed, float damage) {
        super(speed, damage);

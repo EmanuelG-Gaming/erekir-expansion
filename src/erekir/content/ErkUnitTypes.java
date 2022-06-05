@@ -310,7 +310,7 @@ public class ErkUnitTypes implements AltContentList{
           ammoType = new OreAmmoType(Blocks.graphiticWall, 16);
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 0f;
+             reload = 70f;
              mirror = false;
              top = true;
              x = 0f;
