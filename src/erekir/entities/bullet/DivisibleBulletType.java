@@ -6,6 +6,7 @@ import arc.util.Time;
 import arc.struct.Seq;
 import mindustry.entities.*;
 import mindustry.entities.bullet.*;
+import mindustry.content.*;
 import mindustry.gen.*; 
 
 /** Frag bullets v2. */
@@ -52,7 +53,7 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    public void release(Bullet b, float offsetRotation) {
-       currentBullet.create(this, team, x, y, b.rotation() + offsetRotation);
+       currentBullet.create(b.owner, b.team, b.x, b.y, b.rotation() + offsetRotation);
    }
    
    public void releaseRotating(Bullet b) {
