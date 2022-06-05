@@ -47,6 +47,8 @@ public class OreAmmoType implements AmmoType{
     
     @Override
     public void resupply(Unit unit) {
+       if (unit.type.ammoCapacity - unit.ammo < ammoGain) return;
+       
        float offsetRange = unit.hitSize / tilesize + range;
        float ux = unit.x / tilesize, uy = unit.y / tilesize;
        
