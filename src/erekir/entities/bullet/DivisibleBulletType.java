@@ -39,11 +39,11 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    private void shoot(Bullet b) {
-      int d = 0, i = 0;
       bullets.each(bul -> {
+         int i = 0;
          Time.run(++i * spawnDelay, () -> {
             currentBullet = bul;
-            for (; d < divisions; d++) {
+            for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
                release(b, angle + Mathf.range(spawnInaccuracy));
                spawnSound.at(b.x, b.y, Mathf.random(spawnSoundMin, spawnSoundMax));
