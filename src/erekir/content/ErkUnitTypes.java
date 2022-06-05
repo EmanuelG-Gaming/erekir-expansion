@@ -31,7 +31,7 @@ public class ErkUnitTypes implements AltContentList{
     //flying
     aggregate,
     //why
-    agglomerateMissile, agglomerate;
+    agglomerateMissile, agglomerate, spread;
     
     @Override
     public void load() {
@@ -291,6 +291,64 @@ public class ErkUnitTypes implements AltContentList{
                 keepVelocity = false;
                 ammoMultiplier = 0.25f;
                 spawnUnit = agglomerateMissile;
+             }};
+          }});
+       }};
+       
+       spread = new ErekirUnitType("spread"){{
+          health = 560;
+	        speed = 2.6f;
+ 	        hitSize = 7;
+	        drag = 0.01f;
+	        accel = 0.35f;
+	        flying = true;
+          aimDst = 2f;
+          range = 150f;
+          engineOffset = 5.75f;
+          targetAir = true;
+          
+          ammoType = new OreAmmoType(Blocks.graphiticWall, 16);
+          constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 0f;
+             mirror = false;
+             top = true;
+             x = 0f;
+             y = 0f;
+             bullet = new DivisibleBulletType(4f, 23f){{
+                knockback = 5f;
+                width = 23f;
+                hitSize = 6.5f;
+                height = 18f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = Color.valueOf("feb380");
+                trailWidth = 5f;
+                trailLength = 3;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                
+                bullets.add(
+                new BasicBulletType(3f, 6f){{
+                    width = 14f;
+                    hitSize = 3.5f;
+                    height = 10.5f;
+                    hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                    frontColor = Color.valueOf("feb380");
+                    trailWidth = 4f;
+                    trailLength = 3;
+                    hitEffect = despawnEffect = Fx.none;
+                }},
+                new BasicBulletType(2.5f, 5.5f){{
+                    width = 12f;
+                    hitSize = 3.35f;
+                    height = 9f;
+                    hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                    frontColor = Color.valueOf("feb380");
+                    trailWidth = 3.5f;
+                    trailLength = 3;
+                    hitEffect = despawnEffect = Fx.none;
+                }});
              }};
           }});
        }};
