@@ -307,7 +307,7 @@ public class ErkUnitTypes implements AltContentList{
           engineOffset = 5.75f;
           targetAir = true;
           
-          ammoType = new OreAmmoType(Blocks.graphiticWall, 16);
+          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
              reload = 70f;
