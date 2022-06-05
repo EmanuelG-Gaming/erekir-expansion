@@ -326,6 +326,9 @@ public class ErkUnitTypes implements AltContentList{
                 frontColor = Color.valueOf("feb380");
                 trailWidth = 5f;
                 trailLength = 3;
+                divisions = 4;
+                spawnDelay = 2f;
+                spawnInaccuracy = 7.5f;
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
                 
                 bullets.add(
