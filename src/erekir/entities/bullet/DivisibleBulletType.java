@@ -52,11 +52,11 @@ public class DivisibleBulletType extends BasicBulletType{
       }); 
    }
    
-   public void release(Bullet b, float offsetRotation) {
+   private void release(Bullet b, float offsetRotation) {
        currentBullet.create(b.owner, b.team, b.x, b.y, b.rotation() + offsetRotation);
    }
    
-   public void releaseRotating(Bullet b) {
+   private void releaseRotating(Bullet b) {
        
    }
 }

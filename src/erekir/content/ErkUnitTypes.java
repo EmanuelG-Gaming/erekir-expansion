@@ -299,7 +299,7 @@ public class ErkUnitTypes implements AltContentList{
           health = 560;
 	        speed = 2.6f;
  	        hitSize = 7;
-	        drag = 0.01f;
+	        drag = 0.055f;
 	        accel = 0.35f;
 	        flying = true;
           aimDst = 2f;
@@ -310,7 +310,7 @@ public class ErkUnitTypes implements AltContentList{
           ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 70f;
+             reload = 50f;
              mirror = false;
              top = true;
              x = 0f;
