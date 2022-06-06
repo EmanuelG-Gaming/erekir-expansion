@@ -13,7 +13,9 @@ public class ErkTechTree{
            node(ErkUnitTypes.gem);
        });
        node(shipFabricator, () -> {
-           node(ErkUnitTypes.aggregate);
+           node(ErkUnitTypes.aggregate, () -> {
+               node(ErkUnitTypes.spread);
+           });
        });
        
        node(mechRefabricator, () -> {

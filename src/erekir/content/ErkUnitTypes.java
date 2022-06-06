@@ -327,7 +327,7 @@ public class ErkUnitTypes implements AltContentList{
                 trailWidth = 5f;
                 trailLength = 3;
                 divisions = 4;
-                spawnDelay = 2f;
+                spawnDelay = 8f;
                 spawnInaccuracy = 7.5f;
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
                 

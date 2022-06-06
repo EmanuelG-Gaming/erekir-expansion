@@ -45,15 +45,15 @@ public class DivisibleBulletType extends BasicBulletType{
             currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
-               release(b, angle + Mathf.range(spawnInaccuracy));
+               release(currentBullet, b, angle + Mathf.range(spawnInaccuracy));
                spawnSound.at(b.x, b.y, Mathf.random(spawnSoundMin, spawnSoundMax));
             }
          });
       }); 
    }
    
-   private void release(Bullet b, float offsetRotation) {
-       currentBullet.create(b.owner, b.team, b.x, b.y, b.rotation() + offsetRotation);
+   private void release(BulletType type, Bullet b, float offsetRotation) {
+       type.create(b, b.x, b.y, b.rotation() + offsetRotation);
    }
    
    private void releaseRotating(Bullet b) {

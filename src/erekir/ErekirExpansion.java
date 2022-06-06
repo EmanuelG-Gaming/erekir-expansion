@@ -22,14 +22,18 @@ public class ErekirExpansion extends Mod{
       
         Events.on(ContentInitEvent.class, e -> {
            addToFabricator(
-              ((UnitFactory) Blocks.mechFabricator),
+              Blocks.mechFabricator,
               new UnitFactory.UnitPlan(ErkUnitTypes.gem, (float) 40 * Time.toSeconds, with(Items.beryllium, 100, Items.silicon, 50))
            );
            addToFabricator(
-              ((UnitFactory) Blocks.shipFabricator),
+              Blocks.shipFabricator,
               new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
            );
-           
+           addToFabricator(
+              Blocks.shipFabricator,
+              new UnitFactory.UnitPlan(ErkUnitTypes.spread, (float) 25 * Time.toSeconds, with(Items.tungsten, 20, Items.silicon, 45, Items.graphite, 30))
+           );
+            
            ((Reconstructor) Blocks.mechRefabricator).addUpgrade(ErkUnitTypes.gem, ErkUnitTypes.geode);
            ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
         });
@@ -47,7 +51,8 @@ public class ErekirExpansion extends Mod{
         ErkTechTree.load();
     }
     
-    public void addToFabricator(UnitFactory factory, UnitFactory.UnitPlan plan) {
+    public void addToFabricator(Block bloc, UnitFactory.UnitPlan plan) {
+        UnitFactory factory = (UnitFactory) bloc;
         factory.plans.add(plan);
         
         factory.configurable = true;
