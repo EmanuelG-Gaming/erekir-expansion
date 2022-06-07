@@ -33,6 +33,6 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        Draw.rect(dropItem.fullRegion, tile.worldx(), tile.worldy(), itemSize, itemSize, Mathf.randomSeed(tile.pos(), rotation));
+        Draw.rect(dropItem.fullIcon, tile.worldx(), tile.worldy(), itemSize, itemSize, Mathf.randomSeed(tile.pos(), rotation));
     }
 }
