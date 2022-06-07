@@ -6,6 +6,7 @@ import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.blocks.storage.CoreBlock.*;
+import mindustry.world.meta.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import erekir.ui.button.Pickup;
@@ -16,12 +17,18 @@ public class ItemProp extends Block{
     public Item dropItem = Items.copper;
     public float rotation = 30f;
     
-    public ItemProp(String name, Item drop) {
+    public ItemProp(String name) {
         super(name);
         dropItem = drop;
         update = true;
         breakable = true;
         alwaysReplace = false;
+        envEnabled = Env.any;
+        replaceable = false;
+        rebuildable = false;
+        drawDisabled = false;
+        canOverdrive = false;
+        targetable = false;
         instantDeconstruct = true;
         breakEffect = Fx.none;
         breakSound = Sounds.none;

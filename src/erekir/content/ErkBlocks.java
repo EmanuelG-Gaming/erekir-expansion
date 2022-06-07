@@ -23,12 +23,14 @@ public class ErkBlocks implements AltContentList{
     
     @Override
     public void load() {
-      berylDrop = new ItemProp("berylDrop", Items.beryllium){{
+      berylDrop = new ItemProp("berylDrop"){{
           region = Items.beryllium.fullIcon;
+          dropItem = Items.beryllium;
       }};
       
-      tungDrop = new ItemProp("tungDrop", Items.tungsten){{
+      tungDrop = new ItemProp("tungDrop"){{
           region = Items.tungsten.fullIcon;
+          dropItem = Items.tungsten;
       }};
       
       berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{

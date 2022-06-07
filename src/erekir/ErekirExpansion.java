@@ -47,9 +47,9 @@ public class ErekirExpansion extends Mod{
            if (headless) return;
            
            for (Building build : Groups.build) {
-              if (!(build instanceof ItemProp.DropBuild)) return;
-              
-              ((ItemProp.DropBuild) build).addButton();
+              if (build instanceof ItemProp.DropBuild) {
+                 ((ItemProp.DropBuild) build).addButton();
+              }
            }
         });
     }
