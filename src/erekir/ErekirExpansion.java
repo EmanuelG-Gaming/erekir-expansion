@@ -7,10 +7,12 @@ import arc.util.Log;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.meta.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import erekir.content.*;
 import erekir.ctype.*;
+import erekir.ui.button.Pickup;
 
 import static mindustry.type.ItemStack.with;
 
@@ -37,6 +39,22 @@ public class ErekirExpansion extends Mod{
             
            ((Reconstructor) Blocks.mechRefabricator).addUpgrade(ErkUnitTypes.gem, ErkUnitTypes.geode);
            ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
+        });
+       
+        //for testing, you may remove this
+        Events.on(WorldLoadEvent.class, e -> {
+           if (headless) return;
+           
+           float lifetime = 180f;
+           Time.run(lifetime + 10f, () -> {
+            	Building core = player.closestCore();
+
+              if (core != null) {
+                  Pickup.createPickupButton(core,
+                      new Runnable(() -> core.kill())
+                  );
+              }
+           });
         });
     }
     
