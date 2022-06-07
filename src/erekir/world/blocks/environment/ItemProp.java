@@ -5,7 +5,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.world.*;
-import mindustry.world.blocks.storage.CoreBlock;
+import mindustry.world.blocks.storage.CoreBlock.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import erekir.ui.button.Pickup;
