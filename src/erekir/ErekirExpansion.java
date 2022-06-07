@@ -11,6 +11,7 @@ import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import erekir.content.*;
+import erekir.world.blocks.environment.ItemProp;
 import erekir.ctype.*;
 import erekir.ui.button.Pickup;
 
