@@ -24,7 +24,7 @@ public class Pickup{
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);
        table.update(() -> {
-           if (state.isMenu() || bloc.dead) table.remove();
+           if (state.isMenu() || !bloc.isValid()) table.remove();
            Vec2 v = Core.camera.project(bloc.x, bloc.y);
            table.setPosition(v.x, v.y, Align.center);
            

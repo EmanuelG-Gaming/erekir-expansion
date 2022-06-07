@@ -27,10 +27,13 @@ public class ItemProp extends Block{
         rebuildable = false;
         drawDisabled = false;
         canOverdrive = false;
+        inEditor = true;
         targetable = false;
         instantDeconstruct = true;
         breakEffect = Fx.none;
         breakSound = Sounds.none;
+        destroyEffect = Fx.none;
+        destroySound = Sounds.none;
         hasShadow = false;
     }
     
