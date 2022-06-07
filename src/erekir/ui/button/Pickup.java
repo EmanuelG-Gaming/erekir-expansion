@@ -1,6 +1,10 @@
 package erekir.ui.button;
 
-import arc.Core.*;
+import arc.Core;
+import arc.scene.*;
+import arc.scene.style.*;
+import arc.scene.event.*;
+import arc.scene.ui.layout.*;
 import arc.util.*;
 import arc.math.*;
 import arc.math.geom.*;
@@ -12,11 +16,9 @@ import static mindustry.Vars.*;
 public class Pickup{
    private static int buttonW = 40;
    private static int buttonH = 40;
-   private static final Runnable run = new Runnable();
    
-   public static void createPickupButton(Posc pos, Drawable icon, Runnable r) {
+   public static void createPickupButton(Posc pos, Drawable icon, Runnable run) {
        Table table = new Table(Styles.cleari).margin(4f);
-       run = r;
        table.update(() -> {
            if (state.isMenu() || pos == null) table.remove();
            Vec2 v = Core.camera.project(pos.x, pos.y);
@@ -42,7 +44,7 @@ public class Pickup{
         table.getChildren().first().act(0);
    }
    
-   public static void createPickupButton(Posc pos, Runnable r) {
-       createPickupButton(pos, Icon.download, r);
+   public static void createPickupButton(Posc pos, Runnable run) {
+       createPickupButton(pos, Icon.download, run);
    }
 }

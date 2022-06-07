@@ -7,14 +7,15 @@ import arc.util.Log;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
-import mindustry.world.meta.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
+import mindustry.gen.*;
 import erekir.content.*;
 import erekir.ctype.*;
 import erekir.ui.button.Pickup;
 
 import static mindustry.type.ItemStack.with;
+import static mindustry.Vars.*;
 
 public class ErekirExpansion extends Mod{
 
@@ -50,9 +51,7 @@ public class ErekirExpansion extends Mod{
             	Building core = player.closestCore();
 
               if (core != null) {
-                  Pickup.createPickupButton(core,
-                      new Runnable(() -> core.kill())
-                  );
+                  Pickup.createPickupButton(core, () -> core.kill());
               }
            });
         });
