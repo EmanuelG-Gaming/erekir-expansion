@@ -42,7 +42,7 @@ public class DivisibleBulletType extends BasicBulletType{
       bullets.each(bul -> {
          int i = 0;
          Time.run(++i * spawnDelay, () -> {
-            currentBullet = bul
+            currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
                release(currentBullet, b, angle + Mathf.range(spawnInaccuracy));
