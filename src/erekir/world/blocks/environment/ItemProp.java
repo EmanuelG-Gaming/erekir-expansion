@@ -19,7 +19,6 @@ public class ItemProp extends Block{
     
     public ItemProp(String name) {
         super(name);
-        dropItem = drop;
         update = true;
         breakable = true;
         alwaysReplace = false;
