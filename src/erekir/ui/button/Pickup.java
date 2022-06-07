@@ -19,7 +19,7 @@ import static mindustry.Vars.*;
 public class Pickup{
    private static int buttonW = 40;
    private static int buttonH = 40;
-   private static float range = 32f;
+   private static float range = 38f;
    
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);

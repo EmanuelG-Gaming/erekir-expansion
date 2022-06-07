@@ -42,18 +42,14 @@ public class ErekirExpansion extends Mod{
            ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
         });
        
-        //for testing. you may remove this
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
-           float lifetime = 180f;
-           Time.run(lifetime + 10f, () -> {
-            	Building core = player.closestCore();
-
-              if (core != null) {
-                  Pickup.createPickupButton(core, () -> core.kill());
-              }
-           });
+           for (Building build : Groups.build) {
+              if (!(build instanceof ItemProp.DropBuild)) return;
+              
+              ((ItemProp.DropBuild) build).addButton();
+           }
         });
     }
     
