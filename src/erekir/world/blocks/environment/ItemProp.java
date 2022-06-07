@@ -15,7 +15,7 @@ public class ItemProp extends Block{
     public float rotation = 15f;
     
     public ItemProp(String name, Item drop) {
-        super(name, drop);
+        super(name);
         dropItem = drop;
         breakable = false;
         alwaysReplace = false;
@@ -33,6 +33,6 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        Draw.rect(dropItem.region, tile.worldx(), tile.worldy(), itemSize, itemSize, Mathf.randomSeed(tile.pos(), rotation));
+        Draw.rect(dropItem.fullRegion, tile.worldx(), tile.worldy(), itemSize, itemSize, Mathf.randomSeed(tile.pos(), rotation));
     }
 }
