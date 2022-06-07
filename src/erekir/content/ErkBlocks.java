@@ -2,16 +2,19 @@ package erekir.content;
 
 import mindustry.type.*;
 import mindustry.content.*;
-import mindustry.content.Items;
 import mindustry.world.*;
 import mindustry.world.meta.*;
 import erekir.ctype.*;
+import erekir.world.blocks.environment.ItemProp;
 import erekir.world.blocks.defense.BlockUpkeeper;
 
 import static mindustry.type.ItemStack.with;
 
 public class ErkBlocks implements AltContentList{
     public static Block
+    
+    //Environment
+    berylDrop, tungDrop, 
     
     //Defense
     berylUpkeeper
@@ -20,7 +23,14 @@ public class ErkBlocks implements AltContentList{
     
     @Override
     public void load() {
-       
+      berylDrop = new ItemProp("berylDrop", Items.beryllium){{
+          region = Items.beryllium.region;
+      }};
+      
+      tungDrop = new ItemProp("tungDrop", Items.tungsten){{
+          region = Items.tungsten.region;
+      }};
+      
       berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{
           size = 2;
           lanes = 4;

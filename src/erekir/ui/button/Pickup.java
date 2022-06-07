@@ -14,9 +14,12 @@ import mindustry.gen.*;
 
 import static mindustry.Vars.*;
 
+/** Pickup utility methods. 
+ *  Special thanks to @author SMOLKEYS */
 public class Pickup{
    private static int buttonW = 40;
    private static int buttonH = 40;
+   private static float range = 32f;
    
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);
@@ -28,8 +31,8 @@ public class Pickup{
            Unit plr = player.unit();
            if (plr != null) {
               float d = plr.dst(bloc);
-              table.actions(Actions.alpha(1f - Mathf.clamp(d / 16f - 1.5f)));
-              if (plr.within(bloc.x, bloc.y, 20f)) {
+              table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
+              if (plr.within(bloc.x, bloc.y, range)) {
                  table.touchable = Touchable.enabled;
               }
               else table.touchable = Touchable.disabled;

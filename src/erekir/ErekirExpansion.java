@@ -2,17 +2,14 @@ package erekir;
 
 import arc.Core;
 import arc.Events;
-import arc.util.Time;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
-import mindustry.gen.*;
 import erekir.content.*;
 import erekir.ctype.*;
-import erekir.ui.button.Pickup;
 
 import static mindustry.type.ItemStack.with;
 import static mindustry.Vars.*;
@@ -42,7 +39,7 @@ public class ErekirExpansion extends Mod{
            ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
         });
        
-        //for testing, you may remove this
+        //for testing. you may remove this
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
