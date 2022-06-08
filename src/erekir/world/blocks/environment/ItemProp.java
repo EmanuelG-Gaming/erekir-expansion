@@ -51,7 +51,7 @@ public class ItemProp extends Block{
     public void init() {
         super.init();
         if (dropItem != null) {
-            setup(dropItem)
+            setup(dropItem);
         } else {
             throw new IllegalArgumentException("slippery fingers");
         }
