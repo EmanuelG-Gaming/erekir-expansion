@@ -1,6 +1,7 @@
 package erekir.ui.button;
 
 import arc.Core;
+import arc.func.*;
 import arc.scene.*;
 import arc.scene.actions.Actions;
 import arc.scene.event.*;
@@ -29,14 +30,18 @@ public class Pickup{
            table.setPosition(v.x, v.y, Align.center);
            
            Unit plr = player.unit();
-           if (plr != null) {
-              float d = plr.dst(bloc);
-              table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
-              if (plr.within(bloc.x, bloc.y, range)) {
+           Boolp seen = () -> (plr == null || plr.isNull());
+           if (!seen.get()) {
+              Boolp touchable = () -> plr.within(bloc.x, bloc.y, range);
+              if (touch.get()) {
                  table.touchable = Touchable.enabled;
               }
               else table.touchable = Touchable.disabled;
+              
+              float d = plr.dst(bloc);
+              table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
            }
+           table.visibility = seen;
         });
         table.button(icon, run).size(buttonW, buttonH).margin(4f).pad(4f);
         table.pack();

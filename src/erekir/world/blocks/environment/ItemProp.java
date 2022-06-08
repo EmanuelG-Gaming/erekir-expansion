@@ -48,8 +48,8 @@ public class ItemProp extends Block{
     public void drawBase(Tile tile) {
         for (int i = 0; i < amount; i++) {
            //why no camelCase??!! 1
-           float spread = Mathf.randomSeedRange(tile.pos(), tilesize - 2);
-           float rot = Mathf.randomSeed(tile.pos(), rotationOffset);
+           float spread = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
+           float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
            Draw.rect(dropItem.fullIcon, tile.worldx() + spread, tile.worldy() + spread, itemSize, itemSize, rot);
         }
