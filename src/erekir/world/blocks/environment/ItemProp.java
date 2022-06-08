@@ -47,8 +47,8 @@ public class ItemProp extends Block{
     @Override
     public void drawBase(Tile tile) {
         for (int i = 0; i < amount; i++) {
-           float spreadX = Mathf.randomSeedRange(tile.worldx() + i, tilesize - 2);
-           float spreadY = Mathf.randomSeedRange(tile.worldy() + i * 2, tilesize - 2);
+           float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
+           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
            Draw.rect(dropItem.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
