@@ -36,6 +36,7 @@ public class ItemProp extends Block{
         destroyEffect = Fx.none;
         destroySound = Sounds.none;
         hasShadow = false;
+        //drawRubble = false;
     }
     
     @Override 
@@ -45,7 +46,7 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        for (int i = 0; i < ((DropBuild) buildType.get()).stack.amount; i++) {
+        for (int i = 0; i < amount; i++) {
            //why no camelCase??!! 1
            float spread = Mathf.randomSeedRange(tile.pos(), tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos(), rotationOffset);
