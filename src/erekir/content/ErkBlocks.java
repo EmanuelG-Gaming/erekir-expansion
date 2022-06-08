@@ -26,6 +26,7 @@ public class ErkBlocks implements AltContentList{
       berylDrop = new ItemProp("berylDrop"){{
           region = Items.beryllium.fullIcon;
           dropItem = Items.beryllium;
+          amount = 4;
       }};
       
       tungDrop = new ItemProp("tungDrop"){{
