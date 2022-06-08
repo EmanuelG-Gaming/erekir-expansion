@@ -36,6 +36,7 @@ public class ItemProp extends Block{
         destroyEffect = Fx.none;
         destroySound = Sounds.none;
         hasShadow = false;
+        //partial thanks to meep for this
         drawRubble = false;
         drawCracks = false;
     }
