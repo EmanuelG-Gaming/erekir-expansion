@@ -80,18 +80,17 @@ public class ItemProp extends Block{
         public void gather(Unit unit) {
            if (unit != null) {
               Item drop = dropItem;
+              //the unit should gather the items first
+              for (int i = 0; i < stack.amount; i++) {
+                 Fx.itemTransfer.at(x, y, 4, drop.color, unit);
+              }
+              unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
+              unit.stack.item = stack.item;
+              
               CoreBuild core = unit.closestCore();
-              if (core != null) {
-                 if (unit.within(core, unit.type.range)) {
-                    if (core.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
-                       Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
-                    }
-                 } else {
-                    for (int i = 0; i < stack.amount; i++) {
-                       Fx.itemTransfer.at(x, y, 4, drop.color, unit);
-                    }
-                    unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
-                    unit.stack.item = stack.item;
+              if (core != null && unit.within(core, unit.type.range)) {
+                 if (core.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
+                    Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
                  }
               }
            }
