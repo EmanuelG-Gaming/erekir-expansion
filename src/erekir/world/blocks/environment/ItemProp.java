@@ -35,6 +35,12 @@ public class ItemProp extends Block{
         breakSound = Sounds.none;
         destroyEffect = Fx.none;
         destroySound = Sounds.none;
+        hasShadow = false;
+    }
+    
+    @Override 
+    public int minimapColor(Tile tile) {
+        return dropItem.color.rgba();
     }
     
     @Override
@@ -60,7 +66,7 @@ public class ItemProp extends Block{
     
     public void setup(Item itm) {
         this.itemDrop = itm;
-        this.mapColor.set(itm.color); 
+        //this.mapColor.set(itm.color); 
     }
     
     public class DropBuild extends Building{
