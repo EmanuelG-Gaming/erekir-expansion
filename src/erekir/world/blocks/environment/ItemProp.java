@@ -39,7 +39,7 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < ((DropBuild) buildType.get()).stack.amount; i++) {
            //why no camelCase??!! 1
            float spread = Mathf.randomSeedRange(tile.pos(), tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos(), rotationOffset);
@@ -64,7 +64,7 @@ public class ItemProp extends Block{
     }
     
     public class DropBuild extends Building{
-        public ItemStack stack;
+        public ItemStack stack = new ItemStack();
         
         public void addButton() {
             Pickup.createPickupButton(this, () -> { gather(player.unit()); this.kill(); });
