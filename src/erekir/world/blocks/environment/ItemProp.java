@@ -36,7 +36,8 @@ public class ItemProp extends Block{
         destroyEffect = Fx.none;
         destroySound = Sounds.none;
         hasShadow = false;
-        //drawRubble = false;
+        drawRubble = false;
+        drawCracks = true;
     }
     
     @Override 
@@ -100,11 +101,6 @@ public class ItemProp extends Block{
         public void created() {
             stack.amount = amount;
             stack.item = itemDrop;
-        }
-        
-        @Override
-        public void drawCracks() {
-          
         }
     }
 }
