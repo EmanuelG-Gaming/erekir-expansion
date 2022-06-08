@@ -41,7 +41,7 @@ public class Pickup{
               float d = plr.dst(bloc);
               table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
            }
-           table.visibility = seen;
+           table.visibility = !seen;
         });
         table.button(icon, run).size(buttonW, buttonH).margin(4f).pad(4f);
         table.pack();
