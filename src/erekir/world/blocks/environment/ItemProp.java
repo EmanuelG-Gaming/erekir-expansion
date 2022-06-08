@@ -37,7 +37,7 @@ public class ItemProp extends Block{
         destroySound = Sounds.none;
         hasShadow = false;
         //partial thanks to meep for this
-        drawRubble = false;
+        createRubble = false;
         drawCracks = false;
     }
     
