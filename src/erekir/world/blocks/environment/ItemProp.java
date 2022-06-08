@@ -37,7 +37,7 @@ public class ItemProp extends Block{
         destroySound = Sounds.none;
         hasShadow = false;
         drawRubble = false;
-        drawCracks = true;
+        drawCracks = false;
     }
     
     @Override 

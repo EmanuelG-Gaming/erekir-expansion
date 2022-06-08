@@ -28,7 +28,7 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.MindustryJitpack:core:0777172beb"
+    compileOnly "com.github.Anuken.MindustryJitpack:core:2bdc6ff570"
     compileOnly "com.github.Anuken.Arc:arc-core:52dd2290d0" 
 }
 
