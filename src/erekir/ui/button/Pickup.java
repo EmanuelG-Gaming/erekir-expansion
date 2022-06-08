@@ -32,7 +32,7 @@ public class Pickup{
            Unit plr = player.unit();
            Boolp seen = () -> (plr == null || plr.isNull());
            if (!seen.get()) {
-              Boolp touchable = () -> plr.within(bloc.x, bloc.y, range);
+              Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
               if (touch.get()) {
                  table.touchable = Touchable.enabled;
               }
