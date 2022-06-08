@@ -39,8 +39,9 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        for (int i = 0; i < build.stack.amount; i++) {
-           float spread = Mathf.randomSeedRange(tile.pos(), tileSize - 2);
+        for (int i = 0; i < buildType.get().stack.amount; i++) {
+           //why no camelCase??!! 1
+           float spread = Mathf.randomSeedRange(tile.pos(), tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos(), rotationOffset);
            
            Draw.rect(dropItem.fullIcon, tile.worldx() + spread, tile.worldy() + spread, itemSize, itemSize, rot);
