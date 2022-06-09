@@ -39,7 +39,7 @@ public class ErkBlocks implements AltContentList{
       }};
       
       thorDrop = new ItemProp("thoriumDrop"){{
-          dropItem = Items.graphite;
+          dropItem = Items.thorium;
           amount = 1;
       }};
       
