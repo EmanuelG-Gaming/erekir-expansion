@@ -30,7 +30,7 @@ public class Pickup{
            table.setPosition(v.x, v.y, Align.center);
            
            Unit plr = player.unit();
-           Boolp seen = () -> (plr == null || renderer.isCutscene());
+           Boolp seen = () -> (plr != null || !renderer.isCutscene());
            if (!seen.get()) {
               Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
               if (touch.get()) {
