@@ -10,6 +10,7 @@ import arc.scene.style.*;
 import arc.util.*;
 import arc.math.*;
 import arc.math.geom.*;
+import mindustry.core.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 
@@ -30,8 +31,8 @@ public class Pickup{
            table.setPosition(v.x, v.y, Align.center);
            
            Unit plr = player.unit();
-           Boolp seen = () -> (plr != null || !plr.isNull());
-           if (seen.get()) {
+           Boolp seen = () -> (plr == null || Renderer.isCutscene());
+           if (!seen.get()) {
               Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
               if (touch.get()) {
                  table.touchable = Touchable.enabled;
