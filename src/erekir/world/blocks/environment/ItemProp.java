@@ -49,7 +49,7 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < ((DropBuild) buildType).stack.amount; i++) {
            float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
            float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
@@ -84,11 +84,10 @@ public class ItemProp extends Block{
            //TODO if-else over paradise
            if (unit != null) {
               Item drop = dropItem;
-              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount) {
+              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount && unit.stack.item == stack.item) {
                  //the unit should gather the items first
                  unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
-                 unit.stack.item = stack.item;
-              
+                 
                  CoreBuild core = unit.closestCore();
                  if (core != null) {
                     if (unit.within(core, unit.type.range)) {
