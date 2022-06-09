@@ -31,12 +31,9 @@ public class Pickup{
            
            Unit plr = player.unit();
            Boolp seen = () -> (plr != null || !renderer.isCutscene());
-           if (!seen.get()) {
-              Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
-              if (touch.get()) {
-                 table.touchable = Touchable.enabled;
-              }
-              else table.touchable = Touchable.disabled;
+           if (seen.get()) {
+              Prov<Touchable> touch = () -> plr.within(bloc.x, bloc.y, range);
+              table.touchablility = touch;
               
               float d = plr.dst(bloc);
               table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
