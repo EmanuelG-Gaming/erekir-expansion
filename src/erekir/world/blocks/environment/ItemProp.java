@@ -82,7 +82,7 @@ public class ItemProp extends Block{
         
         public void gather(Unit unit) {
            //bugfixing
-           if (unit.stack.item != stack.item && unit.stack != ItemStack.empty) return;
+           if (unit.stack.item != stack.item && unit.stack.amount != 0) return;
            
            //TODO if-else over paradise
            if (unit != null) {
