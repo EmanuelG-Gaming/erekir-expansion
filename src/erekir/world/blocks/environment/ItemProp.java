@@ -81,12 +81,16 @@ public class ItemProp extends Block{
         }
         
         public void gather(Unit unit) {
+           //bugfixing
+           if (unit.stack.item != stack.item && unit.stack != ItemStack.empty) return;
+           
            //TODO if-else over paradise
            if (unit != null) {
               Item drop = dropItem;
-              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount && unit.stack.item == stack.item) {
+              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount) {
                  //the unit should gather the items first
                  unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
+                 unit.stack.item = stack.item;
                  
                  CoreBuild core = unit.closestCore();
                  if (core != null) {
