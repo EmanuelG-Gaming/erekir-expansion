@@ -81,7 +81,7 @@ public class ItemProp extends Block{
         }
         
         public void gather(Unit unit) {
-           //bugfixing
+           //prevent item overrides
            if (unit.stack.item != stack.item && unit.stack.amount != 0) return;
            
            //TODO if-else over paradise
