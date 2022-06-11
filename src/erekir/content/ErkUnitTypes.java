@@ -334,7 +334,7 @@ public class ErkUnitTypes implements AltContentList{
                 bullets.add(
                 new BasicBulletType(3f, 6f){{
                     width = 14f;
-                    hitSize = 3.5f;
+                    hitSize = 6.0f;
                     height = 10.5f;
                     hitColor = backColor = trailColor = Color.valueOf("ea8878");
                     frontColor = Color.valueOf("feb380");
@@ -344,7 +344,7 @@ public class ErkUnitTypes implements AltContentList{
                 }},
                 new BasicBulletType(2.5f, 5.5f){{
                     width = 12f;
-                    hitSize = 3.35f;
+                    hitSize = 5.9f;
                     height = 9f;
                     hitColor = backColor = trailColor = Color.valueOf("ea8878");
                     frontColor = Color.valueOf("feb380");
@@ -354,7 +354,7 @@ public class ErkUnitTypes implements AltContentList{
                 }},
                 new BasicBulletType(1.9f, 4.5f){{
                     width = 9f;
-                    hitSize = 2.95f;
+                    hitSize = 5.5f;
                     height = 7.5f;
                     hitColor = backColor = trailColor = Color.valueOf("ea8878");
                     frontColor = Color.valueOf("feb380");
