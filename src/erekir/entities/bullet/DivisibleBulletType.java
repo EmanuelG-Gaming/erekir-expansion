@@ -21,8 +21,6 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnSoundMin = 0.9f;
    public float spawnSoundMax = 1.1f;
    
-   private static BulletType currentBullet = Bullets.placeholder;
-   
    public DivisibleBulletType(float speed, float damage) {
        super(speed, damage);
    }
@@ -42,10 +40,9 @@ public class DivisibleBulletType extends BasicBulletType{
       bullets.each(bul -> {
          int i = 0;
          Time.run(++i * spawnDelay, () -> {
-            currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
-               release(currentBullet, b, angle + Mathf.range(spawnInaccuracy));
+               release(bul, b, angle + Mathf.range(spawnInaccuracy));
                spawnSound.at(b.x, b.y, Mathf.random(spawnSoundMin, spawnSoundMax));
             }
          });
@@ -53,7 +50,7 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    private void release(BulletType type, Bullet b, float offsetRotation) {
-       type.create(b.owner, b.team, b.x, b.y, b.rotation() + offsetRotation);
+       type.create(b, b.x, b.y, b.rotation() + offsetRotation);
    }
    
    private void releaseRotating(Bullet b) {
