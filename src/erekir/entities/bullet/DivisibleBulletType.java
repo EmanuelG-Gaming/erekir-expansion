@@ -21,7 +21,7 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnSoundMin = 0.9f;
    public float spawnSoundMax = 1.1f;
    
-   private static BulletType currentBullet = Bullets.placeHolder;
+   private static BulletType currentBullet = Bullets.placeholder;
    
    public DivisibleBulletType(float speed, float damage) {
        super(speed, damage);
@@ -53,7 +53,7 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    private void release(Bullet owner, float x, float y, float rotation) {
-       type.create(b, x, y, rotation);
+       currentBullet.create(owner, x, y, rotation);
    }
    
    private void releaseRotating(Bullet b) {
