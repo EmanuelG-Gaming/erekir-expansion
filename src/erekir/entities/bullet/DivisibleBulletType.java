@@ -21,35 +21,38 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnSoundMin = 0.9f;
    public float spawnSoundMax = 1.1f;
    
+   private static BulletType currentBullet = Bullets.placeHolder;
+   
    public DivisibleBulletType(float speed, float damage) {
        super(speed, damage);
    }
   
    @Override
    public void despawned(Bullet b) {
-      shoot(b);
+      shoot(b, b.x, b.y);
    }
    
    @Override
    public void hit(Bullet b, float x, float y) {
       super.hit(b, x, y);
-      shoot(b);
+      shoot(b, x, y);
    }
    
-   private void shoot(Bullet b) {
+   private void shoot(Bullet b, float x, float y) {
       bullets.each(bul -> {
          int i = 0;
          Time.run(++i * spawnDelay, () -> {
+            currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
-               release(bul, b, angle + Mathf.range(spawnInaccuracy));
-               spawnSound.at(b.x, b.y, Mathf.random(spawnSoundMin, spawnSoundMax));
+               release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
+               spawnSound.at(x, y, Mathf.random(spawnSoundMin, spawnSoundMax));
             }
          });
       }); 
    }
    
-   private void release(BulletType type, Bullet b, float offsetRotation) {
+   private void release(Bullet owner, float x, float y, float rotation) {
        type.create(b, b.x, b.y, b.rotation() + offsetRotation);
    }
    

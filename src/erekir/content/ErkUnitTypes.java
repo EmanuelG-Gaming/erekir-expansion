@@ -340,7 +340,7 @@ public class ErkUnitTypes implements AltContentList{
                     frontColor = Color.valueOf("feb380");
                     trailWidth = 4f;
                     trailLength = 3;
-                    hitEffect = despawnEffect = Fx.none;
+                    hitEffect = despawnEffect = Fx.hitSquaresColor;
                 }},
                 new BasicBulletType(2.5f, 5.5f){{
                     width = 12f;
@@ -350,7 +350,7 @@ public class ErkUnitTypes implements AltContentList{
                     frontColor = Color.valueOf("feb380");
                     trailWidth = 3.5f;
                     trailLength = 3;
-                    hitEffect = despawnEffect = Fx.none;
+                    hitEffect = despawnEffect = Fx.hitSquaresColor;
                 }},
                 new BasicBulletType(1.9f, 4.5f){{
                     width = 9f;
