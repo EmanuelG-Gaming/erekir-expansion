@@ -16,6 +16,7 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnInaccuracy = 0f;
    /** Bullets to be spawned. */
    public Seq<BulletType> bullets = new Seq<BulletType>();
+   public boolean rotateShooting = false;
    
    public Sound spawnSound = Sounds.none;
    public float spawnSoundMin = 0.9f;
@@ -45,7 +46,7 @@ public class DivisibleBulletType extends BasicBulletType{
             currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
-               release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
+               release(b, x, y, b.rotation() + angle + rotateShooting ? i * spawnInaccuracy : Mathf.range(spawnInaccuracy));
                spawnSound.at(x, y, Mathf.random(spawnSoundMin, spawnSoundMax));
             }
          });
@@ -54,9 +55,5 @@ public class DivisibleBulletType extends BasicBulletType{
    
    private void release(Bullet owner, float x, float y, float rotation) {
        currentBullet.create(owner, x, y, rotation);
-   }
-   
-   private void releaseRotating(Bullet b) {
-       
    }
 }

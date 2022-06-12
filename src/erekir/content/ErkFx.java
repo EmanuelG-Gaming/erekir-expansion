@@ -38,5 +38,23 @@ public class ErkFx {
      });
 
      Drawf.light(e.x, e.y, 30f, ErkPal.greenishBeryl, 0.6f * e.fout());
+  }),
+  
+  hitSquaresColorSmall = new Effect(14f, e -> {
+     Draw.color(Color.white, e.color, e.fin());
+
+     e.scaled(7f, s -> {
+        Lines.stroke(0.5f + s.fout());
+        Lines.circle(e.x, e.y, s.fin() * 3.5f);
+     });
+
+     Lines.stroke(0.5f + e.fout());
+
+     Angles.randLenVectors(e.id, 4, e.fin() * 9f, (x, y) -> {
+        float ang = Mathf.angle(x, y);
+        Fill.square(e.x + x, e.y + y, e.fout() * 3.2f, ang);
+     });
+
+     Drawf.light(e.x, e.y, 12f, e.color, 0.6f * e.fout());
   });
 }
