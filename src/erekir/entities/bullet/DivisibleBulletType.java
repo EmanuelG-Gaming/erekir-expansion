@@ -46,8 +46,9 @@ public class DivisibleBulletType extends BasicBulletType{
             currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
+               int I = 0;
                if (rotateShooting) {
-                  release(b, x, y, b.rotation() + angle + i * spawnInaccuracy);
+                  release(b, x, y, b.rotation() + angle + ++I * spawnInaccuracy);
                }
                else release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
                spawnSound.at(x, y, Mathf.random(spawnSoundMin, spawnSoundMax));
