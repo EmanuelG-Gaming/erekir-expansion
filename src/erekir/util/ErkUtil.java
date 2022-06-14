@@ -37,7 +37,7 @@ public class ErkUtil{
          if (build instanceof DropBuild) {
             DropBuild drop = (DropBuild) build;
             
-            if (drop.team == team && drop.within(pos.x, pos.y, range)) {
+            if (drop.team == team && drop.within(pos.getX(), pos.getY(), range)) {
                e.get(drop);
             }
          }
@@ -49,7 +49,7 @@ public class ErkUtil{
    }
    
    public static boolean dropWithin(DropBuild build, Position pos, float range) {
-       return dropWithin(build, pos.x, pos.y, range);
+       return dropWithin(build, pos.getX(), pos.getY(), range);
    }
    
    /* Whenever a building has the overlay button. */
