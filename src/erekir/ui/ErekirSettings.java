@@ -14,7 +14,7 @@ public class ErekirSettings{
    private float buttonW = 48f, buttonH = 48f;
    private int rowCount = 6;
    
-   public void load() {
+   public static void load() {
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem", t -> {
           t.defaults().padBottom(4).row();
           t.add("Button icons (requires restart)").color(Pal.accent);
