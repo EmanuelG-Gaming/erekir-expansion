@@ -23,7 +23,7 @@ public class ErekirSettings{
              Icon.icons.each((name, region) -> {
                 t2.button(new TextureRegionDrawable(region), Styles.cleari, () -> {
                    Core.settings.put("erekir-expansion-buttonIcon", name);
-                })).size(buttonW, buttonH).margin(4f).pad(0f);
+                }).size(buttonW, buttonH).margin(4f).pad(0f);
                 if (++r % rowCount == 0) t2.row();
              });
           }).size(buttonW * 25f + 6f, buttonH * 25f + 6f);
