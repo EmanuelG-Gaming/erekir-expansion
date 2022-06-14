@@ -13,7 +13,8 @@ import mindustry.gen.*;
 import erekir.util.*;
 import erekir.content.*;
 import erekir.ctype.*;
-import erekir.ui.button.Pickup;
+import erekir.ui.*;
+import erekir.ui.button.*;
 
 import static mindustry.type.ItemStack.with;
 import static mindustry.Vars.*;
@@ -43,6 +44,10 @@ public class ErekirExpansion extends Mod{
            ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
         });
        
+        Events.on(ClientLoadEvent.class, e -> {
+            ErkSettings.load();
+        });
+        
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
