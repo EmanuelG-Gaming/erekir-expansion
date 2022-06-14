@@ -12,7 +12,6 @@ import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import erekir.util.*;
 import erekir.content.*;
-import erekir.world.blocks.environment.ItemProp;
 import erekir.ctype.*;
 import erekir.ui.button.Pickup;
 
@@ -47,7 +46,7 @@ public class ErekirExpansion extends Mod{
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
-           ErkUtil.allDrops(e -> e.addButton());
+           ErkUtil.allDrops(b -> b.addButton());
         });
     }
     
