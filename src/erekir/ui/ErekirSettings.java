@@ -20,11 +20,11 @@ public class ErekirSettings{
           t.add("Button icons (requires restart)").color(Pal.accent).row();
           
           t.pane(Styles.defaultPane, t2 -> {
+             //row indice
+             int[] r = {0}; 
              Icon.icons.each((name, icon) -> {
-                //row indice
-                int[] r = {0};
-                t2.button(new TextureRegionDrawable(icon), Styles.cleari, () -> {
-                    Core.settings.put("erekir-expansion-buttonIcon", name);
+                t2.button(new TextureRegionDrawable(icon), Styles.clearToggleTransi, () -> {
+                    Core.settings.put("erekir-expansion-buttonIcon", icon);
                     ui.showInfo("Changing the button icon to " + name + ".");
                 }).size(buttonW, buttonH).margin(4f).pad(0f);
                 
