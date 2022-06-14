@@ -11,8 +11,8 @@ import mindustry.gen.*;
 import static mindustry.Vars.*;
 
 public class ErekirSettings{
-   private float buttonW = 48f, buttonH = 48f;
-   private int rowCount = 6;
+   private static float buttonW = 48f, buttonH = 48f;
+   private static int rowCount = 6;
    
    public static void load() {
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem", t -> {
