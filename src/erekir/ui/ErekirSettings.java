@@ -24,7 +24,7 @@ public class ErekirSettings{
              int[] r = {0}; 
              Icon.icons.each((name, icon) -> {
                 t2.button(new TextureRegionDrawable(icon), Styles.clearToggleTransi, () -> {
-                    Core.settings.put("erekir-expansion-buttonIcon", icon);
+                    Core.settings.put("erekir-expansion-buttonIcon", name);
                     ui.showInfo("Changing the button icon to " + name + ".");
                 }).size(buttonW, buttonH).margin(4f).pad(0f);
                 
