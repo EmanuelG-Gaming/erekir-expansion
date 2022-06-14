@@ -20,12 +20,13 @@ public class ErekirSettings{
           t.add("Button icons (requires restart)").color(Pal.accent);
           
           t.pane(Styles.defaultPane, t2 -> {
-             //row indice
-             int r = 0;
              Icon.icons.each((name, region) -> {
+                //row indice
+                int r = 0;
                 t2.button(new TextureRegionDrawable(region), Styles.cleari, () -> {
                    Core.settings.put("erekir-expansion-buttonIcon", name);
                 }).size(buttonW, buttonH).margin(4f).pad(0f);
+                
                 if (++r % rowCount == 0) t2.row();
              });
           }).size(buttonW * rowCount + 6f, buttonH * 25f + 6f);
