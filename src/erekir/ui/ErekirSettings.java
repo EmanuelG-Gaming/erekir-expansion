@@ -5,11 +5,13 @@ import arc.scene.*;
 import arc.scene.ui.layout.*;
 import arc.scene.style.*;
 import mindustry.graphics.*;
+import mindustry.ui.*;
+import mindustry.gen.*;
 
 import static mindustry.Vars.*;
 
 public class ErekirSettings{
-   private float buttonW = buttonH = 48f;
+   private float buttonW = 48f, buttonH = 48f;
    private int rowCount = 6;
    
    public void load() {
@@ -26,7 +28,7 @@ public class ErekirSettings{
                 }).size(buttonW, buttonH).margin(4f).pad(0f);
                 if (++r % rowCount == 0) t2.row();
              });
-          }).size(buttonW * 25f + 6f, buttonH * 25f + 6f);
+          }).size(buttonW * rowCount + 6f, buttonH * 25f + 6f);
       });
    }
 }

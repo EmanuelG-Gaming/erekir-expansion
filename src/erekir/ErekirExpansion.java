@@ -45,7 +45,7 @@ public class ErekirExpansion extends Mod{
         });
        
         Events.on(ClientLoadEvent.class, e -> {
-            ErkSettings.load();
+            ErekirSettings.load();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
