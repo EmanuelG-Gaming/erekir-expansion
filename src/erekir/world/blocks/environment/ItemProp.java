@@ -75,9 +75,11 @@ public class ItemProp extends Block{
     
     public class DropBuild extends Building{
         public ItemStack stack = new ItemStack();
+        public boolean containsButton = false;
         
         public void addButton() {
             Pickup.createPickupButton(this, () -> gather(player.unit()));
+            containsButton = true;
         }
         
         public void gather(Unit unit) {

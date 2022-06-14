@@ -10,6 +10,7 @@ import mindustry.world.blocks.units.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
+import erekir.util.*;
 import erekir.content.*;
 import erekir.world.blocks.environment.ItemProp;
 import erekir.ctype.*;
@@ -46,11 +47,7 @@ public class ErekirExpansion extends Mod{
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
-           for (Building build : Groups.build) {
-              if (build instanceof ItemProp.DropBuild) {
-                 ((ItemProp.DropBuild) build).addButton();
-              }
-           }
+           ErkUtil.allDrops(e -> e.addButton());
         });
     }
     
