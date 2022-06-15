@@ -8,7 +8,7 @@ import static mindustry.Vars.*;
 public class ErekirSettings{
    public static void load() {
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem-full", t -> {
-          t.button("Button icons", () -> ButtonIconsDialog.show()).size(280f, 60f);
+          t.button("Button icons", ButtonIconsDialog::show).size(280f, 60f);
           
           //also display small images
           t.checkPref(

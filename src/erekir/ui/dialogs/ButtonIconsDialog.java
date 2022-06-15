@@ -7,6 +7,7 @@ import arc.scene.style.*;
 import mindustry.graphics.*;
 import mindustry.ui.*;
 import mindustry.ui.dialogs.*;
+import mindustry.gen.*;
 
 import static mindustry.Vars.*;
 
