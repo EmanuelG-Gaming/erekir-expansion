@@ -16,7 +16,7 @@ public class ButtonIconsDialog extends BaseDialog{
    private static int rowCount = 12;
    
    public ButtonIconsDialog() {
-      super(Core.bundle.get("erekir-expansion-buttonIcons" + ".name"));
+      super("Button icons");
       addCloseButton();
       
       cont.add("Button icons (requires restart)").color(Pal.accent).padBottom(8f).row();
