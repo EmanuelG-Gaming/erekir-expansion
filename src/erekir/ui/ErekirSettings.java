@@ -6,7 +6,7 @@ import erekir.ui.dialogs.*;
 import static mindustry.Vars.*;
 
 public class ErekirSettings{
-   private ButtonIconsDialog dialog;
+   private static ButtonIconsDialog dialog;
    
    public static void load() {
       dialog = new ButtonIconsDialog();
