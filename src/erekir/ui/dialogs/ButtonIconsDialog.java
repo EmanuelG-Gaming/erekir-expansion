@@ -13,7 +13,7 @@ import static mindustry.Vars.*;
 
 public class ButtonIconsDialog extends BaseDialog{
    private static float buttonW = 48f, buttonH = 48f;
-   private static int rowCount = 6;
+   private static int rowCount = 12;
    
    public ButtonIconsDialog() {
       super(Core.bundle.get("erekir-expansion-buttonIcons" + ".name"));
@@ -25,7 +25,7 @@ public class ButtonIconsDialog extends BaseDialog{
          //row indice
          int[] r = {0}; 
          Icon.icons.each((name, icon) -> {
-            if (!Core.settings.getBool("erekir-expansion-displaySmall") && name.contains("small")) return;
+            if (Core.settings.getBool("erekir-expansion-displaySmall") == false && name.contains("Small")) return;
             
             t.button(new TextureRegionDrawable(icon), Styles.cleari, () -> {
                Core.settings.put("erekir-expansion-buttonIcon", name);
