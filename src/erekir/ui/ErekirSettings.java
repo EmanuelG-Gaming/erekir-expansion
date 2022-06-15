@@ -35,7 +35,7 @@ public class ErekirSettings{
       
       @Override
       public void add(SettingsTable table) {
-          TextButton b = table.button("Button icons", dialog::show).size(280f, 60f);
+          TextButton b = table.button("Button icons", dialog::show).size(280f, 60f).get();
           table.row();
           
           addDesc(b);
