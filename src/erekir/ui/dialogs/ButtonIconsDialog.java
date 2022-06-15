@@ -3,7 +3,6 @@ package erekir.ui.dialogs;
 import arc.Core;
 import arc.scene.*;
 import arc.scene.ui.layout.*;
-import arc.scene.style.*;
 import mindustry.graphics.*;
 import mindustry.ui.*;
 import mindustry.ui.dialogs.*;
