@@ -1,6 +1,7 @@
 package erekir.ui;
 
 import arc.Core;
+import arc.scene.ui.*;
 import mindustry.ui.dialogs.*;
 import erekir.ui.dialogs.*;
 
@@ -36,4 +37,5 @@ public class ErekirSettings{
           
           addDesc(b);
       }
+   }
 }
