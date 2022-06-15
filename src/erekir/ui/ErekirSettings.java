@@ -23,7 +23,8 @@ public class ErekirSettings{
              //row indice
              int[] r = {0}; 
              Icon.icons.each((name, icon) -> {
-                t2.button(new TextureRegionDrawable(icon), Styles.clearToggleTransi, () -> {
+                if (!Core.settings.getBool("erekir-expansion-displaySmall") && name.contains("small")) return;
+                t2.button(new TextureRegionDrawable(icon), Styles.cleari, () -> {
                     Core.settings.put("erekir-expansion-buttonIcon", name);
                     ui.showInfo("Changing the button icon to " + name + ".");
                 }).size(buttonW, buttonH).margin(4f).pad(0f);
@@ -31,6 +32,12 @@ public class ErekirSettings{
                 if (++r[0] % rowCount == 0) t2.row();
              });
           }).size(buttonW * rowCount + 6f, buttonH * 25f + 6f);
+          
+          //also display small images
+          t.checkPref(
+             "displaySmall", Core.settings.getBool("erekir-expansion-displaySmall"),
+             bool -> Core.settings.put("erekir-expansion-displaySmall", bool)
+          );
       });
    }
 }
