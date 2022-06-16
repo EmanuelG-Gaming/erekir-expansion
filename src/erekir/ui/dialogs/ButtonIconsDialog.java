@@ -15,11 +15,14 @@ public class ButtonIconsDialog extends BaseDialog{
    private static float buttonW = 48f, buttonH = 48f;
    private static int rowCount = 12;
    
+   //default select icon
+   String selection = "download";
+   
    public ButtonIconsDialog() {
       super("Button icons");
       addCloseButton();
       
-      cont.add("Button icons (requires restart)").color(Pal.accent).padBottom(8f).row();
+      cont.add("Button icons (requires reloading)").color(Pal.accent).padBottom(10f).row();
           
       cont.pane(Styles.defaultPane, t -> {
          //row indice
@@ -27,10 +30,12 @@ public class ButtonIconsDialog extends BaseDialog{
          Icon.icons.each((name, icon) -> {
             if (Core.settings.getBool("erekir-expansion-displaySmall") == false && name.contains("Small")) return;
             
-            t.button(new TextureRegionDrawable(icon), Styles.cleari, () -> {
-               Core.settings.put("erekir-expansion-buttonIcon", name);
+            t.button(new TextureRegionDrawable(icon), Styles.squareTogglei, () -> {
+               selection = name;
+               Core.settings.put("erekir-expansion-buttonIcon", selection);
+               
                ui.showInfo("Changing the button icon to " + name + ".");
-            }).size(buttonW, buttonH).margin(4f).pad(2f);
+            }).size(buttonW, buttonH).margin(4f).pad(2f).checked(b -> selection == name);
             
             if (++r[0] % rowCount == 0) t.row();
          });
