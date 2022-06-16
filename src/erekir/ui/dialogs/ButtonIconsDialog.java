@@ -20,10 +20,12 @@ public class ButtonIconsDialog extends BaseDialog{
    
    public ButtonIconsDialog() {
       super("Button icons");
+      selection = Core.settings.getString("erekir-expansion-buttonIcon");
+      
       addCloseButton();
       
       cont.add("Button icons (requires reloading)").color(Pal.accent).padBottom(10f).row();
-          
+   
       cont.pane(Styles.defaultPane, t -> {
          //row indice
          int[] r = {0}; 
