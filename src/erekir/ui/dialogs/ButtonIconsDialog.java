@@ -34,6 +34,6 @@ public class ButtonIconsDialog extends BaseDialog{
             
             if (++r[0] % rowCount == 0) t.row();
          });
-      }).size(buttonW * rowCount + 6f, buttonH * 25f + 6f);
+      }).size(buttonW * rowCount + 6f, buttonH * 6f + 6f);
    }
 }
