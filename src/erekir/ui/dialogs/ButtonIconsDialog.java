@@ -12,16 +12,13 @@ import mindustry.gen.*;
 import static mindustry.Vars.*;
 
 public class ButtonIconsDialog extends BaseDialog{
-   private static float buttonW = 48f, buttonH = 48f;
+   private static float buttonSize = 48f;
    private static int rowCount = 12;
    
-   //default select icon
-   String selection = "download";
+   String selection;
    
    public ButtonIconsDialog() {
       super("Button icons");
-      selection = Core.settings.getString("erekir-expansion-buttonIcon");
-      
       addCloseButton();
       
       cont.add("Button icons (requires reloading)").color(Pal.accent).padBottom(10f).row();
@@ -33,14 +30,23 @@ public class ButtonIconsDialog extends BaseDialog{
             if (Core.settings.getBool("erekir-expansion-displaySmall") == false && name.contains("Small")) return;
             
             t.button(new TextureRegionDrawable(icon), Styles.squareTogglei, () -> {
-               selection = name;
-               Core.settings.put("erekir-expansion-buttonIcon", selection);
-               
-               ui.showInfo("Changing the button icon to " + name + ".");
-            }).size(buttonW, buttonH).margin(4f).pad(2f).checked(b -> selection == name);
+                selection = name;
+            }).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name);
             
             if (++r[0] % rowCount == 0) t.row();
          });
-      }).size(buttonW * rowCount + 6f, buttonH * 6f + 6f);
+      }).size(buttonW * rowCount + 6f, buttonH * 6f + 6f).row();
+      
+      closeOnBack();
+
+      buttons.defaults().size(150f, 64f);
+      buttons.button("@cancel", Icon.cancel, this::hide);
+      buttons.button("@ok", Icon.ok, () -> {
+          if (selection != null) {
+             Core.settings.put("erekir-expansion-buttonIcon", selection);
+             ui.showInfo("Changing the button icon to " + selection + ".");
+          }
+          hide();
+      });
    }
 }
