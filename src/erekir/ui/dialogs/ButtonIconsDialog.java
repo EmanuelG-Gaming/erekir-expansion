@@ -19,8 +19,6 @@ public class ButtonIconsDialog extends BaseDialog{
    
    public ButtonIconsDialog() {
       super("Button icons");
-      addCloseButton();
-      
       cont.add("Button icons (requires reloading)").color(Pal.accent).padBottom(10f).row();
    
       cont.pane(Styles.defaultPane, t -> {
@@ -38,9 +36,9 @@ public class ButtonIconsDialog extends BaseDialog{
       }).size(buttonSize * rowCount + 6f, buttonSize * 6f + 6f).row();
       
       closeOnBack();
-
+      
       buttons.defaults().size(150f, 64f);
-      buttons.button("@cancel", Icon.cancel, this::hide);
+      addCloseButton();
       buttons.button("@ok", Icon.ok, () -> {
           if (selection != null) {
              Core.settings.put("erekir-expansion-buttonIcon", selection);
