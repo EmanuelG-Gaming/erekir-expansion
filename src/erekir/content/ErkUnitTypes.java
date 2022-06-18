@@ -7,10 +7,12 @@ import arc.math.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.type.unit.*;
+import mindustry.type.ammo.*;
 import mindustry.gen.*;
 import mindustry.content.*;
 import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.entities.effect.*;
 import erekir.graphics.*;
 import erekir.entities.bullet.*;
@@ -30,8 +32,11 @@ public class ErkUnitTypes implements AltContentList{
     
     //flying
     aggregate,
+    
     //why
-    agglomerateMissile, agglomerate, spread;
+    agglomerateMissile, agglomerate, spread,
+    
+    apart;
     
     @Override
     public void load() {
@@ -71,6 +76,7 @@ public class ErkUnitTypes implements AltContentList{
           shadowElevation = 0.1f;
           groundLayer = Layer.legUnit - 1f;
           researchCostMultiplier = 0;
+          ammoType = new ItemAmmoType(Items.beryllium);
           
           constructor = LegsUnit::create;
           weapons.add(new Weapon("erekir-expansion-gem-weapon"){{
@@ -134,6 +140,7 @@ public class ErkUnitTypes implements AltContentList{
           shadowElevation = 0.1f;
           groundLayer = Layer.legUnit - 1f;
           researchCostMultiplier = 0;
+          ammoType = new ItemAmmoType(Items.graphite);
           
           constructor = LegsUnit::create;
           weapons.add(
@@ -201,6 +208,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 200f;
           engineOffset = 5.75f;
           targetAir = true;
+          ammoType = new ItemAmmoType(Items.beryllium);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
@@ -263,7 +271,7 @@ public class ErkUnitTypes implements AltContentList{
        }};
        
        agglomerate = new ErekirUnitType("agglomerate"){{
-          health = 900;
+          health = 950;
 	        speed = 2.1f;
  	        hitSize = 12;
 	        drag = 0.03f;
@@ -306,8 +314,8 @@ public class ErkUnitTypes implements AltContentList{
           range = 150f;
           engineOffset = 5.75f;
           targetAir = true;
+          ammoType = new ItemAmmoType(Items.graphite);
           
-          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
              reload = 50f;
@@ -365,5 +373,42 @@ public class ErkUnitTypes implements AltContentList{
              }};
           }});
        }};
+       
+       apart = new ErekirUnitType("apart"){{
+          health = 840;
+	        speed = 1.9f;
+ 	        hitSize = 12;
+	        drag = 0.065f;
+	        accel = 0.25f;
+	        flying = true;
+          aimDst = 1.65f;
+          range = 130f;
+          engineOffset = 7.75f;
+          targetAir = true;
+          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
+          
+          constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 60f;
+             mirror = true;
+             top = true;
+             alternate = true;
+             x = 2.75f;
+             y = -4.5f;
+             shoot = new ShootSpread(9, 2.5f);
+             
+             bullet = new BasicBulletType(3f, 6f){{
+                width = 14f;
+                hitSize = 6.0f;
+                height = 10.5f;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = Color.valueOf("feb380");
+                trailWidth = 4f;
+                trailLength = 3;
+                hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
+                shootEffect = Fx.shootBigColor;
+             }};
+          }});
+      }};
     }
 }

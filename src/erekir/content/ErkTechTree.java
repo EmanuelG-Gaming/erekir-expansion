@@ -22,7 +22,9 @@ public class ErkTechTree{
            node(ErkUnitTypes.geode);
        });
        node(shipRefabricator, () -> {
-           node(ErkUnitTypes.agglomerate);
+           node(ErkUnitTypes.agglomerate, () -> {
+               node(ErkUnitTypes.apart);
+           });
        });
    }
 }

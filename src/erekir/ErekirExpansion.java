@@ -40,8 +40,9 @@ public class ErekirExpansion extends Mod{
               new UnitFactory.UnitPlan(ErkUnitTypes.spread, (float) 25 * Time.toSeconds, with(Items.tungsten, 20, Items.silicon, 45, Items.graphite, 30))
            );
             
-           ((Reconstructor) Blocks.mechRefabricator).addUpgrade(ErkUnitTypes.gem, ErkUnitTypes.geode);
-           ((Reconstructor) Blocks.shipRefabricator).addUpgrade(ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
+           addToReconstructor(Blocks.mechFabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
+           addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
+           addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
         });
        
         Events.on(ClientLoadEvent.class, e -> {
@@ -68,10 +69,19 @@ public class ErekirExpansion extends Mod{
     }
     
     public void addToFabricator(Block bloc, UnitFactory.UnitPlan plan) {
+        if (!(bloc instanceof UnitFactory)) return;
+        
         UnitFactory factory = (UnitFactory) bloc;
         factory.plans.add(plan);
         
         factory.configurable = true;
         factory.init();
+    }
+    
+    public void addToReconstructor(Block bloc, UnitType unit, UnitType upgrade) {
+        if (!(bloc instanceof Reconstructor)) return;
+        
+        Reconstructor recon = (Reconstructor) bloc;
+        recon.addUpgrade(unit, upgrade);
     }
 }
