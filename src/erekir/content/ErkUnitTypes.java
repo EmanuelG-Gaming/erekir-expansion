@@ -381,33 +381,37 @@ public class ErkUnitTypes implements AltContentList{
 	        drag = 0.065f;
 	        accel = 0.25f;
 	        flying = true;
-          aimDst = 1.65f;
+          aimDst = 1.55f;
           range = 130f;
-          engineOffset = 8.75f;
+          engineOffset = 9.25f;
           targetAir = true;
           ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 60f;
+             reload = 20f;
              mirror = true;
              top = true;
              alternate = true;
              x = 2.75f;
-             y = -4.5f;
-             shoot = new ShootSpread(6, 2.5f);
+             y = -5f;
+             velocityRnd = 2.5f;
+             shoot = new ShootSpread(8, 2.5f);
              
-             bullet = new BasicBulletType(6f, 8.5f){{
+             bullet = new BasicBulletType(6f, 12.5f){{
+                knockback = 1.5f;
                 width = 14f;
                 hitSize = 6.0f;
                 height = 10.5f;
-                lifetime = 25f;
+                lifetime = 16f;
                 hitColor = backColor = trailColor = Color.valueOf("ea8878");
                 frontColor = Color.valueOf("feb380");
                 trailWidth = 4f;
                 trailLength = 3;
                 hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
                 shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                recoil = 0.2f;
              }};
           }});
       }};
