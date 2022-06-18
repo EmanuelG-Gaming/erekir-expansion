@@ -389,13 +389,13 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 20f;
+             reload = 45f;
              mirror = true;
              top = true;
              alternate = true;
              x = 2.75f;
              y = -5f;
-             velocityRnd = 2.5f;
+             velocityRnd = 0.17f;
              shoot = new ShootSpread(8, 2.5f);
              
              bullet = new BasicBulletType(6f, 12.5f){{
@@ -412,6 +412,7 @@ public class ErkUnitTypes implements AltContentList{
                 shootEffect = Fx.shootBigColor;
                 smokeEffect = Fx.shootSmokeSquareSparse;
                 recoil = 0.2f;
+                buildingDamageMultiplier = 0.35f;
              }};
           }});
       }};
