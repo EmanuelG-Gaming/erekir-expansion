@@ -382,7 +382,7 @@ public class ErkUnitTypes implements AltContentList{
 	        accel = 0.25f;
 	        flying = true;
           aimDst = 1.55f;
-          range = 130f;
+          range = 160f;
           engineOffset = 9.25f;
           targetAir = true;
           ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
@@ -403,7 +403,7 @@ public class ErkUnitTypes implements AltContentList{
                 width = 14f;
                 hitSize = 6.0f;
                 height = 10.5f;
-                lifetime = 16f;
+                lifetime = 30f;
                 hitColor = backColor = trailColor = Color.valueOf("ea8878");
                 frontColor = Color.valueOf("feb380");
                 trailWidth = 4f;
