@@ -7,6 +7,7 @@ import arc.util.Time;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
+import mindustry.type.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
