@@ -1,6 +1,5 @@
 package erekir.graphics.shader;
 
-import arc.util.*;
 import arc.Core;
 import arc.util.*;
 import arc.graphics.*;
