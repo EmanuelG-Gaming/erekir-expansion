@@ -1,6 +1,7 @@
 package erekir.graphics.shader;
 
 import arc.Core;
+import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.Texture.*;
 import arc.graphics.gl.*;
@@ -36,7 +37,7 @@ public class ErekirSurfShader extends Shader{
 
     @Override
     public void apply() {
-        int w = Core.camera.width, h = Core.camera.height;
+        float w = Core.camera.width, h = Core.camera.height;
         
         setUniformf("u_campos", Core.camera.position.x - w / 2, Core.camera.position.y - h / 2);
         setUniformf("u_resolution", w, h);

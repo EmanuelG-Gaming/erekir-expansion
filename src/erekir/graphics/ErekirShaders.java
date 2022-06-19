@@ -5,7 +5,7 @@ import erekir.graphics.shader.*;
 
 import static mindustry.Vars.*;
 
-/** @author xStaBUx */
+/** @author xStaBUx, with slight modifications. */
 public class ErekirShaders {
     public static @Nullable ErekirSurfShader angryArkycite;
     public static CacheLayer.ShaderLayer arkyLayer;
@@ -18,8 +18,13 @@ public class ErekirShaders {
     public static void load() {
         if (!headless) {
             angryArkycite = new ErekirSurfShader("angryArkycite");
+            loaded = true;
         }
         arkyLayer = new CacheLayer.ShaderLayer(angryArkycite);
         CacheLayer.add(arkyLayer);
+    }
+    
+    public static void dispose() {
+        if (!headless && loaded) angryArkycite.dispose();
     }
 }
