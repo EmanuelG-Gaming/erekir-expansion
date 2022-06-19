@@ -1,5 +1,6 @@
 package erekir.graphics.shader;
 
+import arc.util.*;
 import arc.Core;
 import arc.util.*;
 import arc.graphics.*;
@@ -11,7 +12,7 @@ import static mindustry.Vars.*;
 import static mindustry.graphics.Shaders.getShaderFi;
 
 /** @author xStaBUx */
-public static class ErekirSurfShader extends Shader{
+public class ErekirSurfShader extends Shader{
    Texture noiseTex;
 
    public ErekirSurfShader(String frag) {
