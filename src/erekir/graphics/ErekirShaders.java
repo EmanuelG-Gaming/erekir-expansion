@@ -1,6 +1,6 @@
 package erekir.graphics;
 
-import mindustry.graphics.CacheLayer.*;
+import mindustry.graphics.CacheLayer;
 import erekir.graphics.shader.*;
 
 import static mindustry.Vars.*;

@@ -1,13 +1,10 @@
 package erekir.graphics.shader;
 
-import arc.Core.*;
+import arc.Core;
 import arc.graphics.*;
 import arc.graphics.Texture.*;
 import arc.graphics.gl.*;
-import arc.util.*;
-import mindustry.game.EventType.*;
 import mindustry.graphics.Shaders;
-import mindustry.type.*;
 
 import static mindustry.Vars.*;
 import static mindustry.graphics.Shaders.getShaderFi;
