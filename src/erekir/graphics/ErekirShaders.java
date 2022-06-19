@@ -1,7 +1,7 @@
 package erekir.graphics;
 
 import mindustry.graphics.CacheLayer;
-import erekir.graphics.shader.*;
+import erekir.graphics.shader.ErekirSurfShader;
 
 import static mindustry.Vars.*;
 

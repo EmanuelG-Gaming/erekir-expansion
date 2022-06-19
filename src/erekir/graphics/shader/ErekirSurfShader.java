@@ -11,7 +11,7 @@ import static mindustry.Vars.*;
 import static mindustry.graphics.Shaders.getShaderFi;
 
 /** @author xStaBUx */
-public class ErekirSurfShader extends Shader{
+public static class ErekirSurfShader extends Shader{
    Texture noiseTex;
 
    public ErekirSurfShader(String frag) {
