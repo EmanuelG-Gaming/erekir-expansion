@@ -3,8 +3,10 @@ package erekir.content;
 import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.world.*;
+import mindustry.world.environment.*;
 import mindustry.world.meta.*;
 import erekir.ctype.*;
+import erekir.graphics.*;
 import erekir.world.blocks.environment.ItemProp;
 import erekir.world.blocks.defense.BlockUpkeeper;
 
@@ -15,6 +17,7 @@ public class ErkBlocks implements AltContentList{
     
     //Environment
     berylDrop, tungDrop, graphiteDrop, thorDrop,
+    angryArkycite,
     
     //Defense
     berylUpkeeper
@@ -43,6 +46,20 @@ public class ErkBlocks implements AltContentList{
           amount = 1;
       }};
       
+      angryArkycite = new Floor("powerfulArkycite"){{
+         speedMultiplier = 0.2f;
+         variants = 0;
+         liquidDrop = Liquids.arkycite;
+         liquidMultiplier = 1.2f;
+         isLiquid = false;
+         //TODO funny number and a very angry status effect
+         status = StatusEffects.melting;
+         statusDuration = 690f;
+         drownTime = 140f;
+         cacheLayer = ErekirShaders.angryArkycite;
+         albedo = 0.9f;
+      }};
+        
       berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{
           size = 2;
           lanes = 4;
