@@ -51,7 +51,7 @@ public class ErkBlocks implements AltContentList{
          variants = 0;
          liquidDrop = Liquids.arkycite;
          liquidMultiplier = 1.2f;
-         isLiquid = false;
+         isLiquid = true;
          //TODO funny number and a very angry status effect
          status = StatusEffects.melting;
          statusDuration = 690f;

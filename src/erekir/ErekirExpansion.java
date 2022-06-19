@@ -14,6 +14,7 @@ import mindustry.gen.*;
 import erekir.util.*;
 import erekir.content.*;
 import erekir.ctype.*;
+import erekir.graphics.*;
 import erekir.ui.*;
 import erekir.ui.button.*;
 
@@ -25,7 +26,10 @@ public class ErekirExpansion extends Mod{
     public ErekirExpansion() {
         Log.info("Loaded Erekir buoyancy");
         
-        Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> ErkSounds.load()));
+        Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> {
+           ErkSounds.load();
+           ErekirShaders.load();
+        }));
       
         Events.on(ContentInitEvent.class, e -> {
            addToFabricator(
