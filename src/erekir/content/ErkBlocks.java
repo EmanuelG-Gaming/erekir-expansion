@@ -17,7 +17,7 @@ public class ErkBlocks implements AltContentList{
     
     //Environment
     berylDrop, tungDrop, graphiteDrop, thorDrop,
-    angryArkycite,
+    angryArkyciteFloor,
     
     //Defense
     berylUpkeeper
@@ -46,7 +46,7 @@ public class ErkBlocks implements AltContentList{
           amount = 1;
       }};
       
-      angryArkycite = new Floor("powerfulArkycite"){{
+      angryArkyciteFloor = new Floor("powerfulArkycite-floor"){{
          speedMultiplier = 0.2f;
          variants = 0;
          liquidDrop = Liquids.arkycite;
