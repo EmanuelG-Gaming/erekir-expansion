@@ -46,7 +46,7 @@ public class ErkBlocks implements AltContentList{
           amount = 1;
       }};
       
-      angryArkyciteFloor = new Floor("powerfulArkycite-floor"){{
+      angryArkyciteFloor = new Floor("powerful-arkycite-floor"){{
          speedMultiplier = 0.2f;
          variants = 0;
          liquidDrop = Liquids.arkycite;

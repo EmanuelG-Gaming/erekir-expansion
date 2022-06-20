@@ -59,6 +59,10 @@ public class ErekirExpansion extends Mod{
            
            ErkUtil.allDrops(b -> b.addButton());
         });
+        
+        Events.on(DisposeEvent.class, e -> {
+           ErekirShaders.dispose();
+        });
     }
     
     private final AltContentList[] erekirContent = {
