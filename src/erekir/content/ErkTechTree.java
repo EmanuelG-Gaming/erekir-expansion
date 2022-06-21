@@ -26,5 +26,9 @@ public class ErkTechTree{
                node(ErkUnitTypes.apart);
            });
        });
+       
+       node(primeRefabricator, () -> {
+           node(ErkUnitTypes.accumulate);
+       });
    }
 }

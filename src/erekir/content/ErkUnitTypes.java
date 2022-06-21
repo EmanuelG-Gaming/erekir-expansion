@@ -374,7 +374,8 @@ public class ErkUnitTypes implements AltContentList{
                 despawnEffect = Fx.none;
                 pushBackEffect = ErkFx.gemHit;
              }};
-          }});
+           }}
+         );
        }};
        
        spread = new ErekirUnitType("spread"){{
