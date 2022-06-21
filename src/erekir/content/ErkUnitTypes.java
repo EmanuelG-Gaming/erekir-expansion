@@ -303,6 +303,7 @@ public class ErkUnitTypes implements AltContentList{
           }});
        }};
        
+       int payloadSize = 2;
        accumulate = new ErekirUnitType("accumulate"){{
           health = 2450;
 	        speed = 1.4f;
@@ -316,6 +317,7 @@ public class ErkUnitTypes implements AltContentList{
           engineSize = 3.55f;
           targetAir = true;
           lowAltitude = true;
+          payloadCapacity = (payloadSize * payloadSize) * (8 * 8),
           
           setEnginesMirror(
              new UnitEngine(28 / 4f, 36 / 4f, 2.7f, 45f),
@@ -324,7 +326,7 @@ public class ErkUnitTypes implements AltContentList{
             
           ammoType = new ItemAmmoType(Items.beryllium);
           
-          constructor = UnitEntity::create;
+          constructor = PayloadUnit::create;
           weapons.add(
              new Weapon(){{
                 reload = 40f;
@@ -354,10 +356,10 @@ public class ErkUnitTypes implements AltContentList{
              
              new Weapon(){{
                 reload = 75f;
-                mirror = false;
+                mirror = true;
                 top = true;
-                x = 4.5f;
-                y = 5f;
+                x = 5f;
+                y = 3.8f;
                 shootSound = ErkSounds.fieldRelease;
                 shootCone = 360;
                 shootY = 0f;
