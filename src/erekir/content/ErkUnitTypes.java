@@ -34,9 +34,9 @@ public class ErkUnitTypes implements AltContentList{
     aggregate,
     
     //why
-    agglomerateMissile, agglomerate, spread,
+    agglomerateMissile, agglomerate, accumulate,
     
-    apart;
+    spread, apart;
     
     @Override
     public void load() {
@@ -299,6 +299,49 @@ public class ErkUnitTypes implements AltContentList{
                 keepVelocity = false;
                 ammoMultiplier = 0.25f;
                 spawnUnit = agglomerateMissile;
+             }};
+          }});
+       }};
+       
+       accumulate = new ErekirUnitType("accumulate"){{
+          health = 2450;
+	        speed = 1.1f;
+ 	        hitSize = 20;
+	        drag = 0.03f;
+	        accel = 0.24f;
+	        flying = true;
+          aimDst = 1.46f;
+          range = 170f;
+          engineOffset = 15.5f;
+          targetAir = true;
+          lowAltitude = true;
+          ammoType = new ItemAmmoType(Items.beryllium);
+          
+          constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 40f;
+             mirror = true;
+             alternate = true;
+             top = false;
+             x = 9f;
+             y = -6.5f;
+             shootY = 0f;
+             bullet = new BasicBulletType(6.5f, 24.5f){{
+                backColor = trailColor = ErkPal.greenishBeryl;
+                frontColor = Color.white;
+                trailLength = 9;
+                trailWidth = 3.5f;
+                despawnEffect = ErkFx.gemHit;
+                hitEffect = ErkFx.gemHit;
+                shootEffect = Fx.none;
+                smokeEffect = Fx.shootSmallSmoke;
+                width = 7.5f;
+                height = 9f;
+                lifetime = 65f;
+             }};
+             
+             shoot = new ShootFactorial(3, 6.5f){{
+                shoots = 3;
              }};
           }});
        }};

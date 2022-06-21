@@ -3,7 +3,7 @@ package erekir.entities.pattern;
 import arc.math.*;
 import mindustry.entities.pattern.ShootPattern;
 
-/**No need for a singular triangle wave*/
+/** No need for a singular triangle wave. */
 public class ShootTriHelix extends ShootPattern{
    public float scl = 4f, mag = 20f;
    
