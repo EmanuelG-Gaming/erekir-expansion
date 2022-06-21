@@ -341,7 +341,7 @@ public class ErkUnitTypes implements AltContentList{
              }};
              
              shoot = new ShootFactorial(3, 6.5f){{
-                shoots = 3;
+                shots = 3;
              }};
           }});
        }};
