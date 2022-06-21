@@ -308,18 +308,18 @@ public class ErkUnitTypes implements AltContentList{
 	        speed = 1.1f;
  	        hitSize = 20;
 	        drag = 0.03f;
-	        accel = 0.24f;
+	        accel = 0.055f;
 	        flying = true;
           aimDst = 1.46f;
           range = 170f;
-          engineOffset = 13.5f;
-          engineSize = 3.65f;
+          engineOffset = 11.5f;
+          engineSize = 3.55f;
           targetAir = true;
           lowAltitude = true;
           
           setEnginesMirror(
-             new UnitEngine(25 / 4f, 33 / 4f, 2.9f, 45f),
-             new UnitEngine(33 / 4f, -25 / 4f, 2.9f, 315f)
+             new UnitEngine(28 / 4f, 36 / 4f, 2.9f, 45f),
+             new UnitEngine(36 / 4f, -28 / 4f, 2.9f, 315f)
           );
             
           ammoType = new ItemAmmoType(Items.beryllium);
@@ -337,13 +337,13 @@ public class ErkUnitTypes implements AltContentList{
                 backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
                 trailLength = 9;
-                trailWidth = 3.5f;
+                trailWidth = 1.5f;
                 despawnEffect = ErkFx.gemHit;
                 hitEffect = ErkFx.gemHit;
                 shootEffect = Fx.none;
                 smokeEffect = Fx.shootSmallSmoke;
-                width = 7.5f;
-                height = 9f;
+                width = 8.5f;
+                height = 12.5f;
                 lifetime = 65f;
              }};
              

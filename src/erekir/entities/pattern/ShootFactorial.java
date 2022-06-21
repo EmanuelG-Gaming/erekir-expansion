@@ -22,7 +22,7 @@ public class ShootFactorial extends ShootPattern{
          for (int I = 0; I < iterations; I++) {
             float angleOffset = i * spread - (shots - 1) * spread / 2f;
             handler.shoot(
-               0, 0, totalShots % shots < shots ? 0 : angleOffset,
+               0, 0, angleOffset,
                firstShotDelay + shotDelay * I
             );
          }
