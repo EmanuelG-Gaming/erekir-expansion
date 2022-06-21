@@ -317,7 +317,7 @@ public class ErkUnitTypes implements AltContentList{
           engineSize = 3.55f;
           targetAir = true;
           lowAltitude = true;
-          payloadCapacity = (payloadSize * payloadSize) * (8 * 8),
+          payloadCapacity = (payloadSize * payloadSize) * (8 * 8);
           
           setEnginesMirror(
              new UnitEngine(28 / 4f, 36 / 4f, 2.7f, 45f),
