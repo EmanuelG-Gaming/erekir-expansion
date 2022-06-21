@@ -312,9 +312,16 @@ public class ErkUnitTypes implements AltContentList{
 	        flying = true;
           aimDst = 1.46f;
           range = 170f;
-          engineOffset = 15.5f;
+          engineOffset = 13.5f;
+          engineSize = 3.65f;
           targetAir = true;
           lowAltitude = true;
+          
+          setEnginesMirror(
+             new UnitEngine(25 / 4f, 33 / 4f, 2.9f, 45f),
+             new UnitEngine(33 / 4f, -25 / 4f, 2.9f, 315f)
+          );
+            
           ammoType = new ItemAmmoType(Items.beryllium);
           
           constructor = UnitEntity::create;
@@ -323,8 +330,8 @@ public class ErkUnitTypes implements AltContentList{
              mirror = true;
              alternate = true;
              top = false;
-             x = 9f;
-             y = -6.5f;
+             x = 4.5f;
+             y = -4f;
              shootY = 0f;
              bullet = new BasicBulletType(6.5f, 24.5f){{
                 backColor = trailColor = ErkPal.greenishBeryl;
@@ -342,6 +349,7 @@ public class ErkUnitTypes implements AltContentList{
              
              shoot = new ShootFactorial(3, 6.5f){{
                 shots = 3;
+                shotDelay = 2f;
              }};
           }});
        }};
