@@ -305,21 +305,21 @@ public class ErkUnitTypes implements AltContentList{
        
        accumulate = new ErekirUnitType("accumulate"){{
           health = 2450;
-	        speed = 1.1f;
+	        speed = 1.4f;
  	        hitSize = 20;
 	        drag = 0.03f;
-	        accel = 0.055f;
+	        accel = 0.095f;
 	        flying = true;
           aimDst = 1.46f;
           range = 170f;
-          engineOffset = 11.5f;
+          engineOffset = 11f;
           engineSize = 3.55f;
           targetAir = true;
           lowAltitude = true;
           
           setEnginesMirror(
-             new UnitEngine(28 / 4f, 36 / 4f, 2.9f, 45f),
-             new UnitEngine(36 / 4f, -28 / 4f, 2.9f, 315f)
+             new UnitEngine(27 / 4f, 35 / 4f, 2.6f, 45f),
+             new UnitEngine(35 / 4f, -27 / 4f, 2.6f, 315f)
           );
             
           ammoType = new ItemAmmoType(Items.beryllium);
@@ -330,9 +330,8 @@ public class ErkUnitTypes implements AltContentList{
              mirror = true;
              alternate = true;
              top = false;
-             x = 4.5f;
+             x = 3.5f;
              y = -4f;
-             shootY = 0f;
              bullet = new BasicBulletType(6.5f, 24.5f){{
                 backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
