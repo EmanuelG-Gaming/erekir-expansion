@@ -346,36 +346,35 @@ public class ErkUnitTypes implements AltContentList{
                    height = 12.5f;
                    lifetime = 65f;
                 }};
-             }};
+                shoot = new ShootFactorial(3, 6.5f){{
+                   shots = 3;
+                   shotDelay = 2f;
+                }};
+             }},
              
-             shoot = new ShootFactorial(3, 6.5f){{
-                shots = 3;
-                shotDelay = 2f;
-             }};
-          }},
-          new Weapon(){{
-             reload = 75f;
-             mirror = false;
-             top = true;
-             x = 4.5f;
-             y = 5f;
-             shootSound = ErkSounds.fieldRelease;
-             shootCone = 360;
-             shootY = 0f;
-             bullet = new CarapaceBulletType(){{
-                lifetime = 60f;
-                hitSize = 20f;
-                speed = 2f;
-                frontColor = Color.white;
-                backColor = ErkPal.greenishBeryl;
-                layer = Layer.weather;
-                ejectEffect = Fx.none;
-                hitEffect = Fx.none;
-                despawnEffect = Fx.none;
-                pushBackEffect = ErkFx.gemHit;
-             }};
-           }}
-         );
+             new Weapon(){{
+                reload = 75f;
+                mirror = false;
+                top = true;
+                x = 4.5f;
+                y = 5f;
+                shootSound = ErkSounds.fieldRelease;
+                shootCone = 360;
+                shootY = 0f;
+                bullet = new CarapaceBulletType(){{
+                   lifetime = 60f;
+                   hitSize = 20f;
+                   speed = 2f;
+                   frontColor = Color.white;
+                   backColor = ErkPal.greenishBeryl;
+                   layer = Layer.weather;
+                   ejectEffect = Fx.none;
+                   hitEffect = Fx.none;
+                   despawnEffect = Fx.none;
+                   pushBackEffect = ErkFx.gemHit;
+               }};
+            }}
+          );
        }};
        
        spread = new ErekirUnitType("spread"){{
