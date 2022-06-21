@@ -15,21 +15,23 @@ import mindustry.entities.bullet.*;
 import mindustry.entities.Units;
 import erekir.content.*;
 
-/** Barrier 2*/
+/** Barrier 2.
+ *  Also provided some help from @author Mythril382 */
 public class CarapaceBulletType extends BasicBulletType{
    public float deflectPower = 0.05f;
-   public Effect pushBackEffect = Fx.none;
+   public float damageInterval = 5f;
    public float emissionChance = 0.35f;
+   public Effect pushBackEffect = Fx.none;
 
    public CarapaceBulletType() {
       super(0f, 1);
-      speed = 0f;
       width = height = 0f;
       keepVelocity = false;
       pierce = true;
       pierceBuilding = true;
       hittable = false;
       absorbable = false;
+      reflectable = false;
    }
    
    @Override
@@ -59,6 +61,10 @@ public class CarapaceBulletType extends BasicBulletType{
             unit.vel.setZero();
             unit.impulse(Tmp.v1);
             
+            if (b.timer(1, damageInterval)) {
+               if (unit instanceof Healthc) unit.damage(damage);
+            }
+            
             if (Mathf.chance(emissionChance)) {
                pushBackEffect.at(unit.x, unit.y, b.angleTo(unit));
             }
@@ -67,7 +73,9 @@ public class CarapaceBulletType extends BasicBulletType{
        
        Cons<Bullet> bullets = bul -> {
         	if (bul != null && bul.team != b.team && bul.owner != b.owner) { 
-      	     bul.vel.setAngle(Angles.moveToward(bul.rotation(), b.angleTo(bul), Time.delta * 261f * deflectPower));
+        	   if (bul.type.reflectable) {
+      	        bul.vel.setAngle(Angles.moveToward(bul.rotation(), b.angleTo(bul), Time.delta * 261f * deflectPower));
+        	   } 
           }
        };
        

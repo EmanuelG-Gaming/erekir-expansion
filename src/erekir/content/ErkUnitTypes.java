@@ -366,6 +366,7 @@ public class ErkUnitTypes implements AltContentList{
                 bullet = new CarapaceBulletType(){{
                    lifetime = 60f;
                    hitSize = 20f;
+                   damage = 6f;
                    speed = 2f;
                    frontColor = Color.white;
                    backColor = ErkPal.greenishBeryl;
