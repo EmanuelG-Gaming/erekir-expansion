@@ -318,37 +318,61 @@ public class ErkUnitTypes implements AltContentList{
           lowAltitude = true;
           
           setEnginesMirror(
-             new UnitEngine(27 / 4f, 35 / 4f, 2.6f, 45f),
-             new UnitEngine(35 / 4f, -27 / 4f, 2.6f, 315f)
+             new UnitEngine(28 / 4f, 36 / 4f, 2.7f, 45f),
+             new UnitEngine(36 / 4f, -28 / 4f, 2.7f, 315f)
           );
             
           ammoType = new ItemAmmoType(Items.beryllium);
           
           constructor = UnitEntity::create;
-          weapons.add(new Weapon(){{
-             reload = 40f;
-             mirror = true;
-             alternate = true;
-             top = false;
-             x = 3.5f;
-             y = -4f;
-             bullet = new BasicBulletType(6.5f, 24.5f){{
-                backColor = trailColor = ErkPal.greenishBeryl;
-                frontColor = Color.white;
-                trailLength = 9;
-                trailWidth = 1.5f;
-                despawnEffect = ErkFx.gemHit;
-                hitEffect = ErkFx.gemHit;
-                shootEffect = Fx.none;
-                smokeEffect = Fx.shootSmallSmoke;
-                width = 8.5f;
-                height = 12.5f;
-                lifetime = 65f;
+          weapons.add(
+             new Weapon(){{
+                reload = 40f;
+                mirror = true;
+                alternate = true;
+                top = false;
+                x = 3.5f;
+                y = -4f;
+                bullet = new BasicBulletType(6.5f, 24.5f){{
+                   backColor = trailColor = ErkPal.greenishBeryl;
+                   frontColor = Color.white;
+                   trailLength = 9;
+                   trailWidth = 1.5f;
+                   despawnEffect = ErkFx.gemHit;
+                   hitEffect = ErkFx.gemHit;
+                   shootEffect = Fx.none;
+                   smokeEffect = Fx.shootSmallSmoke;
+                   width = 8.5f;
+                   height = 12.5f;
+                   lifetime = 65f;
+                }};
              }};
              
              shoot = new ShootFactorial(3, 6.5f){{
                 shots = 3;
                 shotDelay = 2f;
+             }};
+          }},
+          new Weapon(){{
+             reload = 75f;
+             mirror = false;
+             top = true;
+             x = 4.5f;
+             y = 5f;
+             shootSound = ErkSounds.fieldRelease;
+             shootCone = 360;
+             shootY = 0f;
+             bullet = new CarapaceBulletType(){{
+                lifetime = 60f;
+                hitSize = 20f;
+                speed = 2f;
+                frontColor = Color.white;
+                backColor = ErkPal.greenishBeryl;
+                layer = Layer.weather;
+                ejectEffect = Fx.none;
+                hitEffect = Fx.none;
+                despawnEffect = Fx.none;
+                pushBackEffect = ErkFx.gemHit;
              }};
           }});
        }};
