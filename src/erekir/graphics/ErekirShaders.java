@@ -11,8 +11,7 @@ public class ErekirShaders {
     public static @Nullable ErekirSurfShader angryArkycite;
     public static @Nullable ErekirCircleShader circle;
     
-    public static CacheLayer.ShaderLayer arkyLayer;
-    public static CacheLayer.ShaderLayer circleLayer;
+    public static CacheLayer.ShaderLayer arkyLayer, circleLayer;
     protected static boolean loaded;
 
     public static void init() {
@@ -32,6 +31,9 @@ public class ErekirShaders {
     }
     
     public static void dispose() {
-        if (!headless && loaded) angryArkycite.dispose();
+        if (!headless && loaded) {
+           angryArkycite.dispose();
+           circle.dispose();
+        }
     }
 }

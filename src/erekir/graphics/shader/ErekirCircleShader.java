@@ -25,11 +25,11 @@ public class ErekirCircleShader extends Shader{
    }
 
    public String textureName() {
-       return "hollowCircle";
+       return "logo";
    }
 
    public void loadTexture() {
-       String path = "sprites/effects/";
+       String path = "sprites/";
        Core.assets.load(path + textureName() + ".png", Texture.class).loaded = t -> {
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
