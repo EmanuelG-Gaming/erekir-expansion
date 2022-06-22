@@ -56,7 +56,7 @@ public class ErkBlocks implements AltContentList{
          status = StatusEffects.melting;
          statusDuration = 690f;
          drownTime = 140f;
-         cacheLayer = ErekirShaders.angryArkycite;
+         cacheLayer = ErekirShaders.arkyLayer;
          albedo = 0.9f;
       }};
         
