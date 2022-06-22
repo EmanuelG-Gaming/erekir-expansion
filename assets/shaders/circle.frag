@@ -3,7 +3,7 @@ uniform vec4 u_ambient;
 
 varying vec2 v_texCoords;
 
-int main() {
+void main() {
    vec2 c = v_texCoords.xy;
    
    vec4 color = texture2D(u_texture, c);
