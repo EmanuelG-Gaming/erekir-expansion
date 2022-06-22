@@ -1,15 +1,18 @@
 package erekir;
 
 import arc.Core;
+import arc.graphics.*;
+import arc.graphics.g2d.*;
 import arc.Events;
-import arc.util.Log;
-import arc.util.Time;
+import arc.util.*;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.blocks.environment.Floor;
 import mindustry.type.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
+import mindustry.graphics.*;
 import mindustry.gen.*;
 import erekir.util.*;
 import erekir.content.*;
@@ -63,6 +66,23 @@ public class ErekirExpansion extends Mod{
         
         Events.on(DisposeEvent.class, e -> {
            ErekirShaders.dispose();
+        });
+        
+        Events.run(Trigger.draw, () -> {
+           for (Unit unit : Groups.unit) {
+              Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
+              if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {
+                 float z = Draw.z(); 
+                  
+                 Draw.z(Layer.debris);
+                 Draw.color(Tmp.c1.set(floor.mapColor).mul(1.5f));
+                 Lines.stroke(4f);
+                 Lines.circle(unit.x, unit.y, unit.type.hitSize * 1.45f);
+                 Draw.reset();
+                 
+                 Draw.z(z);
+              }
+           }
         });
     }
     
