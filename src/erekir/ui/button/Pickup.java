@@ -32,7 +32,7 @@ public class Pickup{
            Unit plr = player.unit();
            table.visibility = () -> {
               if (plr == null || plr.isNull()) return false;
-              return true;
+              else return true;
            };
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
            if (touch.get()) {
