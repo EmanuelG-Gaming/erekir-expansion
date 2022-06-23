@@ -36,7 +36,7 @@ public class Pickup{
            } else table.touchable = Touchable.disabled;
               
            float d = plr.dst(bloc);
-           table.actions(Actions.alpha((plr != null || !plr.isNull()) ? 1f - Mathf.clamp(d / range - 1.5f) : 0));
+           table.actions(Actions.alpha((plr != null || plr.isNull()) ? 1f - Mathf.clamp(d / range - 1.5f) : 0));
         });
         table.button(icon, run).size(buttonW, buttonH).margin(4f).pad(4f);
         table.pack();
