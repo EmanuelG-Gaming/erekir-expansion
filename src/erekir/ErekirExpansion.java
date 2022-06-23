@@ -70,19 +70,20 @@ public class ErekirExpansion extends Mod{
         
         Events.run(Trigger.draw, () -> {
            for (Unit unit : Groups.unit) {
-              if (unit.isFlying() || unit.hovering) return;
-              
+             
               Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
               if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {
-                 float z = Draw.z(); 
+                 if (!unit.isFlying() || unit.hovering == false) {
+                    float z = Draw.z(); 
                   
-                 Draw.z(Layer.debris);
-                 Draw.color(Tmp.c1.set(floor.mapColor).mul(1.5f));
-                 Lines.stroke(4f);
-                 Lines.circle(unit.x, unit.y, unit.type.hitSize * 1.25f);
-                 Draw.reset();
+                    Draw.z(Layer.debris);
+                    Draw.color(Tmp.c1.set(floor.mapColor).mul(1.5f));
+                    Lines.stroke(4f);
+                    Lines.circle(unit.x, unit.y, unit.type.hitSize * 1.25f);
+                    Draw.reset();
                  
-                 Draw.z(z);
+                    Draw.z(z);
+                 }
               }
            }
         });
