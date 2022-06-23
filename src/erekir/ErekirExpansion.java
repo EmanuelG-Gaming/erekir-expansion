@@ -73,7 +73,7 @@ public class ErekirExpansion extends Mod{
              
               Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
               if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {
-                 if (!unit.isFlying() || unit.hovering == false) {
+                 if (!unit.isFlying() && unit.hovering == false) {
                     float z = Draw.z(); 
                   
                     Draw.z(Layer.debris);
