@@ -30,13 +30,15 @@ public class Pickup{
            table.setPosition(v.x, v.y, Align.center);
            
            Unit plr = player.unit();
+           Boolp visible = () -> plr != null;
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
            if (touch.get()) {
               table.touchable = Touchable.enabled;
            } else table.touchable = Touchable.disabled;
-              
+           table.visibility = visible;
+           
            float d = plr.dst(bloc);
-           table.actions(Actions.alpha(plr != null ? 1f - Mathf.clamp(d / range - 1.5f) : 0));
+           table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
         });
         table.button(icon, run).size(buttonW, buttonH).margin(4f).pad(4f);
         table.pack();
