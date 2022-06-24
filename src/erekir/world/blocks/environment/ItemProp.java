@@ -99,7 +99,7 @@ public class ItemProp extends Block{
                        Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
                     }
                  } else {
-                    for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, drop.color, unit);
+                    for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
                  }
               }
               stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), amount);
