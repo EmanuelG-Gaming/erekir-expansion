@@ -340,13 +340,12 @@ public class ErkUnitTypes implements AltContentList{
                    frontColor = Color.white;
                    trailLength = 9;
                    trailWidth = 1.5f;
-                   despawnEffect = ErkFx.gemHit;
-                   hitEffect = ErkFx.gemHit;
+                   hitEffect = despawnEffect = Fx.hitSquaresColor;
                    shootEffect = Fx.none;
                    smokeEffect = Fx.shootSmallSmoke;
                    width = 8.5f;
                    height = 12.5f;
-                   lifetime = 65f;
+                   lifetime = 30f;
                 }};
                 shoot = new ShootFactorial(3, 6.5f){{
                    shots = 3;
@@ -366,7 +365,7 @@ public class ErkUnitTypes implements AltContentList{
                 bullet = new CarapaceBulletType(){{
                    lifetime = 60f;
                    hitSize = 20f;
-                   damage = 6f;
+                   damage = 9f;
                    speed = 2f;
                    frontColor = Color.white;
                    backColor = ErkPal.greenishBeryl;
@@ -375,6 +374,8 @@ public class ErkUnitTypes implements AltContentList{
                    hitEffect = Fx.none;
                    despawnEffect = Fx.none;
                    pushBackEffect = ErkFx.gemHit;
+                   shootEffect = Fx.shootBig;
+                   smokeEffect = Fx.shootBigSmoke2;
                }};
             }}
           );
