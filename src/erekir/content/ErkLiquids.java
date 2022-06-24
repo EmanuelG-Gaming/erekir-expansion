@@ -14,8 +14,6 @@ public class ErkLiquids implements AltContentList{
          flammability = 0.7f;
          temperature = 0.4f;
          viscosity = 0.65f;
-         
-         hidden = true;
       }};
    }
 }
