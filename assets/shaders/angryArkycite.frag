@@ -4,8 +4,8 @@
 #define S2 vec3(132.0, 169.0, 79.0) / 255.0
 #define S3 vec3(210.0, 221.0, 118.0) / 255.0
 
-#define NSCALE 140.0 / 2.0
-#define DSCALE 120.0 / 2.0
+#define NSCALE 130.5 / 2.0
+#define DSCALE 110.5 / 2.0
 
 uniform sampler2D u_texture;
 uniform sampler2D u_noise;

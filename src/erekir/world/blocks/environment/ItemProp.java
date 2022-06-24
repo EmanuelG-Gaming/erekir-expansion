@@ -31,10 +31,8 @@ public class ItemProp extends Block{
         inEditor = true;
         targetable = false;
         instantDeconstruct = true;
-        breakEffect = Fx.none;
-        breakSound = Sounds.none;
-        destroyEffect = Fx.none;
-        destroySound = Sounds.none;
+        destroyEffect = breakEffect = Fx.none;
+        destroySound = breakSound = Sounds.missile;
         hasShadow = false;
         drawTeamOverlay = false;
         //partial thanks to meep for this
@@ -49,13 +47,14 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        Building build = tile.build;
-        for (int i = 0; i < ((DropBuild) build).stack.amount; i++) {
+        DropBuild build = (DropBuild) tile.build();
+        ItemStack stack = build.stack;
+        for (int i = 0; i < stack.amount; i++) {
            float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
            float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
-           Draw.rect(dropItem.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
+           Draw.rect(stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
         }
     }
     
@@ -102,8 +101,8 @@ public class ItemProp extends Block{
                     for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
                  }
               }
-              stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), amount);
-              if (stack.amount <= 0) kill();
+              stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), unit.stack.amount);
+              if (unit.type.itemCapacity - unit.stack.amount <= stack.amount) kill();
            }
         }
         
