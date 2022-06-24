@@ -46,11 +46,10 @@ public class ErkBlocks implements AltContentList{
           amount = 1;
       }};
       
-      angryArkyciteFloor = new Floor("powerful-arkycite-floor"){
-      {
+      angryArkyciteFloor = new Floor("powerful-arkycite-floor"){{
          speedMultiplier = 0.2f;
          variants = 0;
-         liquidDrop = Liquids.arkycite;
+         liquidDrop = ErkLiquids.angryArkycite;
          liquidMultiplier = 1.2f;
          isLiquid = true;
          //TODO funny number and a very angry status effect
@@ -59,12 +58,7 @@ public class ErkBlocks implements AltContentList{
          drownTime = 140f;
          cacheLayer = ErekirShaders.arkyLayer;
          albedo = 0.9f;
-      }
-         @Override 
-         public int minimapColor(Tile tile) {
-            return ErkPal.darkArkycite.rgba();
-         }
-      };
+      }};
         
       berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{
           size = 2;
