@@ -49,7 +49,7 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < tile.build == null ? 1 : ((DropBuild) tile.build).stack.amount; i++) {
            float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
            float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
@@ -105,7 +105,8 @@ public class ItemProp extends Block{
                        for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, drop.color, unit);
                     }
                  }
-                 this.kill();
+                 stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), amount);
+                 if (stack.amount <= 0) kill();
               }
            }
         }

@@ -336,11 +336,11 @@ public class ErkUnitTypes implements AltContentList{
                 x = 3.5f;
                 y = -4f;
                 bullet = new BasicBulletType(6.5f, 24.5f){{
-                   backColor = trailColor = Items.beryllium.color;
-                   frontColor = ErkPal.greenishBeryl;
+                   backColor = trailColor = ErkPal.greenishBeryl;
+                   frontColor = Color.white;
                    trailLength = 9;
                    trailWidth = 1.5f;
-                   hitEffect = despawnEffect = Fx.hitSquaresColor;
+                   hitEffect = despawnEffect = ErkFx.gemHit;
                    shootEffect = Fx.none;
                    smokeEffect = Fx.shootSmallSmoke;
                    width = 8.5f;
