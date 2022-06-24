@@ -87,28 +87,24 @@ public class ItemProp extends Block{
            //prevent item overrides
            if (unit.stack.item != stack.item && unit.stack.amount != 0) return;
            
-           //TODO if-else over paradise
            if (unit != null) {
               Item drop = dropItem;
-              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount) {
-                 //the unit should gather the items first
-                 unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
-                 unit.stack.item = stack.item;
+              //the unit should gather the items first
+              unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
+              unit.stack.item = stack.item;
                  
-                 CoreBuild core = unit.closestCore();
-                 if (core != null) {
-                    if (unit.within(core, unit.type.range)) {
-                       if (core.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
-                          Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
-                       }
-                    } else {
-                       for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, drop.color, unit);
+              CoreBuild core = unit.closestCore();
+              if (core != null) {
+                 if (unit.within(core, unit.type.range)) {
+                    if (core.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
+                       Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
                     }
+                 } else {
+                    for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, drop.color, unit);
                  }
-                 stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), amount);
-              } else {
-                 kill();
               }
+              stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), amount);
+              if (unit.type.itemCapacity - unit.stack.amount < stack.amount) kill();
            }
         }
         
