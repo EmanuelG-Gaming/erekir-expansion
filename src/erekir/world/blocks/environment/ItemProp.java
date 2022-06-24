@@ -102,7 +102,7 @@ public class ItemProp extends Block{
                  }
               }
               stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), unit.stack.amount);
-              if (unit.type.itemCapacity - unit.stack.amount <= stack.amount) kill();
+              if (stack.amount <= 0) kill();
            }
         }
         
