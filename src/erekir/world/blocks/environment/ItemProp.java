@@ -50,7 +50,7 @@ public class ItemProp extends Block{
     @Override
     public void drawBase(Tile tile) {
         Building build = tile.build;
-        for (int i = 0; i < build ((DropBuild) build).stack.amount); i++) {
+        for (int i = 0; i < ((DropBuild) build).stack.amount); i++) {
            float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
            float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
