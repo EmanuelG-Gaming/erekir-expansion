@@ -354,7 +354,7 @@ public class ErkUnitTypes implements AltContentList{
              }},
              
              new Weapon(){{
-                reload = 75f;
+                reload = 100f;
                 mirror = true;
                 top = true;
                 x = 5f;
@@ -365,7 +365,7 @@ public class ErkUnitTypes implements AltContentList{
                 bullet = new CarapaceBulletType(){{
                    lifetime = 60f;
                    hitSize = 20f;
-                   damage = 9f;
+                   damage = 17f;
                    speed = 2f;
                    frontColor = Color.white;
                    backColor = ErkPal.greenishBeryl;
