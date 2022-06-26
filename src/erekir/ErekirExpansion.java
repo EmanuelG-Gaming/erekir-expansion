@@ -29,7 +29,6 @@ import static mindustry.type.ItemStack.with;
 import static mindustry.Vars.*;
 
 public class ErekirExpansion extends Mod{
-    private transient float gatherTime = Mathf.random(10f);
 
     public ErekirExpansion() {
         Log.info("Loaded Erekir buoyancy");
@@ -90,20 +89,6 @@ public class ErekirExpansion extends Mod{
                     Draw.z(z);
                  }
               }
-           }
-        });
-        
-        Events.run(Trigger.update, () -> {
-           gatherTime += Time.delta;
-           
-           if (gatherTime > 10f) {
-              for (Building b : Groups.build) {
-                  if (b instanceof Gathering) {
-                     Gathering build = (Gathering) b;
-                     build.gather();
-                  }
-              }
-              gatherTime = 0f;
            }
         });
     }
