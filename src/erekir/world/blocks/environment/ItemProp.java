@@ -78,7 +78,7 @@ public class ItemProp extends Block{
         public boolean containsButton = false;
         
         public void addButton() {
-            Pickup.createPickupButton(this, () -> gather(player.unit()));
+            Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
             containsButton = true;
         }
         

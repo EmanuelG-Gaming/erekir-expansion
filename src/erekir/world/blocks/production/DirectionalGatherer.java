@@ -6,7 +6,7 @@ import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.draw.*;
 import erekir.world.draw.*;
-import erekir.blocks.environment.*;
+import erekir.world.blocks.environment.*;
 import erekir.world.blocks.gather.*;
 
 import static mindustry.Vars.*;
@@ -44,12 +44,14 @@ public class DirectionalGatherer extends Block{
           int len = length;
           world.raycastEachWorld(x, y, x + Geometry.d4x(rotation) * len, x + Geometry.d4y(rotation) * len, (cx, cy) -> {
              Building build = world.tile(cx, cy).build;
-             if (build != null) {
-                if (build instanceof DropBuild) {
-                   DropBuild drop = (DropBuild) build;
-                   if (ErkUtil.hasButton(drop)) drop.gather(this, 1);
+             if (build != null && build instanceof DropBuild) {
+                DropBuild drop = (DropBuild) build;
+                if (ErkUtil.hasButton(drop)) {
+                   drop.gather(this, 1);
+                   return true;
                 }
              }
+             return false;
           });
       }
    }

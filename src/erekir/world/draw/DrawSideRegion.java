@@ -3,8 +3,11 @@ package erekir.world.draw;
 import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import arc.util.*;
+import mindustry.entities.units.*;
 import mindustry.gen.*;
 import mindustry.world.*;
+import mindustry.world.draw.*;
 
 /** Something that can be used to draw 
   * lightwise-correct side regions. */
