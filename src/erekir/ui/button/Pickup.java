@@ -38,7 +38,7 @@ public class Pickup{
            table.visibility = visible;
            
            float d = plr.dst(bloc);
-           table.actions(Actions.alpha(1f - Mathf.clamp(d / range - 1.5f)));
+           table.actions(Actions.alpha(Core.settings.getString("erekir-expansion-buttonIcon") == "nothingness" ? 0f : 1f - Mathf.clamp(d / range - 1.5f)));
         });
         table.button(icon, run).size(buttonW, buttonH).margin(4f).pad(4f);
         table.pack();
