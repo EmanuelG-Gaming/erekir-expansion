@@ -98,8 +98,9 @@ public class ItemProp extends Block{
                  } else {
                     for (int i = 0; i < itemTake; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
                  }
+                 
+                 stack.amount -= itemTake;
               }
-              stack.amount -= itemTake;
               if (stack.amount <= 0) kill();
            }
         }

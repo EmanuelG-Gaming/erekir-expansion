@@ -42,10 +42,10 @@ public class DirectionalGatherer extends GenericCrafter{
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
           Drawf.dashLine(
              Pal.placing,
-             dx * tilesize,
-             dx * tilesize,
-             (dx + dx * len) * tilesize,
-             (dy + dy * len) * tilesize
+             x + dx * tilesize,
+             y + dx * tilesize,
+             x + (dx + dx * len) * tilesize,
+             y + (dy + dy * len) * tilesize
          );
       }
       
@@ -53,8 +53,10 @@ public class DirectionalGatherer extends GenericCrafter{
       public void gather() {
           if (progress >= 1f) {
              int len = length;
-             world.raycastEachWorld(x, y, x + Geometry.d4x(rotation) * len, x + Geometry.d4y(rotation) * len, (cx, cy) -> {
-                Building build = world.tile(cx * tilesize, cy * tilesize).build;
+             float tx = x + Geometry.d4x(rotation) * tilesize,
+                   ty = y + Geometry.d4y(rotation) * tilesize;
+             world.raycastEachWorld(tx, ty, tx + Geometry.d4x(rotation) * len, ty + Geometry.d4y(rotation) * len, (cx, cy) -> {
+                Building build = world.tile(cx, cy).build;
                 if (build != null && build instanceof DropBuild) {
                    DropBuild drop = (DropBuild) build;
                    if (ErkUtil.hasButton(drop)) {
