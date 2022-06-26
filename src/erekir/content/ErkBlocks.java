@@ -74,6 +74,9 @@ public class ErkBlocks implements AltContentList{
       dGatherer = new DirectionalGatherer("directionalGatherer"){{
           size = 1;
           length = 7;
+          consumePower(45f / 60f);
+          rotateDraw = false;
+          regionRotated1 = 1;
           requirements(Category.production, with(Items.beryllium, 30));
       }};
     }
