@@ -28,6 +28,7 @@ import erekir.world.blocks.environment.*;
 import static mindustry.type.ItemStack.with;
 import static mindustry.Vars.*;
 
+/** Mod's main, also holds some utility methods. */
 public class ErekirExpansion extends Mod{
 
     public ErekirExpansion() {
