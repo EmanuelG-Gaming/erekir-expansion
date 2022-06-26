@@ -7,6 +7,7 @@ import mindustry.world.*;
 import mindustry.world.draw.*;
 import mindustry.world.blocks.production.*;
 import mindustry.graphics.*;
+import mindustry.type.*;
 import erekir.util.*;
 import erekir.world.blocks.environment.ItemProp.*;
 import erekir.world.blocks.gather.*;
@@ -38,14 +39,19 @@ public class DirectionalGatherer extends GenericCrafter{
       @Override
       public void draw() {
           drawer.draw(this);
+      }
+      
+      @Override
+      public void drawSelect() {
+          super.drawSelect();
           int len = length - 1;
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
           Drawf.dashLine(
              Pal.placing,
-             x + dx * tilesize,
-             y + dx * tilesize,
-             x + (dx + dx * len) * tilesize,
-             y + (dy + dy * len) * tilesize
+             x,
+             y,
+             x + dx * len * tilesize,
+             y + dy * len * tilesize
          );
       }
       
@@ -55,7 +61,7 @@ public class DirectionalGatherer extends GenericCrafter{
              int len = length;
              float tx = x + Geometry.d4x(rotation) * tilesize,
                    ty = y + Geometry.d4y(rotation) * tilesize;
-             world.raycastEachWorld(tx, ty, tx + Geometry.d4x(rotation) * len, ty + Geometry.d4y(rotation) * len, (cx, cy) -> {
+             world.raycastEachWorld(tx, ty, tx + len * tilesize, ty + len * tilesize, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
                 if (build != null && build instanceof DropBuild) {
                    DropBuild drop = (DropBuild) build;
@@ -67,6 +73,11 @@ public class DirectionalGatherer extends GenericCrafter{
                 return false;
             });
          }
+      }
+      
+      @Override
+      public int acceptStack(Item item, int amount, Teamc source) {
+         return Math.min(itemCapacity - items.total(), amount);
       }
    }
 }
