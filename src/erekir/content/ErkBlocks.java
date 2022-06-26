@@ -9,6 +9,7 @@ import erekir.ctype.*;
 import erekir.graphics.*;
 import erekir.world.blocks.environment.ItemProp;
 import erekir.world.blocks.defense.BlockUpkeeper;
+import erekir.world.blocks.production.DirectionalGatherer;
 
 import static mindustry.type.ItemStack.with;
 
@@ -20,7 +21,10 @@ public class ErkBlocks implements AltContentList{
     angryArkyciteFloor,
     
     //Defense
-    berylUpkeeper
+    berylUpkeeper,
+    
+    //Gathering
+    dGatherer
      
     ;
     
@@ -64,7 +68,13 @@ public class ErkBlocks implements AltContentList{
           size = 2;
           lanes = 4;
           range = 12;
-          requirements(Category.defense, BuildVisibility.berylliumOnly, with(Items.beryllium, 100, Items.graphite, 65, Items.tungsten, 40));
+          requirements(Category.defense, with(Items.beryllium, 100, Items.graphite, 65, Items.tungsten, 40));
+      }};
+      
+      dGatherer = new DirectionalGatherer("directionalGatherer"){{
+          size = 1;
+          length = 7;
+          requirements(Category.production, with(Items.beryllium, 30));
       }};
     }
 }

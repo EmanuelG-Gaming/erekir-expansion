@@ -82,28 +82,40 @@ public class ItemProp extends Block{
             containsButton = true;
         }
         
-        public void gather(Unit unit) {
+        public void gather(Unit unit, int itemTake) {
            //prevent item overrides
            if (unit.stack.item != stack.item && unit.stack.amount != 0) return;
            
            if (unit != null) {
-              if (unit.type.itemCapacity - unit.stack.amount >= stack.amount) {
+              if (unit.type.itemCapacity - unit.stack.amount >= itemTake) {
                  //the unit should gather the items first
-                 unit.stack.amount = Math.min(unit.stack.amount + stack.amount, unit.type.itemCapacity);
+                 unit.stack.amount = Math.min(unit.stack.amount + itemTake, unit.type.itemCapacity);
                  unit.stack.item = stack.item;
                  
                  CoreBuild core = unit.closestCore();
                  if (core != null && unit.within(core, unit.type.range)) {
-                    if (core.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
-                       Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, core);
-                    }
+                    transfer(unit, core);
                  } else {
-                    for (int i = 0; i < stack.amount; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
+                    for (int i = 0; i < itemTake; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
                  }
               }
-              stack.amount = Math.min(stack.amount - (unit.type.itemCapacity - unit.stack.amount), unit.stack.amount);
+              stack.amount = Math.min(stack.amount - itemTake, unit.stack.amount);
               if (stack.amount <= 0) kill();
            }
+        }
+        
+        public void gather(Building build, int itemTake) {
+           if (build.acceptStack(stack.item, stack.amount, this) > 0) {
+              build.items.add(stack.item, itemTake);
+           }
+           stack.amount = Math.min(stack.amount - itemTake, build.items.total());
+           if (stack.amount <= 0) kill();
+        }
+        
+        public void transfer(Unit unit, Building build) {
+           if (build.acceptStack(unit.stack.item, unit.stack.amount, unit) > 0) {
+              Call.transferItemTo(unit, unit.stack.item, unit.stack.amount, unit.x, unit.y, build);
+           } 
         }
         
         @Override

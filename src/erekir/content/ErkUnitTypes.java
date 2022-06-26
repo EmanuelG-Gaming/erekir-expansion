@@ -360,7 +360,7 @@ public class ErkUnitTypes implements AltContentList{
                 x = 5f;
                 y = 3.8f;
                 shootSound = ErkSounds.fieldRelease;
-                shootCone = 360;
+                shootCone = 15;
                 shootY = 0f;
                 bullet = new CarapaceBulletType(){{
                    lifetime = 60f;

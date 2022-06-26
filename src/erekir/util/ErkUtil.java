@@ -53,7 +53,7 @@ public class ErkUtil{
    }
    
    /* Whenever a building has the overlay button. */
-   public static  boolean containsButton(DropBuild build) {
+   public static  boolean hasButton(DropBuild build) {
        return build.containsButton;
    }
 }
