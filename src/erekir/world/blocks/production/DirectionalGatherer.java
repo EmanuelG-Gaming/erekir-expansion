@@ -14,7 +14,7 @@ import static mindustry.Vars.*;
 public class DirectionalGatherer extends Block{
    public int length = 10;
    
-   public DrawBlock drawer = new DrawDefault();
+   public DrawBlock drawer = new DrawMulti(new DrawDefault(), new DrawSideRegion());
    
    public DirectionalGatherer(String name) {
       super(name);
