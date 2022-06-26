@@ -52,7 +52,7 @@ public class DirectionalGatherer extends GenericCrafter{
           
           for (int i = 0; i < size; i++) {
              //stealing
-             float px = x - (size - 1) / 2, py = y - (size - 1) / 2;
+             int px = (int) x - (size - 1) / 2, py = (int) y - (size - 1) / 2;
              switch (rotation) {
                 case 0:
                    Tmp.p1.set(px + size, py + i);
