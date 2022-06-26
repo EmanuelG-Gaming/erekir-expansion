@@ -13,7 +13,11 @@ import mindustry.world.draw.*;
   * lightwise-correct side regions. */
 public class DrawSideRegion extends DrawBlock{
     public TextureRegion top1, top2;
-
+    
+    public DrawSideRegion() {
+      
+    }
+    
     @Override
     public void draw(Building build) {
         Draw.rect(build.rotation > 1 ? top2 : top1, build.x, build.y, build.rotdeg());
