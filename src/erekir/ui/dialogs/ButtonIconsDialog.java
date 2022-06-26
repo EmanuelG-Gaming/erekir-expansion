@@ -35,7 +35,7 @@ public class ButtonIconsDialog extends BaseDialog{
             if (++r[0] % rowCount == 0) t.row();
          });
          t.row();
-         t.button(new TextureRegionDrawable(Core.atlas.find(nothing)), Styles.squareTogglei, () -> {
+         t.button(new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + nothing)), Styles.squareTogglei, () -> {
              selection = nothing;
          }).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == nothing);
             
