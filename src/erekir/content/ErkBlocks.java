@@ -4,9 +4,11 @@ import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
+import mindustry.world.draw.*;
 import mindustry.world.blocks.environment.Floor;
 import erekir.ctype.*;
 import erekir.graphics.*;
+import erekir.world.draw.*;
 import erekir.world.blocks.environment.ItemProp;
 import erekir.world.blocks.defense.BlockUpkeeper;
 import erekir.world.blocks.production.DirectionalGatherer;
@@ -72,6 +74,7 @@ public class ErkBlocks implements AltContentList{
       }};
       
       dGatherer = new DirectionalGatherer("directionalGatherer"){{
+          drawer = new DrawMulti(new DrawDefault(), new DrawSideRegion());
           size = 1;
           length = 7;
           requirements(Category.production, with(Items.beryllium, 30));

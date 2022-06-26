@@ -5,8 +5,8 @@ import arc.math.geom.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.draw.*;
-import erekir.world.draw.*;
-import erekir.world.blocks.environment.*;
+import erekir.util.*;
+import erekir.world.blocks.environment.ItemProp.*;
 import erekir.world.blocks.gather.*;
 
 import static mindustry.Vars.*;
@@ -14,7 +14,7 @@ import static mindustry.Vars.*;
 public class DirectionalGatherer extends Block{
    public int length = 10;
    
-   public DrawBlock drawer = new DrawMulti(new DrawDefault(), new DrawSideRegion());
+   public DrawBlock drawer = new DrawDefault();
    
    public DirectionalGatherer(String name) {
       super(name);
