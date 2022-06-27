@@ -75,8 +75,8 @@ public class DirectionalGatherer extends GenericCrafter{
                 Pal.placing,
                 Tmp.p1.x,
                 Tmp.p1.y,
-                Tmp.p1.x + dx * len,
-                Tmp.p1.y + dy * len
+                (Tmp.p1.x + dx * len) * tilesize,
+                (Tmp.p1.y + dy * len) * tilesize
             );
          }
       }
@@ -97,10 +97,10 @@ public class DirectionalGatherer extends GenericCrafter{
          int len = length;
          for (int l = 0; l < size; l++) {
             Point2 p = sides[l];
-            float tx = p.x + Geometry.d4x(rotation) * tilesize,
-                  ty = p.y + Geometry.d4y(rotation) * tilesize;
+            float tx = p.x + Geometry.d4x(rotation) + len * tilesize,
+                  ty = p.y + Geometry.d4y(rotation) + len * tilesize;
          
-            world.raycastEachWorld(tx, ty, tx + len * tilesize, ty + len * tilesize, (cx, cy) -> {
+            world.raycastEachWorld(p.x, p.y, tx, ty, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
                 if (build != null && build instanceof DropBuild) {
                    DropBuild drop = (DropBuild) build;
