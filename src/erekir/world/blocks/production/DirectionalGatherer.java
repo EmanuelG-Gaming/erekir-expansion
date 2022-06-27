@@ -54,35 +54,19 @@ public class DirectionalGatherer extends GenericCrafter{
       public void drawSelect() {
           super.drawSelect();
           int len = length - 1;
+          float dir = Geometry.d4(rotation);
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
           
           for (int i = 0; i < size; i++) {
-             //stealing
-             int px = (int) x - (size - 1) / 2, py = (int) y - (size - 1) / 2;
-             switch (rotation) {
-                case 0:
-                   Tmp.p1.set(px + size, py + i);
-                   break;
-                   
-                case 1:
-                   Tmp.p1.set(px + i, py + size);
-                   break;
-                   
-                case 2:
-                   Tmp.p1.set(px - 1, py + i);
-                   break;
-                   
-                case 3: 
-                   Tmp.p1.set(px + i, py - 1);
-                   break;
-             }
-             
+             Point2 p = points[i];
+             float px = (p.x - dir.x / 2f) * tilesize, ly = (p.y - dir.y / 2f) * tilesize;
+ 
              Drawf.dashLine(
                 Pal.placing,
-                Tmp.p1.x,
-                Tmp.p1.y,
-                Tmp.p1.x + dx * len * tilesize,
-                Tmp.p1.y + dy * len * tilesize
+                p.x,
+                p.y,
+                p.x + dx * len * tilesize,
+                p.y + dy * len * tilesize
             );
          }
       }
@@ -104,10 +88,10 @@ public class DirectionalGatherer extends GenericCrafter{
          int rot = rotation;
          for (int l = 0; l < size; l++) {
             Point2 p = sides[l];
-            float tx = p.x + Geometry.d4x(rotation) * len,
-                  ty = p.y + Geometry.d4y(rotation) * len;
+            float tx = Geometry.d4x(rotation) * len * tilesize,
+                  ty = Geometry.d4y(rotation) * len * tilesize;
          
-            world.raycastEachWorld(p.x, p.y, tx, ty, (cx, cy) -> {
+            world.raycastEachWorld(p.x, p.y, p.x + tx, p.y + ty, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
                 if (build != null && build instanceof DropBuild) {
                    DropBuild drop = (DropBuild) build;
