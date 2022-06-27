@@ -24,7 +24,7 @@ public class ErkBlocks implements AltContentList{
     berylUpkeeper,
     
     //Gathering
-    dGatherer
+    dGatherer, dCollector
      
     ;
     
@@ -78,6 +78,15 @@ public class ErkBlocks implements AltContentList{
           rotateDraw = false;
           regionRotated1 = 1;
           requirements(Category.production, with(Items.beryllium, 30));
+      }};
+      
+      dCollector = new DirectionalGatherer("directionalCollector"){{
+          size = 2;
+          length = 14;
+          consumePower(75f / 60f);
+          rotateDraw = false;
+          regionRotated1 = 1;
+          requirements(Category.production, with(Items.beryllium, 120, Items.tungsten, 50, Items.oxide, 35, Items.thorium, 45));
       }};
     }
 }

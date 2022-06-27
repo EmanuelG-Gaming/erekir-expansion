@@ -104,8 +104,8 @@ public class DirectionalGatherer extends GenericCrafter{
          int rot = rotation;
          for (int l = 0; l < size; l++) {
             Point2 p = sides[l];
-            float tx = p.x * len * tilesize,
-                  ty = p.y * len * tilesize;
+            float tx = p.x + Geometry.d4x(rotation) * len,
+                  ty = p.y + Geometry.d4y(rotation) * len;
          
             world.raycastEachWorld(p.x, p.y, tx, ty, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
