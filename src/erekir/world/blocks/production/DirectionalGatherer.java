@@ -12,6 +12,7 @@ import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.entities.*;
 import erekir.util.*;
+import erekir.content.*;
 import erekir.world.blocks.environment.ItemProp.*;
 import erekir.world.blocks.gather.*;
 
