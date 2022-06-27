@@ -2,6 +2,7 @@ package erekir.world.blocks.production;
 
 import arc.math.*;
 import arc.math.geom.*;
+import arc.graphics.*;
 import arc.util.*;
 import mindustry.gen.*;
 import mindustry.world.*;
@@ -9,6 +10,7 @@ import mindustry.world.draw.*;
 import mindustry.world.blocks.production.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.entities.*;
 import erekir.util.*;
 import erekir.world.blocks.environment.ItemProp.*;
 import erekir.world.blocks.gather.*;
@@ -18,6 +20,9 @@ import static mindustry.Vars.*;
 public class DirectionalGatherer extends GenericCrafter{
    /** Length, in tiles. */
    public int length = 10;
+   
+   public Effect laserEffect = ErkFx.hitSquaresColorSmall;
+   public Color laserColor = Color.valueOf("ea8878");
    
    public DirectionalGatherer(String name) {
       super(name);
@@ -95,10 +100,11 @@ public class DirectionalGatherer extends GenericCrafter{
       @Override
       public void gather() {
          int len = length;
+         int rot = rotation;
          for (int l = 0; l < size; l++) {
             Point2 p = sides[l];
-            float tx = p.x + Geometry.d4x(rotation) * len * tilesize,
-                  ty = p.y + Geometry.d4y(rotation) * len * tilesize;
+            float tx = p.x * len * tilesize,
+                  ty = p.y * len * tilesize;
          
             world.raycastEachWorld(p.x, p.y, tx, ty, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
@@ -106,6 +112,7 @@ public class DirectionalGatherer extends GenericCrafter{
                    DropBuild drop = (DropBuild) build;
                    if (ErkUtil.hasButton(drop)) {
                       drop.gather(this, 1);
+                      laserEffect.at(drop.tileX(), drop.tileY(), rot * 90f, laserColor);
                       return true;
                    }
                 }
