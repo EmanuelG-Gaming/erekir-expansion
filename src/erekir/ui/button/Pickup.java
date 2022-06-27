@@ -51,6 +51,8 @@ public class Pickup{
    }
    
    public static void createPickupButton(Building bloc, Runnable run) {
-       createPickupButton(bloc, ui.getIcon(Core.settings.getString("erekir-expansion-buttonIcon")), run);
+       String icon = Core.settings.getString("erekir-expansion-buttonIcon");
+       //a custom (almost?) icon
+       createPickupButton(bloc, icon == "nothingness" ? new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + icon)) : ui.getIcon(icon), run);
    }
 }

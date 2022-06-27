@@ -73,10 +73,10 @@ public class DirectionalGatherer extends GenericCrafter{
              
              Drawf.dashLine(
                 Pal.placing,
-                Tmp.p1.x * tilesize,
-                Tmp.p1.y * tilesize,
-                (Tmp.p1.x + dx * len) * tilesize,
-                (Tmp.p1.y + dy * len) * tilesize
+                Tmp.p1.x,
+                Tmp.p1.y,
+                Tmp.p1.x + dx * len,
+                Tmp.p1.y + dy * len
             );
          }
       }
