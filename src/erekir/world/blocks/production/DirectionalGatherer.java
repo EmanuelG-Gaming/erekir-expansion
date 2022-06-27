@@ -54,11 +54,11 @@ public class DirectionalGatherer extends GenericCrafter{
       public void drawSelect() {
           super.drawSelect();
           int len = length - 1;
-          float dir = Geometry.d4(rotation);
+          int dir = Geometry.d4(rotation);
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
           
           for (int i = 0; i < size; i++) {
-             Point2 p = points[i];
+             Point2 p = sides[i];
              float px = (p.x - dir.x / 2f) * tilesize, ly = (p.y - dir.y / 2f) * tilesize;
  
              Drawf.dashLine(
