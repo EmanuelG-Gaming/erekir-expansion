@@ -54,7 +54,7 @@ public class DirectionalGatherer extends GenericCrafter{
       public void drawSelect() {
           super.drawSelect();
           int len = length - 1;
-          int dir = Geometry.d4(rotation);
+          Point2 dir = Geometry.d4(rotation);
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
           
           for (int i = 0; i < size; i++) {
