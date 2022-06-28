@@ -59,14 +59,14 @@ public class DirectionalGatherer extends GenericCrafter{
           
           for (int i = 0; i < size; i++) {
              Point2 p = sides[i];
-             float px = (p.x - dir.x / 2f) * tilesize, ly = (p.y - dir.y / 2f) * tilesize;
+             float px = (p.x - dir.x / 2f) * tilesize, py = (p.y - dir.y / 2f) * tilesize;
  
              Drawf.dashLine(
                 Pal.placing,
-                p.x * tilesize,
-                p.y * tilesize,
-                p.x + dx * len * tilesize,
-                p.y + dy * len * tilesize
+                px,
+                py,
+                px + dx * len * tilesize,
+                py + dy * len * tilesize
             );
          }
       }
