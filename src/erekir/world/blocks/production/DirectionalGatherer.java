@@ -95,7 +95,7 @@ public class DirectionalGatherer extends GenericCrafter{
  
             world.raycastEachWorld(px, py, px + dx * len * tilesize, py + dy * len * tilesize, (cx, cy) -> {
                 Tile tile = world.tile(cx, cy);
-                if (build != null) {
+                if (tile != null) {
                    if (tile.build != null && tile.build instanceof DropBuild) {
                       DropBuild drop = (DropBuild) tile.build;
                       if (ErkUtil.hasButton(drop)) {
