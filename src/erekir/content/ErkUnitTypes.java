@@ -539,7 +539,7 @@ public class ErkUnitTypes implements AltContentList{
                 int count = 8;
                 spawnInaccuracy = (float) 180 / 2 / count;
                 for (int j = 0; j < count; j++) {
-                    bullets.add(new BasicBulletType(3f, 13f){{
+                      bullets.add(new BasicBulletType(3f, 13f){{
                        width = 17f;
                        hitSize = 6.5f;
                        height = 13.5f;
@@ -551,7 +551,7 @@ public class ErkUnitTypes implements AltContentList{
                    }});
                 }
             }};
-         }));
+         }});
       }};
-    }
+   }
 }
