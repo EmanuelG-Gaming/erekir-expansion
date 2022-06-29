@@ -501,18 +501,57 @@ public class ErkUnitTypes implements AltContentList{
       
       shredder = new ErekirUnitType("shredder"){{
           health = 1800;
-	        speed = 1.9f;
+	        speed = 1.1f;
  	        hitSize = 12;
 	        drag = 0.03f;
 	        accel = 0.24f;
 	        flying = true;
           aimDst = 3f;
           range = 250f;
-          engineOffset = 9.5f;
+          engineOffset = 12.5f;
+          engineSize = 2.65f;
           targetAir = true;
           ammoType = new OreAmmoType(Blocks.wallOreTungsten, 15);
           
           constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 120f;
+             mirror = false;
+             top = true;
+             x = 0f;
+             y = 6f;
+             bullet = new DivisibleBulletType(6f, 65f){{
+                knockback = 5f;
+                width = 27f;
+                hitSize = 8f;
+                height = 24.5f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = Color.valueOf("feb380");
+                trailWidth = 6.5f;
+                trailLength = 4;
+                divisions = 4;
+                spawnDelay = 3f;
+                rotateShooting = true;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                
+                int count = 8;
+                spawnInaccuracy = (float) 180 / 2 / count;
+                for (int j = 0; j < count; j++) {
+                    bullets.add(new BasicBulletType(3f, 13f){{
+                       width = 17f;
+                       hitSize = 6.5f;
+                       height = 13.5f;
+                       hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                       frontColor = Color.valueOf("feb380");
+                       trailWidth = 4f;
+                       trailLength = 3;
+                       hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
+                   }});
+                }
+            }};
+         }));
       }};
     }
 }

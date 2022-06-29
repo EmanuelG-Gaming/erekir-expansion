@@ -57,6 +57,7 @@ public class ErekirExpansion extends Mod{
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.agglomerate, ErkUnitTypes.accumulate);
+           addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.apart, ErkUnitTypes.shredder);
         });
        
         Events.on(ClientLoadEvent.class, e -> {

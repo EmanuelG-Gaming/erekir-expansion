@@ -28,7 +28,9 @@ public class ErkTechTree{
        });
        
        node(primeRefabricator, () -> {
-           node(ErkUnitTypes.accumulate);
+           node(ErkUnitTypes.accumulate, () -> {
+               node(ErkUnitTypes.shredder);
+           });
        });
    }
 }

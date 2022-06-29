@@ -94,13 +94,15 @@ public class DirectionalGatherer extends GenericCrafter{
             float px = (p.x - dir.x / 2f) * tilesize, py = (p.y - dir.y / 2f) * tilesize;
  
             world.raycastEachWorld(px, py, px + dx * len * tilesize, py + dy * len * tilesize, (cx, cy) -> {
-                Building build = world.tile(cx, cy).build;
-                if (build != null && build instanceof DropBuild) {
-                   DropBuild drop = (DropBuild) build;
-                   if (ErkUtil.hasButton(drop)) {
-                      drop.gather(this, 1);
-                      laserEffect.at(drop.tileX(), drop.tileY(), rot * 90f, laserColor);
-                      return true;
+                Tile tile = world.tile(cx, cy);
+                if (build != null) {
+                   if (tile.build != null && tile.build instanceof DropBuild) {
+                      DropBuild drop = (DropBuild) tile.build;
+                      if (ErkUtil.hasButton(drop)) {
+                         drop.gather(this, 1);
+                         laserEffect.at(cx, cy, rot * 90f, laserColor);
+                         return true;
+                      }
                    }
                 }
                 return false;
@@ -113,11 +115,6 @@ public class DirectionalGatherer extends GenericCrafter{
             if (sides[i] == null) sides[i] = new Point2();
             nearbySide(tileX(), tileY(), rotation, i, sides[i]);
          }
-      }
-      
-      @Override
-      public int acceptStack(Item item, int amount, Teamc source) {
-         return Math.min(itemCapacity - items.total(), amount);
       }
    }
 }
