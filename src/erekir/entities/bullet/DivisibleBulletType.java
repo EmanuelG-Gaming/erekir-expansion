@@ -42,7 +42,7 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    private void shoot(Bullet b, float x, float y) {
-      for (int i = 0; i < bullets.size; i++) {
+      for (final int i = 0; i < bullets.size; i++) {
          Time.run(i * spawnDelay, () -> {
             currentBullet = bullets.get(i);
             for (int d = 0; d < divisions; d++) {
