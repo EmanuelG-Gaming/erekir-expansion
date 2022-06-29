@@ -17,6 +17,8 @@ public class DivisibleBulletType extends BasicBulletType{
    /** Bullets to be spawned. */
    public Seq<BulletType> bullets = new Seq<BulletType>();
    public boolean rotateShooting = false;
+   /** True for clockwise rotation, otherwise counter-clockwise. */
+   public boolean clockwise = true;
    
    public Sound spawnSound = Sounds.none;
    public float spawnSoundMin = 0.9f;
@@ -40,15 +42,19 @@ public class DivisibleBulletType extends BasicBulletType{
    }
    
    private void shoot(Bullet b, float x, float y) {
+      int i = 0;
       bullets.each(bul -> {
-         int i = 0;
          Time.run(++i * spawnDelay, () -> {
             currentBullet = bul;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
-               int I = 0;
                if (rotateShooting) {
-                  release(b, x, y, b.rotation() + angle + ++I * spawnInaccuracy);
+                  release(
+                    b, x, y,
+                    clockwise
+                    ? b.rotation() + angle - i * spawnInaccuracy
+                    : b.rotation() + angle + i * spawnInaccuracy
+                  );
                }
                else release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
                spawnSound.at(x, y, Mathf.random(spawnSoundMin, spawnSoundMax));

@@ -80,6 +80,8 @@ public class DirectionalGatherer extends GenericCrafter{
          if (efficiency > 0) {
             gather();
          }
+         
+         dump();
       }
       
       @Override
@@ -115,6 +117,11 @@ public class DirectionalGatherer extends GenericCrafter{
             if (sides[i] == null) sides[i] = new Point2();
             nearbySide(tileX(), tileY(), rotation, i, sides[i]);
          }
+      }
+      
+      @Override
+      public int acceptStack(Item item, int amount, Teamc source) {
+         return Math.min(itemCapacity - items.total(), amount);
       }
    }
 }
