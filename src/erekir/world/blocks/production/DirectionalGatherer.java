@@ -77,7 +77,7 @@ public class DirectionalGatherer extends GenericCrafter{
          
          if (sides[0] == null) updateSides();
          
-         if (progress >= 1f) {
+         if (efficiency > 0) {
             gather();
          }
       }
@@ -93,7 +93,7 @@ public class DirectionalGatherer extends GenericCrafter{
             Point2 p = sides[l];
             float px = (p.x - dir.x / 2f) * tilesize, py = (p.y - dir.y / 2f) * tilesize;
  
-            world.raycastEachWorld(px, py, px + dx * length * tilesize, py + dy * len * tilesize, (cx, cy) -> {
+            world.raycastEachWorld(px, py, px + dx * len * tilesize, py + dy * len * tilesize, (cx, cy) -> {
                 Building build = world.tile(cx, cy).build;
                 if (build != null && build instanceof DropBuild) {
                    DropBuild drop = (DropBuild) build;

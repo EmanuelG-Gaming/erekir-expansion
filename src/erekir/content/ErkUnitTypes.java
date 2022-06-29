@@ -36,10 +36,12 @@ public class ErkUnitTypes implements AltContentList{
     //why
     agglomerateMissile, agglomerate, accumulate,
     
-    spread, apart;
+    spread, apart, shredder;
     
     @Override
     public void load() {
+       
+       //region beryllium - ground
        gem = new ErekirUnitType("gem"){{
           health = 650;
        	  armor = 1;
@@ -197,6 +199,7 @@ public class ErkUnitTypes implements AltContentList{
           );
        }};
        
+       //region beryllium - air
        aggregate = new ErekirUnitType("aggregate"){{
           health = 650;
 	        speed = 2.4f;
@@ -381,6 +384,7 @@ public class ErkUnitTypes implements AltContentList{
           );
        }};
        
+       //region tungsten - air
        spread = new ErekirUnitType("spread"){{
           health = 560;
 	        speed = 2.6f;
@@ -493,6 +497,22 @@ public class ErkUnitTypes implements AltContentList{
                 buildingDamageMultiplier = 0.35f;
              }};
           }});
+      }};
+      
+      shredder = new ErekirUnitType("shredder"){{
+          health = 1800;
+	        speed = 1.9f;
+ 	        hitSize = 12;
+	        drag = 0.03f;
+	        accel = 0.24f;
+	        flying = true;
+          aimDst = 3f;
+          range = 250f;
+          engineOffset = 9.5f;
+          targetAir = true;
+          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 15);
+          
+          constructor = UnitEntity::create;
       }};
     }
 }
