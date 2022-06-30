@@ -20,7 +20,7 @@ public class ItemProp extends Block{
     public int amount = 1;
     
     /** The scatteredness of the resources on this block. */
-    public float scatterX = scatterY = 8f / 2f;
+    public float scatterX = 8f / 2f, scatterY = 8f / 2f;
     
     public ItemProp(String name) {
         super(name);
@@ -39,7 +39,6 @@ public class ItemProp extends Block{
         destroySound = breakSound = Sounds.missile;
         drawTeamOverlay = false;
         hasShadow = false;
-        canShadow = false;
         //partial thanks to meep for this
         createRubble = false;
         drawCracks = false;
