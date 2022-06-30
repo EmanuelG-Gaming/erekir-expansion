@@ -44,18 +44,17 @@ public class DivisibleBulletType extends BasicBulletType{
    public void shoot(Bullet b, float x, float y) {
       bullets.each(bul -> {
          int i = 0;
-         float rot = 0;
          Time.run(++i * spawnDelay, () -> {
             currentBullet = bul;
-            rot += spawnInaccuracy;
+            float rot = 0;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
                if (rotateShooting) {
                   release(
                     b, x, y,
                     clockwise
-                    ? b.rotation() + angle - rot
-                    : b.rotation() + angle + rot
+                    ? b.rotation() + angle - (rot += spawnInaccuracy)
+                    : b.rotation() + angle + (rot += spawnInaccuracy)
                   );
                }
                else release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
