@@ -33,6 +33,7 @@ public class DirectionalGatherer extends GenericCrafter{
       rotate = true;
       canOverdrive = false;
       drawArrow = true;
+      hasItems = true;
    }
    
    @Override

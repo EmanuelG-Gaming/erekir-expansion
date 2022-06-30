@@ -16,7 +16,11 @@ import static mindustry.Vars.*;
 public class ItemProp extends Block{
     public Item dropItem = Items.copper;
     public float rotationOffset = 360f;
+    /** The amount of items attributed when this block is created. */
     public int amount = 1;
+    
+    /** The scatteredness of the resources on this block. */
+    public float scatterX = scatterY = 8f / 2f;
     
     public ItemProp(String name) {
         super(name);
@@ -33,8 +37,9 @@ public class ItemProp extends Block{
         instantDeconstruct = true;
         destroyEffect = breakEffect = Fx.none;
         destroySound = breakSound = Sounds.missile;
-        hasShadow = false;
         drawTeamOverlay = false;
+        hasShadow = false;
+        canShadow = false;
         //partial thanks to meep for this
         createRubble = false;
         drawCracks = false;
@@ -50,8 +55,8 @@ public class ItemProp extends Block{
         DropBuild build = (DropBuild) tile.build;
         ItemStack stack = build.stack;
         for (int i = 0; i < stack.amount; i++) {
-           float spreadX = Mathf.randomSeedRange(tile.pos() + i, tilesize - 2);
-           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, tilesize - 2);
+           float spreadX = Mathf.randomSeedRange(tile.pos() + i, scatterX);
+           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, scatterY);
            float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
            Draw.rect(stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
@@ -64,7 +69,7 @@ public class ItemProp extends Block{
         if (dropItem != null) {
             setup(dropItem);
         } else {
-            throw new IllegalArgumentException("slippery fingers");
+            throw new IllegalArgumentException("slippery fingers. cannot have none items.");
         }
     }
     

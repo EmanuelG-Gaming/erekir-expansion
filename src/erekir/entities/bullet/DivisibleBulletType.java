@@ -25,8 +25,7 @@ public class DivisibleBulletType extends BasicBulletType{
    public float spawnSoundMax = 1.1f;
    
    private static BulletType currentBullet = Bullets.placeholder;
-   private static int i = 0;
-   
+
    public DivisibleBulletType(float speed, float damage) {
        super(speed, damage);
    }
@@ -42,18 +41,20 @@ public class DivisibleBulletType extends BasicBulletType{
       shoot(b, x, y);
    }
    
-   private void shoot(Bullet b, float x, float y) {
+   public void shoot(Bullet b, float x, float y) {
       bullets.each(bul -> {
+         int i = 0;
          Time.run(++i * spawnDelay, () -> {
             currentBullet = bul;
+            float rot = i * spawnInaccuracy;
             for (int d = 0; d < divisions; d++) {
                float angle = 360f / divisions * d;
                if (rotateShooting) {
                   release(
                     b, x, y,
                     clockwise
-                    ? b.rotation() + angle - i * spawnInaccuracy
-                    : b.rotation() + angle + i * spawnInaccuracy
+                    ? b.rotation() + angle - rot
+                    : b.rotation() + angle + rot
                   );
                }
                else release(b, x, y, b.rotation() + angle + Mathf.range(spawnInaccuracy));
