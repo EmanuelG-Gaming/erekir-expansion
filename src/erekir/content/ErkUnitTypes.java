@@ -511,6 +511,7 @@ public class ErkUnitTypes implements AltContentList{
           engineOffset = 12.5f;
           engineSize = 2.65f;
           targetAir = true;
+          lowAltitude = true;
           ammoType = new OreAmmoType(Blocks.wallOreTungsten, 15);
           
           constructor = UnitEntity::create;
