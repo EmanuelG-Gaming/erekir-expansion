@@ -82,8 +82,15 @@ public class ItemProp extends Block{
         public boolean containsButton = false;
         
         public void addButton() {
-            Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
-            containsButton = true;
+           Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
+           containsButton = true;
+        }
+        
+        @Override
+        public void updateTile() {
+           super.updateTile();
+           
+           if (handleStackKill()) kill();
         }
         
         public void gather(Unit unit, int itemTake) {
@@ -103,18 +110,16 @@ public class ItemProp extends Block{
                     for (int i = 0; i < itemTake; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
                  }
                  
-                 stack.amount -= itemTake;
+                 stack.amount = Math.max(stack.amount - itemTake, 0);
               }
-              if (stack.amount <= 0) kill();
            }
         }
         
         public void gather(Building build, int itemTake) {
-           if (build.acceptStack(stack.item, stack.amount, this) > 0) {
+           if (build.block.itemCapacity - build.items.get(stack.item.id).amount >= itemTake) {
               build.items.add(stack.item, itemTake);
+              stack.amount = Math.max(stack.amount - itemTake, 0);
            }
-           stack.amount = Math.min(stack.amount - itemTake, build.items.total());
-           if (stack.amount <= 0) kill();
         }
         
         public void transfer(Unit unit, Building build) {
@@ -123,10 +128,14 @@ public class ItemProp extends Block{
            } 
         }
         
+        public boolean handleStackKill() {
+           return stack.amount <= 0;
+        }
+        
         @Override
         public void created() {
-            stack.amount = amount;
-            stack.item = itemDrop;
+           stack.amount = amount;
+           stack.item = itemDrop;
         }
     }
 }

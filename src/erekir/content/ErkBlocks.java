@@ -21,7 +21,7 @@ public class ErkBlocks implements AltContentList{
     angryArkyciteFloor,
     
     //Defense
-    berylUpkeeper,
+    /*berylUpkeeper*/,
     
     //Gathering
     dGatherer, dCollector
@@ -63,13 +63,15 @@ public class ErkBlocks implements AltContentList{
          cacheLayer = ErekirShaders.arkyLayer;
          albedo = 0.9f;
       }};
-        
+      
+      /*  
       berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{
           size = 2;
           lanes = 4;
           range = 12;
           requirements(Category.defense, with(Items.beryllium, 100, Items.graphite, 65, Items.tungsten, 40));
       }};
+      */
       
       dGatherer = new DirectionalGatherer("directionalGatherer"){{
           size = 1;
