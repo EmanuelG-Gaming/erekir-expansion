@@ -21,7 +21,7 @@ public class ErkBlocks implements AltContentList{
     angryArkyciteFloor,
     
     //Defense
-    /*berylUpkeeper*/,
+    /*berylUpkeeper,*/
     
     //Gathering
     dGatherer, dCollector
@@ -30,23 +30,19 @@ public class ErkBlocks implements AltContentList{
     
     @Override
     public void load() {
-      berylDrop = new ItemProp("berylDrop"){{
-          dropItem = Items.beryllium;
+      berylDrop = new ItemProp("berylDrop", Items.beryllium)){{
           amount = 4;
       }};
       
-      tungDrop = new ItemProp("tungDrop"){{
-          dropItem = Items.tungsten;
+      tungDrop = new ItemProp("tungDrop", Items.tungsten){{
           amount = 2;
       }};
       
-      graphiteDrop = new ItemProp("graphiteDrop"){{
-          dropItem = Items.graphite;
+      graphiteDrop = new ItemProp("graphiteDrop", Items.graphite){{
           amount = 3;
       }};
       
-      thorDrop = new ItemProp("thoriumDrop"){{
-          dropItem = Items.thorium;
+      thorDrop = new ItemProp("thoriumDrop", Items.thorium){{
           amount = 1;
       }};
       

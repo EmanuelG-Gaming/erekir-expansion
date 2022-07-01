@@ -14,7 +14,6 @@ import erekir.ui.button.Pickup;
 import static mindustry.Vars.*;
 
 public class ItemProp extends Block{
-    public Item dropItem = Items.copper;
     public float rotationOffset = 360f;
     /** The amount of items attributed when this block is created. */
     public int amount = 1;
@@ -44,6 +43,18 @@ public class ItemProp extends Block{
         drawCracks = false;
     }
     
+    public ItemProp(String name, Item itm) {
+        super(name);
+        localizedName = itm.localizedName;
+        this.dropItem = itm;
+        mapColor.set(itm.color);
+        useColor = true;
+    }
+    
+    public ItemProp(Item itm) {
+        this(itm.name + "Drop", itm);
+    }
+    
     @Override 
     public int minimapColor(Tile tile) {
         return dropItem.color.rgba();
@@ -71,6 +82,13 @@ public class ItemProp extends Block{
             throw new IllegalArgumentException("slippery fingers. cannot have none items.");
         }
     }
+    
+    @Override
+    public TextureRegion[] icons() {
+       //java
+       return new TextureRegion[]{dropItem.fullIcon};
+    } 
+    
     
     public void setup(Item itm) {
         this.itemDrop = itm;
