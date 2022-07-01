@@ -136,7 +136,7 @@ public class ItemProp extends Block{
         }
         
         public void gather(Building build, int itemTake) {
-           if (build.block.itemCapacity - build.items.get(stack.item.id).amount >= itemTake) {
+           if (build.block.itemCapacity - build.items.get(stack.item).amount >= itemTake) {
               build.items.add(stack.item, itemTake);
               stack.amount = Math.max(stack.amount - itemTake, 0);
            }
