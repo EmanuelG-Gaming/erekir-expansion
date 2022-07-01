@@ -3,6 +3,7 @@ package erekir.world.blocks.environment;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import arc.util.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.blocks.storage.CoreBlock.*;
@@ -14,6 +15,7 @@ import erekir.ui.button.Pickup;
 import static mindustry.Vars.*;
 
 public class ItemProp extends Block{
+    public @Nullable Item dropItem;
     public float rotationOffset = 360f;
     /** The amount of items attributed when this block is created. */
     public int amount = 1;
@@ -46,7 +48,7 @@ public class ItemProp extends Block{
     public ItemProp(String name, Item itm) {
         super(name);
         localizedName = itm.localizedName;
-        this.dropItem = itm;
+        dropItem = itm;
         mapColor.set(itm.color);
         useColor = true;
     }
