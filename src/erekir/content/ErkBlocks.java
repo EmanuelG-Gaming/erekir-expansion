@@ -30,7 +30,7 @@ public class ErkBlocks implements AltContentList{
     
     @Override
     public void load() {
-      berylDrop = new ItemProp("berylDrop", Items.beryllium)){{
+      berylDrop = new ItemProp("berylDrop", Items.beryllium){{
           amount = 4;
       }};
       
