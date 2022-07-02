@@ -49,8 +49,7 @@ public class ItemProp extends Block{
         super(name);
         localizedName = itm.localizedName;
         dropItem = itm;
-        mapColor.set(itm.color);
-        useColor = true;
+
     }
     
     public ItemProp(Item itm) {
@@ -93,7 +92,7 @@ public class ItemProp extends Block{
     
     
     public void setup(Item itm) {
-        this.itemDrop = itm;
+        dropItem = itm;
         //this.mapColor.set(itm.color); 
     }
     
@@ -155,7 +154,7 @@ public class ItemProp extends Block{
         @Override
         public void created() {
            stack.amount = amount;
-           stack.item = itemDrop;
+           stack.item = dropItem;
         }
     }
 }
