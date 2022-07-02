@@ -3,7 +3,6 @@ package erekir.world.blocks.environment;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
-import arc.util.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.blocks.storage.CoreBlock.*;
@@ -15,7 +14,7 @@ import erekir.ui.button.Pickup;
 import static mindustry.Vars.*;
 
 public class ItemProp extends Block{
-    public @Nullable Item dropItem;
+    public Item dropItem = Items.copper;
     public float rotationOffset = 360f;
     /** The amount of items attributed when this block is created. */
     public int amount = 1;
@@ -47,13 +46,8 @@ public class ItemProp extends Block{
     
     public ItemProp(String name, Item itm) {
         super(name);
-        localizedName = itm.localizedName;
+        localizedName = itm.localizedName + "-drop";
         dropItem = itm;
-
-    }
-    
-    public ItemProp(Item itm) {
-        this(itm.name + "Drop", itm);
     }
     
     @Override 
@@ -80,7 +74,7 @@ public class ItemProp extends Block{
         if (dropItem != null) {
             setup(dropItem);
         } else {
-            throw new IllegalArgumentException("slippery fingers. cannot have none items.");
+            throw new IllegalArgumentException("slippery fingers.");
         }
     }
     
@@ -88,7 +82,7 @@ public class ItemProp extends Block{
     public TextureRegion[] icons() {
        //java
        return new TextureRegion[]{dropItem.fullIcon};
-    } 
+    }
     
     
     public void setup(Item itm) {
