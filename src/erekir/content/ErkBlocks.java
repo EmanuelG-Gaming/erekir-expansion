@@ -82,7 +82,7 @@ public class ErkBlocks implements AltContentList{
           consumePower(75f / 60f);
           rotateDraw = false;
           regionRotated1 = 1;
-          requirements(Category.production, with(Items.beryllium, 115, Items.tungsten, 50, Items.oxide, 35, Items.thorium, 45));
+          requirements(Category.production, with(Items.beryllium, 75, Items.tungsten, 30, Items.graphite, 60));
       }};
     }
 }

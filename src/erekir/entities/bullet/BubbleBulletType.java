@@ -6,7 +6,8 @@ import arc.math.*;
 import mindustry.gen.*;
 import mindustry.entities.bullet.*;
 
-/** No new functionality added. */
+/** The anti loaf of bread overseer bullet.
+  *  No new functionality added. */
 public class BubbleBulletType extends BulletType{
     public float reflectionLength = 2.5f;
     public float reflectionAngle = 45f;
