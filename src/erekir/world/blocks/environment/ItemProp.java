@@ -58,13 +58,12 @@ public class ItemProp extends Block{
     @Override
     public void drawBase(Tile tile) {
        DropBuild build = (DropBuild) tile.build;
-       ItemStack stack = build.stack;
-       for (int i = 0; i < stack.amount; i++) {
+       for (int i = 0; i <build.stack.amount; i++) {
           float spreadX = Mathf.randomSeedRange(tile.pos() + i, scatterX);
           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, scatterY);
           float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
-          Draw.rect(stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
+          Draw.rect(build.stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
        }
     }
     

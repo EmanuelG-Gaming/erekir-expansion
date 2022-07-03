@@ -8,29 +8,42 @@ import static mindustry.content.TechTree.*;
 
 //TODO name
 public class ErkTechTree{
+   private static TechTree.TechNode context = null;
+   
    public static void load() {
-       node(mechFabricator, () -> {
+       vanillaNode(mechFabricator, () -> {
            node(ErkUnitTypes.gem);
        });
-       node(shipFabricator, () -> {
+       vanillaNode(shipFabricator, () -> {
            node(ErkUnitTypes.aggregate, () -> {
                node(ErkUnitTypes.spread);
            });
        });
        
-       node(mechRefabricator, () -> {
+       vanillaNode(mechRefabricator, () -> {
            node(ErkUnitTypes.geode);
        });
-       node(shipRefabricator, () -> {
+       vanillaNode(shipRefabricator, () -> {
            node(ErkUnitTypes.agglomerate, () -> {
                node(ErkUnitTypes.apart);
            });
        });
        
-       node(primeRefabricator, () -> {
+       vanillaNode(primeRefabricator, () -> {
            node(ErkUnitTypes.accumulate, () -> {
                node(ErkUnitTypes.shredder);
            });
        });
+       
+       vanillaNode(plasmaBore, () -> {
+           node(ErkBlocks.dGatherer, () -> {
+               node(ErkBlocks.dCollector);
+           });
+       });
+   }
+   
+   private static void vanillaNode(UnlockableContent parent, Runnable children)c{
+       context = TechTree.all.find(t -> t.content == parent);
+       children.run();
    }
 }
