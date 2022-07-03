@@ -42,7 +42,7 @@ public class ErkTechTree{
        });
    }
    
-   private static void vanillaNode(UnlockableContent parent, Runnable children)c{
+   private static void vanillaNode(UnlockableContent parent, Runnable children) {
        context = TechTree.all.find(t -> t.content == parent);
        children.run();
    }
