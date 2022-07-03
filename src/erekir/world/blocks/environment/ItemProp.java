@@ -3,6 +3,7 @@ package erekir.world.blocks.environment;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import arc.util.io.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.blocks.storage.CoreBlock.*;
@@ -142,6 +143,23 @@ public class ItemProp extends Block{
         public void created() {
            stack.amount = amount;
            stack.item = dropItem;
+        }
+        
+        @Override
+        public byte version() {
+           return 1;
+        }
+
+        @Override
+        public void write(Writes write) {
+           super.write(write);
+           write.i(stack.amount);
+        }
+      
+        @Override
+        public void read(Reads read, byte revision) {
+           super.read(read, revision);
+           stack.amount = read.i();
         }
     }
 }
