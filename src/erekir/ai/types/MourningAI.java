@@ -17,7 +17,7 @@ public class MourningAI extends AIController{
     public void updateMovement() {
         unloadPayloads();
         
-        float time = unit instanceof TimedKillc t ? t.time() : 1000000f;
+        float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
 
         rand.setSeed(unit.id);
         float random = rand.random(36f, 55.5f);
