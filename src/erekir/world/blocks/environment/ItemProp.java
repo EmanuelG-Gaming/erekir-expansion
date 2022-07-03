@@ -129,7 +129,7 @@ public class ItemProp extends Block{
         }
         
         public void gather(Building build, int itemTake) {
-           if (build.block.itemCapacity - build.items.get(stack.item) >= itemTake) {
+           if (build.block.itemCapacity - build.items.get(dropItem) >= itemTake) {
               build.items.add(dropItem, itemTake);
               currentAmount = Math.min(currentAmount - itemTake, itemCapacity);
            }
