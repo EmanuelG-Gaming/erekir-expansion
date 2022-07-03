@@ -1,5 +1,6 @@
 package erekir.world.blocks.environment;
 
+import arc.Core;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -52,13 +53,13 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-       ItemStack stack = ((DropBuild) tile.build).stack;
-       for (int i = 0; i < stack.amount; i++) {
+       DropBuild build = (DropBuild) tile.build;
+       for (int i = 0; i < build.currentAmount; i++) {
           float spreadX = Mathf.randomSeedRange(tile.pos() + i, scatterX);
           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, scatterY);
           float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
-          Draw.rect(stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
+          Draw.rect(dropItem.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
        }
     }
     
@@ -75,7 +76,7 @@ public class ItemProp extends Block{
     @Override
     public TextureRegion[] icons() {
        //java
-       return new TextureRegion[]{dropItem.fullIcon};
+       return new TextureRegion[]{Core.atlas.find("erekir-expansion-nothingness")};
     }
     
     
@@ -85,8 +86,13 @@ public class ItemProp extends Block{
     }
     
     public class DropBuild extends Building{
-        public ItemStack stack = new ItemStack(dropItem, amount);
+        public int currentAmount;
         public boolean containsButton = false;
+        
+        @Override
+        public void created() {
+           currentAmount = amount;
+        }
         
         public void addButton() {
            Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
@@ -102,30 +108,30 @@ public class ItemProp extends Block{
         
         public void gather(Unit unit, int itemTake) {
            //prevent item overrides
-           if (unit.stack.item != stack.item && unit.stack.amount != 0) return;
+           if (unit.stack.item != dropItem && unit.stack.amount != 0) return;
            
            if (unit != null) {
               if (unit.type.itemCapacity - unit.stack.amount >= itemTake) {
                  //the unit should gather the items first
                  unit.stack.amount = Math.min(unit.stack.amount + itemTake, unit.type.itemCapacity);
-                 unit.stack.item = stack.item;
+                 unit.stack.item = dropItem;
                  
                  CoreBuild core = unit.closestCore();
                  if (core != null && unit.within(core, unit.type.range)) {
                     transfer(unit, core);
                  } else {
-                    for (int i = 0; i < itemTake; i++) Fx.itemTransfer.at(x, y, 4, stack.item.color, unit);
+                    for (int i = 0; i < itemTake; i++) Fx.itemTransfer.at(x, y, 4, dropItem.color, unit);
                  }
                  
-                 stack.amount = Math.max(stack.amount - itemTake, 0);
+                 currentAmount = Math.min(currentAmount - itemTake, itemCapacity);
               }
            }
         }
         
         public void gather(Building build, int itemTake) {
            if (build.block.itemCapacity - build.items.get(stack.item) >= itemTake) {
-              build.items.add(stack.item, itemTake);
-              stack.amount = Math.max(stack.amount - itemTake, 0);
+              build.items.add(dropItem, itemTake);
+              currentAmount = Math.min(currentAmount - itemTake, itemCapacity);
            }
         }
         
@@ -136,7 +142,7 @@ public class ItemProp extends Block{
         }
         
         public boolean handleStackKill() {
-           return stack.amount <= 0;
+           return currentAmount <= 0;
         }
         
         @Override
@@ -147,13 +153,13 @@ public class ItemProp extends Block{
         @Override
         public void write(Writes write) {
            super.write(write);
-           write.i(stack.amount);
+           write.i(currentAmount);
         }
       
         @Override
         public void read(Reads read, byte revision) {
            super.read(read, revision);
-           stack.amount = read.i();
+           currentAmount = read.i();
         }
     }
 }
