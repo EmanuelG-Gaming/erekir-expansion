@@ -44,12 +44,6 @@ public class ItemProp extends Block{
         drawCracks = false;
     }
     
-    public ItemProp(String name, Item itm) {
-        super(name);
-        localizedName = itm.localizedName + "-drop";
-        dropItem = itm;
-    }
-    
     @Override 
     public int minimapColor(Tile tile) {
         return dropItem.color.rgba();
@@ -57,13 +51,13 @@ public class ItemProp extends Block{
     
     @Override
     public void drawBase(Tile tile) {
-       DropBuild build = (DropBuild) tile.build;
-       for (int i = 0; i <build.stack.amount; i++) {
+       ItemStack stack = ((DropBuild) tile.build).stack;
+       for (int i = 0; i < stack.amount; i++) {
           float spreadX = Mathf.randomSeedRange(tile.pos() + i, scatterX);
           float spreadY = Mathf.randomSeedRange(tile.pos() + i * 2, scatterY);
           float rot = Mathf.randomSeed(tile.pos() + i, rotationOffset);
            
-          Draw.rect(build.stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
+          Draw.rect(stack.item.fullIcon, tile.worldx() + spreadX, tile.worldy() + spreadY, itemSize, itemSize, rot);
        }
     }
     

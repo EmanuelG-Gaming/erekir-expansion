@@ -17,7 +17,7 @@ public class ErkBlocks implements AltContentList{
     public static Block
     
     //Environment
-    berylDrop, tungDrop, graphiteDrop, thorDrop,
+    berylDrop, tungDrop, graphiteDrop, sandDrop, thorDrop,
     angryArkyciteFloor,
     
     //Defense
@@ -30,19 +30,27 @@ public class ErkBlocks implements AltContentList{
     
     @Override
     public void load() {
-      berylDrop = new ItemProp("berylDrop", Items.beryllium){{
+      berylDrop = new ItemProp("berylDrop"){{
+          dropItem = Items.beryllium;
           amount = 4;
       }};
       
-      tungDrop = new ItemProp("tungDrop", Items.tungsten){{
+      tungDrop = new ItemProp("tungDrop"){{
+          dropItem = Items.tungsten;
           amount = 2;
       }};
       
-      graphiteDrop = new ItemProp("graphiteDrop", Items.graphite){{
+      graphiteDrop = new ItemProp("graphiteDrop"){{
+          dropItem = Items.graphite;
           amount = 3;
       }};
       
-      thorDrop = new ItemProp("thoriumDrop", Items.thorium){{
+      sandDrop = new ItemProp("sandDrop"){{
+          dropItem = Items.sand;
+          amount = 5;
+      }};
+      thorDrop = new ItemProp("thoriumDrop"){{
+          dropItem = Items.thorium;
           amount = 1;
       }};
       
