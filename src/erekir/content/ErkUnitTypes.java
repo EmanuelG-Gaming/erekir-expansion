@@ -14,7 +14,7 @@ import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.effect.*;
-import mindustry.ai.types;
+import mindustry.ai.types.*;
 import erekir.graphics.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;

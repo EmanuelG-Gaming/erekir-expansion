@@ -10,7 +10,7 @@ import static mindustry.Vars.*;
 
 /** A bullet type that can assign something to its
  *  despawn unit. */
-public class MourningSpawnBulletType extends BulletType{
+public class MourningSpawnBulletType extends BasicBulletType{
    public float despawnAngleOffset = 15f;
    protected static final Vec2 v = new Vec2();
    
@@ -30,7 +30,7 @@ public class MourningSpawnBulletType extends BulletType{
                
                //assign unit circle position
                if (unit.controller() instanceof MourningAI) {
-                  MourningAI ai = (MorningAI) unit.controller();
+                  MourningAI ai = (MourningAI) unit.controller();
                   ai.pos = (Position) v;
                }
                

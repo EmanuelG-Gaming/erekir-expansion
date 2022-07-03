@@ -16,12 +16,15 @@ public class MourningAI extends AIController{
     @Override
     public void updateMovement() {
         unloadPayloads();
+        
+        float time = unit instanceof TimedKillc t ? t.time() : 1000000f;
 
         rand.setSeed(unit.id);
         float random = rand.random(36f, 55.5f);
-        float dst = unit.type.range * 0.8;
-        if (unit.within(vec2.x, vec2.y, dat)) {
-            vec2.set(pos.x, pos.y);
+        
+        float dst = unit.type.range * 0.8f;
+        if (pos != null && unit.within(pos.getX(), pos.getY(), dst)) {
+            vec2.set(pos.getX(), pos.getY());
             circle((Position) vec2, random);
         }
         else {
