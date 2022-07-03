@@ -14,6 +14,7 @@ import mindustry.ctype.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.effect.*;
+import mindustry.ai.types;
 import erekir.graphics.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
@@ -36,7 +37,7 @@ public class ErkUnitTypes implements AltContentList{
     //why
     agglomerateMissile, agglomerate, accumulate,
     
-    spread, apart, shredder;
+    spread, apart, shredderMissile, shredder;
     
     @Override
     public void load() {
@@ -248,7 +249,7 @@ public class ErkUnitTypes implements AltContentList{
            health = 45;
            lowAltitude = true;
            rotateSpeed = 4.35f;
-           controller = u -> new MourningAI();
+           controller = u -> new MissileAI();
            
            weapons.add(new Weapon(){{
               shootCone = 360f;
@@ -499,6 +500,43 @@ public class ErkUnitTypes implements AltContentList{
           }});
       }};
       
+      shredderMissile = new MissileUnitType("shredder-missile"){{
+           trailColor = engineColor = Color.valueOf("feb380");
+           engineSize = 1.8f;
+           engineOffset = 1.85f;
+           engineLayer = Layer.effect;
+           hitSize = 4;
+           speed = 3.3f;
+           lifetime = 60f * 2.5f;
+           outlineColor = Pal.darkOutline;
+           health = 65;
+           lowAltitude = true;
+           rotateSpeed = 4.35f;
+           controller = u -> new MourningAI();
+           
+           weapons.add(new Weapon(){{
+              shootCone = 360f;
+              mirror = false;
+              reload = 1f;
+              shootOnDeath = true;
+              bullet = new ExplosionBulletType(50f, 28f){{
+                 shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
+                     lifetime = 55f;
+                     colorFrom = Color.white;
+                     colorTo = Color.valueOf("feb380");
+                     offsetY = 3f;
+                     particles = 19;
+                     range = 45f;
+                     drawer = (e, dx, dy) -> {
+                         float angle = Mathf.angle(dx, dy);
+                         Fill.circle(e.x + dx, e.y + dy, 5f * e.fout(Interp.pow5Out) / 2f + 2f);
+                         Lines.lineAngle(e.x + dx * 2f, e.y + dy * 2f, angle, 5f * e.fout() + 1.5f);
+                     };
+                 }});
+              }};
+           }});
+      }};
+       
       shredder = new ErekirUnitType("shredder"){{
           health = 1800;
 	        speed = 1.1f;
@@ -521,7 +559,7 @@ public class ErkUnitTypes implements AltContentList{
              top = true;
              x = 0f;
              y = 6f;
-             bullet = new DivisibleBulletType(6f, 65f){{
+             bullet = new MourningSpawnBulletType(6f, 65f){{
                 knockback = 5f;
                 width = 27f;
                 hitSize = 8f;
@@ -532,25 +570,10 @@ public class ErkUnitTypes implements AltContentList{
                 frontColor = Color.valueOf("feb380");
                 trailWidth = 6.5f;
                 trailLength = 4;
-                divisions = 4;
-                spawnDelay = 3f;
-                rotateShooting = true;
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
-                
-                int count = 8;
-                spawnInaccuracy = (float) 180 / 2 / count;
-                for (int j = 0; j < count; j++) {
-                      bullets.add(new BasicBulletType(3f, 13f){{
-                       width = 17f;
-                       hitSize = 6.5f;
-                       height = 13.5f;
-                       hitColor = backColor = trailColor = Color.valueOf("ea8878");
-                       frontColor = Color.valueOf("feb380");
-                       trailWidth = 4f;
-                       trailLength = 3;
-                       hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
-                   }});
-                }
+                despawnUnit = shredderMissile;
+                despawnUnitCount = 5;
+                despawnUnitRadius = 26f;
             }};
          }});
       }};
