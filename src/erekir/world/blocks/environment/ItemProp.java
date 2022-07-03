@@ -85,7 +85,7 @@ public class ItemProp extends Block{
     }
     
     public class DropBuild extends Building{
-        public ItemStack stack = new ItemStack();
+        public ItemStack stack = new ItemStack(dropItem, amount);
         public boolean containsButton = false;
         
         public void addButton() {
@@ -137,12 +137,6 @@ public class ItemProp extends Block{
         
         public boolean handleStackKill() {
            return stack.amount <= 0;
-        }
-        
-        @Override
-        public void created() {
-           stack.amount = amount;
-           stack.item = dropItem;
         }
         
         @Override
