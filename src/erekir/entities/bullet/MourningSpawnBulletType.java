@@ -12,7 +12,6 @@ import static mindustry.Vars.*;
  *  despawn unit. */
 public class MourningSpawnBulletType extends BasicBulletType{
    public float despawnAngleOffset = 15f;
-   protected static final Vec2 v = new Vec2();
    
    public MourningSpawnBulletType(float speed, float damage) {
        super(speed, damage);
@@ -23,9 +22,11 @@ public class MourningSpawnBulletType extends BasicBulletType{
       if (despawnUnit != null) {
          for (int i = 0; i < despawnUnitCount; i++) {
             if (!net.client()) {
+               Vec2 v = new Vec2();
+               v.set(x + Mathf.range(despawnUnitRadius), y + Mathf.range(despawnUnitRadius));
+               
                Unit unit = despawnUnit.create(b.team);
-               v.set(x, y);
-               unit.set(v.x + Mathf.range(despawnUnitRadius), v.y + Mathf.range(despawnUnitRadius));
+               unit.set(v.x, v.y);
                unit.rotation = b.rotation() + Mathf.range(despawnAngleOffset); 
                
                //assign unit circle position
