@@ -1,5 +1,6 @@
 package erekir.content;
 
+import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.type.*;
@@ -79,9 +80,10 @@ public class ErkBlocks implements AltContentList{
 
           consumePower(0.75f);
 
-          healPercent = 4f / 60f;
-
-          Color col = Color.valueOf("3b8f65");
+          healPercent = 1.2f / 60f;
+          effect = ErkFx.regenParticleBeryl;
+          
+          Color col = Tmp.c1.set(ErkPal.greenishBeryl).mul(1.15f);
           
           drawer = new DrawMulti(new DrawDefault(), new DrawGlowRegion(){{
              color = ErkPal.greenishBeryl;

@@ -56,5 +56,11 @@ public class ErkFx {
      });
 
      Drawf.light(e.x, e.y, 12f, e.color, 0.6f * e.fout());
+  }),
+  
+  regenParticleBeryl = new Effect(100f, e -> {
+      Draw.color(ErkPal.greenishBeryl);
+
+      Fill.square(e.x, e.y, e.fslope() * 1.5f + 0.14f, 45f);
   });
 }
