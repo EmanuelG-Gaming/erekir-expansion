@@ -8,7 +8,7 @@ import mindustry.world.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.Floor;
-import mindustry.world.blocks.defense;
+import mindustry.world.blocks.defense.*;
 import mindustry.graphics.*;
 import erekir.ctype.*;
 import erekir.graphics.*;
