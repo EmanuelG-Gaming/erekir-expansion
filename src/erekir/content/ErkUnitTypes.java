@@ -521,15 +521,15 @@ public class ErkUnitTypes implements AltContentList{
               shootOnDeath = true;
               bullet = new ExplosionBulletType(50f, 28f){{
                  shootEffect = new MultiEffect(Fx.massiveExplosion, new EllipseEffect(){{
-                     lifetime = 55f;
+                     lifetime = 35f;
                      colorFrom = Color.white;
                      colorTo = Color.valueOf("feb380");
-                     offsetY = 3f;
-                     particles = 19;
+                     offsetY = 2f;
+                     particles = 13;
                      range = 45f;
                      drawer = (e, dx, dy) -> {
                          float angle = Mathf.angle(dx, dy);
-                         Fill.circle(e.x + dx, e.y + dy, 5f * e.fout(Interp.pow5Out) / 2f + 2f);
+                         Fill.square(e.x + dx, e.y + dy, e.fout() * 5.0f + 2.0f, angle);
                          Lines.lineAngle(e.x + dx * 2f, e.y + dy * 2f, angle, 5f * e.fout() + 1.5f);
                      };
                  }});
@@ -554,7 +554,7 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 120f;
+             reload = 200f;
              mirror = false;
              top = true;
              x = 0f;

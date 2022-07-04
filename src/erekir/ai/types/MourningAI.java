@@ -10,7 +10,6 @@ import mindustry.gen.*;
 /** Copied and modified from MissileAI.java. */
 public class MourningAI extends AIController{
     protected static final Rand rand = new Rand();
-    protected static final Vec2 vec2 = new Vec2();
     public @Nullable Position pos;
     
     @Override
@@ -24,10 +23,8 @@ public class MourningAI extends AIController{
         
         float dst = unit.type.range * 0.8f;
         if (pos != null && unit.within(pos.getX(), pos.getY(), dst)) {
-            vec2.set(pos.getX(), pos.getY());
-            circle((Position) vec2, random);
-        }
-        else {
+            circle(pos, random);
+        } else {
             unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
         }
         
