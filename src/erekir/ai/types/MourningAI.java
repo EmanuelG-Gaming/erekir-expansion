@@ -11,6 +11,7 @@ import mindustry.gen.*;
 public class MourningAI extends AIController{
     protected static final Rand rand = new Rand();
     public @Nullable Position pos;
+    public float circleRadius = 1f;
     
     @Override
     public void updateMovement() {
@@ -19,13 +20,15 @@ public class MourningAI extends AIController{
         float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
 
         rand.setSeed(unit.id);
-        float random = rand.random(36f, 55.5f);
+        float random = rand.random(circleRadius, 45.5f);
         
-        float dst = unit.type.range * 0.8f;
-        if (pos != null && unit.within(pos.getX(), pos.getY(), dst)) {
-            circle(pos, random);
-        } else {
-            unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
+        float dst = circleRadius * 0.8f;
+        if (pos != null) {
+           if (unit.within(pos.getX(), pos.getY(), dst)) {
+              circle(pos, random);
+           } else {
+              unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
+           }
         }
         
         Building build = unit.buildOn();

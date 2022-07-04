@@ -32,6 +32,7 @@ public class MourningSpawnBulletType extends BasicBulletType{
                if (unit.controller() instanceof MourningAI) {
                   MourningAI ai = (MourningAI) unit.controller();
                   ai.pos = (Position) v;
+                  ai.circleRadius = despawnUnitRadius;
                }
                
                unit.add();
