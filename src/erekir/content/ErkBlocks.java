@@ -83,7 +83,7 @@ public class ErkBlocks implements AltContentList{
           healPercent = 1.2f / 60f;
           effect = ErkFx.regenParticleBeryl;
           
-          Color col = Tmp.c1.set(ErkPal.greenishBeryl).mul(1.15f);
+          Color col = ErkPal.greenishBeryl.cpy().mul(1.15f);
           
           drawer = new DrawMulti(new DrawDefault(), new DrawGlowRegion(){{
              color = ErkPal.greenishBeryl;

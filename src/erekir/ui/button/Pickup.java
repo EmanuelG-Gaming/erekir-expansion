@@ -32,10 +32,10 @@ public class Pickup{
            Unit plr = player.unit();
            Boolp visible = () -> plr != null;
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
+           table.visible = visible.get();
            if (touch.get()) {
               table.touchable = Touchable.enabled;
            } else table.touchable = Touchable.disabled;
-           table.visibility = visible;
            
            float d = plr.dst(bloc);
            table.actions(Actions.alpha(Core.settings.getString("erekir-expansion-buttonIcon") == "nothingness" ? 0f : 1f - Mathf.clamp(d / range - 0.5f)));
