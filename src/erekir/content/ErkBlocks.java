@@ -1,15 +1,19 @@
 package erekir.content;
 
+import arc.graphics.*;
+import arc.graphics.g2d.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.world.*;
+import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.Floor;
+import mindustry.world.blocks.defense;
+import mindustry.graphics.*;
 import erekir.ctype.*;
 import erekir.graphics.*;
-import erekir.world.blocks.environment.ItemProp;
-import erekir.world.blocks.defense.BlockUpkeeper;
-import erekir.world.blocks.production.DirectionalGatherer;
+import erekir.world.blocks.environment.*;
+import erekir.world.blocks.production.*;
 
 import static mindustry.type.ItemStack.with;
 
@@ -21,7 +25,7 @@ public class ErkBlocks implements AltContentList{
     angryArkyciteFloor,
     
     //Defense
-    /*berylUpkeeper,*/
+    berylUpkeeper,
     
     //Gathering
     dGatherer, dCollector
@@ -68,14 +72,31 @@ public class ErkBlocks implements AltContentList{
          albedo = 0.9f;
       }};
       
-      /*  
-      berylUpkeeper = new BlockUpkeeper("berylUpkeeper"){{
+      berylUpkeeper = new RegenProjector("berylUpkeeper"){{
           size = 2;
-          lanes = 4;
-          range = 12;
-          requirements(Category.defense, with(Items.beryllium, 100, Items.graphite, 65, Items.tungsten, 40));
+          range = 15;
+          baseColor = ErkPal.greenishBeryl;
+
+          consumePower(0.75f);
+
+          healPercent = 4f / 60f;
+
+          Color col = Color.valueOf("3b8f65");
+          
+          drawer = new DrawMulti(new DrawDefault(), new DrawGlowRegion(){{
+             color = ErkPal.greenishBeryl;
+          }}, new DrawPulseShape(false){{
+             layer = Layer.effect;
+             color = col;
+          }}, new DrawShape(){{
+             layer = Layer.effect;
+             radius = 2.5f;
+             useWarmupRadius = true;
+             timeScl = 2f;
+             color = col;
+          }});
+          requirements(Category.effect, with(Items.beryllium, 100, Items.graphite, 65, Items.tungsten, 40));
       }};
-      */
       
       dGatherer = new DirectionalGatherer("directionalGatherer"){{
           size = 1;
