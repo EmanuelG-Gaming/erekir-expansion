@@ -76,7 +76,6 @@ public class ErekirExpansion extends Mod{
         
         Events.run(Trigger.draw, () -> {
            for (Unit unit : Groups.unit) {
-             
               Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
               if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {
                  if (!unit.isFlying() && unit.hovering == false) {
@@ -105,7 +104,6 @@ public class ErekirExpansion extends Mod{
     public void loadContent() {
         // load everything from the array
         for (AltContentList list : erekirContent) list.load();
-        ErekirVars.load();
         ErkTechTree.load();
     }
     
