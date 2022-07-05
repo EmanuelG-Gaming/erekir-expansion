@@ -85,7 +85,7 @@ public class ErekirExpansion extends Mod{
                     Draw.z(Layer.debris);
                     Draw.color(Tmp.c1.set(floor.mapColor).mul(1.5f));
                     Lines.stroke(4f);
-                    Lines.circle(unit.x, unit.y, unit.type.hitSize * 1.25f);
+                    Lines.circle(unit.x, unit.y, unit.type.hitSize * 1.25f * (1f - unit.drownTime));
                     Draw.reset();
                  
                     Draw.z(z);
@@ -105,6 +105,7 @@ public class ErekirExpansion extends Mod{
     public void loadContent() {
         // load everything from the array
         for (AltContentList list : erekirContent) list.load();
+        ErekirVars.load();
         ErkTechTree.load();
     }
     
