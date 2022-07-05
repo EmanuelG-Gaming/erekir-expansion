@@ -32,10 +32,8 @@ public class ErkUnitTypes implements AltContentList{
     gem, geode,
     
     //flying
-    aggregate,
-    
-    //why
-    agglomerateMissile, agglomerate, accumulate,
+    aggregate, agglomerateMissile, agglomerate, accumulate,
+    attractor,
     
     spread, apart, shredderMissile, shredder;
     
@@ -383,6 +381,23 @@ public class ErkUnitTypes implements AltContentList{
                }};
             }}
           );
+       }};
+       
+       attractor = new ErekirUnitType("attractor"){{
+          health = 13000;
+	        speed = 0.7f;
+ 	        hitSize = 45;
+	        drag = 0.03f;
+	        accel = 0.095f;
+	        flying = true;
+          aimDst = 1.46f;
+          range = 150f;
+          engineOffset = 21f;
+          engineSize = 6.5f;
+          targetAir = true;
+          lowAltitude = true;
+          
+          constructor = UnitEntity::create;
        }};
        
        //region tungsten - air

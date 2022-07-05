@@ -80,7 +80,7 @@ public class ErkBlocks implements AltContentList{
 
           consumePower(0.75f);
 
-          healPercent = 1.2f / 60f;
+          healPercent = 2.3f / 60f;
           effect = ErkFx.regenParticleBeryl;
           
           Color col = ErkPal.greenishBeryl.cpy().mul(1.15f);
