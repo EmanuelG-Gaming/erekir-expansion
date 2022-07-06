@@ -1,5 +1,5 @@
 # Erekir Expansion
-A Java mod made to add new things to the current Erekir's progression.
+A Java mod meant to add new things to the current Erekir's progression.
 
 
 > Fun Fact:
