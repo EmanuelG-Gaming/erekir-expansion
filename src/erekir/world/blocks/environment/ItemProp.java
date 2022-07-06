@@ -15,6 +15,7 @@ import erekir.ui.button.Pickup;
 
 import static mindustry.Vars.*;
 
+/** Inner class for loot interactions. Mostly contains utility methods. */
 public class ItemProp extends Block{
     public Item dropItem = Items.copper;
     public float rotationOffset = 360f;
@@ -102,8 +103,6 @@ public class ItemProp extends Block{
         @Override
         public void updateTile() {
            super.updateTile();
-           
-           if (handleStackKill()) kill();
         }
         
         public void gather(Unit unit, int itemTake) {
@@ -126,6 +125,7 @@ public class ItemProp extends Block{
                  currentAmount = Math.min(currentAmount - itemTake, itemCapacity);
               }
            }
+           handleStackKill();
         }
         
         public void gather(Building build, int itemTake) {
@@ -133,6 +133,7 @@ public class ItemProp extends Block{
               build.items.add(dropItem, itemTake);
               currentAmount = Math.min(currentAmount - itemTake, itemCapacity);
            }
+           handleStackKill();
         }
         
         public void transfer(Unit unit, Building build) {
@@ -141,8 +142,8 @@ public class ItemProp extends Block{
            } 
         }
         
-        public boolean handleStackKill() {
-           return currentAmount <= 0;
+        public void handleStackKill() {
+           if (currentAmount <= 0) kill();
         }
         
         @Override

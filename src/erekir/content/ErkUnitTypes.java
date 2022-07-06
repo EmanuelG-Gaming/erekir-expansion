@@ -283,7 +283,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 200f;
           engineOffset = 9.5f;
           targetAir = true;
-          ammoType = new OreAmmoType(Blocks.wallOreBeryllium, 8);
+          ammoType = new OreAmmoType(Blocks.wallOreBeryllium);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
@@ -483,7 +483,7 @@ public class ErkUnitTypes implements AltContentList{
           range = 160f;
           engineOffset = 9.25f;
           targetAir = true;
-          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 16);
+          ammoType = new OreAmmoType(Blocks.wallOreTungsten);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
@@ -565,7 +565,7 @@ public class ErkUnitTypes implements AltContentList{
           engineSize = 2.65f;
           targetAir = true;
           lowAltitude = true;
-          ammoType = new OreAmmoType(Blocks.wallOreTungsten, 15);
+          ammoType = new OreAmmoType(Blocks.wallOreTungsten);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{

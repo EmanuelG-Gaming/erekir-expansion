@@ -16,13 +16,11 @@ import static mindustry.Vars.*;
  *  Partial thanks to @author Mythril382 */
 public class OreAmmoType implements AmmoType{
     public int range = 5;
-    public Block extractOre = Blocks.oreCopper;
     public int ammoGain = 1;
-    public float totalItems = 20;
+    public Block extractOre = Blocks.oreCopper;
 
-    public OreAmmoType(Block extractOre, float totalItems) {
+    public OreAmmoType(Block extractOre) {
        this.extractOre = extractOre;
-       this.totalItems = totalItems;
     }
     
     public OreAmmoType() {
@@ -37,7 +35,7 @@ public class OreAmmoType implements AmmoType{
     
     @Override 
     public Color color() {
-       return Pal.ammo;
+       return ((OreBlock) extractOre).itemDrop.color;
     }
     
     @Override
@@ -51,11 +49,13 @@ public class OreAmmoType implements AmmoType{
        float ux = unit.x / tilesize, uy = unit.y / tilesize;
        
        Geometry.circle((int) ux, (int) uy, (int) offsetRange, (x, y) -> {
-          Tile build = world.tile(x, y);
+          Tile tile = world.tile(x, y);
           
-          if (build != null && build.overlay() == extractOre) {
+          if (tile != null && tile.overlay() == extractOre) {
              if (unit.type.ammoCapacity - unit.ammo >= ammoGain) {
-                Fx.itemTransfer.at(build.x * tilesize, build.y * tilesize, 4, ((OreBlock) extractOre).itemDrop.color, unit);
+                for (int i = 0; i < ammoGain; i++)
+                   Fx.itemTransfer.at(tile.x * tilesize, tile.y * tilesize, 4, ((OreBlock) extractOre).itemDrop.color, unit);
+                
                 unit.ammo = Math.min(unit.ammo + ammoGain, unit.type.ammoCapacity);
              }
           }
