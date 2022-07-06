@@ -21,6 +21,7 @@ public class Pickup{
    private static int buttonW = 40;
    private static int buttonH = 40;
    private static float range = 38f;
+   private boolean shown;
    
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);
@@ -30,9 +31,13 @@ public class Pickup{
            table.setPosition(v.x, v.y, Align.center);
            
            Unit plr = player.unit();
-           Boolp visible = () -> plr != null;
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
-           table.visible = visible.get();
+           table.visible(() -> {
+              if (plr != null && !plr.isNull()) {
+                 shown = true;
+              } else shown = false;
+              return shown;
+           });
            if (touch.get()) {
               table.touchable = Touchable.enabled;
            } else table.touchable = Touchable.disabled;
