@@ -33,7 +33,7 @@ public class Pickup{
            Unit plr = player.unit();
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
            table.visible(() -> {
-              if (plr != null) {
+              if (!(plr instanceof NullUnit) && !renderer.isCutscene()) {
                  shown = true;
               } else shown = false;
               return shown;

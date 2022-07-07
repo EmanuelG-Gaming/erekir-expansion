@@ -48,7 +48,11 @@ public class ButtonIconsDialog extends BaseDialog{
       buttons.button("@ok", Icon.ok, () -> {
           if (selection != null) {
              Core.settings.put("erekir-expansion-buttonIcon", selection);
-             ui.showInfo(selection == nothing ? "Nothing...?" : Core.bundle.format("erekir-expansion-changingButton", selection));
+             ui.showInfo(
+                selection == nothing
+                ? Core.bundle.get("erekir-expansion-nothing")
+                : Core.bundle.format("erekir-expansion-changingButton", selection)
+             );
           }
           hide();
       });
