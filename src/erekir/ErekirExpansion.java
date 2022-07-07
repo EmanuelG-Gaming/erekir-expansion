@@ -96,6 +96,7 @@ public class ErekirExpansion extends Mod{
     
     private final AltContentList[] erekirContent = {
        new ErkLiquids(),
+       new ErkStatusEffects(),
        new ErkBlocks(),
        new ErkUnitTypes()
     };

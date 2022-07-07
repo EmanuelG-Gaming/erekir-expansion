@@ -21,7 +21,7 @@ public class Pickup{
    private static int buttonW = 40;
    private static int buttonH = 40;
    private static float range = 38f;
-   private boolean shown;
+   private static boolean shown;
    
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);
