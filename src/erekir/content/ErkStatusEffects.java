@@ -20,12 +20,12 @@ public class ErkStatusEffects implements AltContentList{
             color = ErkPal.darkArkycite;
             speedMultiplier = 0.85f;
             healthMultiplier = 0.70f;
-            damage = 1.40f;
+            damage = 0.90f;
             effect = new Effect(90f, e -> {
                Draw.color(ErkPal.darkArkycite);
 
-               Fill.circle(e.x, e.y, e.foutpow() * 1.5f + 0.14f);
-            });
+               Fill.circle(e.x, e.y, e.foutpow() * 4.5f + 0.14f);
+            }).layer(Layer.flyingUnit + 0.01f);
         }};
     }
 }

@@ -65,9 +65,8 @@ public class ErkBlocks implements AltContentList{
          liquidDrop = ErkLiquids.angryArkycite;
          liquidMultiplier = 1.2f;
          isLiquid = true;
-         //TODO funny number and a very angry status effect
-         status = StatusEffects.melting;
-         statusDuration = 690f;
+         status = ErkStatusEffects.metalloclast;
+         statusDuration = 600f;
          drownTime = 140f;
          cacheLayer = ErekirShaders.arkyLayer;
          albedo = 0.9f;
