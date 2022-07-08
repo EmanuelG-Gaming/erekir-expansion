@@ -4,7 +4,7 @@
 #define S1 vec3(250.0, 145.0, 75.0) / 255.0
 #define S2 vec3(158.0, 24.0, 44.0) / 255.0
 
-#define NSCALE 100.0 / 2.0
+#define NSCALE 200.0 / 2.0
 
 uniform sampler2D u_texture;
 uniform sampler2D u_noise;
@@ -20,7 +20,7 @@ void main(){
     vec2 coords = vec2(c.x * u_resolution.x + u_campos.x, c.y * u_resolution.y + u_campos.y);
 
     float btime = u_time / 5000.0;
-    float wave = abs(sin(coords.x * 1.1 + coords.y) + 0.1 * sin(2.5 * coords.x) + 0.15 * sin(3.0 * coords.y)) / 30.0;
+    float wave = abs(sin(coords.x * 1.1 + coords.y) + 0.1 * sin(2.5 * coords.x) + 0.15 * sin(3.0 * coords.y)) / 10.0;
     float noise = wave + (texture2D(u_noise, (coords) / NSCALE + vec2(btime) * vec2(-0.2, 0.8)).r + texture2D(u_noise, (coords) / NSCALE + vec2(btime * 1.1) * vec2(0.8, -1.0)).r) / 2.0;
     vec4 color = texture2D(u_texture, c);
 
