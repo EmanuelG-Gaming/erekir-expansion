@@ -15,13 +15,13 @@ public class ErekirShaders {
 
     public static void init() {
         angryArkycite = new ErekirSurfShader("angryArkycite");
-        pooledNeoplasm = new ErekirSurfShader("circle");
+        pooledNeoplasm = new ErekirSurfShader("pooledNeoplasm");
     }
 
     public static void load() {
         if (!headless) {
             angryArkycite = new ErekirSurfShader("angryArkycite");
-            pooledNeoplasm = new ErekirSurfShader("circle");
+            pooledNeoplasm = new ErekirSurfShader("pooledNeoplasm");
             loaded = true;
         }
         arkyLayer = new CacheLayer.ShaderLayer(angryArkycite);
