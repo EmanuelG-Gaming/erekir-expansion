@@ -15,7 +15,11 @@ public class ErekirShaders {
 
     public static void init() {
         angryArkycite = new ErekirSurfShader("angryArkycite");
-        pooledNeoplasm = new ErekirSurfShader("circle"){{
+        pooledNeoplasm = new ErekirSurfShader("circle"){
+           {
+          
+           }
+           
            @Override
            public String textureName() {
               return "hollowCircle";
@@ -25,13 +29,17 @@ public class ErekirShaders {
            public void loadNoise() {
               //bru-
            }
-        }};
+        };
     }
 
     public static void load() {
         if (!headless) {
             angryArkycite = new ErekirSurfShader("angryArkycite");
-            pooledNeoplasm = new ErekirSurfShader("circle"){{
+            pooledNeoplasm = new ErekirSurfShader("circle"){
+               {
+          
+               }
+           
                @Override
                public String textureName() {
                   return "hollowCircle";
@@ -41,7 +49,7 @@ public class ErekirShaders {
                public void loadNoise() {
                   //bru-
                }
-            }};
+            };
             loaded = true;
         }
         arkyLayer = new CacheLayer.ShaderLayer(angryArkycite);
