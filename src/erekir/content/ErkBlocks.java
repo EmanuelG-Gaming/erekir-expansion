@@ -75,7 +75,7 @@ public class ErkBlocks implements AltContentList{
       pooledNeoplasm = new Floor("pooled-neoplasm"){{
          speedMultiplier = 0.4f;
          variants = 0;
-         liquidDrop = Liquids.water;
+         liquidDrop = Liquids.neoplasm;
          liquidMultiplier = 0.5f;
          isLiquid = true;
          drownTime = 90f;
