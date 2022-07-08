@@ -26,8 +26,8 @@ void main() {
     noise = abs(noise - 0.5) * 7.0 + 0.23;
 
     c += (vec2(
-        texture2D(u_noise, (coords) / NSCALE,
-        texture2D(u_noise, (coords) / NSCALE
+        texture2D(u_noise, (coords) / NSCALE),
+        texture2D(u_noise, (coords) / NSCALE)
     ) - vec2(0.5)) * 20.0 / u_resolution;
 
     vec4 color = texture2D(u_texture, c);
