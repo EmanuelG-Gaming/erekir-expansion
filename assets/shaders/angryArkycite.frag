@@ -1,5 +1,6 @@
 #define HIGHP
 
+//colors
 #define S1 vec4(85.0, 120.0, 68.0, 255.0) / 255.0
 #define S2 vec3(126.0, 163.0, 70.0) / 255.0
 #define S3 vec3(191.0, 201.0, 101.0) / 255.0

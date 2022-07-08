@@ -23,7 +23,7 @@ public class ErkBlocks implements AltContentList{
     
     //Environment
     berylDrop, tungDrop, graphiteDrop, sandDrop, thorDrop,
-    angryArkyciteFloor,
+    angryArkyciteFloor, pooledNeoplasm, 
     
     //Defense
     berylUpkeeper,
@@ -70,6 +70,16 @@ public class ErkBlocks implements AltContentList{
          drownTime = 140f;
          cacheLayer = ErekirShaders.arkyLayer;
          albedo = 0.9f;
+      }};
+      
+      pooledNeoplasm = new Floor("pooled-neoplasm"){{
+         speedMultiplier = 0.4f;
+         variants = 0;
+         liquidDrop = Liquids.water;
+         liquidMultiplier = 0.5f;
+         isLiquid = true;
+         drownTime = 90f;
+         cacheLayer = ErekirShaders.neoplasmLayer;
       }};
       
       berylUpkeeper = new RegenProjector("berylUpkeeper"){{

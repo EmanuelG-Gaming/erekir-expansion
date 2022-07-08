@@ -8,27 +8,51 @@ import static mindustry.Vars.*;
 
 /** @author xStaBUx, with slight modifications. */
 public class ErekirShaders {
-    public static @Nullable ErekirSurfShader angryArkycite;
+    public static @Nullable ErekirSurfShader angryArkycite, pooledNeoplasm;
     
-    public static CacheLayer.ShaderLayer arkyLayer;
+    public static CacheLayer.ShaderLayer arkyLayer, neoplasmLayer;
     protected static boolean loaded;
 
     public static void init() {
         angryArkycite = new ErekirSurfShader("angryArkycite");
+        pooledNeoplasm = new ErekirSurfShader("circle"){{
+           @Override
+           public String textureName() {
+              return "hollowCircle";
+           }
+           
+           @Override
+           public void loadNoise() {
+              //bru-
+           }
+        }};
     }
 
     public static void load() {
         if (!headless) {
             angryArkycite = new ErekirSurfShader("angryArkycite");
+            pooledNeoplasm = new ErekirSurfShader("circle"){{
+               @Override
+               public String textureName() {
+                  return "hollowCircle";
+               }
+           
+               @Override
+               public void loadNoise() {
+                  //bru-
+               }
+            }};
             loaded = true;
         }
         arkyLayer = new CacheLayer.ShaderLayer(angryArkycite);
-        CacheLayer.add(arkyLayer);
+        neoplasmLayer = new CacheLayer.ShaderLayer(pooledNeoplasm);
+        CacheLayer.add(arkyLayer, neoplasmLayer);
     }
     
     public static void dispose() {
         if (!headless && loaded) {
            angryArkycite.dispose();
+           pooledNeoplasm.dispose();
         }
     }
 }
