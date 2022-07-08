@@ -24,12 +24,14 @@ void main() {
     float noise = (texture2D(u_noise, (coords) / DSCALE + texture2D(u_noise, (coords) / DSCALE))) / 2.0;
 
     noise = abs(noise - 0.5) * 7.0 + 0.23;
+    
+    float btime = u_time / 9000.0;
 
     c += (vec2(
-        texture2D(u_noise, (coords) / NSCALE),
-        texture2D(u_noise, (coords) / NSCALE)
+        texture2D(u_noise, (coords) / NSCALE + vec2(btime) * vec2(-0.9, 0.8)).r,
+        texture2D(u_noise, (coords) / NSCALE + vec2(btime * 1.1) * vec2(0.8, -1.0)).r
     ) - vec2(0.5)) * 20.0 / u_resolution;
-
+    
     vec4 color = texture2D(u_texture, c);
 
     if (noise > 0.85) {
