@@ -18,7 +18,7 @@ varying vec2 v_texCoords;
 
 void main() {
     vec2 c = v_texCoords.xy;
-    vec2 coords = (c * u_resolution) + u_campos);
+    vec2 coords = ((c * u_resolution) + u_campos);
 
     float atime = u_time / 15000.0;
     float noise = (texture2D(u_noise, (coords) / DSCALE + texture2D(u_noise, (coords) / DSCALE))) / 2.0;
