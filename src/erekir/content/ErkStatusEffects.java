@@ -1,5 +1,6 @@
 package erekir.content;
 
+import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.graphics.*; 
@@ -23,8 +24,9 @@ public class ErkStatusEffects implements AltContentList{
             damage = 0.90f;
             effect = new Effect(90f, e -> {
                Draw.color(ErkPal.darkArkycite);
-
-               Fill.circle(e.x, e.y, e.foutpow() * 4.5f + 0.14f);
+               Draw.alpha(Interp.pow5Out.apply(e.fslope()));
+               
+               Fill.circle(e.x, e.y, e.foutpow() * 3f + 0.14f);
             }).layer(Layer.flyingUnit + 0.01f);
         }};
     }
