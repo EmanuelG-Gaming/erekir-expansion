@@ -19,6 +19,8 @@ import erekir.ctype.*;
 import erekir.graphics.*;
 import erekir.world.blocks.environment.*;
 import erekir.world.blocks.production.*;
+import erekir.world.blocks.defense.*;
+import erekir.world.blocks.defense.turrets.*;
 
 import static mindustry.type.ItemStack.with;
 
@@ -132,7 +134,7 @@ public class ErkBlocks implements AltContentList{
           requirements(Category.production, with(Items.beryllium, 75, Items.tungsten, 30, Items.graphite, 60));
       }};
       
-      fissure = new ItemTurret("fissure"){{
+      fissure = new ErekirTurret("fissure"){{
           requirements(Category.turret, with(Items.beryllium, 80, Items.graphite, 60));
           
           Effect e = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
