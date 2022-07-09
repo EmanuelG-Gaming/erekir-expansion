@@ -14,6 +14,7 @@ import mindustry.world.blocks.defense.*;
 import mindustry.entities.*;
 import mindustry.entities.effect.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.graphics.*;
 import erekir.ctype.*;
 import erekir.graphics.*;
