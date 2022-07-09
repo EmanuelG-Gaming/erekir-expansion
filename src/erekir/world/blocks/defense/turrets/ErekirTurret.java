@@ -7,6 +7,6 @@ public class ErekirTurret extends ItemTurret{
    
    public ErekirTurret(String name) {
       super(name);
-      drawer = new DrawTurret("erekir-expansion-erekirTurret-");
+      drawer = new DrawTurret("erekirTurret-");
    }
 }

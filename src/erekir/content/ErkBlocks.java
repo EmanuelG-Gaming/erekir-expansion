@@ -155,7 +155,9 @@ public class ErkBlocks implements AltContentList{
               buildingDamageMultiplier = 0.8f;
           }}
           );
-
+          shoot = new ShootAlternate(9f / 4f);
+          shootY = 6.5f;
+          
           coolantMultiplier = 6f;
 
           shake = 1f;
