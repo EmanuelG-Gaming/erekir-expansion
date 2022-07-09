@@ -117,6 +117,11 @@ public class DirectionalGatherer extends GenericCrafter{
          }
       }
       
+      @Override
+      public void onProximityUpdate() {
+         updateSides();
+      }
+      
       public void updateSides() {
          for (int i = 0; i < size; i++) {
             if (sides[i] == null) sides[i] = new Point2();
