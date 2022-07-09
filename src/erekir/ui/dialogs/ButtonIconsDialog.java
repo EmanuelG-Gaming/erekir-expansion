@@ -3,6 +3,7 @@ package erekir.ui.dialogs;
 import arc.Core;
 import arc.scene.*;
 import arc.scene.ui.layout.*;
+import arc.scene.ui.button.*;
 import arc.scene.style.*;
 import mindustry.graphics.*;
 import mindustry.ui.*;
@@ -52,8 +53,8 @@ public class ButtonIconsDialog extends BaseDialog{
       });
    }
    
-   public static void addButton(Table table, Drawable icon, String name) {
-      TextButton button = table.button(icon, Styles.squareTogglei, () -> selection = name).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name).get();
+   public void addButton(Table table, Drawable icon, String name) {
+      ImageButton button = table.button(icon, Styles.squareTogglei, () -> selection = name).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name).get();
       table.add(button);
    }
 }
