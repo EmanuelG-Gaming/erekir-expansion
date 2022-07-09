@@ -6,10 +6,14 @@ import arc.graphics.g2d.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.world.*;
+import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.defense.*;
+import mindustry.entities.*;
+import mindustry.entities.effect.*;
+import mindustry.entities.bullet.*;
 import mindustry.graphics.*;
 import erekir.ctype.*;
 import erekir.graphics.*;
@@ -29,7 +33,10 @@ public class ErkBlocks implements AltContentList{
     berylUpkeeper,
     
     //Gathering
-    dGatherer, dCollector
+    dGatherer, dCollector,
+    
+    //Turrets
+    fissure
      
     ;
     
@@ -123,6 +130,46 @@ public class ErkBlocks implements AltContentList{
           rotateDraw = false;
           regionRotated1 = 1;
           requirements(Category.production, with(Items.beryllium, 75, Items.tungsten, 30, Items.graphite, 60));
+      }};
+      
+      fissure = new ItemTurret("fissure"){{
+          requirements(Category.turret, with(Items.beryllium, 80, Items.graphite, 60));
+          
+          Effect e = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
+
+          ammo(
+          Items.beryllium, new BasicBulletType(5.5f, 40){{
+              width = 10f;
+              hitSize = 5f;
+              height = 16f;
+              shootEffect = e;
+              smokeEffect = Fx.shootBigSmoke;
+              ammoMultiplier = 1;
+              hitColor = backColor = trailColor = Pal.berylShot;
+              frontColor = Color.white;
+              trailWidth = 2.1f;
+              trailLength = 10;
+              hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
+              buildingDamageMultiplier = 0.8f;
+          }}
+          );
+
+          coolantMultiplier = 6f;
+
+          shake = 1f;
+          ammoPerShot = 1;
+          outlineColor = Pal.darkOutline;
+          size = 2;
+          envEnabled |= Env.space;
+          reload = 12f;
+          recoil = 1f;
+          range = 160;
+          shootCone = 10f;
+          scaledHealth = 180;
+          rotateSpeed = 2.4f;
+          researchCostMultiplier = 0.05f;
+
+          coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
       }};
     }
 }
