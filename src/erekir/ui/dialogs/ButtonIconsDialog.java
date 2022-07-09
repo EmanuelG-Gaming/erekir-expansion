@@ -2,8 +2,8 @@ package erekir.ui.dialogs;
 
 import arc.Core;
 import arc.scene.*;
+import arc.scene.ui.*; 
 import arc.scene.ui.layout.*;
-import arc.scene.ui.button.*;
 import arc.scene.style.*;
 import mindustry.graphics.*;
 import mindustry.ui.*;
