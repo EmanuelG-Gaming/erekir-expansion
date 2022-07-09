@@ -138,10 +138,10 @@ public class ErkBlocks implements AltContentList{
       fissure = new ErekirTurret("fissure"){{
           requirements(Category.turret, with(Items.beryllium, 80, Items.graphite, 60));
           
-          Effect e = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
+          Effect e = new MultiEffect(Fx.shootSmallColor, Fx.colorSparkBig);
 
           ammo(
-          Items.beryllium, new BasicBulletType(5.5f, 40){{
+          Items.beryllium, new BasicBulletType(5f, 40){{
               width = 10f;
               hitSize = 5f;
               height = 16f;
@@ -151,7 +151,8 @@ public class ErkBlocks implements AltContentList{
               hitColor = backColor = trailColor = Pal.berylShot;
               frontColor = Color.white;
               trailWidth = 2.1f;
-              trailLength = 10;
+              trailLength = 8;
+              lifetime = 30f;
               hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
               buildingDamageMultiplier = 0.8f;
           }}
@@ -168,7 +169,7 @@ public class ErkBlocks implements AltContentList{
           envEnabled |= Env.space;
           reload = 20f;
           recoil = 1f;
-          range = 160;
+          range = 120f;
           shootCone = 10f;
           scaledHealth = 180;
           rotateSpeed = 2.4f;
