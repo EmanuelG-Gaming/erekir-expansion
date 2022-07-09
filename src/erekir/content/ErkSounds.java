@@ -7,7 +7,10 @@ import arc.audio.Sound;
 import mindustry.Vars;
 
 public class ErkSounds {
-  	public static Sound	fieldRelease = new Sound();
+  	public static Sound	
+  	   fieldRelease = new Sound(),
+  	   explosionlarge = new Sound()
+  	;
   	
   	protected static Sound loadSound(String fileName) {
 	     String name = "sounds/" + fileName;
@@ -24,5 +27,6 @@ public class ErkSounds {
   	public static void load() {
 	     if (Vars.headless) return;
 		   fieldRelease = loadSound("field");
+		   explosionlarge = loadSound("explosionlarge");
   	}
 }

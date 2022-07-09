@@ -392,6 +392,7 @@ public class ErkUnitTypes implements AltContentList{
 	        flying = true;
           aimDst = 1.46f;
           range = 150f;
+          deathSound = ErkSounds.explosionlarge;
           engineOffset = 21f;
           engineSize = 6.5f;
           targetAir = true;
