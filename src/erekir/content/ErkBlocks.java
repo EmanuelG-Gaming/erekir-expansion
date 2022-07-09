@@ -166,7 +166,7 @@ public class ErkBlocks implements AltContentList{
           outlineColor = Pal.darkOutline;
           size = 2;
           envEnabled |= Env.space;
-          reload = 12f;
+          reload = 20f;
           recoil = 1f;
           range = 160;
           shootCone = 10f;
