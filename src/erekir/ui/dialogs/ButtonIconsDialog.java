@@ -27,18 +27,12 @@ public class ButtonIconsDialog extends BaseDialog{
          int[] r = {0}; 
          Icon.icons.each((name, icon) -> {
             if (Core.settings.getBool("erekir-expansion-displaySmall") == false && name.contains("Small")) return;
-            
-            t.button(new TextureRegionDrawable(icon), Styles.squareTogglei, () -> {
-                selection = name;
-            }).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name);
+            addButton(t, new TextureRegionDrawable(icon), name);
             
             if (++r[0] % rowCount == 0) t.row();
          });
+         addButton(t, new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + nothing)), nothing);
          
-         t.button(new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + nothing)), Styles.squareTogglei, () -> {
-             selection = nothing;
-         }).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == nothing);
-            
       }).size(buttonSize * rowCount + 6f, buttonSize * 6f + 6f).row();
       
       closeOnBack();
@@ -56,5 +50,10 @@ public class ButtonIconsDialog extends BaseDialog{
           }
           hide();
       });
+   }
+   
+   public static void addButton(Table table, Drawable icon, String name) {
+      TextButton button = table.button(icon, Styles.squareTogglei, () -> selection = name).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name).get();
+      table.add(button);
    }
 }
