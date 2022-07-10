@@ -53,8 +53,8 @@ public class ButtonIconsDialog extends BaseDialog{
       });
    }
    
-   public void addButton(Table table, Drawable icon, String name) {
-      ImageButton button = table.button(icon, Styles.squareTogglei, () -> selection = name).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name).get();
-      table.add(button);
+   public ImageButton addButton(Table table, Drawable icon, String name) {
+      ImageButton b = table.button(icon, Styles.squareTogglei, () -> selection = name).size(buttonSize).margin(4f).pad(2f).checked(b -> selection == name).get();
+      return b;
    }
 }
