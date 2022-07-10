@@ -40,6 +40,14 @@ public class ErkTechTree{
                node(ErkBlocks.dCollector);
            });
        });
+       
+       vanillaNode(breach, () -> {
+           node(ErkBlocks.fissure);
+       });
+       
+       vanillaNode(tungstenWallLarge, () -> {
+          node(ErkBlocks.berylUpkeeper);
+       });
    }
    
    private static void vanillaNode(UnlockableContent parent, Runnable children) {
