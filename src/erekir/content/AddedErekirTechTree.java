@@ -9,6 +9,7 @@ import mindustry.content.TechTree;
 import static mindustry.content.Liquids.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.TechTree.*;
+import static erekir.content.ErkSectorPresets.*;
 
 public class AddedErekirTechTree{
    private static TechNode context = null;
@@ -43,7 +44,7 @@ public class AddedErekirTechTree{
        });
        
        vanillaNode(plasmaBore, () -> {
-           node(ErkBlocks.dGatherer, () -> {
+           node(ErkBlocks.dGatherer, Seq.with(new SectorComplete(alternativeApproach)), () -> {
                node(ErkBlocks.dCollector);
            });
        });

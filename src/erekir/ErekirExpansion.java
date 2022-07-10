@@ -98,7 +98,8 @@ public class ErekirExpansion extends Mod{
        new ErkLiquids(),
        new ErkStatusEffects(),
        new ErkBlocks(),
-       new ErkUnitTypes()
+       new ErkUnitTypes(),
+       new ErkSectorPresets()
     };
     
     @Override
