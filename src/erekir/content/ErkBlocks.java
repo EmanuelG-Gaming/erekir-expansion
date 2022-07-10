@@ -159,6 +159,7 @@ public class ErkBlocks implements AltContentList{
           );
           shoot = new ShootAlternate(9f / 4f);
           shootY = 6.5f;
+          inaccuracy = 3f;
           
           coolantMultiplier = 6f;
 
