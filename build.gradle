@@ -28,8 +28,8 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.MindustryJitpack:core:bb8ab301fd"
-    compileOnly "com.github.Anuken.Arc:arc-core:25cb58ce8c" 
+    compileOnly "com.github.Anuken.MindustryJitpack:core:ddcfc62f8d"
+    compileOnly "com.github.Anuken.Arc:arc-core:29a4391826" 
 }
 
 task jarAndroid{
