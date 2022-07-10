@@ -6,11 +6,11 @@ import erekir.ctype.*;
 import static mindustry.content.Planets.*;
 
 public class ErkSectorPresets implements AltContentList{
-    public static SectorPreset alternativeApproach;
+    public static SectorPreset alternateApproach;
 
     @Override
     public void load() {
-       alternativeApproach = new SectorPreset("alternative-approach", erekir, 36){{
+       alternateApproach = new SectorPreset("alternate-approach", erekir, 36){{
           captureWave = 19;
           difficulty = 3;
        }};

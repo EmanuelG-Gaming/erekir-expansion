@@ -9,6 +9,7 @@ import mindustry.content.TechTree;
 import static mindustry.content.Liquids.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.TechTree.*;
+import static mindustry.content.SectorPresets.*;
 import static erekir.content.ErkSectorPresets.*;
 
 public class AddedErekirTechTree{
@@ -37,6 +38,10 @@ public class AddedErekirTechTree{
            node(ErkUnitTypes.accumulate, () -> {
                node(ErkUnitTypes.shredder);
            });
+       });
+       
+       vanillaNode(onset, () -> {
+           node(alternateApproach, Seq.with(new SectorComplete(onset));
        });
        
        vanillaNode(arkycite, () -> {
