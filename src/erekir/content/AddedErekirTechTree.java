@@ -49,7 +49,7 @@ public class AddedErekirTechTree{
        });
        
        vanillaNode(plasmaBore, () -> {
-           node(ErkBlocks.dGatherer, Seq.with(new SectorComplete(alternativeApproach)), () -> {
+           node(ErkBlocks.dGatherer, Seq.with(new SectorComplete(alternateApproach)), () -> {
                node(ErkBlocks.dCollector);
            });
        });
