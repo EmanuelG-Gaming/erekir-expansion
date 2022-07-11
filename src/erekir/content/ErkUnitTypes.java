@@ -87,7 +87,7 @@ public class ErkUnitTypes implements AltContentList{
              x = 3.2f;
              y = -1.65f;
              shootCone = 360f;
-             bullet = new BasicBulletType(5f, 9.5f){{
+             bullet = new BasicBulletType(5f, 14.5f){{
                 backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
                 trailLength = 5;
