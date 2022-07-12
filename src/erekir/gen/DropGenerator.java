@@ -13,14 +13,14 @@ public class DropGenerator{
    private Seq<ItemProp> generated = new Seq<ItemProp>();
    
    //funny generating code
-   public void generateDrops() {
+   public static void generateDrops() {
       for (int i = 0; i < values.length; i++) {
          if (values[i] != 0) {
             Item item = content.item(i);
             if (item.isHidden()) return;
             
             String itemName = item.localizedName;
-            last = new ItemProp(itemName + "Drop"){{
+            last = new ItemProp(itemName + "-drop"){{
                localizedName = itemName + " Drop";
                dropItem = item;
                amount = 1;
@@ -30,7 +30,7 @@ public class DropGenerator{
       }
    }
    
-   public void handleIcons() {
+   public static void handleIcons() {
       generated.each(b -> {
          b.region = b.dropItem.fullIcon;
       });

@@ -18,7 +18,6 @@ import mindustry.entities.pattern.*;
 import mindustry.graphics.*;
 import erekir.ctype.*;
 import erekir.graphics.*;
-import erekir.world.blocks.environment.*;
 import erekir.world.blocks.production.*;
 import erekir.world.blocks.defense.*;
 import erekir.world.blocks.defense.turrets.*;
