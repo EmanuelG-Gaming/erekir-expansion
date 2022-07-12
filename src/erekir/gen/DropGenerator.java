@@ -17,7 +17,7 @@ public class DropGenerator{
       3, 1, 1,
       2, 3, 2,
       4, 3, 2,
-      1
+      1, 1
    };
    
    /** Contains only drops with shown vanilla items! */
@@ -43,7 +43,7 @@ public class DropGenerator{
 
    public static void setToDrop() {
       generated.each(b -> {
-         setAmount(b, amounts[b.dropItem.id - 1]);
+         setAmount(b, amounts[b.dropItem.id]);
       });
    }
    
