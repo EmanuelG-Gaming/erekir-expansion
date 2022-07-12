@@ -1,5 +1,6 @@
 package erekir.gen;
 
+import arc.Core;
 import arc.struct.*;
 import mindustry.type.*;
 import erekir.world.blocks.environment.*;
@@ -18,7 +19,7 @@ public class DropGenerator{
          String itemName = item.localizedName;
          if (!item.isHidden()) {
             
-            last = new ItemProp(itemName + "-drop"){{
+            last = new ItemProp(item.name + "-drop"){{
                localizedName = itemName + " Drop";
                dropItem = item;
                amount = 1;
@@ -30,7 +31,7 @@ public class DropGenerator{
    
    public static void handleIcons() {
       generated.each(b -> {
-         b.region = b.dropItem.fullIcon;
+         b.region = Core.atlas.find(b.dropItem.name)
       });
    }
 }
