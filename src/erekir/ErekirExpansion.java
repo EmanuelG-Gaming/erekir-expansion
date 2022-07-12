@@ -22,6 +22,7 @@ import erekir.graphics.*;
 import erekir.util.*;
 import erekir.ui.*;
 import erekir.ui.button.*;
+import erekir.gen.*;
 import erekir.world.blocks.gather.*;
 import erekir.world.blocks.environment.*;
 
@@ -62,6 +63,7 @@ public class ErekirExpansion extends Mod{
        
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
+            DropGenerator.handleIcons();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -106,6 +108,7 @@ public class ErekirExpansion extends Mod{
     public void loadContent() {
         // load everything from the array
         for (AltContentList list : erekirContent) list.load();
+        DropGenerator.generateDrops();
         AddedErekirTechTree.load();
     }
     
