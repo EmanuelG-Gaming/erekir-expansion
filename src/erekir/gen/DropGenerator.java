@@ -10,7 +10,7 @@ import static mindustry.Vars.*;
 /** Generates drop builds based on the current non-hidden items. */
 public class DropGenerator{
    private static ItemProp last;
-   private static int[content.items().size] amounts = [
+   private static int[] amounts = {
       4, 4, 3,
       5, 5, 3,
       1, 3, 4,
@@ -18,7 +18,7 @@ public class DropGenerator{
       2, 3, 2,
       4, 3, 2,
       1
-   ];
+   };
    
    /** Contains only drops with shown vanilla items! */
    public static Seq<ItemProp> generated = new Seq<ItemProp>();
@@ -49,7 +49,7 @@ public class DropGenerator{
    
    public static void handleIcons() {
       generated.each(b -> {
-         b.region = b.dropItem.fullIcon
+         b.region = b.dropItem.fullIcon;
       });
    }
    
