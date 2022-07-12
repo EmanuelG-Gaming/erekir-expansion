@@ -8,18 +8,17 @@ import static mindustry.Vars.*;
 
 /** Generates drop builds based on the current non-hidden items. */
 public class DropGenerator{
-   private static final int[] values = new int[content.items().size]; 
+   private static final int[] values = new int[content.items()]; 
    private static ItemProp last;
    private static Seq<ItemProp> generated = new Seq<ItemProp>();
    
    //funny generating code
    public static void generateDrops() {
-      for (int i = 0; i < values.length; i++) {
-         if (values[i] != 0) {
-            Item item = content.item(i);
-            if (item.isHidden()) return;
+      for (int i = 0; i < content.items().size; i++) {
+         Item item = content.item(i);
+         String itemName = item.localizedName;
+         if (!item.isHidden()) {
             
-            String itemName = item.localizedName;
             last = new ItemProp(itemName + "-drop"){{
                localizedName = itemName + " Drop";
                dropItem = item;
