@@ -43,7 +43,7 @@ public class DropGenerator{
 
    public static void setToDrop() {
       generated.each(b -> {
-         setAmount(b, amounts[b.id]);
+         setAmount(b, amounts[b.dropItem.id]);
       });
    }
    
