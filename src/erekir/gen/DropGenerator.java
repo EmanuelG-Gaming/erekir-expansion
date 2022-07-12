@@ -14,7 +14,7 @@ public class DropGenerator{
    
    //funny generating code
    public void generateDrops() {
-      for (int i = 0; i < values; i++) {
+      for (int i = 0; i < values.length; i++) {
          if (values[i] != 0) {
             Item item = content.item(i);
             if (item.isHidden()) return;
