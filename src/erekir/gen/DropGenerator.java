@@ -31,7 +31,7 @@ public class DropGenerator{
    
    public static void handleIcons() {
       generated.each(b -> {
-         b.region = Core.atlas.find(b.dropItem.name);
+         b.region = Core.atlas.find("item-" + b.dropItem.name);
       });
    }
 }
