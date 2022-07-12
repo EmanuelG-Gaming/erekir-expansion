@@ -8,9 +8,9 @@ import static mindustry.Vars.*;
 
 /** Generates drop builds based on the current non-hidden items. */
 public class DropGenerator{
-   private final int[] values = new int[content.items().size]; 
+   private static final int[] values = new int[content.items().size]; 
    private static ItemProp last;
-   private Seq<ItemProp> generated = new Seq<ItemProp>();
+   private static Seq<ItemProp> generated = new Seq<ItemProp>();
    
    //funny generating code
    public static void generateDrops() {
