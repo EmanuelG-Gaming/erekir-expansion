@@ -84,7 +84,7 @@ public class ItemProp extends Block{
     
     @Override
     public TextureRegion[] icons() {
-       return new TextureRegion[]{dropItem.fullIcon};
+       return new TextureRegion[]{Core.atlas.find("item-" + dropItem.name)};
     }
     
     public void setup(Item itm) {
