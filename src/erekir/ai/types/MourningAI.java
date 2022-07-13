@@ -20,7 +20,7 @@ public class MourningAI extends AIController{
         float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
 
         rand.setSeed(unit.id);
-        float random = rand.random(circleRadius * 1.2f);
+        float random = rand.random(circleRadius, 45f);
         
         float dst = circleRadius * 0.8f;
         if (pos != null) {

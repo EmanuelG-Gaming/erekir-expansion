@@ -33,7 +33,6 @@ public class DropGenerator{
             last = new ItemProp(item.name + "-drop"){{
                localizedName = itemName + " Drop";
                dropItem = item;
-               amount = 1;
             }};
             generated.add(last);
          }
