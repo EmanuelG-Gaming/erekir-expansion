@@ -56,7 +56,8 @@ public class ItemProp extends Block{
     @Override
     public void setStats() {
        super.setStats();
-       stats.add(ErkStats.amount, l -> l.add(amount));
+       String amt = Integer.toString(amount);
+       stats.add(ErkStats.amount, l -> l.add(amt));
     }
     
     @Override
