@@ -41,7 +41,9 @@ public class AddedErekirTechTree{
        });
        
        vanillaNode(onset, () -> {
-           node(alternateApproach, Seq.with(new SectorComplete(onset)));
+           node(alternateApproach, Seq.with(new SectorComplete(onset)), () -> {
+               node(deadEnd, Seq.with(new Research(reinforcedConduit), new SectorComplete(alternateApproach)));
+           });
        });
        
        vanillaNode(arkycite, () -> {
