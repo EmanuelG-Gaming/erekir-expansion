@@ -12,6 +12,7 @@ import mindustry.world.meta.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import erekir.ui.button.Pickup;
+import erekir.world.meta.*;
 
 import static mindustry.Vars.*;
 
@@ -53,6 +54,12 @@ public class ItemProp extends Block{
     }
     
     @Override
+    public void setStats() {
+       super.setStats();
+       stats.add(ErkStats.amount, l -> l.add(amount));
+    }
+    
+    @Override
     public void drawBase(Tile tile) {
        DropBuild build = (DropBuild) tile.build;
        for (int i = 0; i < build.currentAmount; i++) {
@@ -72,6 +79,11 @@ public class ItemProp extends Block{
         } else {
             throw new IllegalArgumentException("slippery fingers.");
         }
+    }
+    
+    @Override
+    public TextureRegion[] icons() {
+       return new TextureRegion[]{dropItem.fullIcon};
     }
     
     public void setup(Item itm) {
