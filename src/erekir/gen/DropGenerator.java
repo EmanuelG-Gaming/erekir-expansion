@@ -49,7 +49,8 @@ public class DropGenerator{
    
    public static void handleIcons() {
       generated.each(b -> {
-         b.region = b.dropItem.fullIcon;
+         b.fullIcon = b.dropItem.fullIcon;
+         b.uiIcon = b.dropItem.fullIcon;
       });
    }
    

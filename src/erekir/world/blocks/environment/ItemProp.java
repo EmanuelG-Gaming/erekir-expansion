@@ -74,13 +74,6 @@ public class ItemProp extends Block{
         }
     }
     
-    @Override
-    public TextureRegion[] icons() {
-       //java
-       return new TextureRegion[]{Core.atlas.find("erekir-expansion-nothingness")};
-    }
-    
-    
     public void setup(Item itm) {
         dropItem = itm;
         //this.mapColor.set(itm.color); 
