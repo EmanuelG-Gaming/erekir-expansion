@@ -53,7 +53,11 @@ public class ErekirExpansion extends Mod{
               Blocks.shipFabricator,
               new UnitFactory.UnitPlan(ErkUnitTypes.spread, (float) 25 * Time.toSeconds, with(Items.tungsten, 20, Items.silicon, 45, Items.graphite, 30))
            );
-            
+           addToFabricator(
+              Blocks.shipFabricator,
+              new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 15, Items.silicon, 35, Items.oxide, 20))
+           );
+           
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
@@ -77,6 +81,7 @@ public class ErekirExpansion extends Mod{
         });
         
         Events.run(Trigger.draw, () -> {
+           //TODO shader?
            for (Unit unit : Groups.unit) {
               Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
               if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {

@@ -21,7 +21,9 @@ public class AddedErekirTechTree{
        });
        vanillaNode(shipFabricator, () -> {
            node(ErkUnitTypes.aggregate, () -> {
-               node(ErkUnitTypes.spread);
+               node(ErkUnitTypes.spread, () -> {
+                   node(ErkUnitTypes.melt);
+               });
            });
        });
        
