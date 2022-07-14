@@ -8,6 +8,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.liquid.*;
+import mindustry.world.blocks.liquid.LiquidRouter.*;
 import mindustry.type.*;
 
 import static mindustry.Vars.*;
