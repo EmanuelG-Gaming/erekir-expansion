@@ -21,7 +21,7 @@ import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
 import erekir.ctype.*;
 import erekir.ai.types.*;
-import erekir.type.ammo.OreAmmoType;
+import erekir.type.ammo.*;
 
 import static mindustry.Vars.*;
 
@@ -35,7 +35,9 @@ public class ErkUnitTypes implements AltContentList{
     aggregate, agglomerateMissile, agglomerate, accumulate,
     attractor,
     
-    spread, apart, shredderMissile, shredder;
+    spread, apart, shredderMissile, shredder,
+    
+    melt;
     
     @Override
     public void load() {
@@ -593,5 +595,43 @@ public class ErkUnitTypes implements AltContentList{
             }};
          }});
       }};
+      
+      melt = new ErekirUnitType("melt"){{
+          health = 700;
+	        speed = 2.3f;
+ 	        hitSize = 7;
+	        drag = 0.055f;
+	        accel = 0.35f;
+	        flying = true;
+          aimDst = 0.6f;
+          range = 90f;
+          engineOffset = 5.75f;
+          targetAir = false;
+          ammoType = new LiquidAmmoType(Liquids.ozone);
+          ammoCapacity = 85f;
+          
+          constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 9f;
+             mirror = false;
+             top = true;
+             x = 0f;
+             y = 0f;
+             shootSound = Sounds.flame;
+             bullet = new BasicBulletType(3f, 29f){{
+                hitSize = 3f;
+                width = height = 0f;
+                lifetime = 8f;
+                pierce = true;
+                ejectEffect = Fx.none;
+                shootEffect = ErkFx.meltPlasma;
+                hitEffect = Fx.hitFlamePlasma;
+                despawnEffect = Fx.none;
+                keepVelocity = false;
+                hittable = false;
+             }};
+          }});
+       }};
+       
    }
 }

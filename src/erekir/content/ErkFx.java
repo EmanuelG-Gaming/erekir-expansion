@@ -1,6 +1,6 @@
 package erekir.content;
 
-import arc.*;
+import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
@@ -62,5 +62,21 @@ public class ErkFx {
       Draw.color(ErkPal.greenishBeryl);
 
       Fill.square(e.x, e.y, e.fslope() * 1.5f + 0.14f, 45f);
+  }),
+  
+  meltPlasma = new Effect(40f, e -> {
+      Color pal = Color.valueOf("fa2859");
+      
+      Draw.color(pal.cpy().mul(1.25f), pal, Color.gray, e.fin());
+      Draw.alpha(0.85f * e.fout());
+      
+      float h = e.fin(Interp.pow5In);
+
+      Angles.randLenVectors(e.id, 8, e.finpow() * 25f + 6f, e.rotation, 10f, (x, y) -> {
+          float px = h * (e.x + x - Core.camera.position.x);
+          float py = h * (e.y + y - Core.camera.position.y);
+          
+          Fill.circle(e.x + x + px, e.y + y + py, 2.5f + e.fout() * 1.5f);
+      });
   });
 }
