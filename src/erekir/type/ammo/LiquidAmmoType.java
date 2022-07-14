@@ -55,7 +55,7 @@ public class LiquidAmmoType implements AmmoType{
              if (tile.build != null && tile.build instanceof LiquidRouterBuild) {
                 LiquidRouterBuild build = (LiquidRouterBuild) tile.build;
                 for (int i = 0; i < liquidTake; i++) {
-                   if (unit.type.ammoCapacity - unit.ammo >= liquidTake && build.liquids != null && build.liquids.has(ammoLiquid)) {
+                   if (unit.type.ammoCapacity - unit.ammo >= liquidTake && build.liquids != null && build.liquids.get(ammoLiquid) > 0) {
                       Time.run(i * (ticks / 15f), () -> Fx.itemTransfer.at(build.tileX(), build.tileY(), 4, ammoLiquid.color, unit));
                       build.liquids.remove(ammoLiquid, liquidTake);
                       unit.ammo = Math.min(unit.ammo + liquidTake, unit.type.ammoCapacity);
