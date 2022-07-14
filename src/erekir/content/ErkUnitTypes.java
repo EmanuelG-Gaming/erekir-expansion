@@ -608,7 +608,7 @@ public class ErkUnitTypes implements AltContentList{
           engineOffset = 5.75f;
           targetAir = false;
           ammoType = new LiquidAmmoType(Liquids.ozone);
-          ammoCapacity = 85f;
+          ammoCapacity = 85;
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
