@@ -73,11 +73,11 @@ public class ErkFx {
       
       float h = e.fin();
 
-      Angles.randLenVectors(e.id, 8, e.finpow() * 25f + 6f, e.rotation, 10f, (x, y) -> {
+      Angles.randLenVectors(e.id, 8, e.finpow() * 30f + 6f, e.rotation, 10f, (x, y) -> {
           float px = h * (e.x + x - Core.camera.position.x);
           float py = h * (e.y + y - Core.camera.position.y);
           
           Fill.circle(e.x + x + px, e.y + y + py, 2.5f + e.fout() * 1.5f);
       });
-  });
+  }).layer(Layer.flyingUnit + 0.01f);
 }
