@@ -625,7 +625,8 @@ public class ErkUnitTypes implements AltContentList{
                 pierce = true;
                 ejectEffect = Fx.none;
                 shootEffect = ErkFx.meltPlasma;
-                hitEffect = Fx.hitFlamePlasma;
+                hitColor = Color.valueOf("ba67c2");
+                hitEffect = ErkFx.hitSquaresColorSmall;
                 despawnEffect = Fx.none;
                 keepVelocity = false;
                 hittable = false;

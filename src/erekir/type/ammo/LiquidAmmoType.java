@@ -15,9 +15,9 @@ import static mindustry.Vars.*;
 
 /** Interpretation of @author Mythril382's pull request. */
 public class LiquidAmmoType implements AmmoType{
-    public float range = 85f;
-    public float ticks = 10f;
-    public float liquidTake = 1f;
+    public float range = 15f;
+    public float ticks = 7f;
+    public float liquidTake = 5f;
     public Liquid ammoLiquid = Liquids.water;
 
     public LiquidAmmoType(Liquid ammoLiquid) {
@@ -54,12 +54,12 @@ public class LiquidAmmoType implements AmmoType{
           if (tile != null) {
              if (tile.build != null && tile.build instanceof LiquidRouterBuild) {
                 LiquidRouterBuild build = (LiquidRouterBuild) tile.build;
-                for (int i = 0; i < liquidTake; i++) {
-                   if (unit.type.ammoCapacity - unit.ammo >= liquidTake && build.liquids != null && build.liquids.get(ammoLiquid) > 0) {
-                      Time.run(i * (ticks / 15f), () -> Fx.itemTransfer.at(build.tileX(), build.tileY(), 4, ammoLiquid.color, unit));
-                      build.liquids.remove(ammoLiquid, liquidTake);
-                      unit.ammo = Math.min(unit.ammo + liquidTake, unit.type.ammoCapacity);
-                   }
+                if (unit.type.ammoCapacity - unit.ammo >= liquidTake && build.liquids != null && build.liquids.get(ammoLiquid) > 0) {
+                   for (int i = 0; i < liquidTake; i++)
+                      Time.run(i * ticks, () -> Fx.itemTransfer.at(build.tileX() * tilesize, build.tileY() * tilesize, 4, ammoLiquid.color, unit));
+                   
+                   build.liquids.remove(ammoLiquid, liquidTake);
+                   unit.ammo = Math.min(unit.ammo + liquidTake, unit.type.ammoCapacity);
                 }
              }
           }

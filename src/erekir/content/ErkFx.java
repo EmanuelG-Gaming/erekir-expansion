@@ -4,6 +4,7 @@ import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import mindustry.content.*;
 import mindustry.entities.Effect;
 import mindustry.graphics.*;
 import erekir.graphics.*;
@@ -65,12 +66,12 @@ public class ErkFx {
   }),
   
   meltPlasma = new Effect(40f, e -> {
-      Color pal = Color.valueOf("fa2859");
+      Color pal = Liquids.ozone.color;
       
       Draw.color(pal.cpy().mul(1.25f), pal, Color.gray, e.fin());
       Draw.alpha(0.85f * e.fout());
       
-      float h = e.fin(Interp.pow5In);
+      float h = e.fin();
 
       Angles.randLenVectors(e.id, 8, e.finpow() * 25f + 6f, e.rotation, 10f, (x, y) -> {
           float px = h * (e.x + x - Core.camera.position.x);
