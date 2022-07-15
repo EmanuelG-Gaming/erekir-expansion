@@ -80,7 +80,7 @@ public class ErkFx {
           
           //height vector
           Tmp.v1.set(e.x + x, e.y + y).trns(Angles.angle(Tmp.v1.x, Tmp.v1.y, px, py), h * heightIncrease);
-          Fill.circle(Tmp.v1.x, Tmp.v1.y, 2.5f + e.fout() * 1.5f);
+          Fill.circle(e.x + x + Tmp.v1.x, e.y + y + Tmp.v1.y, 2.5f + e.fout() * 1.5f);
       });
   }).layer(Layer.flyingUnit + 0.01f);
 }
