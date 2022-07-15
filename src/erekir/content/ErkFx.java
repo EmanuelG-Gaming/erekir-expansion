@@ -78,8 +78,8 @@ public class ErkFx {
       Angles.randLenVectors(e.id, 8, e.finpow() * 30f + 6f, e.rotation, 10f, (x, y) -> {
           float dx = e.x + x;
           float dy = e.y + y;
-          float px = dx - Core.camera.position.x;
-          float py = dy - Core.camera.position.y;
+          float px = dx + (dx - Core.camera.position.x);
+          float py = dy + (dy - Core.camera.position.y);
           
           //height vector
           Tmp.v1.trns(Angles.angle(dx, dy, px, py), h * heightIncrease);
