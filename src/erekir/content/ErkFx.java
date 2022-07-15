@@ -72,7 +72,7 @@ public class ErkFx {
       Draw.color(pal.cpy().mul(1.25f), pal, Color.gray, e.fin());
       Draw.alpha(0.85f * e.fout());
       
-      float h = 35f;
+      float h = 20f;
       float heightIncrease = e.fin();
       
       Angles.randLenVectors(e.id, 8, e.finpow() * 30f + 6f, e.rotation, 10f, (x, y) -> {

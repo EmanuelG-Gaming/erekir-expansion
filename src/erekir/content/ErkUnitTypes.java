@@ -603,8 +603,8 @@ public class ErkUnitTypes implements AltContentList{
 	        drag = 0.055f;
 	        accel = 0.35f;
 	        flying = true;
-          aimDst = 0.8f;
-          range = 40f;
+          aimDst = 1f;
+          range = 50f;
           engineOffset = 5.75f;
           targetAir = false;
           ammoType = new LiquidAmmoType(Liquids.ozone);
@@ -618,7 +618,7 @@ public class ErkUnitTypes implements AltContentList{
              x = 0f;
              y = 0f;
              shootSound = Sounds.flame;
-             bullet = new BasicBulletType(6f, 29f){{
+             bullet = new BasicBulletType(6f, 20f){{
                 hitSize = 3f;
                 width = height = 0f;
                 lifetime = 8f;

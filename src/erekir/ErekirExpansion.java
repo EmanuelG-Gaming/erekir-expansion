@@ -55,7 +55,7 @@ public class ErekirExpansion extends Mod{
            );
            addToFabricator(
               Blocks.shipFabricator,
-              new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 15, Items.silicon, 35, Items.oxide, 20))
+              new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 25, Items.silicon, 55, Items.oxide, 15))
            );
            
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
