@@ -1,6 +1,7 @@
 package erekir.content;
 
 import arc.Core;
+import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
@@ -71,13 +72,15 @@ public class ErkFx {
       Draw.color(pal.cpy().mul(1.25f), pal, Color.gray, e.fin());
       Draw.alpha(0.85f * e.fout());
       
-      float h = e.fin();
-
+      float h = 20f, heightIncrease = e.fin();
+      
       Angles.randLenVectors(e.id, 8, e.finpow() * 30f + 6f, e.rotation, 10f, (x, y) -> {
-          float px = h * (e.x + x - Core.camera.position.x);
-          float py = h * (e.y + y - Core.camera.position.y);
+          float px = e.x + x - Core.camera.position.x;
+          float py = e.y + y - Core.camera.position.y;
           
-          Fill.circle(e.x + x + px, e.y + y + py, 2.5f + e.fout() * 1.5f);
+          //height vector
+          Tmp.v1.set(e.x + x, e.y + y).trns(Angles.angle(Tmp.v1.x, Tmp.v1.y, px, py), h * heightIncrease);
+          Fill.circle(Tmp.v1.x, Tmp.v1.y, 2.5f + e.fout() * 1.5f);
       });
   }).layer(Layer.flyingUnit + 0.01f);
 }
