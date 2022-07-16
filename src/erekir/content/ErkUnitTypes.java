@@ -401,6 +401,68 @@ public class ErkUnitTypes implements AltContentList{
           lowAltitude = true;
           
           constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 70f;
+             mirror = false;
+             top = true;
+             x = 0f;
+             y = 0f;
+             bullet = new DivisibleBulletType(5f, 45f){{
+                sprite = "missile-large";
+                backColor = trailColor = ErkPal.greenishBeryl;
+                frontColor = Color.white;
+                trailLength = 10;
+                trailWidth = 3.5f;
+                hitEffect = despawnEffect = ErkFx.hugeShatterBeryl;
+                shootEffect = new Effect(40f, e -> {
+                   Draw.color(ErkPal.greenishBeryl);
+                   float sideAngle = 90f;
+                   
+                   for (int i : Mathf.signs) {
+	                   	Drawf.tri(e.x, e.y, 16f * e.fout(), 28f, e.rotation + sideAngle * i);
+	                   	Drawf.tri(e.x, e.y, 16f * e.fout() / 2f, 28f / 2f, e.rotation + (sideAngle - 35f) * i);
+                   }
+                });
+                smokeEffect = Fx.shootBigSmoke;
+                width = 16f;
+                height = 23.5f;
+                lifetime = 40f;
+                divisions = 6;
+                
+                //comically large amount of bullets
+                bullets.add(
+                   new DivisibleBulletType(6.5f, 26f){{
+                       backColor = trailColor = ErkPal.greenishBeryl;
+                       frontColor = Color.white;
+                       trailLength = 9;
+                       trailWidth = 1.5f;
+                       hitEffect = despawnEffect = ErkFx.gemHit;
+                       shootEffect = Fx.none;
+                       smokeEffect = Fx.shootSmallSmoke;
+                       width = 10f;
+                       height = 14.5f;
+                       lifetime = 40f;
+                       
+                       divisions = 3;
+                       
+                       bullets.add(
+                          new BasicBulletType(2.0f, 12f){{
+                              backColor = trailColor = ErkPal.greenishBeryl;
+                              frontColor = Color.white;
+                              trailLength = 5;
+                              trailWidth = 0.8f;
+                              hitEffect = despawnEffect = ErkFx.gemHit;
+                              shootEffect = Fx.none;
+                              smokeEffect = Fx.shootSmallSmoke;
+                              width = 4.5f;
+                              height = 7.5f;
+                              lifetime = 25f;
+                          }};
+                       );
+                   }};
+                }});
+             }};
+          }});
        }};
        
        //region tungsten - air
