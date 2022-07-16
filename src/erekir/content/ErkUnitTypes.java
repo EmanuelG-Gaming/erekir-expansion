@@ -401,10 +401,11 @@ public class ErkUnitTypes implements AltContentList{
           engineSize = 6.5f;
           targetAir = true;
           lowAltitude = true;
+          ammoType = new ItemAmmoType(Items.beryllium);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 90f;
+             reload = 140f;
              mirror = false;
              top = true;
              x = 0f;
@@ -424,14 +425,14 @@ public class ErkUnitTypes implements AltContentList{
                    float sideAngle = 90f;
                    
                    for (int i : Mathf.signs) {
-	                   	Drawf.tri(e.x, e.y, 12f * e.fout(), 25f, e.rotation + sideAngle * i);
-	                   	Drawf.tri(e.x, e.y, 12f * e.fout() / 1.65f, 25f / 1.65f, e.rotation + (sideAngle - 35f) * i);
+	                   	Drawf.tri(e.x, e.y, 12f * e.fout(), 21f, e.rotation + sideAngle * i);
+	                   	Drawf.tri(e.x, e.y, 12f * e.fout() / 1.4f, 21f / 1.4f, e.rotation + (sideAngle - 35f) * i);
                    }
                 });
                 smokeEffect = Fx.shootBigSmoke;
                 width = 16f;
                 height = 23.5f;
-                lifetime = 40f;
+                lifetime = 80f;
                 divisions = 8;
                 
                 //comically large amount of bullets

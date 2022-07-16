@@ -49,20 +49,17 @@ public class ErekirExpansion extends Mod{
            );
            addToFabricator(
               Blocks.shipFabricator,
-              new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20))
-           );
-           addToFabricator(
-              Blocks.shipFabricator,
-              new UnitFactory.UnitPlan(ErkUnitTypes.spread, (float) 25 * Time.toSeconds, with(Items.tungsten, 20, Items.silicon, 45, Items.graphite, 30))
-           );
-           addToFabricator(
-              Blocks.shipFabricator,
-              new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 25, Items.silicon, 55, Items.oxide, 15))
+              Seq.with(
+                 new UnitFactory.UnitPlan(ErkUnitTypes.aggregate, (float) 30 * Time.toSeconds, with(Items.beryllium, 85, Items.silicon, 35, Items.graphite, 20)), 
+                 new UnitFactory.UnitPlan(ErkUnitTypes.spread, (float) 25 * Time.toSeconds, with(Items.tungsten, 20, Items.silicon, 45, Items.graphite, 30)),
+                 new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 25, Items.silicon, 55, Items.oxide, 15))
+              )
            );
            
+           //TODO fix the module tier bug
            addToAssembler(
               Blocks.shipAssembler,
-              Seq.with(new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 4, Blocks.berylliumWall, 8)))
+              Seq.with(new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 8, Blocks.berylliumWall, 4)))
            );
            
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
@@ -128,10 +125,14 @@ public class ErekirExpansion extends Mod{
         if (!(bloc instanceof UnitFactory)) return;
         
         UnitFactory factory = (UnitFactory) bloc;
-        factory.plans.add(plan);
+        factory.plans.addAll(plan);
         
         factory.configurable = true;
         factory.init();
+    }
+    
+    public void addToFabricator(Block bloc, Seq<UnitFactory.UnitPlan> plan) {
+        addToFabricator(bloc, plan.toArray());
     }
     
     public void addToReconstructor(Block bloc, UnitType unit, UnitType upgrade) {
