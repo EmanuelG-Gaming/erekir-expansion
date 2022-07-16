@@ -402,7 +402,7 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 70f;
+             reload = 90f;
              mirror = false;
              top = true;
              x = 0f;
@@ -431,35 +431,32 @@ public class ErkUnitTypes implements AltContentList{
                 
                 //comically large amount of bullets
                 bullets.add(
-                   new DivisibleBulletType(6.5f, 26f){{
-                       backColor = trailColor = ErkPal.greenishBeryl;
-                       frontColor = Color.white;
-                       trailLength = 9;
-                       trailWidth = 1.5f;
-                       hitEffect = despawnEffect = ErkFx.gemHit;
-                       shootEffect = Fx.none;
-                       smokeEffect = Fx.shootSmallSmoke;
-                       width = 10f;
-                       height = 14.5f;
-                       lifetime = 40f;
+                new DivisibleBulletType(6.5f, 26f){{
+                    backColor = trailColor = ErkPal.greenishBeryl;
+                    frontColor = Color.white;
+                    trailLength = 9;
+                    trailWidth = 1.5f;
+                    hitEffect = despawnEffect = ErkFx.gemHit;
+                    shootEffect = Fx.none;
+                    smokeEffect = Fx.shootSmallSmoke;
+                    width = 10f;
+                    height = 14.5f;
+                    lifetime = 40f;
+                    divisions = 3;
                        
-                       divisions = 3;
-                       
-                       bullets.add(
-                          new BasicBulletType(2.0f, 12f){{
-                              backColor = trailColor = ErkPal.greenishBeryl;
-                              frontColor = Color.white;
-                              trailLength = 5;
-                              trailWidth = 0.8f;
-                              hitEffect = despawnEffect = ErkFx.gemHit;
-                              shootEffect = Fx.none;
-                              smokeEffect = Fx.shootSmallSmoke;
-                              width = 4.5f;
-                              height = 7.5f;
-                              lifetime = 25f;
-                          }};
-                       );
-                   }};
+                    bullets.add(
+                    new BasicBulletType(2.0f, 12f){{
+                        backColor = trailColor = ErkPal.greenishBeryl;
+                        frontColor = Color.white;
+                        trailLength = 5;
+                        trailWidth = 0.8f;
+                        hitEffect = despawnEffect = ErkFx.gemHit;
+                        shootEffect = Fx.none;
+                        smokeEffect = Fx.shootSmallSmoke;
+                        width = 4.5f;
+                        height = 7.5f;
+                        lifetime = 25f;
+                    }});
                 }});
              }};
           }});
