@@ -62,7 +62,7 @@ public class ErekirExpansion extends Mod{
            
            addToAssembler(
               Blocks.shipAssembler,
-              new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 4, Blocks.berylliumWall, 8))
+              Seq.with(new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 4, Blocks.berylliumWall, 8)))
            );
            
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
@@ -141,7 +141,7 @@ public class ErekirExpansion extends Mod{
         recon.addUpgrade(unit, upgrade);
     }
     
-    public void addToAssembler(Block bloc, Seq<PayloadStack> stac) {
+    public void addToAssembler(Block bloc, Seq<AssemblerUnitPlan> stac) {
         if (!(bloc instanceof UnitAssembler)) return;
         
         UnitAssembler assembler = (UnitAssembler) bloc;
