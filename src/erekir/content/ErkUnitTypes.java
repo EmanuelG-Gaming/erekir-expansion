@@ -11,6 +11,7 @@ import mindustry.type.ammo.*;
 import mindustry.gen.*;
 import mindustry.content.*;
 import mindustry.ctype.*;
+import mindustry.entities.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.effect.*;
