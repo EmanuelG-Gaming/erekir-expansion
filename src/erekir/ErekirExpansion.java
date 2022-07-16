@@ -5,10 +5,12 @@ import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.Events;
+import arc.struct.*;
 import arc.util.*;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.blocks.units.UnitAssembler.*;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.type.*;
 import mindustry.mod.*;
@@ -139,11 +141,11 @@ public class ErekirExpansion extends Mod{
         recon.addUpgrade(unit, upgrade);
     }
     
-    public void addToAssembler(Block bloc, PayloadStack stac) {
+    public void addToAssembler(Block bloc, Seq<PayloadStack> stac) {
         if (!(bloc instanceof UnitAssembler)) return;
         
         UnitAssembler assembler = (UnitAssembler) bloc;
-        assembler.plans.add(stac);
+        assembler.plans.addAll(stac.toArray());
         
         assembler.init();
     }
