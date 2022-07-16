@@ -18,11 +18,11 @@ public class ButtonIconsDialog extends BaseDialog{
    private static String nothing = "nothingness";
    
    String selection;
+   boolean shown;
    
    public ButtonIconsDialog() {
       super("Button icons");
-      cont.add("Button icons (requires reloading)").color(Pal.accent).padBottom(10f).row();
-   
+     
       cont.pane(Styles.defaultPane, t -> {
          //row indice
          int[] r = {0}; 
@@ -36,6 +36,8 @@ public class ButtonIconsDialog extends BaseDialog{
          
       }).size(buttonSize * rowCount + 6f, buttonSize * 6f + 6f).row();
       
+      cont.add("Upon selection, this requires a world reload.").color(Pal.accent).padBottom(10f).row();
+
       closeOnBack();
       
       buttons.defaults().size(150f, 64f);
