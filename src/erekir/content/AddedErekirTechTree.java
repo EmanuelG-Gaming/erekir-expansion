@@ -42,6 +42,10 @@ public class AddedErekirTechTree{
            });
        });
        
+       vanillaNode(shipAssembler, () -> {
+           node(ErkUnitTypes.attractor);
+       });
+       
        vanillaNode(onset, () -> {
            node(alternateApproach, Seq.with(new SectorComplete(onset)), () -> {
                node(deadEnd, Seq.with(new Research(reinforcedConduit), new SectorComplete(alternateApproach)));

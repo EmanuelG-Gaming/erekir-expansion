@@ -58,6 +58,11 @@ public class ErekirExpansion extends Mod{
               new UnitFactory.UnitPlan(ErkUnitTypes.melt, (float) 35 * Time.toSeconds, with(Items.tungsten, 25, Items.silicon, 55, Items.oxide, 15))
            );
            
+           addToAssembler(
+              Blocks.shipAssembler,
+              new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 4, Blocks.berylliumWall, 8))
+           );
+           
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
@@ -132,5 +137,14 @@ public class ErekirExpansion extends Mod{
         
         Reconstructor recon = (Reconstructor) bloc;
         recon.addUpgrade(unit, upgrade);
+    }
+    
+    public void addToAssembler(Block bloc, PayloadStack stac) {
+        if (!(bloc instanceof UnitAssembler)) return;
+        
+        UnitAssembler assembler = (UnitAssembler) bloc;
+        assembler.plans.add(stac);
+        
+        assembler.init();
     }
 }

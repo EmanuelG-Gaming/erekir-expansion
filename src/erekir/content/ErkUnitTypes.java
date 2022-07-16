@@ -1,5 +1,6 @@
 package erekir.content;
 
+import arc.audio.*;
 import arc.graphics.*;
 import arc.graphics.Color;
 import arc.graphics.g2d.*;
@@ -396,7 +397,7 @@ public class ErkUnitTypes implements AltContentList{
           aimDst = 1.46f;
           range = 150f;
           deathSound = ErkSounds.explosionlarge;
-          engineOffset = 21f;
+          engineOffset = 24f;
           engineSize = 6.5f;
           targetAir = true;
           lowAltitude = true;
@@ -408,27 +409,30 @@ public class ErkUnitTypes implements AltContentList{
              top = true;
              x = 0f;
              y = 0f;
-             bullet = new DivisibleBulletType(5f, 45f){{
+             bullet = new DivisibleBulletType(5f, 90f){{
                 sprite = "missile-large";
                 backColor = trailColor = ErkPal.greenishBeryl;
                 frontColor = Color.white;
-                trailLength = 10;
+                trailLength = 17;
                 trailWidth = 3.5f;
                 hitEffect = despawnEffect = ErkFx.hugeShatterBeryl;
+                hitSound = Sounds.explosionbig;
+                splashDamage = 102f;
+                splashDamageRadius = 45f;
                 shootEffect = new Effect(40f, e -> {
                    Draw.color(ErkPal.greenishBeryl);
                    float sideAngle = 90f;
                    
                    for (int i : Mathf.signs) {
-	                   	Drawf.tri(e.x, e.y, 16f * e.fout(), 28f, e.rotation + sideAngle * i);
-	                   	Drawf.tri(e.x, e.y, 16f * e.fout() / 2f, 28f / 2f, e.rotation + (sideAngle - 35f) * i);
+	                   	Drawf.tri(e.x, e.y, 12f * e.fout(), 25f, e.rotation + sideAngle * i);
+	                   	Drawf.tri(e.x, e.y, 12f * e.fout() / 1.65f, 25f / 1.65f, e.rotation + (sideAngle - 35f) * i);
                    }
                 });
                 smokeEffect = Fx.shootBigSmoke;
                 width = 16f;
                 height = 23.5f;
                 lifetime = 40f;
-                divisions = 6;
+                divisions = 8;
                 
                 //comically large amount of bullets
                 bullets.add(
@@ -436,26 +440,26 @@ public class ErkUnitTypes implements AltContentList{
                     backColor = trailColor = ErkPal.greenishBeryl;
                     frontColor = Color.white;
                     trailLength = 9;
-                    trailWidth = 1.5f;
+                    trailWidth = 1.9f;
                     hitEffect = despawnEffect = ErkFx.gemHit;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.shootSmallSmoke;
-                    width = 10f;
-                    height = 14.5f;
-                    lifetime = 40f;
+                    width = 12f;
+                    height = 17.5f;
+                    lifetime = 20f;
                     divisions = 3;
                        
                     bullets.add(
                     new BasicBulletType(2.0f, 12f){{
                         backColor = trailColor = ErkPal.greenishBeryl;
                         frontColor = Color.white;
-                        trailLength = 5;
-                        trailWidth = 0.8f;
+                        trailLength = 7;
+                        trailWidth = 1.2f;
                         hitEffect = despawnEffect = ErkFx.gemHit;
                         shootEffect = Fx.none;
                         smokeEffect = Fx.shootSmallSmoke;
-                        width = 4.5f;
-                        height = 7.5f;
+                        width = 6.5f;
+                        height = 11.5f;
                         lifetime = 25f;
                     }});
                 }});

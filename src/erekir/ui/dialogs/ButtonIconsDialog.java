@@ -36,7 +36,7 @@ public class ButtonIconsDialog extends BaseDialog{
          
       }).size(buttonSize * rowCount + 6f, buttonSize * 6f + 6f).row();
       
-      cont.add("Upon selection, this requires a world reload.").color(Pal.accent).padBottom(10f).row();
+      cont.add("Upon selection, this requires a world reload.").color(Pal.accent).pad(10f).row();
 
       closeOnBack();
       

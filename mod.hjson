@@ -4,5 +4,5 @@ author: "Emanuel G"
 main: "erekir.ErekirExpansion"
 description: "A Mindustry mod aimed to add content to the newly-added planet."
 version: "0.65 Pre-Alpha"
-minGameVersion: 22610
+minGameVersion: 136
 java: true

@@ -64,13 +64,13 @@ public class ErkFx {
      Draw.color(Color.white, ErkPal.greenishBeryl, e.fin());
 
      e.scaled(13f, s -> {
-        Lines.stroke(2f + s.fout());
+        Lines.stroke(1.7f + s.fout());
         Lines.circle(e.x, e.y, s.fin() * 48f);
      });
 
 
-     Angles.randLenVectors(e.id, 15, e.fin() * 45f, (x, y) -> {
-        Fill.circle(e.x + x, e.y + y, e.fout(Interp.pow5Out) * 12.5f + 3.5f);
+     Angles.randLenVectors(e.id, 20, e.fin() * 45f, (x, y) -> {
+        Fill.circle(e.x + x, e.y + y, e.fout(Interp.pow5Out) * 6.5f + 2.5f);
      });
 
      Drawf.light(e.x, e.y, 53f, ErkPal.greenishBeryl, 0.6f * e.fout());
