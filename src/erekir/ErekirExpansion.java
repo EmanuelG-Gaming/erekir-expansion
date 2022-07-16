@@ -132,7 +132,13 @@ public class ErekirExpansion extends Mod{
     }
     
     public void addToFabricator(Block bloc, Seq<UnitFactory.UnitPlan> plan) {
-        addToFabricator(bloc, plan.toArray());
+        if (!(bloc instanceof UnitFactory)) return;
+        
+        UnitFactory factory = (UnitFactory) bloc;
+        factory.plans.addAll(plan.toArray());
+        
+        factory.configurable = true;
+        factory.init();
     }
     
     public void addToReconstructor(Block bloc, UnitType unit, UnitType upgrade) {

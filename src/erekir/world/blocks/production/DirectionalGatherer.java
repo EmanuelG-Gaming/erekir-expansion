@@ -43,6 +43,19 @@ public class DirectionalGatherer extends GenericCrafter{
 
       drawer.load(this);
    }
+   
+   @Override
+   public void drawOverlay(float x, float y, int rotation) {
+      int len = length - 1;
+      float px = Geometry.d4x(rotation), py = Geometry.d4y(rotation);
+      Drawf.dashLine(
+         Pal.placing,
+         x,
+         y,
+         x + px * len * tilesize,
+         y + py * len * tilesize
+     ); 
+   }
     
    public class DirectionalGathererBuild extends GenericCrafterBuild implements Gathering{
       public Point2[] sides = new Point2[size];
