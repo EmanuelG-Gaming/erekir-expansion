@@ -395,7 +395,7 @@ public class ErkUnitTypes implements AltContentList{
 	        accel = 0.095f;
 	        flying = true;
           aimDst = 1.46f;
-          range = 150f;
+          range = 300f;
           deathSound = ErkSounds.explosionlarge;
           engineOffset = 24f;
           engineSize = 6.5f;
@@ -403,6 +403,11 @@ public class ErkUnitTypes implements AltContentList{
           lowAltitude = true;
           ammoType = new ItemAmmoType(Items.beryllium);
           
+          setEnginesMirror(
+             new UnitEngine(37 / 4f, -60 / 4f, 4.5f, 315f),
+             new UnitEngine((37 + 34) / 4f, -60 / 4f, 2.7f, 315f)
+          );
+           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
              reload = 140f;
@@ -418,6 +423,7 @@ public class ErkUnitTypes implements AltContentList{
                 trailWidth = 3.5f;
                 hitEffect = despawnEffect = ErkFx.hugeShatterBeryl;
                 hitSound = Sounds.explosionbig;
+                shootSound = Sounds.snap;
                 splashDamage = 102f;
                 splashDamageRadius = 45f;
                 shootEffect = new Effect(40f, e -> {

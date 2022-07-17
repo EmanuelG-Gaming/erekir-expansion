@@ -32,7 +32,7 @@ public class DivisibleBulletType extends BasicBulletType{
   
    @Override
    public void despawned(Bullet b) {
-      despawnEffect.at(b.x, b.y, b.rotation());
+      despawnEffect.at(b.x, b.y, b.rotation(), hitColor);
       shoot(b, b.x, b.y);
    }
    
