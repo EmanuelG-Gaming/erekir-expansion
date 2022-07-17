@@ -423,7 +423,7 @@ public class ErkUnitTypes implements AltContentList{
                 trailWidth = 3.5f;
                 hitEffect = despawnEffect = ErkFx.hugeShatterBeryl;
                 hitSound = Sounds.explosionbig;
-                shootSound = Sounds.snap;
+                shootSound = Sounds.shootSnap;
                 splashDamage = 102f;
                 splashDamageRadius = 45f;
                 shootEffect = new Effect(40f, e -> {
