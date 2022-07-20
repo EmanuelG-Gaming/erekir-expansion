@@ -67,13 +67,12 @@ public class ErekirExpansion extends Mod{
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.agglomerate, ErkUnitTypes.accumulate);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.apart, ErkUnitTypes.shredder);
-           
-           
         });
        
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
             DropGenerator.handleIcons();
+            addToResupply();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -123,13 +122,16 @@ public class ErekirExpansion extends Mod{
     
     @Override
     public void loadContent() {
-        for (Block bloc : ressupliableBlocks) {
-            bloc.allowResupply = true;
-        }
         //load everything from the array
         for (AltContentList list : erekirContent) list.load();
         DropGenerator.generateDrops();
         AddedErekirTechTree.load();
+    }
+    
+    public void addToResupply() {
+        for (Block bloc : ressupliableBlocks) {
+           bloc.allowResupply = true;
+        }
     }
     
     public void addToFabricator(Block bloc, UnitFactory.UnitPlan plan) {
