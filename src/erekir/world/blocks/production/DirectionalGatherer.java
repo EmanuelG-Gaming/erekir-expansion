@@ -115,13 +115,11 @@ public class DirectionalGatherer extends GenericCrafter{
                 if (tile != null) {
                    if (tile.build != null && tile.build instanceof DropBuild) {
                       DropBuild drop = (DropBuild) tile.build;
-                      if (ErkUtil.hasButton(drop)) {
-                         drop.gather(this, 1);
-                         if (itemCapacity - this.items.get(((ItemProp) drop.block).dropItem) >= 1) {
+                      drop.gather(this, 1);
+                      if (itemCapacity - this.items.get(((ItemProp) drop.block).dropItem) >= 1) {
       
-                            laserEffect.at(drop.tileX() * tilesize, drop.tileY() * tilesize, rot * 90f, laserColor);
-                            return true;
-                         }
+                         laserEffect.at(drop.tileX() * tilesize, drop.tileY() * tilesize, rot * 90f, laserColor);
+                         return true;
                       }
                    }
                 }

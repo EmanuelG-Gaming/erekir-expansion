@@ -471,6 +471,48 @@ public class ErkUnitTypes implements AltContentList{
                     }});
                 }});
              }};
+          }},
+          new Weapon(){{
+             reload = 20f;
+             mirror = false;
+             top = true;
+             x = 9f;
+             y = -12f;
+             bullet = new BasicBulletType(3f, 15f){{
+                sprite = "large-orb";
+                backColor = trailColor = ErkPal.greenishBeryl;
+                hitEffect = despawnEffect = Fx.none;
+                hitSound = Sounds.spark;
+                
+                intervalBullet = new LightningBulletType(){{
+                    damage = 10;
+                    ammoMultiplier = 1f;
+                    lightningColor = ErkPal.greenishBeryl;
+                    lightningLength = 7;
+                    lightningLengthRand = 9;
+
+                    buildingDamageMultiplier = 0.15f;
+
+                    lightningType = new BulletType(0.0001f, 0f){{
+                        lifetime = Fx.lightning.lifetime;
+                        hitEffect = Fx.hitLancer;
+                        despawnEffect = Fx.none;
+                        status = StatusEffects.shocked;
+                        statusDuration = 10f;
+                        hittable = false;
+                        lightColor = Color.white;
+                        buildingDamageMultiplier = 0.15f;
+                    }};
+                 }};
+
+                 bulletInterval = 1.7f;
+
+                 lightningColor = ErkPal.greenishBeryl;
+                 lightningDamage = 14;
+                 lightning = 4;
+                 lightningLength = 7;
+                 lightningLengthRand = 9;
+             }};
           }});
        }};
        
