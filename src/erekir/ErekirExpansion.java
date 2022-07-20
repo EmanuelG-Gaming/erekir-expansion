@@ -68,14 +68,16 @@ public class ErekirExpansion extends Mod{
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.agglomerate, ErkUnitTypes.accumulate);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.apart, ErkUnitTypes.shredder);
            
-           for (Block b : ressupliableBlocks) {
-               b.allowResupply = true;
-           }
+           
         });
        
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
             DropGenerator.handleIcons();
+            
+            for (Block b : ressupliableBlocks) {
+               b.allowResupply = true;
+            } 
         });
         
         Events.on(WorldLoadEvent.class, e -> {
