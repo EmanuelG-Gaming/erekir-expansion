@@ -474,22 +474,24 @@ public class ErkUnitTypes implements AltContentList{
           }},
           new Weapon(){{
              reload = 20f;
-             mirror = false;
+             mirror = true;
              top = true;
              x = 9f;
-             y = -12f;
-             bullet = new BasicBulletType(3f, 15f){{
+             y = -10f;
+             bullet = new BasicBulletType(1f, 15f){{
                 sprite = "large-orb";
+                width = height = 0f;
+                hitSize = 5;
                 backColor = trailColor = ErkPal.greenishBeryl;
                 hitEffect = despawnEffect = Fx.none;
-                hitSound = Sounds.spark;
+                shootSound = Sounds.spark;
+                lifetime = 30f;
                 
                 intervalBullet = new LightningBulletType(){{
-                    damage = 10;
+                    damage = 11;
                     ammoMultiplier = 1f;
                     lightningColor = ErkPal.greenishBeryl;
-                    lightningLength = 7;
-                    lightningLengthRand = 9;
+                    lightningLength = 5;
 
                     buildingDamageMultiplier = 0.15f;
 
@@ -506,12 +508,7 @@ public class ErkUnitTypes implements AltContentList{
                  }};
 
                  bulletInterval = 1.7f;
-
-                 lightningColor = ErkPal.greenishBeryl;
-                 lightningDamage = 14;
-                 lightning = 4;
-                 lightningLength = 7;
-                 lightningLengthRand = 9;
+                 intervalRandomSpread = 15f;
              }};
           }});
        }};
