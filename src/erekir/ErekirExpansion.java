@@ -72,7 +72,6 @@ public class ErekirExpansion extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
             DropGenerator.handleIcons();
-            addToResupply();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -106,6 +105,23 @@ public class ErekirExpansion extends Mod{
         });
     }
     
+    @Override
+    public void init() {
+       if (!headless) {
+          Events.on(ClientLoadEvent.class, e -> {
+             addToResupply();
+          });
+       }
+    }
+    
+    @Override
+    public void loadContent() {
+       //load everything from the array
+       for (AltContentList list : erekirContent) list.load();
+       DropGenerator.generateDrops();
+       AddedErekirTechTree.load();
+    }
+
     private final AltContentList[] erekirContent = {
        new ErkLiquids(),
        new ErkStatusEffects(),
@@ -119,14 +135,6 @@ public class ErekirExpansion extends Mod{
        Blocks.liquidContainer, Blocks.liquidTank,
        Blocks.reinforcedLiquidContainer, Blocks.reinforcedLiquidTank
     };
-    
-    @Override
-    public void loadContent() {
-        //load everything from the array
-        for (AltContentList list : erekirContent) list.load();
-        DropGenerator.generateDrops();
-        AddedErekirTechTree.load();
-    }
     
     public void addToResupply() {
         for (Block bloc : ressupliableBlocks) {
