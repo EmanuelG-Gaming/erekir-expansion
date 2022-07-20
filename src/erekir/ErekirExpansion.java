@@ -67,6 +67,10 @@ public class ErekirExpansion extends Mod{
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.agglomerate, ErkUnitTypes.accumulate);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.apart, ErkUnitTypes.shredder);
+           
+           for (Block b : ressupliableBlocks) {
+               b.allowResupply = true;
+           }
         });
        
         Events.on(ClientLoadEvent.class, e -> {
@@ -111,6 +115,12 @@ public class ErekirExpansion extends Mod{
        new ErkBlocks(),
        new ErkUnitTypes(),
        new ErkSectorPresets()
+    };
+    
+    //add these for specific ammo units
+    private final Block[] ressupliableBlocks = {
+       Blocks.liquidContainer, Blocks.liquidTank,
+       Blocks.reinforcedLiquidContainer, Blocks.reinforcedLiquidTank
     };
     
     @Override

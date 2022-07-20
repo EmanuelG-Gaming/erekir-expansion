@@ -401,6 +401,8 @@ public class ErkUnitTypes implements AltContentList{
           engineSize = 6.5f;
           targetAir = true;
           lowAltitude = true;
+          rotateSpeed = 2.3f;
+          
           ammoType = new ItemAmmoType(Items.beryllium);
           
           setEnginesMirror(
@@ -478,20 +480,20 @@ public class ErkUnitTypes implements AltContentList{
              top = true;
              x = 9f;
              y = -10f;
-             bullet = new BasicBulletType(1f, 15f){{
+             bullet = new BasicBulletType(1.5f, 15f){{
                 sprite = "large-orb";
                 width = height = 0f;
                 hitSize = 5;
                 backColor = trailColor = ErkPal.greenishBeryl;
                 hitEffect = despawnEffect = Fx.none;
                 shootSound = Sounds.spark;
-                lifetime = 30f;
+                lifetime = 80f;
                 
                 intervalBullet = new LightningBulletType(){{
                     damage = 11;
                     ammoMultiplier = 1f;
                     lightningColor = ErkPal.greenishBeryl;
-                    lightningLength = 5;
+                    lightningLength = 12;
 
                     buildingDamageMultiplier = 0.15f;
 
