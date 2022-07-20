@@ -31,7 +31,7 @@ import erekir.world.blocks.environment.*;
 import static mindustry.type.ItemStack.with;
 import static mindustry.Vars.*;
 
-/** Mod's main, also holds some utility methods. */
+/** Mod's main class, also holds some utility methods. */
 public class ErekirExpansion extends Mod{
     public Seq<Block> resupplyBlocks = new Seq<Block>();
     
@@ -111,7 +111,7 @@ public class ErekirExpansion extends Mod{
     public void init() {
        if (!headless) {
           resupplyBlocks = Seq.with(
-             Blocks.liquidContainer, Blocks.liquidTank
+             Blocks.liquidContainer, Blocks.liquidTank,
              Blocks.reinforcedLiquidContainer, Blocks.reinforcedLiquidTank
           );
        }
