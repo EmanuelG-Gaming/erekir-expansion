@@ -33,7 +33,8 @@ import static mindustry.Vars.*;
 
 /** Mod's main, also holds some utility methods. */
 public class ErekirExpansion extends Mod{
-
+    public Seq<Block> resupplyBlocks = new Seq<Block>();
+    
     public ErekirExpansion() {
         Log.info("Loaded Erekir buoyancy");
         
@@ -72,6 +73,7 @@ public class ErekirExpansion extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
             DropGenerator.handleIcons();
+            addToResupply();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -108,9 +110,10 @@ public class ErekirExpansion extends Mod{
     @Override
     public void init() {
        if (!headless) {
-          Events.on(ClientLoadEvent.class, e -> {
-             addToResupply();
-          });
+          resupplyBlocks = Seq.with(
+             Blocks.liquidContainer, Blocks.liquidTank
+             Blocks.reinforcedLiquidContainer, Blocks.reinforcedLiquidTank
+          );
        }
     }
     
@@ -130,16 +133,10 @@ public class ErekirExpansion extends Mod{
        new ErkSectorPresets()
     };
     
-    //add these for specific ammo units
-    private final Block[] ressupliableBlocks = {
-       Blocks.liquidContainer, Blocks.liquidTank,
-       Blocks.reinforcedLiquidContainer, Blocks.reinforcedLiquidTank
-    };
-    
     public void addToResupply() {
-        for (Block bloc : ressupliableBlocks) {
-           bloc.allowResupply = true;
-        }
+        resupplyBlocks.each(b -> {
+           b.allowResupply = true;
+        });
     }
     
     public void addToFabricator(Block bloc, UnitFactory.UnitPlan plan) {
