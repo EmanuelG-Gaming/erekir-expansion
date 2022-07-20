@@ -74,10 +74,6 @@ public class ErekirExpansion extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             ErekirSettings.load();
             DropGenerator.handleIcons();
-            
-            for (Block b : ressupliableBlocks) {
-               b.allowResupply = true;
-            } 
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -127,7 +123,10 @@ public class ErekirExpansion extends Mod{
     
     @Override
     public void loadContent() {
-        // load everything from the array
+        for (Block bloc : ressupliableBlocks) {
+            bloc.allowResupply = true;
+        }
+        //load everything from the array
         for (AltContentList list : erekirContent) list.load();
         DropGenerator.generateDrops();
         AddedErekirTechTree.load();
