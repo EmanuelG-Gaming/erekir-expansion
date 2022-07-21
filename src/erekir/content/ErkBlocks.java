@@ -130,6 +130,21 @@ public class ErkBlocks implements AltContentList{
               lifetime = 30f;
               hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
               buildingDamageMultiplier = 0.8f;
+          }},
+          Items.tungsten, new BasicBulletType(5f, 80){{
+              width = 11f;
+              height = 17f;
+              hitSize = 5.5f;
+              shootEffect = e;
+              smokeEffect = Fx.shootBigSmoke;
+              ammoMultiplier = 1;
+              hitColor = backColor = trailColor = Pal.tungstenShot;
+              frontColor = Color.white;
+              trailWidth = 2.2f;
+              trailLength = 9;
+              hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
+              rangeChange = 40f;
+              buildingDamageMultiplier = 0.8f;
           }}
           );
           shoot = new ShootAlternate(9f / 4f);
