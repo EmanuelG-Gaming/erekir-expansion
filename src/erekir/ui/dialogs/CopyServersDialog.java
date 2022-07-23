@@ -1,13 +1,14 @@
 package erekir.ui.dialogs;
 
 import arc.Core;
+import arc.graphics.*;
 import arc.struct.*;
 import arc.scene.*;
 import arc.scene.ui.*; 
 import arc.scene.ui.layout.*;
 import arc.scene.style.*;
 import mindustry.ui.*;
-import mindustry.ui.dialogs.*; 
+import mindustry.ui.dialogs.*;
 import mindustry.gen.*;
 
 import static mindustry.Vars.*;

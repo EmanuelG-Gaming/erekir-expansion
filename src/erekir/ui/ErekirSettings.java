@@ -4,6 +4,7 @@ import arc.Core;
 import arc.scene.*;
 import arc.scene.ui.*;
 import mindustry.ui.*;
+import mindustry.ui.dialogs.*;
 import mindustry.ui.dialogs.SettingsMenuDialog.*;
 import mindustry.ui.dialogs.SettingsMenuDialog.SettingsTable.*; 
 import erekir.ui.dialogs.*;
@@ -19,7 +20,7 @@ public class ErekirSettings{
       serverDialog = new CopyServersDialog();
       
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem-full", t -> {
-          t.pref(new ButtonSetting("erekir-expansion-buttonIcons"), buttonDialog);
+          t.pref(new ButtonSetting("erekir-expansion-buttonIcons", buttonDialog));
           
           //also display small images
           t.checkPref(
@@ -27,7 +28,7 @@ public class ErekirSettings{
              bool -> Core.settings.put("erekir-expansion-displaySmall", bool)
           );
           
-          t.pref(new ButtonSetting("erekir-expansion-servers"), serverDialog);
+          t.pref(new ButtonSetting("erekir-expansion-servers", serverDialog));
       });
    }
    
