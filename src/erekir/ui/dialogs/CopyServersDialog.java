@@ -1,0 +1,60 @@
+package erekir.ui.dialogs;
+
+import arc.Core;
+import arc.struct.*;
+import arc.scene.*;
+import arc.scene.ui.*; 
+import arc.scene.ui.layout.*;
+import arc.scene.style.*;
+import mindustry.ui.*;
+import mindustry.ui.dialogs.*; 
+import mindustry.gen.*;
+
+import static mindustry.Vars.*;
+
+/** Copies a sequence of a server address. */
+public class CopyServersDialog extends BaseDialog{
+   private Seq<CopyServer> servers = new Seq<CopyServer>();
+   
+   public CopyServersDialog() {
+       super("Erekir Expansion servers");
+       
+       addCloseButton();
+       
+       servers = Seq.with(new CopyServer("Confined Erekir server", "It is a test.\nMay not be always online.", "200:3c6:8ef8:4614:f271:34dd:637a:c5e0:6567"));
+       
+       cont.pane(Styles.defaultPane, p -> {
+           servers.each(s -> {
+              p.table(Tex.button, t -> {
+                 t.button(Icon.book, () -> {
+                    //ipv6 moment 
+                    Core.app.setClipboardText("[" + s.address + "]");
+                    ui.showInfo("@copied");
+                 }).size(40f).left();
+
+                 t.table(Styles.none, t2 -> {
+                    addStat(t2, "Name: ", s.name);
+                    addStat(t2, "Description: ", s.description);
+                    //no
+                 }).padLeft(12f).expandX().left();
+              }).pad(16f).fillX().row();
+          });
+      }).size(540f, servers.size * (60f + 16f));
+   }
+   
+   public void addStat(Table table, String name, String value) {
+       String val = value.trim();
+       table.add(name).right();
+       table.add(val == "" ? "<none>" : val).color(Color.gray).left().row();
+   }
+   
+   public class CopyServer{
+      public String name, description, address;
+      
+      public CopyServer(String name, String description, String address) {
+         this.name = name;
+         this.description = description;
+         this.address = address;
+      }
+   }
+}

@@ -11,26 +11,34 @@ import erekir.ui.dialogs.*;
 import static mindustry.Vars.*;
 
 public class ErekirSettings{
-   private static ButtonIconsDialog dialog;
+   private static ButtonIconsDialog buttonDialog;
+   private static CopyServersDialog serverDialog;
 
    public static void load() {
-      dialog = new ButtonIconsDialog();
+      buttonDialog = new ButtonIconsDialog();
+      serverDialog = new CopyServersDialog();
+      
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem-full", t -> {
-          t.pref(new ButtonSetting("erekir-expansion-buttonIcons"));
+          t.pref(new ButtonSetting("erekir-expansion-buttonIcons"), buttonDialog);
           
           //also display small images
           t.checkPref(
              "displaySmall", Core.settings.getBool("erekir-expansion-displaySmall"),
              bool -> Core.settings.put("erekir-expansion-displaySmall", bool)
           );
+          
+          t.pref(new ButtonSetting("erekir-expansion-servers"), serverDialog);
       });
    }
    
    //shamelessly stolen from testing utils
    static class ButtonSetting extends Setting{
-      public ButtonSetting(String name) {
+      private BaseDialog dialog;
+      
+      public ButtonSetting(String name, BaseDialog dial) {
          super(name);
          title = "setting." + name + ".name";
+         dialog = dial;
       }
       
       @Override
