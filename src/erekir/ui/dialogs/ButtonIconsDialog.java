@@ -21,7 +21,7 @@ public class ButtonIconsDialog extends BaseDialog{
    boolean shown;
    
    public ButtonIconsDialog() {
-      super("Button icons");
+      super("@erekir-expansion-buttons");
      
       cont.pane(Styles.defaultPane, t -> {
          //row indice

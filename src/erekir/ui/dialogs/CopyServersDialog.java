@@ -1,6 +1,7 @@
 package erekir.ui.dialogs;
 
 import arc.Core;
+import arc.util.*;
 import arc.graphics.*;
 import arc.struct.*;
 import arc.scene.*;
@@ -18,11 +19,11 @@ public class CopyServersDialog extends BaseDialog{
    private Seq<CopyServer> servers = new Seq<CopyServer>();
    
    public CopyServersDialog() {
-       super("Erekir Expansion servers");
+       super("@erekir-expansion-servers");
        
        addCloseButton();
        
-       servers = Seq.with(new CopyServer("Confined Erekir server", "It is a test.\nMay not be always online.", "200:3c6:8ef8:4614:f271:34dd:637a:c5e0:6567"));
+       servers = Seq.with(new CopyServer("Confined Erekir server", "It is a test.\nMay not be always online.", "200:3c6:8ef8:4614:f271:34dd:637a:c5e0"));
        
        cont.pane(Styles.defaultPane, p -> {
            servers.each(s -> {
@@ -31,16 +32,19 @@ public class CopyServersDialog extends BaseDialog{
                     //ipv6 moment 
                     Core.app.setClipboardText("[" + s.address + "]");
                     ui.showInfo("@copied");
-                 }).size(40f).left();
+                 }).size(80f).left();
 
                  t.table(Styles.none, t2 -> {
                     addStat(t2, "Name: ", s.name);
                     addStat(t2, "Description: ", s.description);
+                    if (s.details != null) {
+                       addStat(t2, "Details: ", s.details);
+                    }
                     //no
                  }).padLeft(12f).expandX().left();
               }).pad(16f).fillX().row();
           });
-      }).size(540f, servers.size * (60f + 16f));
+      }).size(540f, servers.size * (100f + 16f));
    }
    
    public void addStat(Table table, String name, String value) {
@@ -50,12 +54,21 @@ public class CopyServersDialog extends BaseDialog{
    }
    
    public class CopyServer{
+      /** Never null. */
       public String name, description, address;
+      
+      /** Server's details. Optional. */
+      public @Nullable String details;
       
       public CopyServer(String name, String description, String address) {
          this.name = name;
          this.description = description;
          this.address = address;
+      }
+      
+      public CopyServer(String name, String description, String address, String details) {
+         super(name, description, address);
+         this.details = details;
       }
    }
 }

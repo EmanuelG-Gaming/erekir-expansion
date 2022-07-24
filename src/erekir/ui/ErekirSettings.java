@@ -21,14 +21,13 @@ public class ErekirSettings{
       
       ui.settings.addCategory("Erekir expansion", "erekir-expansion-gem-full", t -> {
           t.pref(new ButtonSetting("erekir-expansion-buttonIcons", buttonDialog));
+          t.pref(new ButtonSetting("erekir-expansion-servers", serverDialog));
           
           //also display small images
           t.checkPref(
              "displaySmall", Core.settings.getBool("erekir-expansion-displaySmall"),
              bool -> Core.settings.put("erekir-expansion-displaySmall", bool)
           );
-          
-          t.pref(new ButtonSetting("erekir-expansion-servers", serverDialog));
       });
    }
    
