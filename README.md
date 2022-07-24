@@ -2,27 +2,25 @@
 A Java mod meant to add new things to the current Erekir's progression.
 
 
-## Fun Fact:
-
-I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, so it'll not harm the previous mod's reputation.
+Fun Fact: I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, so it'll not harm the previous mod's reputation.
 
 # Content
 The mod adds a medium amount of content, mostly grouped in three factions that may have been an extent to Erekir's turrets. This mod also has two maps that introduce you to the first two factions, though the mod is mostly just units.
 
-# Factions 
+## Factions 
 The factions that got mentioned in the last paragraph were:
 
-## Beryllium
+### Beryllium
 - Based on the `Breach`.
-- Units that tend to shoot single bullets.
+- Units that tend to slowly shoot more powerful bullets.
 
-## Tungsten
+### Tungsten
 - Based on the `Disperse`.
-- Units that tend to spread bullets.
+- Units that tend to spread weaker bullets.
 
-## Ozone
+### Ozone
 - Based on the `Sublimate`.
-- <No further details yet>.
+- `<No further details yet>.`
 
 # Links
 
