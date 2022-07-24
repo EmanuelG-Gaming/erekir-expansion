@@ -67,7 +67,9 @@ public class CopyServersDialog extends BaseDialog{
       }
       
       public CopyServer(String name, String description, String address, String details) {
-         super(name, description, address);
+         this.name = name;
+         this.description = description;
+         this.address = address;
          this.details = details;
       }
    }
