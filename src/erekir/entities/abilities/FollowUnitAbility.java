@@ -29,7 +29,7 @@ public class FollowUnitAbility extends Ability{
     public boolean parentizeEffects;
 
     protected float timer;
-    protected Seq<Unit> spawnUnits = new Seq<Unit>(maxSpawnUnits);
+    protected Seq<Unit> spawnUnits = new Seq<Unit>();
     
     FollowUnitAbility() {}
     
@@ -43,7 +43,7 @@ public class FollowUnitAbility extends Ability{
     @Override
     public Ability copy() {
        super.copy();
-       spawnUnits = Seq(maxSpawnUnits);
+       spawnUnits = Seq<Unit>();
     }
     
     @Override
