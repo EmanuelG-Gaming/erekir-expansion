@@ -37,6 +37,7 @@ public class AddedErekirTechTree{
        });
        
        vanillaNode(primeRefabricator, () -> {
+           node(ErkUnitTypes.mineral);
            node(ErkUnitTypes.accumulate, () -> {
                node(ErkUnitTypes.shredder);
            });

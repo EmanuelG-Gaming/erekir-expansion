@@ -22,7 +22,7 @@ import static mindustry.Vars.*;
 
 public class FollowUnitAbility extends Ability{
     public UnitType spawnUnit;
-    public int maxSpawnUnits = 5;
+    public int maxSpawnUnits = 3;
     
     public float spawnTime = 60f, spawnX, spawnY, patrolRadius = 50f;
     public Effect spawnEffect = Fx.spawn;

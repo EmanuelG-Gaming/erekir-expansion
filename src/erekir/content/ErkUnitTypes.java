@@ -211,7 +211,7 @@ public class ErkUnitTypes implements AltContentList{
            engineLayer = Layer.effect;
            hitSize = 4;
            speed = 3f;
-           lifetime = 60f * 10f;
+           lifetime = 60f * 30f;
            outlineColor = Pal.darkOutline;
            health = 120;
            lowAltitude = true;
@@ -239,7 +239,7 @@ public class ErkUnitTypes implements AltContentList{
 	        drag = 0.06f;
 	        accel = 0.08f;
 	        flying = false;
-	        rotateSpeed = 1.55f;
+	        rotateSpeed = 1.75f;
 	        
           legStraightness = 0.3f;
           stepShake = 0f;

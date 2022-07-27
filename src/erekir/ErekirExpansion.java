@@ -66,6 +66,7 @@ public class ErekirExpansion extends Mod{
            addToReconstructor(Blocks.mechRefabricator, ErkUnitTypes.gem, ErkUnitTypes.geode);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.aggregate, ErkUnitTypes.agglomerate);
            addToReconstructor(Blocks.shipRefabricator, ErkUnitTypes.spread, ErkUnitTypes.apart);
+           addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.geode, ErkUnitTypes.mineral);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.agglomerate, ErkUnitTypes.accumulate);
            addToReconstructor(Blocks.primeRefabricator, ErkUnitTypes.apart, ErkUnitTypes.shredder);
         });

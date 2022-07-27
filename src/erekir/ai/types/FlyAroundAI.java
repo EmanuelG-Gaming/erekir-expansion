@@ -21,13 +21,16 @@ public class FlyAroundAI extends AIController{
         
         if (owner != null) {
            Tmp.v1.set(owner.x, owner.y);
-           toPos.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 360f), patrolRadius);
-           if (unit.within(toPos.x, toPos.y, unit.type.hitSize / 2f)) {
-              toPos.setAngle(Mathf.random(0f, 360f));
+           if (unit.within(Tmp.v1.x, Tmp.v1.y, unit.type.hitSize / 2f)) {
+              toPos.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
            }
-           moveTo(toPos, unit.type.hitSize / 4f);
+           else if (unit.within(toPos.x, toPos.y, unit.type.hitSize / 2f)) {
+              toPos.set(Tmp.v1).trns(Mathf.random(0f, 360f), patrolRadius);
+           }
+           moveTo(toPos, 1f, 3f);
            unit.lookAt(toPos);
         }
+        else moveFront(time);
         
         Building build = unit.buildOn();
 
@@ -36,7 +39,11 @@ public class FlyAroundAI extends AIController{
             unit.kill();
         }
     }
-
+   
+    public void moveFront(float time) {
+       unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
+    } 
+    
     @Override
     public boolean retarget() {
         return timer.get(timerTarget, 4f);
