@@ -34,16 +34,18 @@ public class FollowUnitAbility extends Ability{
     FollowUnitAbility() {}
     
     public FollowUnitAbility(UnitType spawnUnit, float spawnX, float spawnY, float spawnTime) {
-        this.spawnUnit = spawnUnit;
-        this.spawnX = spawnX;
-        this.spawnY = spawnY;
-        this.spawnTime = spawnTime;
+       this.spawnUnit = spawnUnit;
+       this.spawnX = spawnX;
+       this.spawnY = spawnY;
+       this.spawnTime = spawnTime;
     }
     
     @Override
     public Ability copy() {
        super.copy();
        spawnUnits = new Seq<Unit>();
+       
+       return this;
     }
     
     @Override
