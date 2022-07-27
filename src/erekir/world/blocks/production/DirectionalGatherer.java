@@ -1,5 +1,6 @@
 package erekir.world.blocks.production;
 
+import arc.audio.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.graphics.*;
@@ -35,6 +36,7 @@ public class DirectionalGatherer extends GenericCrafter{
       canOverdrive = false;
       drawArrow = true;
       hasItems = true;
+      ambientSound = Sounds.none;
    }
    
    @Override

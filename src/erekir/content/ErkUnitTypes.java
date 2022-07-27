@@ -21,6 +21,7 @@ import erekir.graphics.*;
 import erekir.entities.bullet.*;
 import erekir.entities.pattern.*;
 import erekir.entities.effect.*;
+import erekir.entities.abilities.*;
 import erekir.ctype.*;
 import erekir.ai.types.*;
 import erekir.type.ammo.*;
@@ -31,7 +32,7 @@ public class ErkUnitTypes implements AltContentList{
     public static UnitType
     
     //ground insect
-    gem, geode,
+    gem, geode, mineralMissile, mineral,
     
     //flying
     aggregate, agglomerateMissile, agglomerate, accumulate,
@@ -200,6 +201,109 @@ public class ErkUnitTypes implements AltContentList{
                }};
             }}
           );
+       }};
+       
+       mineralMissile = new MissileUnitType("mineral-missile"){{
+           trailColor = engineColor = ErkPal.greenishBeryl;
+           engineSize = 1.9f;
+           engineOffset = 2.4f;
+           engineLayer = Layer.effect;
+           hitSize = 4;
+           speed = 3f;
+           lifetime = 60f * 10f;
+           outlineColor = Pal.darkOutline;
+           health = 120;
+           lowAltitude = true;
+           rotateSpeed = 4.35f;
+           controller = u -> new FlyAroundAI();
+           
+           weapons.add(new Weapon(){{
+              shootCone = 360f;
+              mirror = false;
+              reload = 1f;
+              shootOnDeath = true;
+              bullet = new ExplosionBulletType(55f, 30f){{
+                 //TODO effect
+              }};
+           }});
+       }};
+       
+       mineral = new ErekirUnitType("mineral"){{
+          health = 3000;
+       	  armor = 7;
+	        speed = 0.60f;
+	        hitSize = 19f;
+	        aimDst = 2.1f;
+          range = 160;
+	        drag = 0.06f;
+	        accel = 0.08f;
+	        flying = false;
+	        rotateSpeed = 1.55f;
+	        
+          legStraightness = 0.3f;
+          stepShake = 0f;
+
+          legCount = 6;
+          legLength = 18f;
+          lockLegBase = true;
+          legContinuousMove = true;
+          legExtension = -2f;
+          legBaseOffset = 3f;
+          legMinLength = 0.2f;
+          legMaxLength = 1.1f;
+          legLengthScl = 0.96f;
+          legForwardScl = 1.1f;
+          legGroupSize = 3;
+          rippleScale = 0.2f;
+          
+	        legMoveSpace = 1f;
+          hovering = true;
+          legPhysicsLayer = false;
+          allowLegStep = true;
+          
+          shadowElevation = 0.1f;
+          groundLayer = Layer.legUnit - 1f;
+          researchCostMultiplier = 0;
+          ammoType = new PowerAmmoType(1200);
+          
+          abilities.add(
+             new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 8 * Time.toSeconds)
+          );
+          
+          constructor = LegsUnit::create;
+          weapons.add(new Weapon(){{
+             reload = 40f;
+             mirror = true;
+             top = true;
+             x = 4.5f;
+             y = -5f;
+             bullet = new BasicBulletType(3f, 45f){{
+                backColor = trailColor = ErkPal.greenishBeryl;
+                frontColor = Color.white;
+                trailLength = 11;
+                despawnEffect = ErkFx.gemHit;
+                hitEffect = ErkFx.gemHit;
+                shootEffect = Fx.none;
+                smokeEffect = Fx.shootBigSmoke2;
+                hitSound = Sounds.explosion;
+                width = 9.5f;
+                height = 14f;
+                lifetime = 80f;
+                
+                int count = 6;
+                for (int j = 0; j < count; j++) {
+                   float spd = speed;
+                   float fin = 1f + (j + 1) / (float) count;
+                   float lt = lifetime / Mathf.lerp(fin, 1f, 0.5f);
+                   spawnBullets.add(new LaserBoltBulletType(spd * fin, 15f){{
+                    	hitColor = backColor = Pal.berylShot;
+	                    frontColor = Color.white;
+                      lifetime = lt;
+                      hitEffect = Fx.hitLaserColor;
+                   }});
+                }
+             }};
+          }});
        }};
        
        //region beryllium - air

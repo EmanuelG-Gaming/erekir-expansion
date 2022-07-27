@@ -9,9 +9,10 @@ import mindustry.gen.*;
 
 /** Copied and modified from MissileAI.java. */
 public class MourningAI extends AIController{
-    protected static final Rand rand = new Rand();
-    public @Nullable Position pos;
     public float circleRadius = 1f;
+    public @Nullable Position pos;
+    
+    protected static final Rand rand = new Rand();
     
     @Override
     public void updateMovement() {
@@ -27,9 +28,10 @@ public class MourningAI extends AIController{
            if (unit.within(pos.getX(), pos.getY(), dst)) {
               circle(pos, random);
            } else {
-              unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
+              moveFront(time);
            }
         }
+        else moveFront(time);
         
         Building build = unit.buildOn();
 
@@ -37,6 +39,11 @@ public class MourningAI extends AIController{
         if (build != null && build.team != unit.team) {
             unit.kill();
         }
+    }
+    
+    /** Pretty much reusing the same thing. */
+    public void moveFront(float time) {
+       unit.moveAt(vec.trns(unit.rotation, unit.type.missileAccelTime <= 0f ? unit.speed() : Mathf.pow(Math.min(time / unit.type.missileAccelTime, 1f), 2f) * unit.speed()));
     }
 
     @Override
