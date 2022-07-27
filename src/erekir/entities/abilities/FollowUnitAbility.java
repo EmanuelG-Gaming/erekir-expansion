@@ -70,7 +70,7 @@ public class FollowUnitAbility extends Ability{
              }
           }
           consUnits(u -> {
-             if (!u.isValid) {
+             if (!u.isValid()) {
                 spawnUnits.remove(u);
              }
           });
