@@ -41,6 +41,12 @@ public class FollowUnitAbility extends Ability{
     }
     
     @Override
+    public Ability copy() {
+       super.copy();
+       spawnUnits = Seq(maxSpawnUnits);
+    }
+    
+    @Override
     public void update(Unit unit) {
        if (!net.client()) {
           if (spawnUnits.size < maxSpawnUnits) {
@@ -55,7 +61,7 @@ public class FollowUnitAbility extends Ability{
                 u.rotation = unit.rotation;
                 
                 //TODO the thing
-                if (unit.controller() instanceof FlyAroundAI) {
+                if (u.controller() instanceof FlyAroundAI) {
                    FlyAroundAI ai = (FlyAroundAI) unit.controller();
                    ai.owner = unit;
                    ai.patrolRadius = patrolRadius;
