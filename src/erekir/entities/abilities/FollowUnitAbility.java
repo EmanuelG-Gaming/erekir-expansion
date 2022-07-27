@@ -43,7 +43,7 @@ public class FollowUnitAbility extends Ability{
     @Override
     public Ability copy() {
        super.copy();
-       spawnUnits = Seq<Unit>();
+       spawnUnits = new Seq<Unit>();
     }
     
     @Override
