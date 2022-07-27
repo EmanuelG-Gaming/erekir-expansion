@@ -25,7 +25,7 @@ public class FlyAroundAI extends AIController{
            if (unit.within(toPos.x, toPos.y, unit.type.hitSize / 2f)) {
               toPos.setAngle(Mathf.random(0f, 360f));
            }
-           moveTo(toPos);
+           moveTo(toPos, unit.type.hitSize / 4f);
            unit.lookAt(toPos);
         }
         

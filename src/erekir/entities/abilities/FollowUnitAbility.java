@@ -1,6 +1,8 @@
 package erekir.entities.abilities;
 
+import arc.Core;
 import arc.struct.*;
+import arc.func.*;
 import arc.util.*;
 import arc.math.*;
 import arc.graphics.*;
@@ -10,6 +12,7 @@ import arc.math.geom.*;
 import mindustry.gen.*;
 import mindustry.content.*;
 import mindustry.game.EventType.*;
+import mindustry.type.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.graphics.*;
@@ -55,7 +58,7 @@ public class FollowUnitAbility extends Ability{
                 if (unit.controller() instanceof FlyAroundAI) {
                    FlyAroundAI ai = (FlyAroundAI) unit.controller();
                    ai.owner = unit;
-                   ai.radius = patrolRadius;
+                   ai.patrolRadius = patrolRadius;
                 }
                
                 Events.fire(new UnitCreateEvent(u, null, unit));
@@ -96,6 +99,6 @@ public class FollowUnitAbility extends Ability{
     
     @Override
     public String localized() {
-       return Core.bundle.format("ability.erekir-expansion-unitWandering", unit.localizedName);
+       return Core.bundle.format("ability.erekir-expansion-unitWandering", spawnUnit.localizedName);
     }
 }
