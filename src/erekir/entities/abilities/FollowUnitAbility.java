@@ -64,7 +64,7 @@ public class FollowUnitAbility extends Ability{
                 
                 //TODO the thing
                 if (u.controller() instanceof FlyAroundAI) {
-                   FlyAroundAI ai = (FlyAroundAI) unit.controller();
+                   FlyAroundAI ai = (FlyAroundAI) u.controller();
                    ai.owner = unit;
                    ai.patrolRadius = patrolRadius;
                 }
