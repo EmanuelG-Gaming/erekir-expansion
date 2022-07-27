@@ -29,7 +29,7 @@ public class FollowUnitAbility extends Ability{
     public boolean parentizeEffects;
 
     protected float timer;
-    private Seq<Unit> spawnUnits = new Seq<Unit>(maxSpawnUnits);
+    protected Seq<Unit> spawnUnits = new Seq<Unit>(maxSpawnUnits);
     
     FollowUnitAbility() {}
     
@@ -43,7 +43,7 @@ public class FollowUnitAbility extends Ability{
     @Override
     public void update(Unit unit) {
        if (!net.client()) {
-          if (spawnUnits.size <= maxSpawnUnits) {
+          if (spawnUnits.size < maxSpawnUnits) {
              timer += Time.delta * state.rules.unitBuildSpeed(unit.team);
        
              if (timer >= spawnTime) {
@@ -85,7 +85,7 @@ public class FollowUnitAbility extends Ability{
     
     @Override
     public void draw(Unit unit) {
-       if (spawnUnits.size <= maxSpawnUnits) {
+       if (spawnUnits.size < maxSpawnUnits) {
           Draw.draw(Draw.z(), () -> {
              float x = unit.x + Angles.trnsx(unit.rotation, spawnY, spawnX), y = unit.y + Angles.trnsy(unit.rotation, spawnY, spawnX);
              Drawf.construct(x, y, spawnUnit.fullIcon, unit.rotation - 90, timer / spawnTime, 1f, timer);

@@ -11,8 +11,6 @@ public class FlyAroundAI extends AIController{
     public @Nullable Unit owner;
     public float patrolRadius;
     
-    private Vec2 toPos;
-    
     @Override
     public void updateMovement() {
         unloadPayloads();
@@ -21,14 +19,7 @@ public class FlyAroundAI extends AIController{
         
         if (owner != null) {
            Tmp.v1.set(owner.x, owner.y);
-           if (unit.within(Tmp.v1.x, Tmp.v1.y, unit.type.hitSize / 2f)) {
-              toPos.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
-           }
-           else if (unit.within(toPos.x, toPos.y, unit.type.hitSize / 2f)) {
-              toPos.set(Tmp.v1).trns(Mathf.random(0f, 360f), patrolRadius);
-           }
-           moveTo(toPos, 1f, 3f);
-           unit.lookAt(toPos);
+           circle((Position) Tmp.v1, Mathf.randomSeed(unit.id, unit.type.hitSize / 2f + owner.type.hitSize, patrolRadius));
         }
         else moveFront(time);
         
