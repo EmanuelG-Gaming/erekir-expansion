@@ -34,7 +34,7 @@ public class FlyAroundAI extends AIController{
            if (unit.within(Tmp.v1.x + to.x, Tmp.v1.y + to.y, size)) {
               to.set(Tmp.v1).rnd(patrolRadius);
            }
-           moveTo((Position) to.add(Tmp.v1), 3f);
+           moveTo((Position) to, 3f);
         }
         else moveFront(time);
         

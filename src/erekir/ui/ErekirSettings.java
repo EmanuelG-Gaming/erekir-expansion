@@ -43,7 +43,7 @@ public class ErekirSettings{
       
       @Override
       public void add(SettingsTable table) {
-          TextButton b = table.button(Core.bundle.get(title), dialog::show).size(280f, 60f).get();
+          TextButton b = table.button(Core.bundle.get(title), dialog::show).size(280f, 60f).pad(4f).get();
           table.row();
           
           addDesc(b);
