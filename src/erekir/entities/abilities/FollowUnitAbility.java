@@ -41,48 +41,41 @@ public class FollowUnitAbility extends Ability{
     }
     
     @Override
-    public Ability copy() {
-       super.copy();
-       spawnUnits = new Seq<Unit>();
-       
-       return this;
-    }
-    
-    @Override
     public void update(Unit unit) {
-       if (!net.client()) {
-          if (spawnUnits.size < maxSpawnUnits) {
-             timer += Time.delta * state.rules.unitBuildSpeed(unit.team);
-       
-             if (timer >= spawnTime) {
-                float x = unit.x + Angles.trnsx(unit.rotation, spawnY, spawnX), y = unit.y + Angles.trnsy(unit.rotation, spawnY, spawnX);
-          
-                spawnEffect.at(x, y, 0f, parentizeEffects ? unit : null);
-                Unit u = spawnUnit.create(unit.team);
-                u.set(x, y);
-                u.rotation = unit.rotation;
-                
-                //TODO the thing
-                if (u.controller() instanceof FlyAroundAI) {
-                   FlyAroundAI ai = (FlyAroundAI) u.controller();
-                   ai.owner = unit;
-                   ai.patrolRadius = patrolRadius;
-                }
-               
-                Events.fire(new UnitCreateEvent(u, null, unit));
-
-                u.add();
-                spawnUnits.add(u);
-             
-                timer %= spawnTime;
-             }
+       consUnits(u -> {
+          if (!u.isValid()) {
+             spawnUnits.remove(u);
           }
-          consUnits(u -> {
-             if (!u.isValid()) {
-                spawnUnits.remove(u);
+       });
+       
+       if (spawnUnits.size < maxSpawnUnits) {
+          if (timer >= spawnTime) {
+             Vec2 v = new Vec2();
+             v.set(unit.x, unit.y).trns(unit.rotation, spawnX, spawnY);
+             
+             spawnEffect.at(v.x, v.y, 0f, parentizeEffects ? unit : null);
+             Unit u = spawnUnit.create(unit.team);
+             u.set(v.x, v.y);
+             u.rotation = unit.rotation;
+                
+             if (u.controller() instanceof FlyAroundAI) {
+                FlyAroundAI ai = (FlyAroundAI) u.controller();
+                ai.patrolUnit = unit;
+                ai.offset = (Position) v.sub(unit.x, unit.y).nor();
+                ai.patrolRadius = patrolRadius;
              }
-          });
-       } 
+               
+             Events.fire(new UnitCreateEvent(u, null, unit));
+
+             u.add();
+             spawnUnits.add(u);
+             
+             timer %= spawnTime;
+          }
+          else {
+             timer += Time.delta * state.rules.unitBuildSpeed(unit.team);
+          }
+       }
     }
     
     @Override

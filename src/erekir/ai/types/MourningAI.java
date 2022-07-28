@@ -25,8 +25,9 @@ public class MourningAI extends AIController{
         
         float dst = circleRadius * 0.8f;
         if (pos != null) {
-           if (unit.within(pos.getX(), pos.getY(), dst)) {
-              circle(pos, random);
+           Tmp.v1.set(pos.getX(), pos.getY());
+           if (unit.within(Tmp.v1.x, Tmp.v1.y, dst)) {
+              circle((Position) Tmp.v1, random);
            } else {
               moveFront(time);
            }
