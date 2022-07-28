@@ -27,14 +27,16 @@ public class FlyAroundAI extends AIController{
         if (to == null) to = new Vec2();
         
         if (patrolUnit != null && patrolUnit.isValid()) {
-           Tmp.v1.set(patrolUnit.x + offset.x, patrolUnit.y + offset.y);
+           Tmp.v1.set(patrolUnit.x, patrolUnit.y);
+           to.set(Tmp.v1); //stay to the owner unit
            if (unit.within(Tmp.v1.x, Tmp.v1.y, size)) {
               to.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
            }
            if (unit.within(Tmp.v1.x + to.x, Tmp.v1.y + to.y, size)) {
               to.set(Tmp.v1).rnd(patrolRadius);
            }
-           moveTo((Position) to, 3f);
+           
+           moveTo(to, 3f);
         }
         else moveFront(time);
         
