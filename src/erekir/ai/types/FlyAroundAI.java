@@ -13,7 +13,7 @@ public class FlyAroundAI extends AIController{
     
     public float patrolRadius;
     
-    private Vec2 to;
+    private @Nullable Vec2 to;
     
     @Override
     public void updateMovement() {
@@ -22,15 +22,15 @@ public class FlyAroundAI extends AIController{
         float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
         float size = unit.type.hitSize * 3f;
         
-        if (offset == null) {
-           offset = new Vec2();
-        }
+        //nullable spam
+        if (offset == null) offset = new Vec2();
+        if (to == null) to = new Vec2();
         
         if (patrolUnit != null && patrolUnit.isValid()) {
            Tmp.v1.set(patrolUnit.x, patrolUnit.y).add(offset);
            if (unit.within(Tmp.v1.x, Tmp.v1.y, size)) {
               to.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
-           } else 
+           }
            if (unit.within(to.x, to.y, size)) {
               to.set(Tmp.v1).rnd(patrolRadius);
            }
