@@ -268,7 +268,7 @@ public class ErkUnitTypes implements AltContentList{
           ammoType = new PowerAmmoType(1200);
           
           abilities.add(
-             new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 8 * Time.toSeconds),
+             new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 8 * Time.toSeconds){{patrolRadius = 90f;}},
              new FollowUnitAbility(mineralMissile, 0f, 5f, (float) 3 * Time.toSeconds) //testing, may be removed
           );
           

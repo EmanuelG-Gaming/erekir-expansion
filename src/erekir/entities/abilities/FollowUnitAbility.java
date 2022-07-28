@@ -61,7 +61,7 @@ public class FollowUnitAbility extends Ability{
              if (u.controller() instanceof FlyAroundAI) {
                 FlyAroundAI ai = (FlyAroundAI) u.controller();
                 ai.patrolUnit = unit;
-                ai.offset = v.set(x, y).sub(unit).nor();
+                ai.offset = new Vec2(spawnX, spawnY);
                 ai.patrolRadius = patrolRadius;
              }
                

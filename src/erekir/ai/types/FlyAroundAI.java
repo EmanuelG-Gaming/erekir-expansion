@@ -14,6 +14,7 @@ public class FlyAroundAI extends AIController{
     public float patrolRadius;
     
     private @Nullable Vec2 to;
+    private int totalWaypoints = 0;
     
     @Override
     public void updateMovement() {
@@ -28,14 +29,13 @@ public class FlyAroundAI extends AIController{
         
         if (patrolUnit != null && patrolUnit.isValid()) {
            Tmp.v1.set(patrolUnit.x + offset.x, patrolUnit.y + offset.y);
-           to.set(Tmp.v1); //stay to the owner unit
-           
-           if (unit.within(Tmp.v1.x, Tmp.v1.y, size)) {
+           if (totalWaypoints == 0) {
               to.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
            }
-           
+
            if (unit.within(Tmp.v1.x + to.x, Tmp.v1.y + to.y, size)) {
-              to.set(Tmp.v1).rnd(patrolRadius);
+              to.set(Tmp.v1).trns(Mathf.randomSeed(totalWaypoints, 0f, 360f), patrolRadius);
+              totalWaypoints++;
            }
            
            moveTo(to, 1f, 3f);
