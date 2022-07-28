@@ -21,24 +21,24 @@ public class FlyAroundAI extends AIController{
         unloadPayloads();
         
         float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
-        float size = unit.type.hitSize * 4.5f;
+        float size = unit.type.hitSize * 2.5f;
         
-        //nullable spam
+        //nullable spam prevention
         if (offset == null) offset = new Vec2();
         if (to == null) to = new Vec2();
         
         if (patrolUnit != null && patrolUnit.isValid()) {
            Tmp.v1.set(patrolUnit.x + offset.x, patrolUnit.y + offset.y);
            if (totalWaypoints == 0) {
-              to.set(Tmp.v1).trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
+              to.trns(Mathf.randomSeed(unit.id, 0f, 360f), patrolRadius);
            }
 
            if (unit.within(Tmp.v1.x + to.x, Tmp.v1.y + to.y, size)) {
-              to.set(Tmp.v1).trns(Mathf.randomSeed(totalWaypoints, 0f, 360f), patrolRadius);
+              to.trns(Mathf.randomSeed(totalWaypoints, 0f, 360f), patrolRadius);
               totalWaypoints++;
            }
-           
-           moveTo(to, 1f, 3f);
+           Vec2 v = new Vec2(Tmp.v1).add(to);
+           moveTo(v, 1f, 3f);
         }
         else moveFront(time);
         
