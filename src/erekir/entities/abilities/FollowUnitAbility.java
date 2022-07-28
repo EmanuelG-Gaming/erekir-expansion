@@ -51,7 +51,7 @@ public class FollowUnitAbility extends Ability{
        if (spawnUnits.size < maxSpawnUnits) {
           if (timer >= spawnTime) {
              Vec2 v = new Vec2();
-             v.set(unit.x, unit.y).trns(unit.rotation, spawnX, spawnY);
+             v.trns(unit.rotation, spawnX, spawnY).add(unit.x, unit.y);
              
              spawnEffect.at(v.x, v.y, 0f, parentizeEffects ? unit : null);
              Unit u = spawnUnit.create(unit.team);
