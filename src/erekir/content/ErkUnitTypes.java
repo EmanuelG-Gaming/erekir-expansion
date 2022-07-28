@@ -207,7 +207,7 @@ public class ErkUnitTypes implements AltContentList{
        mineralMissile = new MissileUnitType("mineral-missile"){{
            trailColor = engineColor = ErkPal.greenishBeryl;
            engineSize = 1.9f;
-           engineOffset = 2.4f;
+           engineOffset = 3.5f;
            engineLayer = Layer.effect;
            hitSize = 4;
            speed = 3f;

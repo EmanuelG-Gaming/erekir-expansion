@@ -50,18 +50,18 @@ public class FollowUnitAbility extends Ability{
        
        if (spawnUnits.size < maxSpawnUnits) {
           if (timer >= spawnTime) {
-             Vec2 v = new Vec2();
-             v.trns(unit.rotation, v.angleTo(spawnX, spawnY)).add(unit.x, unit.y);
-             
-             spawnEffect.at(v.x, v.y, 0f, parentizeEffects ? unit : null);
+             float x = unit.x + Angles.trnsx(unit.rotation, spawnY, spawnX), y = unit.y + Angles.trnsy(unit.rotation, spawnY, spawnX);
+          
+             spawnEffect.at(x, y, 0f, parentizeEffects ? unit : null);
              Unit u = spawnUnit.create(unit.team);
-             u.set(v.x, v.y);
+             u.set(x, y);
              u.rotation = unit.rotation;
-                
+              
+             Vec2 v = new Vec2();
              if (u.controller() instanceof FlyAroundAI) {
                 FlyAroundAI ai = (FlyAroundAI) u.controller();
                 ai.patrolUnit = unit;
-                ai.offset = v.sub(unit.x, unit.y).nor();
+                ai.offset = v.set(x, y).sub(unit).nor();
                 ai.patrolRadius = patrolRadius;
              }
                

@@ -20,7 +20,7 @@ public class FlyAroundAI extends AIController{
         unloadPayloads();
         
         float time = unit instanceof TimedKillc ? ((TimedKillc) unit).time() : 1000000f;
-        float size = unit.type.hitSize * 3f;
+        float size = unit.type.hitSize * 4.5f;
         
         //nullable spam
         if (offset == null) offset = new Vec2();
@@ -34,8 +34,7 @@ public class FlyAroundAI extends AIController{
            if (unit.within(Tmp.v1.x + to.x, Tmp.v1.y + to.y, size)) {
               to.set(Tmp.v1).rnd(patrolRadius);
            }
-           
-           moveTo((Position) to, 3f);
+           moveTo((Position) to.add(Tmp.v1), 3f);
         }
         else moveFront(time);
         
