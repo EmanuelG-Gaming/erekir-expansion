@@ -224,7 +224,14 @@ public class ErkUnitTypes implements AltContentList{
               reload = 1f;
               shootOnDeath = true;
               bullet = new ExplosionBulletType(55f, 30f){{
-                 //TODO effect
+                 shootEffect = new MultiEffect(Fx.massiveExplosion, new Effect(45f, e -> {
+                     Draw.color(Color.white, ErkPal.greenishBeryl, e.fin());
+
+                     Angles.randLenVectors(e.id, 18, e.finpow() * 60f, (x, y) -> {
+                        float angle = Mathf.angle(x, y);
+                        Lines.line(e.x + x, e.y + y, angle, e.fout(Interp.pow5Out) * 6.5f + 1.2f);
+                     });
+                 }));
               }};
            }});
        }};
@@ -267,10 +274,10 @@ public class ErkUnitTypes implements AltContentList{
           researchCostMultiplier = 0;
           ammoType = new PowerAmmoType(1200);
           
-          abilities.add(
-             new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 8 * Time.toSeconds){{patrolRadius = 90f;}},
-             new FollowUnitAbility(mineralMissile, 0f, 5f, (float) 3 * Time.toSeconds) //testing, may be removed
-          );
+          abilities.add(new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 3 * Time.toSeconds){{
+             patrolRadius = 140f;
+             maxSpawnUnits = 8;
+          }});
           
           constructor = LegsUnit::create;
           weapons.add(new Weapon(){{
