@@ -229,7 +229,7 @@ public class ErkUnitTypes implements AltContentList{
 
                      Angles.randLenVectors(e.id, 18, e.finpow() * 60f, (x, y) -> {
                         float angle = Mathf.angle(x, y);
-                        Lines.line(e.x + x, e.y + y, angle, e.fout(Interp.pow5Out) * 6.5f + 1.2f);
+                        Lines.lineAngle(e.x + x, e.y + y, angle, e.fout(Interp.pow5Out) * 7.5f + 1.5f);
                      });
                  }));
               }};
