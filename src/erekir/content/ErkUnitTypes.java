@@ -237,7 +237,7 @@ public class ErkUnitTypes implements AltContentList{
        }};
        
        mineral = new ErekirUnitType("mineral"){{
-          health = 3000;
+          health = 1700;
        	  armor = 7;
 	        speed = 0.60f;
 	        hitSize = 19f;
@@ -274,9 +274,9 @@ public class ErkUnitTypes implements AltContentList{
           researchCostMultiplier = 0;
           ammoType = new PowerAmmoType(1200);
           
-          abilities.add(new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 3 * Time.toSeconds){{
-             patrolRadius = 140f;
-             maxSpawnUnits = 8;
+          abilities.add(new FollowUnitAbility(mineralMissile, 0f, -2f, (float) 5 * Time.toSeconds){{
+             patrolRadius = 100f;
+             maxSpawnUnits = 5;
           }});
           
           constructor = LegsUnit::create;
