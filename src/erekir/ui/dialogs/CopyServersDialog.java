@@ -23,15 +23,17 @@ public class CopyServersDialog extends BaseDialog{
        
        addCloseButton();
        
-       servers = Seq.with(new CopyServer("Confined Erekir server", "It is a test.\nMay not be always online.", "200:3c6:8ef8:4614:f271:34dd:637a:c5e0"));
+       servers = Seq.with(new CopyServer("Confined Erekir server", "It is a test.\nMay not be always online.", "[200:3c6:8ef8:4614:f271:34dd:637a:c5e0]"));
        
        cont.pane(Styles.defaultPane, p -> {
            servers.each(s -> {
               p.table(Tex.button, t -> {
                  t.button(Icon.book, () -> {
-                    //ipv6 moment 
-                    Core.app.setClipboardText("[" + s.address + "]");
-                    ui.showInfo("@copied");
+                    Core.app.setClipboardText(s.address);
+                    if (s.getNet()) {
+                       ui.showInfo("Copied, although it uses Yggdrasil for that.")
+                    }
+                    else ui.showInfo("@copied");
                  }).size(80f).left();
 
                  t.table(Styles.none, t2 -> {
@@ -44,7 +46,7 @@ public class CopyServersDialog extends BaseDialog{
                  }).padLeft(12f).expandX().left();
               }).pad(16f).fillX().row();
           });
-      }).size(540f, servers.size * (100f + 16f));
+      }).size(600f, servers.size * (120f + 16f));
    }
    
    public void addStat(Table table, String name, String value) {
@@ -60,6 +62,9 @@ public class CopyServersDialog extends BaseDialog{
       /** Server's details. Optional. */
       public @Nullable String details;
       
+      /** Whether or not this server is hosted on the network. */
+      private boolean yggdrasil;
+      
       public CopyServer(String name, String description, String address) {
          this.name = name;
          this.description = description;
@@ -71,6 +76,13 @@ public class CopyServersDialog extends BaseDialog{
          this.description = description;
          this.address = address;
          this.details = details;
+      }
+      
+      /** Checks if the address contains the square brackets
+       *  and returns this state. */
+      public boolean getNet() {
+         yggdrasil = address.contains("[]");
+         return yggdrasil;
       }
    }
 }
