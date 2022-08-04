@@ -31,7 +31,7 @@ public class CopyServersDialog extends BaseDialog{
                  t.button(Icon.book, () -> {
                     Core.app.setClipboardText(s.address);
                     if (s.getNet()) {
-                       ui.showInfo("Copied, although it uses Yggdrasil for that.")
+                       ui.showInfo("Copied, although it uses Yggdrasil for that.");
                     }
                     else ui.showInfo("@copied");
                  }).size(80f).left();
