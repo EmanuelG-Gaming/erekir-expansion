@@ -81,7 +81,8 @@ public class CopyServersDialog extends BaseDialog{
       /** Checks if the address contains the square brackets
        *  and returns this state. */
       public boolean getNet() {
-         yggdrasil = address.contains("[]");
+         boolean bool = address.startsWith("[") && address.endsWith("]");
+         yggdrasil = bool;
          return yggdrasil;
       }
    }
