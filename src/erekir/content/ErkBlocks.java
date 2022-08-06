@@ -117,6 +117,7 @@ public class ErkBlocks implements AltContentList{
       neoplasmReverse = new GenericCrafter("neoplasmReverse"){{
           requirements(Category.crafting, with(Items.tungsten, 100, Items.beryllium, 90, Items.silicon, 130));
           size = 3;
+          hasLiquids = true;
             
           outputItem = new ItemStack(Items.dormantCyst, 1);
           researchCostMultiplier = 1.1f;
