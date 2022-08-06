@@ -10,6 +10,7 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.Floor;
+import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.entities.*;
 import mindustry.entities.effect.*;
@@ -35,6 +36,9 @@ public class ErkBlocks implements AltContentList{
     
     //Gathering
     dGatherer, dCollector,
+    
+    //Crafters
+    neoplasmReverse,
     
     //Turrets
     fissure
@@ -108,6 +112,25 @@ public class ErkBlocks implements AltContentList{
           rotateDraw = false;
           regionRotated1 = 1;
           requirements(Category.production, with(Items.beryllium, 75, Items.tungsten, 30, Items.graphite, 60));
+      }};
+      
+      neoplasmReverse = new GenericCrafter("neoplasmReverse"){{
+          requirements(Category.crafting, with(Items.tungsten, 100, Items.beryllium, 90, Items.silicon, 130));
+          size = 3;
+            
+          outputItem = new ItemStack(Items.dormantCyst, 1);
+          researchCostMultiplier = 1.1f;
+
+          consumeLiquid(Liquids.ozone, 2f / 60f);
+          consumeLiquid(Liquids.neoplasm, 4f / 60f)
+          consumePower(0.3f);
+
+          rotateDraw = false;
+
+          drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidRegion(), new DrawDefault());
+
+          craftTime = 60f * 1f;
+          liquidCapacity = 30f;
       }};
       
       fissure = new ErekirTurret("fissure"){{
