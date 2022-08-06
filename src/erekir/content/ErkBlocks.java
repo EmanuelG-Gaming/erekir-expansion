@@ -129,6 +129,7 @@ public class ErkBlocks implements AltContentList{
           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidRegion(), new DrawDefault());
 
           craftTime = 60f * 1f;
+          craftEffect = Fx.neoplasiaSmoke;
           liquidCapacity = 30f;
       }};
       
