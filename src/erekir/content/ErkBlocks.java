@@ -122,7 +122,7 @@ public class ErkBlocks implements AltContentList{
           researchCostMultiplier = 1.1f;
 
           consumeLiquid(Liquids.ozone, 2f / 60f);
-          consumeLiquid(Liquids.neoplasm, 4f / 60f)
+          consumeLiquid(Liquids.neoplasm, 4f / 60f);
           consumePower(0.3f);
 
           rotateDraw = false;
