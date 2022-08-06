@@ -125,8 +125,6 @@ public class ErkBlocks implements AltContentList{
           consumeLiquid(Liquids.neoplasm, 4f / 60f);
           consumePower(0.3f);
 
-          rotateDraw = false;
-
           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidRegion(), new DrawDefault());
 
           craftTime = 60f * 1f;
