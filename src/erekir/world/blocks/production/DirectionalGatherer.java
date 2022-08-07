@@ -47,7 +47,7 @@ public class DirectionalGatherer extends GenericCrafter{
    }
    
    @Override
-   public void drawOverlay(float x, float y, int rotation) {
+   public void drawPlace(float x, float y, int rotation, boolean valid) {
       int len = length - 1;
       float px = Geometry.d4x(rotation), py = Geometry.d4y(rotation);
       Drawf.dashLine(
@@ -56,7 +56,7 @@ public class DirectionalGatherer extends GenericCrafter{
          y,
          x + px * len * tilesize,
          y + py * len * tilesize
-     ); 
+     );
    }
     
    public class DirectionalGathererBuild extends GenericCrafterBuild implements Gathering{
@@ -103,7 +103,7 @@ public class DirectionalGatherer extends GenericCrafter{
       
       @Override
       public void gather() {
-         int len = length;
+         int len = length - 1;
          int rot = rotation;
          Point2 dir = Geometry.d4(rot);
          float dx = Geometry.d4x(rot), dy = Geometry.d4y(rot);
