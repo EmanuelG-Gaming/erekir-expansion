@@ -40,7 +40,7 @@ public class ItemProp extends Block{
         targetable = false;
         instantDeconstruct = true;
         destroyEffect = breakEffect = Fx.none;
-        destroySound = breakSound = Sounds.missile;
+        destroySound = breakSound = Sounds.rockBreak;
         drawTeamOverlay = false;
         hasShadow = false;
         //partial thanks to meep for this

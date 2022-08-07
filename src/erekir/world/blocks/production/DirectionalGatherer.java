@@ -54,10 +54,10 @@ public class DirectionalGatherer extends GenericCrafter{
       float px = Geometry.d4x(rotation), py = Geometry.d4y(rotation);
       Drawf.dashLine(
          Pal.placing,
-         x,
-         y,
-         x + px * len * tilesize,
-         y + py * len * tilesize
+         x * tilesize + offset,
+         y * tilesize + offset,
+         x * tilesize + offset + px * len * tilesize,
+         y * tilesize + offset + py * len * tilesize
      );
    }
     
