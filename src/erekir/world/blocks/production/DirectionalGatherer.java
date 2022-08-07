@@ -47,7 +47,9 @@ public class DirectionalGatherer extends GenericCrafter{
    }
    
    @Override
-   public void drawPlace(float x, float y, int rotation, boolean valid) {
+   public void drawPlace(int x, int y, int rotation, boolean valid) {
+      super.drawPlace(x, y, rotation, valid);
+      
       int len = length - 1;
       float px = Geometry.d4x(rotation), py = Geometry.d4y(rotation);
       Drawf.dashLine(
@@ -70,6 +72,7 @@ public class DirectionalGatherer extends GenericCrafter{
       @Override
       public void drawSelect() {
           super.drawSelect();
+          
           int len = length - 1;
           Point2 dir = Geometry.d4(rotation);
           float dx = Geometry.d4x(rotation), dy = Geometry.d4y(rotation);
