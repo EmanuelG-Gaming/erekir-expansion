@@ -120,9 +120,9 @@ public class ErekirExpansion extends Mod{
     
     @Override
     public void loadContent() {
+       DropGenerator.generateDrops();
        //load everything from the array
        for (AltContentList list : erekirContent) list.load();
-       DropGenerator.generateDrops();
        AddedErekirTechTree.load();
     }
 
