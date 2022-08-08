@@ -10,13 +10,14 @@ import erekir.gen.*;
 import static mindustry.content.Planets.*;
 
 public class ErkPlanets implements AltContentList{
-    public static Planet testStash;
-
-    public static void load() {
+    public Planet testStash;
+   
+    @Override
+    public void load() {
        testStash = makeStash("testStash", erekir, 0.5f);
     }
 
-    private static Planet makeStash(String name, Planet parent, float scale) {
+    private Planet makeStash(String name, Planet parent, float scale) {
        return new Planet(name, parent, 0.12f){{
           hasAtmosphere = false;
           updateLighting = false;
