@@ -1,9 +1,9 @@
 package erekir.gen;
 
+import arc.struct.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
-import arc.util.noise.*;
 import mindustry.content.*;
 import mindustry.game.*;
 import mindustry.graphics.g3d.*;
@@ -12,17 +12,25 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import erekir.world.blocks.environment.*;
+import erekir.util.*;
+import erekir.room.*;
 
 import static mindustry.Vars.*;
 
 public class StashGenerator extends BlankPlanetGenerator{
     public ItemProp[] drops = {
-       get(0), get(1),
-       get(4), get(6),
-       get(DropGenerator.generated.size - 3), get(DropGenerator.generated.size - 2)
+       get(0), get(1), get(4),
+       get(5), get(6), get(7),
+       get(DropGenerator.generated.size - 4), get(DropGenerator.generated.size - 3)
     };
     
-    public int pw = 35, ph = 35;
+    public Seq<BaseRoom> rooms = Seq.with(
+       new BaseRoom(25, 20, 5, 5),
+       new BaseRoom(120, 50, 5, 5),
+       new VentRoom(80, 100, 8, 8)
+    );
+    
+    public int pw = 30, ph = 30;
     public Planet orbiting = Planets.erekir;
     
     @Nullable Rand rand;
@@ -60,6 +68,15 @@ public class StashGenerator extends BlankPlanetGenerator{
            }
         });
         
+        //cleanup
+        ErkUtil.dropsWithin(Team.derelict, dx, dy, 7f * tilesize, b -> {
+           Tile t = world.tile(b.x / tilesize, b.y / tilesize);
+           t.setBlock(Blocks.air);
+        });
+        
+        //rooms
+        generateRooms(room -> room.generate());
+         
         tiles.getn(dx - width / 4, dy - height / 4).setOverlay(Blocks.spawn);
 
         Schematics.placeLaunchLoadout(dx, dy);
@@ -77,7 +94,13 @@ public class StashGenerator extends BlankPlanetGenerator{
         //state.rules.showSpawns = true;
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
     }
-
+    
+    public void generateRooms(Cons<BaseRoom> room) {
+       for (BaseRoom r : rooms) {
+          room.get(r);
+       }
+    }
+    
     @Override
     public Schematic getDefaultLoadout() {
         return Loadouts.basicBastion;
@@ -85,6 +108,6 @@ public class StashGenerator extends BlankPlanetGenerator{
 
     @Override
     public int getSectorSize(Sector sector) {
-        return 100;
+        return 150;
     }
 }
