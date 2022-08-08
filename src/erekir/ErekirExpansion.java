@@ -131,6 +131,7 @@ public class ErekirExpansion extends Mod{
        new ErkStatusEffects(),
        new ErkBlocks(),
        new ErkUnitTypes(),
+       new ErkPlanets(),
        new ErkSectorPresets()
     };
     
