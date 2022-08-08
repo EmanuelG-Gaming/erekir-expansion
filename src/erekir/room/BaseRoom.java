@@ -2,7 +2,7 @@ package erekir.room;
 
 import mindustry.content.*;
 import mindustry.world.*;
-import mindustry.world.environment.*;
+import mindustry.world.blocks.environment.*;
 import mindustry.Vars;
 
 /** An empty room/platform. */
@@ -13,8 +13,8 @@ public class BaseRoom extends Room{
       super(px, py, w, h);
    }
    
-   public BaseRoom(Floor ground) {
-      super(x, y, width, height);
+   public BaseRoom(int x, int y, int w, int h, Floor ground) {
+      super(x, y, w, h);
       groundFloor = ground;
    }
    

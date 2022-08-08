@@ -2,7 +2,7 @@ package erekir.room;
 
 import mindustry.content.*;
 import mindustry.world.*;
-import mindustry.world.environment.*;
+import mindustry.world.blocks.environment.*;
 import mindustry.game.*;
 import mindustry.Vars;
 
@@ -10,12 +10,12 @@ public class VentRoom extends BaseRoom{
    public Floor ventFloor = Blocks.rhyolite.asFloor();
    public Floor vent = Blocks.rhyoliteVent.asFloor();
    
-   public VentRoom(int px, int py, int w, int h) {
-      super(px, py, w, h);
+   public VentRoom(int x, int y, int w, int h) {
+      super(x, y, w, h);
    }
    
-   public VentRoom(Floor vent, Floor ventFloor) {
-      super(x, y, width, height);
+   public VentRoom(int x, int y, int w, int h, Floor vent, Floor ventFloor) {
+      super(x, y, w, h);
       this.vent = vent;
       this.ventFloor = ventFloor;
    }

@@ -1,6 +1,7 @@
 package erekir.gen;
 
 import arc.struct.*;
+import arc.func.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
@@ -70,7 +71,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         
         //cleanup
         ErkUtil.dropsWithin(Team.derelict, dx, dy, 7f * tilesize, b -> {
-           Tile t = world.tile(b.x / tilesize, b.y / tilesize);
+           Tile t = world.tile((int) b.x / tilesize, (int) b.y / tilesize);
            t.setBlock(Blocks.air);
         });
         
