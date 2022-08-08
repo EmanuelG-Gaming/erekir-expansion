@@ -9,6 +9,7 @@ import mindustry.game.*;
 import mindustry.graphics.g3d.*;
 import mindustry.maps.generators.*;
 import mindustry.type.*;
+import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import erekir.world.blocks.environment.*;
 
