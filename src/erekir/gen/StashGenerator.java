@@ -27,8 +27,8 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public Seq<BaseRoom> rooms = Seq.with(
        new BaseRoom(25, 20, 5, 5),
-       new BaseRoom(120, 50, 5, 5),
-       new VentRoom(80, 100, 8, 8)
+       new BaseRoom(135, 50, 5, 5),
+       new VentRoom(80, 130, 8, 8)
     );
     
     public int pw = 30, ph = 30;
@@ -70,9 +70,11 @@ public class StashGenerator extends BlankPlanetGenerator{
         });
         
         //cleanup
-        ErkUtil.dropsWithin(Team.derelict, dx, dy, 7f * tilesize, b -> {
-           Tile t = world.tile((int) b.x / tilesize, (int) b.y / tilesize);
-           t.setBlock(Blocks.air);
+        ErkUtil.dropsWithin(Team.derelict, dx, dy, 9f * tilesize, b -> {
+           Tile t = world.tile((int) b.x, (int) b.y);
+           if (t != null) {
+              t.setBlock(Blocks.air);
+           }
         });
         
         //rooms
