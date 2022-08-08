@@ -1,13 +1,15 @@
 package erekir.content;
 
 import mindustry.type.*;
+import mindustry.graphics.g3d.PlanetGrid.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
+import erekir.ctype.*;
 import erekir.gen.*;
 
 import static mindustry.content.Planets.*;
 
-public class ErkPlanets{
+public class ErkPlanets implements AltContentList{
     public static Planet testStash;
 
     public static void load() {

@@ -45,7 +45,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         //platform
         for (int w = 0; w < pw; w++) {
            for (int h = 0; h < ph; h++) {
-              tiles.getn(dx / 2 + w, dy / 2 + h).setFloor(Blocks.metalFloor);
+              tiles.getn(dx / 2 + w, dy / 2 + h).setFloor(Blocks.metalFloor.asFloor());
            }
         }
         
@@ -53,7 +53,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         pass((x, y) -> {
            if (floor != background) {
               if (rand.chance(0.1)) {
-                 block = drops[Mathf.randomSeed(seed, drops.length)];
+                 block = drops[Mathf.floor(Mathf.randomSeed(seed, 0f, drops.length))];
               }
            }
         });
