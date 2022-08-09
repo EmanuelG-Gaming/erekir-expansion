@@ -62,23 +62,16 @@ public class StashGenerator extends BlankPlanetGenerator{
         //drops
         pass((x, y) -> {
            if (floor != background) {
-              if (rand.chance(0.1)) {
+              Vec2 v = new Vec2(x, y);
+              if (rand.chance(0.1) && !v.within(dx, dy, 7f * tilesize)) {
                  Tile tile = world.tile(x, y);
                  block = drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))];
               }
            }
         });
         
-        //cleanup
-        ErkUtil.dropsWithin(Team.derelict, dx, dy, 9f * tilesize, b -> {
-           Tile t = world.tile((int) b.x, (int) b.y);
-           if (t != null) {
-              t.setBlock(Blocks.air);
-           }
-        });
-        
         //rooms
-        generateRooms(room -> room.generate());
+        generateRooms(rooms, room -> room.generate());
          
         tiles.getn(dx - width / 4, dy - height / 4).setOverlay(Blocks.spawn);
 
@@ -98,9 +91,35 @@ public class StashGenerator extends BlankPlanetGenerator{
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
     }
     
-    public void generateRooms(Cons<BaseRoom> room) {
-       for (BaseRoom r : rooms) {
+    public void generateRooms(Seq<BaseRoom> hotel, Cons<BaseRoom> room) {
+       for (BaseRoom r : hotel) {
+          //a chance for a room to be connected to the parent
+          if (rand.chance(0.4)) {
+             replaceLine(width / 2, height / 2, r.x, r.y);
+          }
+          
           room.get(r);
+       }
+    }
+    
+    public void replaceLine(int x1, int y1, int x2, int y2) {
+       Geometry.iterateLine(0, x1, y1, x2, y2, 1, (x, y) -> {
+          replaceRadius(Blocks.metalFloor3.asFloor(), x, y, 3);
+       });
+    }
+    
+    /** A slightly modified version of @link erase(). */
+    public void replaceRadius(Floor floorType, int cx, int cy, int rad) {
+       for (int x = -rad; x <= rad; x++) {
+          for (int y = -rad; y <= rad; y++) {
+             int wx = cx + x, wy = cy + y;
+             if (Structs.inBounds(wx, wy, width, height) && Mathf.within(x, y, rad)) {
+                Tile other = tiles.getn(wx, wy);
+                if (other.floor() == Blocks.empty.asFloor()) {
+                   other.setFloor(floorType);
+                }
+             }
+          }
        }
     }
     
