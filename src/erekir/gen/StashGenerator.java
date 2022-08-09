@@ -25,11 +25,11 @@ public class StashGenerator extends BlankPlanetGenerator{
        get(DropGenerator.generated.size - 4), get(DropGenerator.generated.size - 3)
     };
     
-    public Seq<BaseRoom> rooms = Seq.with(
+    public Seq<BaseRoom> rooms = new Seq<BaseRoom>(); /*Seq.with(
        new BaseRoom(25, 20, 5, 5),
        new BaseRoom(135, 50, 5, 5),
        new VentRoom(80, 130, 8, 8)
-    );
+    );*/
     
     public int pw = 30, ph = 30;
     public Planet orbiting = Planets.erekir;
@@ -49,6 +49,27 @@ public class StashGenerator extends BlankPlanetGenerator{
 
         Floor background = Blocks.empty.asFloor();
         
+        
+        float range = 60f;
+        
+        //room chances
+        int emptyRooms = rand.random(2, 4);
+        int ventRooms = rand.random(1, 3);
+        
+        for (int i = 0; i < emptyRooms; i++) {
+           Tmp.v1.trns(rand.random(360f), pw * 2f + 62f + rand.random(range));
+           float rx = (dx + Tmp.v1.x);
+           float ry = (dy + Tmp.v1.y);
+           rooms.add(new BaseRoom((int) rx, (int) ry, 5, 5));
+        }
+        
+        for (int i = 0; i < ventRooms; i++) {
+           Tmp.v1.trns(rand.random(360f), pw * 2f + 100f + rand.random(range));
+           float rx = (dx + Tmp.v1.x);
+           float ry = (dy + Tmp.v1.y);
+           rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
+        }
+        
         //background
         tiles.eachTile(t -> t.setFloor(background));
         
@@ -62,8 +83,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         //drops
         pass((x, y) -> {
            if (floor != background) {
-              Vec2 v = new Vec2(x, y);
-              if (rand.chance(0.1) && !v.within(dx, dy, 7f * tilesize)) {
+              if (rand.chance(0.1)) {
                  Tile tile = world.tile(x, y);
                  block = drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))];
               }
@@ -93,18 +113,14 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public void generateRooms(Seq<BaseRoom> hotel, Cons<BaseRoom> room) {
        for (BaseRoom r : hotel) {
-          //a chance for a room to be connected to the parent
-          if (rand.chance(0.4)) {
-             replaceLine(width / 2, height / 2, r.x, r.y);
-          }
-          
+          replaceLine(width / 2, height / 2, r.x, r.y);
           room.get(r);
        }
     }
     
     public void replaceLine(int x1, int y1, int x2, int y2) {
        Geometry.iterateLine(0, x1, y1, x2, y2, 1, (x, y) -> {
-          replaceRadius(Blocks.metalFloor3.asFloor(), Mathf.round(x), Mathf.round(y), 3);
+          replaceRadius(Blocks.metalFloor3.asFloor(), Mathf.round(x), Mathf.round(y), 2);
        });
     }
     

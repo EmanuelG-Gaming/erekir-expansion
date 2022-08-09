@@ -27,7 +27,7 @@ public class ErkPlanets implements AltContentList{
           drawOrbit = false;
           accessible = true;
           clipRadius = 2f;
-          defaultEnv = Env.space;
+          defaultEnv = Env.terrestrial;
           orbitSpacing = 1.1f;
           
           generator = new StashGenerator();

@@ -24,17 +24,16 @@ public class VentRoom extends BaseRoom{
    public void generate() {
       super.generate();
       int dw = width / 2, dh = height / 2;
-      int dx = dw + x, dy = dh + y;
-      
+
       //add a 3x3 vent
-      for (int x = dx - 1; x <= dx + 1; x++) {
-         for (int y = dy - 1; y <= dy + 1; y++) {
-            Tile tile = Vars.world.tile(x, y);
+      for (int w = x - 1; w <= x + 1; w++) {
+         for (int h = y - 1; h <= y + 1; h++) {
+            Tile tile = Vars.world.tile(w, h);
             tile.setFloor(ventFloor);
             tile.setFloor(vent);
          }
       }
       
-      Vars.world.tile(dx, dy).setBlock(Blocks.turbineCondenser, Team.sharded, 0);
+      Vars.world.tile(x + dx, y + dy).setBlock(Blocks.turbineCondenser, Team.sharded, 0);
    }
 }
