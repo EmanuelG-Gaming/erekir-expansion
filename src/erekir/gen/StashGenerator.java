@@ -104,7 +104,7 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public void replaceLine(int x1, int y1, int x2, int y2) {
        Geometry.iterateLine(0, x1, y1, x2, y2, 1, (x, y) -> {
-          replaceRadius(Blocks.metalFloor3.asFloor(), x, y, 3);
+          replaceRadius(Blocks.metalFloor3.asFloor(), Mathf.round(x), Mathf.round(y), 3);
        });
     }
     
