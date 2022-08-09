@@ -32,7 +32,7 @@ public class MiningRoom extends BaseRoom{
          if (tile != null) {
             tile.setFloor(belowFloor);
             if (ore != null) {
-               if (ore.wallOre) {
+               if ((OreBlock) ore).wallOre) {
                   tile.setBlock(belowFloor.wall != null ? belowFloor.wall : Blocks.darkMetal);
                }
                tile.setOverlay(ore);
@@ -46,7 +46,7 @@ public class MiningRoom extends BaseRoom{
          int dx = point.x * mWidth + 2, dy = point.y * mHeight + 2;
          Tile tile = Vars.world.tile(dx, dy);
          if (tile != null) {
-            tile.setBlock(Blocks.beamDrill, Team.derelict, i > 1 ? i - 2 : i + 2);
+            tile.setBlock(Blocks.plasmaBore, Team.derelict, i > 1 ? i - 2 : i + 2);
          }
          i++;
       }
