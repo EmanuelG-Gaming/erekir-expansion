@@ -32,10 +32,14 @@ public class MiningRoom extends BaseRoom{
          if (tile != null) {
             tile.setFloor(belowFloor);
             if (ore != null) {
-               if (((OreBlock) ore).wallOre) {
-                  tile.setBlock(belowFloor.wall != null ? belowFloor.wall : Blocks.darkMetal);
+               if (!(ore instanceof StaticWall)) {
+                  if (((OreBlock) ore).wallOre) {
+                     tile.setBlock(belowFloor.wall != null ? belowFloor.wall : Blocks.darkMetal);
+                  }
+                  tile.setOverlay(ore);
+               } else {
+                  tile.setBlock(ore);
                }
-               tile.setOverlay(ore);
             }
          }
       }
@@ -43,8 +47,8 @@ public class MiningRoom extends BaseRoom{
       //drill ruins
       int i = 0;
       for (Point2 point : Geometry.d4) {
-         int dx = point.x * mWidth + 2, dy = point.y * mHeight + 2;
-         Tile tile = Vars.world.tile(dx, dy);
+         int dx = point.x * mWidth + 2 * 2, dy = point.y * mHeight + 2 * 2;
+         Tile tile = Vars.world.tile(x + dx, y + dy);
          if (tile != null) {
             tile.setBlock(Blocks.plasmaBore, Team.derelict, i > 1 ? i - 2 : i + 2);
          }

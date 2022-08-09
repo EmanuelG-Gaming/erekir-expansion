@@ -72,7 +72,10 @@ public class StashGenerator extends BlankPlanetGenerator{
               rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
            }
            else {
-              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, Blocks.wallOreBeryllium));
+              boolean chance = rand.chance(0.5);
+              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, chance ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
+                 belowFloor = chance ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
+              }});
            }
         }
         
