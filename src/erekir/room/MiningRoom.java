@@ -32,7 +32,7 @@ public class MiningRoom extends BaseRoom{
          if (tile != null) {
             tile.setFloor(belowFloor);
             if (ore != null) {
-               if ((OreBlock) ore).wallOre) {
+               if (((OreBlock) ore).wallOre) {
                   tile.setBlock(belowFloor.wall != null ? belowFloor.wall : Blocks.darkMetal);
                }
                tile.setOverlay(ore);
