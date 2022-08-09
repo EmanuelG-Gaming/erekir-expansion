@@ -53,21 +53,27 @@ public class StashGenerator extends BlankPlanetGenerator{
         float range = 10f;
         
         //room chances
-        int emptyRooms = rand.random(2, 4);
-        int ventRooms = rand.random(1, 3);
+        int emptyRooms = rand.random(3, 5);
+        int specialRooms = rand.random(2, 3);
         
         for (int i = 0; i < emptyRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw + 8f + rand.random(range));
+           Tmp.v1.trns(rand.random(360f), pw + 13f + rand.random(range));
            float rx = (dx + Tmp.v1.x);
            float ry = (dy + Tmp.v1.y);
            rooms.add(new BaseRoom((int) rx, (int) ry, 5, 5));
         }
         
-        for (int i = 0; i < ventRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw + 15f + rand.random(range));
+        //special rooms
+        for (int i = 0; i < specialRooms; i++) {
+           Tmp.v1.trns(rand.random(360f), pw + 20f + rand.random(range));
            float rx = (dx + Tmp.v1.x);
            float ry = (dy + Tmp.v1.y);
-           rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
+           if (rand.chance(0.5)) {
+              rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
+           }
+           else {
+              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, Blocks.wallOreBeryllium));
+           }
         }
         
         //background
@@ -83,7 +89,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         //drops
         pass((x, y) -> {
            if (floor != background) {
-              if (rand.chance(0.1)) {
+              if (rand.chance(0.09)) {
                  Tile tile = world.tile(x, y);
                  block = drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))];
               }

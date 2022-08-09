@@ -23,11 +23,11 @@ public class VentRoom extends BaseRoom{
    @Override
    public void generate() {
       super.generate();
-      int dw = width / 2, dh = height / 2;
+      int dx = x, dy = y;
 
       //add a 3x3 vent
-      for (int w = dw + x - 1; w <= dw + x + 1; w++) {
-         for (int h = dh + y - 1; h <= dh + y + 1; h++) {
+      for (int w = dx - 1; w <= dx + 1; w++) {
+         for (int h = dy - 1; h <= dy + 1; h++) {
             Tile tile = Vars.world.tile(w, h);
             if (tile != null) {
                tile.setFloor(ventFloor);
@@ -36,7 +36,7 @@ public class VentRoom extends BaseRoom{
          }
       }
       
-      Tile tile2 = Vars.world.tile(x + dw, y + dh);
+      Tile tile2 = Vars.world.tile(dx, dy);
       if (tile2 != null) {
          tile2.setBlock(Blocks.turbineCondenser, Team.sharded, 0);
       }

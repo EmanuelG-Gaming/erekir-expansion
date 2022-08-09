@@ -93,13 +93,8 @@ public class ItemProp extends Block{
     }
     
     public class DropBuild extends Building{
-        public int currentAmount;
+        public int currentAmount = amount;
         public boolean containsButton = false;
-        
-        @Override
-        public void created() {
-           currentAmount = amount;
-        }
         
         public void addButton() {
            Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
