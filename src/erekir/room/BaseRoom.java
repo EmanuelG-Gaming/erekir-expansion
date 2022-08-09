@@ -22,7 +22,7 @@ public class BaseRoom extends Room{
       for (int w = x - width; w <= x + width; w++) {
          for (int h = y - height; h <= y + height; h++) {
             Tile tile = Vars.world.tile(w, h);
-            tile.setFloor(groundFloor);
+            if (tile != null) tile.setFloor(groundFloor);
          }
       }
    }
