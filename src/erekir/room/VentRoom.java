@@ -26,14 +26,14 @@ public class VentRoom extends BaseRoom{
       int dw = width / 2, dh = height / 2;
 
       //add a 3x3 vent
-      for (int w = x - 1; w <= x + 1; w++) {
-         for (int h = y - 1; h <= y + 1; h++) {
+      for (int w = dw + x - 1; w <= dw + x + 1; w++) {
+         for (int h = dh + y - 1; h <= dh + y + 1; h++) {
             Tile tile = Vars.world.tile(w, h);
             tile.setFloor(ventFloor);
             tile.setFloor(vent);
          }
       }
       
-      Vars.world.tile(x + dx, y + dy).setBlock(Blocks.turbineCondenser, Team.sharded, 0);
+      Vars.world.tile(x + dw, y + dh).setBlock(Blocks.turbineCondenser, Team.sharded, 0);
    }
 }
