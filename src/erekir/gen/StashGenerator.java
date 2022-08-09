@@ -50,21 +50,21 @@ public class StashGenerator extends BlankPlanetGenerator{
         Floor background = Blocks.empty.asFloor();
         
         
-        float range = 60f;
+        float range = 10f;
         
         //room chances
         int emptyRooms = rand.random(2, 4);
         int ventRooms = rand.random(1, 3);
         
         for (int i = 0; i < emptyRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw * 2f + 62f + rand.random(range));
+           Tmp.v1.trns(rand.random(360f), pw + 8f + rand.random(range));
            float rx = (dx + Tmp.v1.x);
            float ry = (dy + Tmp.v1.y);
            rooms.add(new BaseRoom((int) rx, (int) ry, 5, 5));
         }
         
         for (int i = 0; i < ventRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw * 2f + 100f + rand.random(range));
+           Tmp.v1.trns(rand.random(360f), pw + 15f + rand.random(range));
            float rx = (dx + Tmp.v1.x);
            float ry = (dy + Tmp.v1.y);
            rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
