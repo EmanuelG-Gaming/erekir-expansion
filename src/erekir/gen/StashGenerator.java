@@ -35,15 +35,16 @@ public class StashGenerator extends BlankPlanetGenerator{
     public Planet orbiting = Planets.erekir;
     
     @Nullable Rand rand;
+    int baseSeed = 4;
     int seed;
-   
+    
     ItemProp get(int id) {
         return DropGenerator.generated.get(id);
     }
 
     @Override
     public void generate() {
-        seed = state.rules.sector.planet.id;
+        seed = state.rules.sector.planet.id + baseSeed;
         int dx = width / 2, dy = height / 2;
         rand = new Rand(seed);
 

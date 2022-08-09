@@ -47,7 +47,7 @@ public class MiningRoom extends BaseRoom{
       //drill ruins
       int i = 0;
       for (Point2 point : Geometry.d4) {
-         int dx = point.x * mWidth + 2 * 2, dy = point.y * mHeight + 2 * 2;
+         int dx = point.x * mWidth * 3, dy = point.y * mHeight * 3;
          Tile tile = Vars.world.tile(x + dx, y + dy);
          if (tile != null) {
             tile.setBlock(Blocks.plasmaBore, Team.derelict, i > 1 ? i - 2 : i + 2);
