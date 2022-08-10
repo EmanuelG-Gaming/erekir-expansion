@@ -20,9 +20,9 @@ import static mindustry.Vars.*;
 
 public class StashGenerator extends BlankPlanetGenerator{
     public ItemProp[] drops = {
-       get(0), get(1), get(4),
-       get(5), get(6), get(7),
-       get(DropGenerator.generated.size - 4), get(DropGenerator.generated.size - 3)
+       get(0), get(1), get(3), get(4),
+       get(5), get(6), get(7), get(DropGenerator.generated.size - 4),
+       get(DropGenerator.generated.size - 3)
     };
     
     public Seq<BaseRoom> rooms = new Seq<BaseRoom>(); /*Seq.with(
@@ -35,19 +35,17 @@ public class StashGenerator extends BlankPlanetGenerator{
     public Planet orbiting = Planets.erekir;
     
     @Nullable Rand rand;
-    int baseSeed = 4;
+    int seed;
+    int baseSeed = 5;
     
     ItemProp get(int id) {
         return DropGenerator.generated.get(id);
     }
 
     @Override
-    public void generate(Tiles tiles, Sector sec, int seed) {
-        this.tiles = tiles;
-        this.seed = seed;
-        this.sector = sec;
+    public void generate() {
         int dx = width / 2, dy = height / 2;
-        rand = new Rand(sec.id + seed + baseSeed);
+        rand = new Rand(seed + baseSeed);
 
         Floor background = Blocks.empty.asFloor();
         
@@ -70,11 +68,11 @@ public class StashGenerator extends BlankPlanetGenerator{
            Tmp.v1.trns(rand.random(360f), pw + 20f + rand.random(range));
            float rx = (dx + Tmp.v1.x);
            float ry = (dy + Tmp.v1.y);
-           if (rand.chance(0.5)) {
+           boolean chance = rand.chance(0.5);
+           if (chance) {
               rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
            }
-           else {
-              boolean chance = rand.chance(0.5);
+           else {  
               rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, chance ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
                  belowFloor = chance ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
               }});
