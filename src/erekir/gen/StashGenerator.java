@@ -43,6 +43,7 @@ public class StashGenerator extends BlankPlanetGenerator{
 
     @Override
     public void generate(Tiles tiles, Sector sec, int seed) {
+        this.tiles = tiles;
         this.seed = seed;
         this.sector = sec;
         int dx = width / 2, dy = height / 2;
