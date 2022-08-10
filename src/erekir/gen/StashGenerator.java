@@ -143,7 +143,7 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public void generateRooms(Seq<BaseRoom> hotel, Cons<BaseRoom> room) {
        for (BaseRoom r : hotel) {
-          if (!(r instanceof DefenseRoom)) replaceLine(width / 2, height / 2, r.x, r.y);
+          replaceLine(width / 2, height / 2, r.x, r.y);
           room.get(r);
        }
     }
