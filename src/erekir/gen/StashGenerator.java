@@ -121,7 +121,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
     }
     
-    public void addRooms(int x, int y, float range, int amount, Cons2<Int, Int> cons) {
+    public void addRooms(int x, int y, float range, int amount, Cons2<Integer, Integer> cons) {
        for (int i = 0; i < amount; i++) {
           Tmp.v1.trns(rand.random(360f), range);
           float rx = (x + Tmp.v1.x);
@@ -130,7 +130,7 @@ public class StashGenerator extends BlankPlanetGenerator{
        }
     }
     
-    public void addRooms(BaseRoom room, float range, int amount, Cons2<Int, Int> cons) {
+    public void addRooms(BaseRoom room, float range, int amount, Cons2<Integer, Integer> cons) {
        for (int i = 0; i < amount; i++) {
           Tmp.v1.trns(rand.random(360f), range + room.width);
           float rx = (room.x + Tmp.v1.x);
@@ -139,7 +139,7 @@ public class StashGenerator extends BlankPlanetGenerator{
        }
     }
     
-    public void addRandom(float range, int amount, Cons2<Int, Int> cons) {
+    public void addRandom(float range, int amount, Cons2<Integer, Integer> cons) {
        for (int i = 0; i < amount; i++) {
           int rnd = rand.random(0, rooms.size - 1);
           BaseRoom br = rooms.get(rnd);

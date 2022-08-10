@@ -1,6 +1,5 @@
 package erekir.room;
 
-
 import arc.struct.*;
 import arc.util.*;
 import arc.math.geom.*;
@@ -41,16 +40,15 @@ public class DefenseRoom extends BaseRoom{
          TurretBuild t = (TurretBuild) tile.build;
          //probably a bad code
          if (t != null) {
-            Seq<Item> itemRecipes = Vars.content.items().filter(i -> (tur.ammoTypes.containsKey(i)));
-            Seq<Item> liquidRecipes = Vars.content.liquids().filter(i -> (tur.ammoTypes.containsKey(i)));
-            
             if (t instanceof ItemTurretBuild) {
                //random choosen item
+               Seq<Item> itemRecipes = Vars.content.items().filter(i -> (((ItemTurret) tur).ammoTypes.containsKey(i)));
                Item i = itemRecipes.get(rand.random(0, itemRecipes.size - 1));
                t.items.add(i, tur.itemCapacity);
             }
-            if (t instanceof LiquidTurretBuild || t instanceof ContinuousLiquidTurretBuild) {
+            if (t instanceof LiquidTurretBuild) {
                //random choosen liquid
+               Seq<Liquid> liquidRecipes = Vars.content.liquids().filter(i -> (((LiquidTurret) tur).ammoTypes.containsKey(i)));
                Liquid l = liquidRecipes.get(rand.random(0, liquidRecipes.size - 1));
                t.liquids.add(l, tur.liquidCapacity);
             }

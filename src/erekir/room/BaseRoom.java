@@ -1,6 +1,7 @@
 package erekir.room;
 
-import arc.math;
+import arc.util.*;
+import arc.math.*;
 import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
@@ -22,7 +23,7 @@ public class BaseRoom extends Room{
    }
    
    public void generate() {
-      seed = state.rules.sector.planet.id;
+      seed = Vars.state.rules.sector.planet.id;
       rand = new Rand(seed + 5);
       
       for (int w = x - width; w <= x + width; w++) {
