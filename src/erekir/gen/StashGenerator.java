@@ -76,11 +76,9 @@ public class StashGenerator extends BlankPlanetGenerator{
         });
         
         //add ulterior defense room branches
-        /*
         addRooms(dx, dy, pw + 16f + rand.random(range), defenseRooms, (x, y) -> {
            rooms.add(new DefenseRoom(x, y, 7, 7));
         });
-        */
         
         //background
         tiles.eachTile(t -> t.setFloor(background));

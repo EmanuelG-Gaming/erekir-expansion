@@ -1,6 +1,5 @@
 package erekir.room;
 
-/*
 import arc.struct.*;
 import arc.util.*;
 import arc.math.geom.*;
@@ -28,10 +27,8 @@ public class DefenseRoom extends BaseRoom{
       super.generate();
       int dx = x, dy = y;
       
-      Seq<Block> turrets = Vars.content.blocks().filter(b -> b instanceof Turret);
-      int random = rand.random(0, turrets.size - 1);
-      
-      Turret tur = (Turret) turrets.get(random);
+      Seq<Block> turrets = Vars.content.blocks().select(b -> b instanceof Turret);
+      Turret tur = (Turret) turrets.random(rand);
       
       //turret in the center
       Tile tile = Vars.world.tile(dx, dy);
@@ -42,17 +39,17 @@ public class DefenseRoom extends BaseRoom{
          if (t != null) {
             if (t instanceof ItemTurretBuild) {
                //random choosen item
-               Seq<Item> itemRecipes = Vars.content.items().filter(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
-               Item i = itemRecipes.get(rand.random(0, itemRecipes.size - 1));
+               Seq<Item> itemRecipes = Vars.content.items().select(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
+               Item i = itemRecipes.random(rand);
                t.items.add(i, tur.itemCapacity);
             }
-            if (t instanceof LiquidTurretBuild) {
+            else if (t instanceof LiquidTurretBuild) {
                //random choosen liquid
-               Seq<Liquid> liquidRecipes = Vars.content.liquids().filter(i -> ((LiquidTurret) tur).ammoTypes.containsKey(i));
-               Liquid l = liquidRecipes.get(rand.random(0, liquidRecipes.size - 1));
+               Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> ((LiquidTurret) tur).ammoTypes.containsKey(i));
+               Liquid l = liquidRecipes.get(rand);
                t.liquids.add(l, tur.liquidCapacity);
             }
-            if (t instanceof PowerTurretBuild) {
+            else if (t instanceof PowerTurretBuild) {
                //if power turret, just place full batteries around
                for (int w = dx - tur.size - 1; w <= dx + tur.size + 1; w++) for (int h = dy - tur.size - 1; h <= dy + tur.size + 1; h++) {
                   Tile tile2 = Vars.world.tile(w, h);
@@ -67,4 +64,3 @@ public class DefenseRoom extends BaseRoom{
       }
    }
 }
-*/
