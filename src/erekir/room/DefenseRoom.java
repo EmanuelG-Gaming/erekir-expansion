@@ -30,7 +30,7 @@ public class DefenseRoom extends BaseRoom{
       Seq<Block> turrets = Vars.content.blocks().filter(b -> (b instanceof Turret));
       int random = rand.random(0, turrets.size - 1);
       
-      Turret tur = turrets.get(random);
+      Turret tur = (Turret) turrets.get(random);
       
       //turret in the center
       Tile tile = Vars.world.tile(dx, dy);
