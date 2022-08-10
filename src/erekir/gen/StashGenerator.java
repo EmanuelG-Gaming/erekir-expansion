@@ -44,9 +44,10 @@ public class StashGenerator extends BlankPlanetGenerator{
 
     @Override
     public void generate() {
-        int dx = width / 2, dy = height / 2;
+        seed = state.rules.sector.planet.id;
         rand = new Rand(seed + baseSeed);
-
+        
+        int dx = width / 2, dy = height / 2;
         Floor background = Blocks.empty.asFloor();
         
         
