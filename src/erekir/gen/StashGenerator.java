@@ -46,10 +46,10 @@ public class StashGenerator extends BlankPlanetGenerator{
     public void generate() {
         seed = state.rules.sector.planet.id;
         rand = new Rand(seed + baseSeed);
+        rooms.clear();
         
         int dx = width / 2, dy = height / 2;
         Floor background = Blocks.empty.asFloor();
-        
         
         float range = 20f;
         
@@ -73,9 +73,10 @@ public class StashGenerator extends BlankPlanetGenerator{
            if (chance) {
               rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
            }
-           else {  
-              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, chance ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
-                 belowFloor = chance ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
+           else {
+              boolean chance2 = rand.chance(0.5);
+              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, chance2 ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
+                 belowFloor = chance2 ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
               }});
            }
         }

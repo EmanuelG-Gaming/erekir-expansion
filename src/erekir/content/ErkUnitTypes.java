@@ -737,7 +737,7 @@ public class ErkUnitTypes implements AltContentList{
                 hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
                 shootEffect = Fx.shootBigColor;
                 smokeEffect = Fx.shootSmokeSquareSparse;
-                recoil = 0.2f;
+                recoil = 0.07f;
                 buildingDamageMultiplier = 0.35f;
              }};
           }});
