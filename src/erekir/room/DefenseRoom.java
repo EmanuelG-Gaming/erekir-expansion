@@ -16,7 +16,6 @@ import mindustry.game.*;
 import mindustry.type.*;
 import mindustry.Vars;
 
-
 public class DefenseRoom extends BaseRoom{
    
    public DefenseRoom(int px, int py, int w, int h) {
@@ -28,7 +27,7 @@ public class DefenseRoom extends BaseRoom{
       super.generate();
       int dx = x, dy = y;
       
-      Seq<Turret> turrets = Vars.content.blocks().filter(b -> (b instanceof Turret));
+      Seq<Block> turrets = Vars.content.blocks().filter(b -> (b instanceof Turret));
       int random = rand.random(0, turrets.size - 1);
       
       Turret tur = turrets.get(random);
