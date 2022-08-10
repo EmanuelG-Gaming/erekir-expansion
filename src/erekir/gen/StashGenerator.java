@@ -36,22 +36,22 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     @Nullable Rand rand;
     int baseSeed = 4;
-    int seed;
     
     ItemProp get(int id) {
         return DropGenerator.generated.get(id);
     }
 
     @Override
-    public void generate() {
-        seed = state.rules.sector.planet.id + baseSeed;
+    public void generate(Tiles tiles, Sector sec, int seed) {
+        this.seed = seed;
+        this.sector = sec;
         int dx = width / 2, dy = height / 2;
-        rand = new Rand(seed);
+        rand = new Rand(sec.id + seed + baseSeed);
 
         Floor background = Blocks.empty.asFloor();
         
         
-        float range = 10f;
+        float range = 20f;
         
         //room chances
         int emptyRooms = rand.random(3, 5);
