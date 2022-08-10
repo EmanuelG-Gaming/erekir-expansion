@@ -58,40 +58,27 @@ public class StashGenerator extends BlankPlanetGenerator{
         int specialRooms = rand.random(2, 3);
         int defenseRooms = rand.random(1, 2);
         
-        //spammy code moment
-        for (int i = 0; i < emptyRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw + 13f + rand.random(range));
-           float rx = (dx + Tmp.v1.x);
-           float ry = (dy + Tmp.v1.y);
-           rooms.add(new BaseRoom((int) rx, (int) ry, 5, 5));
-        }
+        addRooms(dx, dy, pw + 13f + rand.random(range), emptyRooms, (x, y) -> {
+           rooms.add(new BaseRoom(x, y, 5, 5));
+        });
         
-        //special rooms
-        for (int i = 0; i < specialRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw + 20f + rand.random(range));
-           float rx = (dx + Tmp.v1.x);
-           float ry = (dy + Tmp.v1.y);
+        addRooms(dx, dy, pw + 20f + rand.random(range), specialRooms, (x, y) -> {
            boolean chance = rand.chance(0.5);
            if (chance) {
-              rooms.add(new VentRoom((int) rx, (int) ry, 8, 8));
+              rooms.add(new VentRoom(x, y, 8, 8));
            }
            else {
               boolean chance2 = rand.chance(0.5);
-              rooms.add(new MiningRoom((int) rx, (int) ry, 8, 8, chance2 ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
+              rooms.add(new MiningRoom(x, y, 8, 8, chance2 ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
                  belowFloor = chance2 ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
               }});
            }
-        }
+        });
         
-        //add defense room branches
-        for (int i = 0; i < defenseRooms; i++) {
-           Tmp.v1.trns(rand.random(360f), pw + 11f + rand.random(range));
-           int rnd = rand.random(0, rooms.size - 1);
-           float rx = (rooms.get(rnd).x + Tmp.v1.x);
-           float ry = (rooms.get(rnd).y + Tmp.v1.y);
-           rooms.add(new DefenseRoom((int) rx, (int) ry, 7, 7));
-           replaceLine(rooms.get(rnd).x, rooms.get(rnd).y, rx, ry);
-        }
+        //add ulterior defense room branches
+        addRandom(0f, defenseRooms, (x, y) -> {
+           rooms.add(new DefenseRoom(x, y, 7, 7));
+        });
         
         //background
         tiles.eachTile(t -> t.setFloor(background));
@@ -132,6 +119,36 @@ public class StashGenerator extends BlankPlanetGenerator{
 
         //state.rules.showSpawns = true;
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
+    }
+    
+    public void addRooms(int x, int y, float range, int amount, Cons2<Int, Int> cons) {
+       for (int i = 0; i < amount; i++) {
+          Tmp.v1.trns(rand.random(360f), range);
+          float rx = (x + Tmp.v1.x);
+          float ry = (y + Tmp.v1.y);
+          cons.get((int) rx, (int) ry);
+       }
+    }
+    
+    public void addRooms(BaseRoom room, float range, int amount, Cons2<Int, Int> cons) {
+       for (int i = 0; i < amount; i++) {
+          Tmp.v1.trns(rand.random(360f), range + room.width);
+          float rx = (room.x + Tmp.v1.x);
+          float ry = (room.y + Tmp.v1.y);
+          cons.get((int) rx, (int) ry);
+       }
+    }
+    
+    public void addRandom(float range, int amount, Cons2<Int, Int> cons) {
+       for (int i = 0; i < amount; i++) {
+          int rnd = rand.random(0, rooms.size - 1);
+          BaseRoom br = rooms.get(rnd);
+
+          Tmp.v1.trns(rand.random(360f), range + br.width);
+          float rx = (br.x + Tmp.v1.x);
+          float ry = (br.y + Tmp.v1.y);
+          cons.get((int) rx, (int) ry);
+       }
     }
     
     public void generateRooms(Seq<BaseRoom> hotel, Cons<BaseRoom> room) {

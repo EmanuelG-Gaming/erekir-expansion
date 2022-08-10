@@ -52,7 +52,7 @@ public class DefenseRoom extends BaseRoom{
             if (t instanceof LiquidTurretBuild || t instanceof ContinuousLiquidTurretBuild) {
                //random choosen liquid
                Liquid l = liquidRecipes.get(rand.random(0, liquidRecipes.size - 1));
-               t.liquids.add(l, tur.liquidCapacity)
+               t.liquids.add(l, tur.liquidCapacity);
             }
             if (t instanceof PowerTurretBuild) {
                //if power turret, just place full batteries around
@@ -61,7 +61,7 @@ public class DefenseRoom extends BaseRoom{
                   if (tile2 != null && tile2.block() == Blocks.air) {
                      tile2.setBlock(Blocks.battery, Team.sharded, 0);
                      BatteryBuild b = (BatteryBuild) tile2.build;
-                     if (b != null) b.power.status = b.block.consPower.capacity;
+                     if (b != null) b.power.status = 1;
                   }
                }
             }
