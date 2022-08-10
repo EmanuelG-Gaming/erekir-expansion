@@ -76,7 +76,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         });
         
         //add ulterior defense room branches
-        addRandom(0f, defenseRooms, (x, y) -> {
+        addRooms(dx, dy, pw + 16f + rand.random(range), defenseRooms, (x, y) -> {
            rooms.add(new DefenseRoom(x, y, 7, 7));
         });
         
@@ -135,18 +135,6 @@ public class StashGenerator extends BlankPlanetGenerator{
           Tmp.v1.trns(rand.random(360f), range + room.width);
           float rx = (room.x + Tmp.v1.x);
           float ry = (room.y + Tmp.v1.y);
-          cons.get((int) rx, (int) ry);
-       }
-    }
-    
-    public void addRandom(float range, int amount, Cons2<Integer, Integer> cons) {
-       for (int i = 0; i < amount; i++) {
-          int rnd = rand.random(0, rooms.size - 1);
-          BaseRoom br = rooms.get(rnd);
-
-          Tmp.v1.trns(rand.random(360f), range + br.width);
-          float rx = (br.x + Tmp.v1.x);
-          float ry = (br.y + Tmp.v1.y);
           cons.get((int) rx, (int) ry);
        }
     }
