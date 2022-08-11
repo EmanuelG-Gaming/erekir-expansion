@@ -8,6 +8,7 @@ import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.defense.turrets.Turret.*;
 import mindustry.world.blocks.defense.turrets.ItemTurret.*;
+import mindustry.world.blocks.defense.turrets.ItemTurret.ItemEntry;
 import mindustry.world.blocks.defense.turrets.LiquidTurret.*;
 import mindustry.world.blocks.defense.turrets.ContinuousLiquidTurret.*;
 import mindustry.world.blocks.defense.turrets.PowerTurret.*;
@@ -41,7 +42,7 @@ public class DefenseRoom extends BaseRoom{
                //random choosen item
                Seq<Item> itemRecipes = Vars.content.items().select(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
                Item i = itemRecipes.random(rand);
-               t.ammo.add(ItemTurret.new ItemEntry(i, tur.maxAmmo));
+               t.ammo.add(new ItemEntry(i, tur.maxAmmo));
             }
             else if (t instanceof LiquidTurretBuild) {
                //random choosen liquid
