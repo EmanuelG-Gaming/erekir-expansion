@@ -27,28 +27,33 @@ public class FollowUnitAbility extends Ability{
     public float spawnTime = 60f, spawnX, spawnY, patrolRadius = 50f;
     public Effect spawnEffect = Fx.spawn;
     public boolean parentizeEffects;
-
+    public static final Seq<FollowUnitAbility> all = new Seq<>();
+   
     protected float timer;
     protected Seq<Unit> spawnUnits = new Seq<Unit>();
+    protected int sum;
     
     FollowUnitAbility() {}
     
     public FollowUnitAbility(UnitType spawnUnit, float spawnX, float spawnY, float spawnTime) {
+       this.sum = all.size * this.maxSpawnUnits;
        this.spawnUnit = spawnUnit;
        this.spawnX = spawnX;
        this.spawnY = spawnY;
        this.spawnTime = spawnTime;
+       all.add(this);
     }
     
     @Override
     public void update(Unit unit) {
-       consUnits(u -> {
+       Seq<Unit> owner = ownUnits(unit);
+       consUnits(owner, u -> {
           if (!u.isValid()) {
-             spawnUnits.remove(u);
+             owner.remove(u);
           }
        });
        
-       if (spawnUnits.size < maxSpawnUnits) {
+       if (spawnUnits.size < sum) {
           if (timer >= spawnTime) {
              float x = unit.x + Angles.trnsx(unit.rotation, spawnY, spawnX), y = unit.y + Angles.trnsy(unit.rotation, spawnY, spawnX);
           
@@ -80,13 +85,13 @@ public class FollowUnitAbility extends Ability{
     
     @Override
     public void death(Unit unit) {
-       consUnits(u -> Call.unitDespawn(u));
-       spawnUnits.clear();
+       consUnits(ownUnits(unit), u -> Call.unitDespawn(u));
+       ownUnits(unit).clear();
     }
     
     @Override
     public void draw(Unit unit) {
-       if (spawnUnits.size < maxSpawnUnits) {
+       if (spawnUnits.size < sum) {
           Draw.draw(Draw.z(), () -> {
              float x = unit.x + Angles.trnsx(unit.rotation, spawnY, spawnX), y = unit.y + Angles.trnsy(unit.rotation, spawnY, spawnX);
              Drawf.construct(x, y, spawnUnit.fullIcon, unit.rotation - 90, timer / spawnTime, 1f, timer);
@@ -94,8 +99,13 @@ public class FollowUnitAbility extends Ability{
        }
     }
     
-    public void consUnits(Cons<Unit> units) {
-       spawnUnits.each(u -> units.get(u));
+    public void consUnits(Seq<Unit> units, Cons<Unit> unit) {
+       units.each(u -> unit.get(u));
+    }
+    
+    public Seq<Unit> ownUnits(Unit unit) {
+       //it could be faster
+       return spawnUnits.select(u -> ((FlyAroundAI) u.controller()).patrolUnit == unit);
     }
     
     @Override
