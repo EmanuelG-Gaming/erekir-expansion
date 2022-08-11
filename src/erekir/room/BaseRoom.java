@@ -1,5 +1,6 @@
 package erekir.room;
 
+import arc.struct.*;
 import arc.util.*;
 import arc.math.*;
 import mindustry.content.*;
@@ -10,20 +11,24 @@ import mindustry.Vars;
 /** An empty room/platform. */
 public class BaseRoom extends Room{
    public Floor groundFloor = Blocks.metalFloor.asFloor();
-   public short id = -1; 
+  
+   public static final Seq<BaseRoom> all = new Seq<>();
+   public final int id; 
    
    @Nullable Rand rand;
    int seed;
 
    public BaseRoom(int px, int py, int w, int h) {
       super(px, py, w, h);
-      id++;
+      this.id = all.size;
+      all.add(this);
    }
    
    public BaseRoom(int x, int y, int w, int h, Floor ground) {
       super(x, y, w, h);
-      groundFloor = ground;
-      id++;
+      this.id = all.size;
+      this.groundFloor = ground;
+      all.add(this);
    }
    
    public void generate() {

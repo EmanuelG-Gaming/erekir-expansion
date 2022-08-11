@@ -58,10 +58,12 @@ public class StashGenerator extends BlankPlanetGenerator{
         int specialRooms = rand.random(2, 3);
         int defenseRooms = rand.random(1, 2);
         
+        //empty rooms
         addRooms(dx, dy, pw + 13f + rand.random(range), emptyRooms, (x, y) -> {
            rooms.add(new BaseRoom(x, y, 5, 5));
         });
         
+        //ore and vent rooms
         addRooms(dx, dy, pw + 20f + rand.random(range), specialRooms, (x, y) -> {
            boolean chance = rand.chance(0.5);
            if (chance) {
@@ -75,11 +77,11 @@ public class StashGenerator extends BlankPlanetGenerator{
            }
         });
         
-        //add ulterior defense room branches
-        addRandom(8f, defenseRooms, (x, y) -> {
+        //defense room branches
+        addRandom(12f, defenseRooms, (x, y) -> {
            rooms.add(new DefenseRoom(x, y, 7, 7));
         });
-        
+         
         //background
         tiles.eachTile(t -> t.setFloor(background));
         

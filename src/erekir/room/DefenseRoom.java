@@ -65,7 +65,9 @@ public class DefenseRoom extends BaseRoom{
                }
             }
             if (tur.heatRequirement > 0f) {
-               t.heat = tur.heatRequirement * tur.maxHeatEfficiency;
+               for (int i = 0; i < t.sideHeat.length; i++) {
+                  t.sideHeat[i] = tur.heatRequirement * tur.maxHeatEfficiency;
+               }
             }
          }
       }
