@@ -46,7 +46,7 @@ public class DefenseRoom extends BaseRoom{
             else if (t instanceof LiquidTurretBuild) {
                //random choosen liquid
                Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> ((LiquidTurret) tur).ammoTypes.containsKey(i));
-               Liquid l = liquidRecipes.get(rand);
+               Liquid l = liquidRecipes.random(rand);
                t.liquids.add(l, tur.liquidCapacity);
             }
             else if (t instanceof PowerTurretBuild) {
