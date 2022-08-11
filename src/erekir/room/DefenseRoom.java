@@ -43,8 +43,7 @@ public class DefenseRoom extends BaseRoom{
                Seq<Item> itemRecipes = Vars.content.items().select(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
                Item i = itemRecipes.random(rand);
                
-               ItemTurret it = (ItemTurret) tur;
-               ItemTurret.ItemEntry entry = it.new ItemEntry(i, tur.maxAmmo);
+               ItemTurret.ItemEntry entry = new ItemEntry(i, tur.maxAmmo);
                t.ammo.add(entry);
             }
             else if (t instanceof LiquidTurretBuild) {
