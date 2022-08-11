@@ -41,7 +41,7 @@ public class DefenseRoom extends BaseRoom{
                //random choosen item
                Seq<Item> itemRecipes = Vars.content.items().select(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
                Item i = itemRecipes.random(rand);
-               t.items.add(i, tur.itemCapacity);
+               t.ammo.add(new ItemEntry(i, tur.maxAmmo));
             }
             else if (t instanceof LiquidTurretBuild) {
                //random choosen liquid
@@ -59,6 +59,9 @@ public class DefenseRoom extends BaseRoom{
                      if (b != null) b.power.status = 1;
                   }
                }
+            }
+            if (tur.heatRequirement > 0f) {
+               t.heat = heatRequirement * heatEfficiency;
             }
          }
       }
