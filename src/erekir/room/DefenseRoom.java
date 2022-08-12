@@ -73,9 +73,10 @@ public class DefenseRoom extends BaseRoom{
             }
             
             //add liquids for multiple liquid-consuming turrets
-            for (Consume i : tur.consumers) {
-               if (tur.findConsumer(f -> f instanceof ConsumeLiquidBase) instanceof ConsumeLiquid) {
-                  t.liquids.add(((ConsumeLiquid) i).liquid, tur.liquidCapacity);
+            for (Consume cons : tur.consumers) {
+               if (cons instanceof ConsumeLiquid) {
+                  ConsumeLiquid l = (ConsumeLiquid) cons;
+                  t.liquids.add(l.liquid, tur.liquidCapacity);
                }
             }
          }
