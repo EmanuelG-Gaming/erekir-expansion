@@ -36,9 +36,9 @@ public class DefenseRoom extends BaseRoom{
       if (tile != null) {
          tile.setBlock(tur, Team.sharded, 0);
          TurretBuild t = (TurretBuild) tile.build;
-         //probably a bad code
+         //TODO probably a bad code, choose consumers if so
          if (t != null) {
-            if (t instanceof ItemTurretBuild) {
+            if (tur instanceof ItemTurret) {
                //random choosen item
                Seq<Item> itemRecipes = Vars.content.items().select(i -> ((ItemTurret) tur).ammoTypes.containsKey(i));
                Item item = itemRecipes.random(rand);
@@ -47,14 +47,20 @@ public class DefenseRoom extends BaseRoom{
                   t.handleItem(null, item);
                }
             }
-            else if (t instanceof LiquidTurretBuild || t instanceof ContinuousLiquidTurretBuild) {
+            else if (tur instanceof LiquidTurret || t instanceof ContinuousLiquidTurret) {
                //random choosen liquid
-               Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> ((LiquidTurret) tur).ammoTypes.containsKey(i));
+               Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> {
+                  if (tur instanceof LiquidTurret) {
+                     return ((LiquidTurret) tur).ammoTypes.containsKey(i);
+                  }
+                  else return ((ContinuousLiquidTurret) tur).ammoTypes.containsKey(i);
+               });
                Liquid l = liquidRecipes.random(rand);
                t.liquids.add(l, tur.maxAmmo);
             }
-            else if (t instanceof PowerTurretBuild) {
-               //if power turret, just place full batteries around
+            
+            if (tur.consPower != null) {
+               //if it's consuming power, just place full batteries around
                for (int w = dx - tur.size - 1; w <= dx + tur.size + 1; w++) for (int h = dy - tur.size - 1; h <= dy + tur.size + 1; h++) {
                   Tile tile2 = Vars.world.tile(w, h);
                   if (tile2 != null && tile2.block() == Blocks.air) {
@@ -72,11 +78,10 @@ public class DefenseRoom extends BaseRoom{
                t.heatReq = t.calculateHeat(t.sideHeat);
             }
             
-            //add liquids for multiple liquid-consuming turrets
             for (Consume cons : tur.consumers) {
                if (cons instanceof ConsumeLiquid) {
                   ConsumeLiquid l = (ConsumeLiquid) cons;
-                  t.liquids.add(l.liquid, tur.liquidCapacity);
+                  t.liquids.add(l.liquid, tur.liquidCapacity * 2);
                }
             }
          }
