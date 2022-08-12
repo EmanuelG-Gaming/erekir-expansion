@@ -72,10 +72,9 @@ public class DefenseRoom extends BaseRoom{
                t.heatReq = t.calculateHeat(t.sideHeat);
             }
             
-            for (int i in tur.consumers) {
+            for (int i : tur.consumers) {
                if (tur.findConsumer(f -> f instanceof ConsumeLiquidBase) instanceof ConsumeLiquid) {
-                  ConsumeLiquid cons = (ConsumeLiquid) tur.findConsumer(f -> f instanceof ConsumeLiquidBase);
-                  t.liquids.add(cons.liquid, tur.liquidCapacity);
+                  t.liquids.add(((ConsumeLiquid) i).liquid, tur.liquidCapacity);
                }
             }
          }
