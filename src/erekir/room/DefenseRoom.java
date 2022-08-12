@@ -8,11 +8,11 @@ import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.defense.turrets.Turret.*;
 import mindustry.world.blocks.defense.turrets.ItemTurret.*;
-import mindustry.world.blocks.defense.turrets.ItemTurret.ItemEntry;
 import mindustry.world.blocks.defense.turrets.LiquidTurret.*;
 import mindustry.world.blocks.defense.turrets.ContinuousLiquidTurret.*;
 import mindustry.world.blocks.defense.turrets.PowerTurret.*;
 import mindustry.world.blocks.power.Battery.*;
+import mindustry.world.consumers.*;
 import mindustry.game.*;
 import mindustry.type.*;
 import mindustry.Vars;
@@ -47,7 +47,7 @@ public class DefenseRoom extends BaseRoom{
                   t.handleItem(null, item);
                }
             }
-            else if (t instanceof LiquidTurretBuild) {
+            else if (t instanceof LiquidTurretBuild || t instanceof ContinuousLiquidTurretBuild) {
                //random choosen liquid
                Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> ((LiquidTurret) tur).ammoTypes.containsKey(i));
                Liquid l = liquidRecipes.random(rand);
@@ -64,10 +64,17 @@ public class DefenseRoom extends BaseRoom{
                   }
                }
             }
+           
             if (tur.heatRequirement > 0f) {
                for (int i = 0; i < t.sideHeat.length; i++) {
                   t.sideHeat[i] = tur.heatRequirement * tur.maxHeatEfficiency;
                }
+               t.heatReq = t.calculateHeat(t.sideHeat);
+            }
+            
+            if (tur.findConsumer(f -> f instanceof ConsumeLiquidBase) instanceof ConsumeLiquid) {
+               ConsumeLiquid cons = (ConsumeLiquid) tur.findConsumer(f -> f instanceof ConsumeLiquidBase);
+               t.liquids.add(t.liquids.get(cons.liquid), tur.liquidCapacity);
             }
          }
       }
