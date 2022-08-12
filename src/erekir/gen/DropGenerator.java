@@ -25,7 +25,7 @@ public class DropGenerator{
    
    //funny generating code
    public static void generateDrops() {
-      for (int item : content.items()) {
+      for (Item item : content.items()) {
          String itemName = item.localizedName;
          if (!item.isHidden()) {
             
