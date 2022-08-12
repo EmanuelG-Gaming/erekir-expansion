@@ -74,7 +74,7 @@ public class DefenseRoom extends BaseRoom{
             
             if (tur.findConsumer(f -> f instanceof ConsumeLiquidBase) instanceof ConsumeLiquid) {
                ConsumeLiquid cons = (ConsumeLiquid) tur.findConsumer(f -> f instanceof ConsumeLiquidBase);
-               t.liquids.add(t.liquids.get(cons.liquid), tur.liquidCapacity);
+               t.liquids.add(cons.liquid, tur.liquidCapacity);
             }
          }
       }
