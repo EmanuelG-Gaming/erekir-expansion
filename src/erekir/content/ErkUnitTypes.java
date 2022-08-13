@@ -838,7 +838,6 @@ public class ErkUnitTypes implements AltContentList{
           targetAir = true;
           lowAltitude = true;
           rotateSpeed = 3f;
-          circleAttack = true;
           
           setEnginesMirror(
              new UnitEngine(83 / 4f, -65 / 4f, 5f, 225f),
