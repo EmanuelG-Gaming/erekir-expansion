@@ -840,7 +840,7 @@ public class ErkUnitTypes implements AltContentList{
           rotateSpeed = 3f;
           
           setEnginesMirror(
-             new UnitEngine(88 / 4f, -60 / 4f, 4.7f, 225f),
+             new UnitEngine(88 / 4f, -60 / 4f, 4.7f, 225f)
           );
           
           ammoType = new LiquidAmmoType(Liquids.cyanogen);
