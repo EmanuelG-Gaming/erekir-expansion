@@ -36,7 +36,7 @@ public class DefenseRoom extends BaseRoom{
       if (tile != null) {
          tile.setBlock(tur, Team.sharded, 0);
          TurretBuild t = (TurretBuild) tile.build;
-         //TODO probably a bad code, choose consumers if so
+         //TODO probably a bad code
          if (t != null) {
             if (tur instanceof ItemTurret) {
                //random choosen item
@@ -47,7 +47,7 @@ public class DefenseRoom extends BaseRoom{
                   t.handleItem(null, item);
                }
             }
-            else if (tur instanceof LiquidTurret || t instanceof ContinuousLiquidTurret) {
+            else if (tur instanceof LiquidTurret || tur instanceof ContinuousLiquidTurret) {
                //random choosen liquid
                Seq<Liquid> liquidRecipes = Vars.content.liquids().select(i -> {
                   if (tur instanceof LiquidTurret) {
@@ -72,13 +72,11 @@ public class DefenseRoom extends BaseRoom{
             }
            
             if (tur.heatRequirement > 0f) {
-               for (int i = 0; i < t.sideHeat.length; i++) {
-                  t.sideHeat[i] = tur.heatRequirement * tur.maxHeatEfficiency;
-               }
-               t.heatReq = t.calculateHeat(t.sideHeat);
+               t.heatReq = tur.heatRequirement;
             }
             
             for (Consume cons : tur.consumers) {
+               //other item ammo
                if (cons instanceof ConsumeLiquid) {
                   ConsumeLiquid l = (ConsumeLiquid) cons;
                   t.liquids.add(l.liquid, tur.liquidCapacity * 2);
