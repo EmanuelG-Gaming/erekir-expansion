@@ -27,6 +27,8 @@ public class StashGenerator extends BlankPlanetGenerator{
     public int pw = 30, ph = 30;
     public Planet orbiting = Planets.erekir;
     
+    private BaseRoom mainRoom;
+    
     @Nullable Rand rand;
     int seed;
     int baseSeed = 5;
@@ -47,24 +49,26 @@ public class StashGenerator extends BlankPlanetGenerator{
         int specialRooms = rand.random(2, 3);
         int defenseRooms = rand.random(1, 2);
         
-        rooms.add(new MainStashRoom(dx, dy, pw, ph));
+        MainStashRoom r = new MainStashRoom(dx, dy, pw, ph);
+        rooms.add(((BaseRoom) r));
+        mainRoom = (BaseRoom) r;
         
         //empty rooms
         addRooms(dx, dy, pw + 13f + rand.random(range), emptyRooms, (x, y) -> {
-           rooms.add(new BaseRoom(x, y, 5, 5));
+           rooms.add(mainRoom.addNode(new BaseRoom(x, y, 5, 5)));
         });
         
         //ore and vent rooms
         addRooms(dx, dy, pw + 20f + rand.random(range), specialRooms, (x, y) -> {
            boolean chance = rand.chance(0.5);
            if (chance) {
-              rooms.add(new VentRoom(x, y, 8, 8));
+              rooms.add(mainRoom.addNode(new VentRoom(x, y, 8, 8)));
            }
            else {
               boolean chance2 = rand.chance(0.5);
-              rooms.add(new MiningRoom(x, y, 8, 8, chance2 ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
+              rooms.add(mainRoom.addNode(new MiningRoom(x, y, 8, 8, chance2 ? Blocks.wallOreBeryllium : Blocks.graphiticWall){{
                  belowFloor = chance2 ? Blocks.rhyolite.asFloor() : Blocks.carbonStone.asFloor();
-              }});
+              }}));
            }
         });
         
@@ -118,17 +122,21 @@ public class StashGenerator extends BlankPlanetGenerator{
     public void addRandom(float range, int amount, Cons2<Integer, Integer> cons) {
        for (int i = 0; i < amount; i++) {
           BaseRoom br = rooms.random(rand);
-
-          Tmp.v1.trns(rand.random(360f), range + br.width);
-          float rx = (br.x + Tmp.v1.x);
-          float ry = (br.y + Tmp.v1.y);
-          cons.get((int) rx, (int) ry);
+          
+          if (!(br instanceof MainStashRoom)) {
+             Tmp.v1.trns(rand.random(360f), range + br.width);
+             float rx = (br.x + Tmp.v1.x);
+             float ry = (br.y + Tmp.v1.y);
+             br.addNode(cons.get((int) rx, (int) ry));
+          }
        }
     }
     
     public void generateRooms(Seq<BaseRoom> hotel, Cons<BaseRoom> room) {
        for (BaseRoom r : hotel) {
-          if (!(r instanceof DefenseRoom)) replaceLine(width / 2, height / 2, r.x, r.y);
+          for (BaseRoom no : r.nodes) {
+             replaceLine(r.x, r.y, no.x, no.y);
+          }
           room.get(r);
        }
     }

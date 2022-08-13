@@ -44,7 +44,9 @@ public class AddedErekirTechTree{
        });
        
        vanillaNode(shipAssembler, () -> {
-           node(ErkUnitTypes.attractor);
+           node(ErkUnitTypes.attractor, () -> {
+               node(ErkUnitTypes.dissolve);
+           });
        });
        
        vanillaNode(onset, () -> {

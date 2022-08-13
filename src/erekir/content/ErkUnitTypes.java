@@ -854,7 +854,7 @@ public class ErkUnitTypes implements AltContentList{
              y = 0f;
              rotate = true;
              shootSound = Sounds.mineDeploy;
-             bullet = new ArtilleryBulletType(2f, 90f){{
+             bullet = new ArtilleryBulletType(2.5f, 90f){{
 	              sprite = "large-bomb";
                 width = 36;
                 height = 36;
@@ -871,7 +871,7 @@ public class ErkUnitTypes implements AltContentList{
                 spin = 5f;
                 shrinkX = shrinkY = 0.7f;
                 drag = 0.004f;
-                collides = true;
+                collides = false;
                 splashDamage = 120f;
                 splashDamageRadius = 55f;
              }};

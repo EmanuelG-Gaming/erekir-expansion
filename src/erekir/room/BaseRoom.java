@@ -11,7 +11,8 @@ import mindustry.Vars;
 /** An empty room/platform. */
 public class BaseRoom extends Room{
    public Floor groundFloor = Blocks.metalFloor.asFloor();
-  
+   public Seq<BaseRoom> nodes = new Seq<>();
+   
    public static final Seq<BaseRoom> all = new Seq<>();
    public final int id; 
    
@@ -41,5 +42,10 @@ public class BaseRoom extends Room{
             if (tile != null) tile.setFloor(groundFloor);
          }
       }
+   }
+   
+   public BaseRoom addNode(BaseRoom room) {
+      nodes.add(room);
+      return room;
    }
 }
