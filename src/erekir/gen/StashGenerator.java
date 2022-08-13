@@ -121,14 +121,12 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public void addRandom(float range, int amount, Cons2<Integer, Integer> cons) {
        for (int i = 0; i < amount; i++) {
-          BaseRoom br = rooms.random(rand);
+          BaseRoom br = rooms.select(r -> r != mainRoom).random(rand);
           
-          if (!(br instanceof MainStashRoom)) {
-             Tmp.v1.trns(rand.random(360f), range + br.width);
-             float rx = (br.x + Tmp.v1.x);
-             float ry = (br.y + Tmp.v1.y);
-             br.addNode(cons.get((int) rx, (int) ry));
-          }
+          Tmp.v1.trns(rand.random(360f), range + br.width);
+          float rx = (br.x + Tmp.v1.x);
+          float ry = (br.y + Tmp.v1.y);
+          cons.get((int) rx, (int) ry);
        }
     }
     
