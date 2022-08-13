@@ -76,6 +76,22 @@ public class ErkFx {
      Drawf.light(e.x, e.y, 53f, ErkPal.greenishBeryl, 0.6f * e.fout());
   }),
   
+  hugeShatterColor = new Effect(45f, e -> {
+     Draw.color(Color.white, e.color, e.fin());
+
+     e.scaled(13f, s -> {
+        Lines.stroke(1.7f + s.fout());
+        Lines.circle(e.x, e.y, s.fin() * 48f);
+     });
+
+
+     Angles.randLenVectors(e.id, 20, e.fin() * 45f, (x, y) -> {
+        Fill.circle(e.x + x, e.y + y, e.fout(Interp.pow5Out) * 6.5f + 2.5f);
+     });
+
+     Drawf.light(e.x, e.y, 53f, e.color, 0.6f * e.fout());
+  }),
+  
   regenParticleBeryl = new Effect(100f, e -> {
       Draw.color(ErkPal.greenishBeryl);
 

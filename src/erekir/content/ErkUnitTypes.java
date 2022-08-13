@@ -833,15 +833,52 @@ public class ErkUnitTypes implements AltContentList{
           range = 300f;
           deathSound = ErkSounds.explosionlarge;
           trailLength = 19;
-          engineOffset = 24f;
-          engineSize = 6.5f;
+          engineOffset = 46f / 4f;
+          engineSize = 4.5f;
           targetAir = true;
           lowAltitude = true;
-          rotateSpeed = 2.3f;
+          rotateSpeed = 3f;
+          circleAttack = true;
+          
+          setEnginesMirror(
+             new UnitEngine(83 / 4f, -65 / 4f, 5f, 225f),
+             new UnitEngine(119 / 4f, -69 / 4f, 2.6f, 315f)
+          );
           
           ammoType = new LiquidAmmoType(Liquids.cyanogen);
           
           constructor = UnitEntity::create;
+          weapons.add(new Weapon(){{
+             reload = 70f;
+             mirror = false;
+             top = false;
+             x = 0f;
+             y = 0f;
+             shootSound = Sounds.mineDeploy;
+             bullet = new ArtilleryBulletType(2f, 70f){{
+	              sprite = "large-bomb";
+                width = 36;
+                height = 36;
+                ignoreRotation = true;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = mixColorTo = Color.white;
+                hitSound = Sounds.plasmaboom;
+                shootCone = 180;
+                ejectEffect = Fx.none;
+                hitShake = 4;
+                collidesAir = false;
+                lifetime = 100f;
+                despawnEffect = ErkFx.hugeShatterColor;
+                hitEffect = Fx.massiveExplosion;
+                keepVelocity = false;
+                spin = 5f;
+                shrinkX = shrinkY = 0.7f;
+                drag = 0.004f;
+                collides = false;
+                splashDamage = 120f;
+                splashDamageRadius = 55f;
+             }};
+          }});
       }};
       
       melt = new ErekirUnitType("melt"){{
