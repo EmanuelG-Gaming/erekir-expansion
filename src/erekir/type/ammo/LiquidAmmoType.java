@@ -57,7 +57,7 @@ public class LiquidAmmoType implements AmmoType{
                 if (build.canResupply()) {
                    if (unit.type.ammoCapacity - unit.ammo >= liquidTake && build.liquids != null && build.liquids.get(ammoLiquid) > 0) {
                       for (int i = 0; i < liquidTake; i++)
-                         Time.run(i * ticks, () -> Fx.itemTransfer.at(build.tileX() * tilesize, build.tileY() * tilesize, 4, ammoLiquid.color, unit));
+                         Time.run(i * ticks, () -> Fx.itemTransfer.at(build.x, build.y, 4, ammoLiquid.color, unit));
                    
                       build.liquids.remove(ammoLiquid, liquidTake);
                       unit.ammo = Math.min(unit.ammo + liquidTake, unit.type.ammoCapacity);

@@ -840,21 +840,21 @@ public class ErkUnitTypes implements AltContentList{
           rotateSpeed = 3f;
           
           setEnginesMirror(
-             new UnitEngine(83 / 4f, -65 / 4f, 5f, 225f),
-             new UnitEngine(119 / 4f, -69 / 4f, 2.6f, 315f)
+             new UnitEngine(88 / 4f, -60 / 4f, 4.7f, 225f),
           );
           
           ammoType = new LiquidAmmoType(Liquids.cyanogen);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 70f;
+             reload = 50f;
              mirror = false;
              top = false;
              x = 0f;
              y = 0f;
+             rotate = true;
              shootSound = Sounds.mineDeploy;
-             bullet = new ArtilleryBulletType(2f, 70f){{
+             bullet = new ArtilleryBulletType(2f, 90f){{
 	              sprite = "large-bomb";
                 width = 36;
                 height = 36;
@@ -862,10 +862,8 @@ public class ErkUnitTypes implements AltContentList{
                 hitColor = backColor = trailColor = Color.valueOf("ea8878");
                 frontColor = mixColorTo = Color.white;
                 hitSound = Sounds.plasmaboom;
-                shootCone = 180;
                 ejectEffect = Fx.none;
                 hitShake = 4;
-                collidesAir = false;
                 lifetime = 100f;
                 despawnEffect = ErkFx.hugeShatterColor;
                 hitEffect = Fx.massiveExplosion;
@@ -873,7 +871,7 @@ public class ErkUnitTypes implements AltContentList{
                 spin = 5f;
                 shrinkX = shrinkY = 0.7f;
                 drag = 0.004f;
-                collides = false;
+                collides = true;
                 splashDamage = 120f;
                 splashDamageRadius = 55f;
              }};
