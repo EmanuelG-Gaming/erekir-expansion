@@ -17,6 +17,7 @@ import mindustry.game.*;
 import mindustry.type.*;
 import mindustry.Vars;
 
+/** A room featuring a turret with the necessary resources in the middle. */
 public class DefenseRoom extends BaseRoom{
    
    public DefenseRoom(int px, int py, int w, int h) {

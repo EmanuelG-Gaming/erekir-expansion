@@ -1,5 +1,6 @@
 package erekir.room;
 
+/** Primary class for handling room position and dimension. */
 public class Room{
    /** Position, in tiles. */
    public int x, y;

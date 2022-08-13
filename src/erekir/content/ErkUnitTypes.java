@@ -40,6 +40,7 @@ public class ErkUnitTypes implements AltContentList{
     attractor,
     
     spread, apart, shredderMissile, shredder,
+    dissolve,
     
     melt;
     
@@ -819,6 +820,28 @@ public class ErkUnitTypes implements AltContentList{
                 despawnUnitRadius = 26f;
             }};
          }});
+      }};
+      
+      dissolve = new ErekirUnitType("dissolve"){{
+          health = 15000;
+	        speed = 1.4f;
+ 	        hitSize = 36;
+	        drag = 0.01f;
+	        accel = 0.065f;
+	        flying = true;
+          aimDst = 1.46f;
+          range = 300f;
+          deathSound = ErkSounds.explosionlarge;
+          trailLength = 19;
+          engineOffset = 24f;
+          engineSize = 6.5f;
+          targetAir = true;
+          lowAltitude = true;
+          rotateSpeed = 2.3f;
+          
+          ammoType = new LiquidAmmoType(Liquids.cyanogen);
+          
+          constructor = UnitEntity::create;
       }};
       
       melt = new ErekirUnitType("melt"){{

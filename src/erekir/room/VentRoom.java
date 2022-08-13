@@ -6,6 +6,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.game.*;
 import mindustry.Vars;
 
+/** A room with a vent in the middle. */
 public class VentRoom extends BaseRoom{
    public Floor ventFloor = Blocks.rhyolite.asFloor();
    public Floor vent = Blocks.rhyoliteVent.asFloor();

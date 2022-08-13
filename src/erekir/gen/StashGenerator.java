@@ -13,18 +13,11 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import erekir.world.blocks.environment.*;
-import erekir.util.*;
 import erekir.room.*;
 
 import static mindustry.Vars.*;
 
 public class StashGenerator extends BlankPlanetGenerator{
-    public ItemProp[] drops = {
-       get(0), get(1), get(3), get(4),
-       get(5), get(6), get(7), get(DropGenerator.generated.size - 4),
-       get(DropGenerator.generated.size - 3)
-    };
-    
     public Seq<BaseRoom> rooms = new Seq<BaseRoom>(); /*Seq.with(
        new BaseRoom(25, 20, 5, 5),
        new BaseRoom(135, 50, 5, 5),
@@ -38,10 +31,6 @@ public class StashGenerator extends BlankPlanetGenerator{
     int seed;
     int baseSeed = 5;
     
-    ItemProp get(int id) {
-        return DropGenerator.generated.get(id);
-    }
-
     @Override
     public void generate() {
         seed = state.rules.sector.planet.id;
@@ -57,6 +46,8 @@ public class StashGenerator extends BlankPlanetGenerator{
         int emptyRooms = rand.random(1, 4);
         int specialRooms = rand.random(2, 3);
         int defenseRooms = rand.random(1, 2);
+        
+        rooms.add(new MainStashRoom(dx, dy, pw, ph));
         
         //empty rooms
         addRooms(dx, dy, pw + 13f + rand.random(range), emptyRooms, (x, y) -> {
@@ -84,23 +75,6 @@ public class StashGenerator extends BlankPlanetGenerator{
          
         //background
         tiles.eachTile(t -> t.setFloor(background));
-        
-        //platform
-        for (int w = dx - pw; w <= dx + pw; w++) {
-           for (int h = dy - ph; h <= dy + ph; h++) {
-              tiles.getn(w, h).setFloor(Blocks.metalFloor.asFloor());
-           }
-        }
-        
-        //drops
-        pass((x, y) -> {
-           if (floor != background) {
-              if (rand.chance(0.09)) {
-                 Tile tile = world.tile(x, y);
-                 block = drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))];
-              }
-           }
-        });
         
         //rooms
         generateRooms(rooms, room -> room.generate());

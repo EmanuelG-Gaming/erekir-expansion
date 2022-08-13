@@ -8,6 +8,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.game.*;
 import mindustry.Vars;
 
+/** A room with ruined beam drills. */
 public class MiningRoom extends BaseRoom{
    /** Mineral dimensions. */
    public int mWidth = 2, mHeight = 2;
