@@ -857,8 +857,7 @@ public class ErkUnitTypes implements AltContentList{
              shootSound = Sounds.shootBig;
              bullet = new ArtilleryBulletType(2.5f, 90f){{
 	              sprite = "large-bomb";
-                width = 36;
-                height = 36;
+                width = height = 36;
                 ignoreRotation = true;
                 hitColor = backColor = trailColor = Color.valueOf("ea8878");
                 frontColor = mixColorTo = Color.white;
@@ -872,14 +871,14 @@ public class ErkUnitTypes implements AltContentList{
                 }).layer(lowAltitude ? Layer.flyingUnitLow - 0.01f : Layer.flyingUnit - 0.01f));
                 hitEffect = Fx.massiveExplosion;
                 
-                shootEffect = new Effect(25f, e -> {
-                   float movement = 45f * e.fin();
+                shootEffect = new Effect(35f, e -> {
+                   float movement = 20f * e.fin();
                    float cone = 0.5f * e.fin();
                    Draw.color(Color.white, Color.valueOf("feb380"), e.fin());
                    Lines.stroke(12f * e.fslope());
                    Tmp.v1.trns(e.rotation, movement);
                    Lines.arc(e.x + Tmp.v1.x, e.y + Tmp.v1.y, movement, cone, e.rotation - cone * 180f * e.fin());
-                });
+                }).followParent(false).rotWithParent(false);
                 smokeEffect = Fx.shootSmokeSquareBig;
                 keepVelocity = false;
                 spin = 5f;
@@ -891,14 +890,15 @@ public class ErkUnitTypes implements AltContentList{
              }};
           }},
           new Weapon(){{
-             reload = 12f;
+             reload = 9f;
              mirror = true;
              top = true;
              x = 43 / 4f;
              y = 1f;
-             bullet = new LaserBoltBulletType(4f, 35f){{
-                width = 3.25f;
-	              height = 12.5f;
+             bullet = new LaserBoltBulletType(7f, 40f){{
+                width = 3.2f;
+	              height = 9f;
+	              shootEffect = Fx.none;
               	hitColor = backColor = Color.valueOf("feb380");
 	              frontColor = Color.white;
                 lifetime = 50f;

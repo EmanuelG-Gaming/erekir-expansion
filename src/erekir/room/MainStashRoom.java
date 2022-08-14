@@ -16,7 +16,7 @@ public class MainStashRoom extends BaseRoom{
       get(5), get(6), get(7), get(DropGenerator.generated.size - 4),
       get(DropGenerator.generated.size - 3)
    };
-   public float dropChance = 0.09f;
+   public float dropChance = 0.12f;
    
    public MainStashRoom(int px, int py, int w, int h) {
       super(px, py, w, h);

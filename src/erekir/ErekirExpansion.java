@@ -61,8 +61,8 @@ public class ErekirExpansion extends Mod{
            addToAssembler(
               Blocks.shipAssembler,
               Seq.with(
-                new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 8, Blocks.berylliumWall, 4)),
-                new AssemblerUnitPlan(ErkUnitTypes.dissolve, (float) 60 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.spread, 5, Blocks.tungstenWallLarge, 5))
+                 new AssemblerUnitPlan(ErkUnitTypes.attractor, (float) 55 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.aggregate, 4, Blocks.berylliumWallLarge, 8, Blocks.berylliumWall, 4)),
+                 new AssemblerUnitPlan(ErkUnitTypes.dissolve, (float) 60 * Time.toSeconds, PayloadStack.list(ErkUnitTypes.spread, 5, Blocks.tungstenWallLarge, 5))
               )
            );
            

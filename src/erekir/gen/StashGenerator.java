@@ -72,6 +72,13 @@ public class StashGenerator extends BlankPlanetGenerator{
            }
         });
         
+        //always add a beryllium mining room
+        addRandom(16f, 1, (br, x, y) -> {
+           rooms.add(br.addNode(new MiningRoom(x, y, 5, 5, Blocks.wallOreBeryllium){{
+              mWidth = mHeight = 1;
+           }}));
+        });
+        
         //defense room branches
         addRandom(12f, defenseRooms, (br, x, y) -> {
            rooms.add(br.addNode(new DefenseRoom(x, y, 7, 7)));
