@@ -838,16 +838,17 @@ public class ErkUnitTypes implements AltContentList{
           targetAir = true;
           lowAltitude = true;
           rotateSpeed = 3f;
+          circleTarget = true;
           
           setEnginesMirror(
-             new UnitEngine(88 / 4f, -60 / 4f, 4.7f, 225f)
+             new UnitEngine(84 / 4f, -64 / 4f, 4.5f, 225f)
           );
           
           ammoType = new LiquidAmmoType(Liquids.cyanogen);
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 50f;
+             reload = 100f;
              mirror = false;
              top = false;
              x = 0f;
@@ -865,12 +866,15 @@ public class ErkUnitTypes implements AltContentList{
                 ejectEffect = Fx.none;
                 hitShake = 4;
                 lifetime = 100f;
-                despawnEffect = ErkFx.hugeShatterColor;
+                despawnEffect = new MultiEffect(ErkFx.hugeShatterColor, new Effect(40f, e -> {
+                   Draw.color(Color.white, Color.valueOf("feb380"), e.fin());
+                   Lines.spikes(e.x, e.y, 42f + 15f * e.fin(), 9f * e.fslope(), 9, e.rotation);
+                }));
                 hitEffect = Fx.massiveExplosion;
                 keepVelocity = false;
                 spin = 5f;
                 shrinkX = shrinkY = 0.7f;
-                drag = 0.004f;
+                drag = 0.009f;
                 collides = false;
                 splashDamage = 120f;
                 splashDamageRadius = 55f;

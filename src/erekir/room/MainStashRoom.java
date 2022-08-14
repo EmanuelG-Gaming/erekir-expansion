@@ -1,6 +1,7 @@
 package erekir.room;
 
 import arc.math.*;
+import arc.math.geom.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.Vars;
@@ -28,12 +29,19 @@ public class MainStashRoom extends BaseRoom{
          for (int dy = y - height; dy <= y + height; dy++) {
             if (rand.chance(dropChance)) {
                Tile tile = Vars.world.tile(dx, dy);
-               if (!tile.within(x, y, 10f)) tile.setBlock(drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))]);
+               tile.setBlock(drops[Mathf.floor(Mathf.randomSeed(tile.pos() + seed, 0f, drops.length))]);
             } 
          }
       }
+      //cleanup
+      Geometry.circle(x, y, 10, (dx, dy) -> {
+         Tile tile = Vars.world.tile(dx, dy);
+         if (tile != null && tile.block() instanceof ItemProp) {
+            tile.setBlock(Blocks.air);
+         }
+      }); 
    }
-   
+          
    public ItemProp get(int id) {
       return DropGenerator.generated.get(id);
    }
