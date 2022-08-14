@@ -91,8 +91,8 @@ public class ErkUnitTypes implements AltContentList{
              reload = 35f;
              mirror = true;
              top = true;
-             x = 3.2f;
-             y = -1.65f;
+             x = 3.6f;
+             y = -1.7f;
              shootCone = 360f;
              bullet = new BasicBulletType(5f, 14.5f){{
                 backColor = trailColor = ErkPal.greenishBeryl;
@@ -898,7 +898,7 @@ public class ErkUnitTypes implements AltContentList{
              bullet = new LaserBoltBulletType(7f, 40f){{
                 width = 3.2f;
 	              height = 9f;
-	              shootEffect = Fx.none;
+	              smokeEffect = Fx.none;
               	hitColor = backColor = Color.valueOf("feb380");
 	              frontColor = Color.white;
                 lifetime = 50f;
