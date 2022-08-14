@@ -873,11 +873,12 @@ public class ErkUnitTypes implements AltContentList{
                 hitEffect = Fx.massiveExplosion;
                 
                 shootEffect = new Effect(25f, e -> {
+                   float movement = 45f * e.fin();
+                   float cone = 0.5f * e.fin();
                    Draw.color(Color.white, Color.valueOf("feb380"), e.fin());
                    Lines.stroke(12f * e.fslope());
-                   float movement = 45f * e.fin();
                    Tmp.v1.trns(e.rotation, movement);
-                   Lines.arc(e.x + Tmp.v1.x, e.y + Tmp.v1.y, movement, 0.5 * e.fin(), e.rotation - 90f * e.fin());
+                   Lines.arc(e.x + Tmp.v1.x, e.y + Tmp.v1.y, movement, cone, e.rotation - cone * 180f * e.fin());
                 });
                 smokeEffect = Fx.shootSmokeSquareBig;
                 keepVelocity = false;
