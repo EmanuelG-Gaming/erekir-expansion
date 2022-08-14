@@ -2,6 +2,7 @@ package erekir.room;
 
 import arc.math.*;
 import arc.math.geom.*;
+import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.Vars;
