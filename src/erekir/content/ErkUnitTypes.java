@@ -869,7 +869,7 @@ public class ErkUnitTypes implements AltContentList{
                 despawnEffect = new MultiEffect(ErkFx.hugeShatterColor, new Effect(40f, e -> {
                    Draw.color(Color.white, Color.valueOf("feb380"), e.fin());
                    Lines.spikes(e.x, e.y, 42f + 15f * e.fin(), 9f * e.fslope(), 9, e.rotation);
-                }));
+                }).layer(lowAltitude ? Layer.flyingUnitLow - 0.01f : Layer.flyingUnit - 0.01f));
                 hitEffect = Fx.massiveExplosion;
                 keepVelocity = false;
                 spin = 5f;
