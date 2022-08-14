@@ -854,7 +854,7 @@ public class ErkUnitTypes implements AltContentList{
              x = 0f;
              y = 0f;
              rotate = true;
-             shootSound = Sounds.mineDeploy;
+             shootSound = Sounds.shootBig;
              bullet = new ArtilleryBulletType(2.5f, 90f){{
 	              sprite = "large-bomb";
                 width = 36;
@@ -871,6 +871,15 @@ public class ErkUnitTypes implements AltContentList{
                    Lines.spikes(e.x, e.y, 42f + 15f * e.fin(), 9f * e.fslope(), 9, e.rotation);
                 }).layer(lowAltitude ? Layer.flyingUnitLow - 0.01f : Layer.flyingUnit - 0.01f));
                 hitEffect = Fx.massiveExplosion;
+                
+                shootEffect = new Effect(25f, e -> {
+                   Draw.color(Color.white, Color.valueOf("feb380"), e.fin());
+                   Lines.stroke(12f * e.fslope());
+                   float movement = 45f * e.fin();
+                   Tmp.v1.trns(e.rotation, movement);
+                   Lines.arc(e.x + Tmp.v1.x, e.y + Tmp.v1.y, movement, 0.5 * e.fin(), e.rotation - 90f * e.fin());
+                });
+                smokeEffect = Fx.shootSmokeSquareBig;
                 keepVelocity = false;
                 spin = 5f;
                 shrinkX = shrinkY = 0.7f;
@@ -879,7 +888,22 @@ public class ErkUnitTypes implements AltContentList{
                 splashDamage = 120f;
                 splashDamageRadius = 55f;
              }};
-          }});
+          }},
+          new Weapon(){{
+             reload = 12f;
+             mirror = true;
+             top = true;
+             x = 43 / 4f;
+             y = 1f;
+             bullet = new LaserBoltBulletType(4f, 35f){{
+                width = 3.25f;
+	              height = 12.5f;
+              	hitColor = backColor = Color.valueOf("feb380");
+	              frontColor = Color.white;
+                lifetime = 50f;
+                hitEffect = Fx.hitLaserColor;
+             }};
+         }});
       }};
       
       melt = new ErekirUnitType("melt"){{
