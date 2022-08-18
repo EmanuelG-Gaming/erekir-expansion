@@ -13,7 +13,7 @@ import arc.math.geom.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 import erekir.room.*;
-import erekir.gen.*;
+import erekir.ErkVars;
 
 import static mindustry.Vars.*;
 
@@ -70,7 +70,7 @@ public class WorldUI{
       table.touchable = Touchable.disabled;
 
       table.update(() -> {
-         if (state.isMenu() && !StashGenerator.generating) table.remove();
+         if (state.isMenu() && !ErkVars.generating) table.remove();
          float x = room.x * tilesize, y = room.y * tilesize;
          
          Vec2 v = Core.camera.project(x, y);
@@ -78,7 +78,7 @@ public class WorldUI{
          table.visible(() -> {
             boolean shown;
             //only show after generating, it's also not touchable
-            if (StashGenerator.generating) {
+            if (ErkVars.generating) {
                shown = false;
             }
             else shown = true;

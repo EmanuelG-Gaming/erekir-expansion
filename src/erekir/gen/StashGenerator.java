@@ -14,6 +14,8 @@ import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import erekir.world.blocks.environment.*;
 import erekir.room.*;
+import erekir.ui.ingame.*;
+import erekir.ErkVars;
 
 import static mindustry.Vars.*;
 
@@ -26,8 +28,6 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public int pw = 30, ph = 30;
     public Planet orbiting = Planets.erekir;
-    /** Generating flag. */
-    public boolean generating;
     
     private BaseRoom mainRoom;
     
@@ -45,7 +45,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         Floor background = Blocks.empty.asFloor();
         
         rooms.clear();
-        generating = true;
+        ErkVars.generating = true;
         
         float range = 20f;
         
@@ -115,7 +115,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         for (BaseRoom room : ErkVars.rooms) {
             WorldUI.createFadingText(room, room.localized());
         }
-        generating = false;
+        ErkVars.generating = false;
     }
     
     public void addRooms(int x, int y, float range, int amount, Cons2<Integer, Integer> cons) {
