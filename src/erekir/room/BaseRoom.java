@@ -58,8 +58,8 @@ public class BaseRoom extends Room{
    
    public String localized() {
       //filter out objects based on their class being this class
-      Class<T> type = getClass();
-      Seq<BaseRoom> select = all.select(r -> r instanceof type);
+      Class<T extends BaseRoom> type = (Class<T extends BaseRoom>) getClass();
+      Seq<BaseRoom> select = all.select(r -> r.isInstance(type));
       return Core.bundle.format(bundleName(), "#" + (select.size - 1));
    }
 }

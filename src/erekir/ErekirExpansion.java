@@ -113,7 +113,7 @@ public class ErekirExpansion extends Mod{
            }
            
            for (BaseRoom room : ErkVars.rooms) {
-              if (ui.minimapFrag.shown()) {
+              if (ui.minimapfrag.shown()) {
                  float rx = room.x / (world.width() * tilesize);
                  float ry = room.y / (world.height() * tilesize);
 
