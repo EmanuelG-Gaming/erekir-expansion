@@ -23,7 +23,7 @@ import erekir.ctype.*;
 import erekir.graphics.*;
 import erekir.util.*;
 import erekir.ui.*;
-import erekir.ui.button.*;
+import erekir.ui.ingame.*;
 import erekir.gen.*;
 import erekir.room.*;
 import erekir.world.blocks.gather.*;
@@ -87,6 +87,9 @@ public class ErekirExpansion extends Mod{
            if (headless) return;
            
            ErkUtil.allDrops(b -> b.addButton());
+           for (BaseRoom room : ErkVars.rooms) {
+              WorldUI.createFadingText(room, room.localized());
+           }
         });
         
         Events.on(DisposeEvent.class, e -> {

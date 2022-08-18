@@ -1,4 +1,4 @@
-package erekir.ui.button;
+package erekir.ui.ingame;
 
 import arc.Core;
 import arc.func.*;
@@ -15,9 +15,9 @@ import mindustry.gen.*;
 
 import static mindustry.Vars.*;
 
-/** Pickup utility methods. 
+/** UI utility methods. 
  *  Special thanks to @author SMOLKEYS */
-public class Pickup{
+public class WorldUI{
    private static int buttonW = 40;
    private static int buttonH = 40;
    private static float range = 38f;
@@ -59,5 +59,29 @@ public class Pickup{
        String icon = Core.settings.getString("erekir-expansion-buttonIcon");
        //a custom (almost?) icon
        createPickupButton(bloc, icon == "nothingness" ? new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + icon)) : ui.getIcon(icon), run);
+   }
+   
+   public static void createFadingText(BaseRoom room, String text) {
+      Table table = new Table(Styles.black3).margin(4f);
+
+      table.touchable = Touchable.disabled;
+
+      table.update(() -> {
+         if (Vars.state.isMenu()) table.remove();
+         float x = room.x * tilesize, y = room.y * ;
+         
+         Vec2 v = Core.camera.project(x, y);
+         table.setPosition(v.x, v.y, Align.center);
+         float d = Mathf.dst(player.unit().x, player.unit().y, x, y);
+         table.actions(Actions.alpha(Mathf.clamp(d / range - 0.5f)));
+      });
+      table.add(text).style(Styles.defaultLabel); //outline
+      table.pack();
+      table.act(0);
+   
+      //make sure it's at the back
+      Core.scene.root.addChildAt(0, table);
+
+      table.getChildren().first().act(0);
    }
 }

@@ -11,7 +11,7 @@ import mindustry.world.blocks.storage.CoreBlock.*;
 import mindustry.world.meta.*;
 import mindustry.type.*;
 import mindustry.content.*;
-import erekir.ui.button.Pickup;
+import erekir.ui.ingame.*;
 import erekir.world.meta.*;
 
 import static mindustry.Vars.*;
@@ -97,7 +97,7 @@ public class ItemProp extends Block{
         public boolean containsButton = false;
         
         public void addButton() {
-           Pickup.createPickupButton(this, () -> gather(player.unit(), 1));
+           WorldUI.createPickupButton(this, () -> gather(player.unit(), 1));
            containsButton = true;
         }
         

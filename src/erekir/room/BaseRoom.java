@@ -35,6 +35,8 @@ public class BaseRoom extends Room{
    }
    
    public void generate() {
+      ErkVars.rooms.clear();
+      
       seed = Vars.state.rules.sector.planet.id;
       rand = new Rand(seed + id + 5);
       
