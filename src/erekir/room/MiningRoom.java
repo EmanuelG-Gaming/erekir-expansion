@@ -56,4 +56,9 @@ public class MiningRoom extends BaseRoom{
          i++;
       }
    }
+   
+   @Override
+   public String bundleName() {
+      return "room.erekir-expansion-miningRoom";
+   }
 }

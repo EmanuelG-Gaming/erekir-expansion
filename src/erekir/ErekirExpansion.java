@@ -25,6 +25,7 @@ import erekir.util.*;
 import erekir.ui.*;
 import erekir.ui.button.*;
 import erekir.gen.*;
+import erekir.room.*;
 import erekir.world.blocks.gather.*;
 import erekir.world.blocks.environment.*;
 
@@ -78,6 +79,8 @@ public class ErekirExpansion extends Mod{
             ErekirSettings.load();
             DropGenerator.handleIcons();
             addToResupply();
+            
+            ErkVars.load();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
@@ -106,6 +109,15 @@ public class ErekirExpansion extends Mod{
                  
                     Draw.z(z);
                  }
+              }
+           }
+           
+           for (BaseRoom room : ErkVars.rooms) {
+              if (ui.minimapFrag.shown()) {
+                 float rx = room.x / (world.width() * tilesize);
+                 float ry = room.y / (world.height() * tilesize);
+
+                 renderer.minimap.drawLabel(rx, ry, room.localized(), Pal.accent);
               }
            }
         });

@@ -1,5 +1,6 @@
 package erekir.room;
 
+import arc.Core;
 import arc.struct.*;
 import arc.util.*;
 import arc.math.*;
@@ -7,6 +8,7 @@ import mindustry.content.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.Vars;
+import erekir.ErkVars;
 
 /** An empty room/platform. */
 public class BaseRoom extends Room{
@@ -42,10 +44,21 @@ public class BaseRoom extends Room{
             if (tile != null) tile.setFloor(groundFloor);
          }
       }
+      ErkVars.rooms.add(this);
    }
    
    public BaseRoom addNode(BaseRoom room) {
       nodes.add(room);
       return room;
+   }
+   
+   public String bundleName() {
+      return "room.erekir-expansion-emptyRoom";
+   }
+   
+   public String localized() {
+      //filter out objects based on their class being this class
+      Seq<(Class<T>) getClass()> select = all.select(r -> r instanceof getClass());
+      return Core.bundle.format(bundleName(), "#" + (select.size - 1));
    }
 }

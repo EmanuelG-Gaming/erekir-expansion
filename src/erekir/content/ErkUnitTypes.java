@@ -923,7 +923,7 @@ public class ErkUnitTypes implements AltContentList{
           
           constructor = UnitEntity::create;
           weapons.add(new Weapon(){{
-             reload = 9f;
+             reload = 10f;
              mirror = false;
              top = true;
              x = 0f;

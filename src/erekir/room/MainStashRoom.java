@@ -46,4 +46,9 @@ public class MainStashRoom extends BaseRoom{
    public ItemProp get(int id) {
       return DropGenerator.generated.get(id);
    }
+   
+   @Override
+   public String bundleName() {
+      return "room.erekir-expansion-stashRoom";
+   }
 }

@@ -42,4 +42,9 @@ public class VentRoom extends BaseRoom{
          tile2.setBlock(Blocks.turbineCondenser, Team.sharded, 0);
       }
    }
+   
+   @Override
+   public String bundleName() {
+      return "room.erekir-expansion-ventRoom";
+   }
 }

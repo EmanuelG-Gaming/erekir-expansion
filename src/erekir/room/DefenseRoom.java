@@ -72,9 +72,11 @@ public class DefenseRoom extends BaseRoom{
                }
             }
            
+            /*
             if (tur.heatRequirement > 0f) {
                t.heatReq = tur.heatRequirement;
             }
+            */
             
             for (Consume cons : tur.consumers) {
                //other item ammo
@@ -85,5 +87,10 @@ public class DefenseRoom extends BaseRoom{
             }
          }
       }
+   }
+   
+   @Override
+   public String bundleName() {
+      return "room.erekir-expansion-defenseRoom";
    }
 }
