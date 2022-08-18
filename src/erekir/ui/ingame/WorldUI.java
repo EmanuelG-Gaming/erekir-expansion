@@ -22,6 +22,8 @@ public class WorldUI{
    private static int buttonW = 40;
    private static int buttonH = 40;
    private static float range = 38f;
+   /** Used on a special case when the player is gone. */
+   private static boolean shown;
    
    public static void createPickupButton(Building bloc, Drawable icon, Runnable run) {
        Table table = new Table(Styles.none).margin(4f);
@@ -34,7 +36,6 @@ public class WorldUI{
            Unit plr = player.unit();
            Boolp touch = () -> plr.within(bloc.x, bloc.y, range);
            table.visible(() -> {
-              boolean shown;
               if (plr != null && !player.dead()) {
                  shown = true;
               } else shown = false;
@@ -69,7 +70,7 @@ public class WorldUI{
       table.touchable = Touchable.disabled;
 
       table.update(() -> {
-         if (Vars.state.isMenu()) table.remove();
+         if (state.isMenu()) table.remove();
          float x = room.x * tilesize, y = room.y * tilesize;
          
          Vec2 v = Core.camera.project(x, y);
