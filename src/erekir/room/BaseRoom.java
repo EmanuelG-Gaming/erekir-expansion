@@ -58,8 +58,7 @@ public class BaseRoom extends Room{
    
    public String localized() {
       //filter out objects based on their class being this class
-      Class<T> typez = (Class<T>) this.class;
-      Seq<BaseRoom> select = all.select(r -> typez.isInstance(r));
+      Seq<BaseRoom> select = all.select(r -> r.getClass() == getClass());
       return Core.bundle.format(bundleName(), "#" + (select.size - 1));
    }
 }
