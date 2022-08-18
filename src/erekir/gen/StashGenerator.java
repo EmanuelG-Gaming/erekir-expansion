@@ -26,6 +26,8 @@ public class StashGenerator extends BlankPlanetGenerator{
     
     public int pw = 30, ph = 30;
     public Planet orbiting = Planets.erekir;
+    /** Generating flag. */
+    public boolean generating;
     
     private BaseRoom mainRoom;
     
@@ -41,6 +43,9 @@ public class StashGenerator extends BlankPlanetGenerator{
         
         int dx = width / 2, dy = height / 2;
         Floor background = Blocks.empty.asFloor();
+        
+        rooms.clear();
+        generating = true;
         
         float range = 20f;
         
@@ -84,11 +89,11 @@ public class StashGenerator extends BlankPlanetGenerator{
         addRandom(12f, defenseRooms, (br, x, y) -> {
            rooms.add(br.addNode(new DefenseRoom(x, y, 7, 7)));
         });
-         
+        
         //background
         tiles.eachTile(t -> t.setFloor(background));
         
-        //rooms
+        //stash/room structure
         generateRooms(rooms, room -> room.generate());
          
         tiles.getn(dx - width / 4, dy - height / 4).setOverlay(Blocks.spawn);
@@ -107,6 +112,10 @@ public class StashGenerator extends BlankPlanetGenerator{
 
         //state.rules.showSpawns = true;
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
+        for (BaseRoom room : ErkVars.rooms) {
+            WorldUI.createFadingText(room, room.localized());
+        }
+        generating = false;
     }
     
     public void addRooms(int x, int y, float range, int amount, Cons2<Integer, Integer> cons) {

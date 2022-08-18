@@ -15,7 +15,6 @@ public class BaseRoom extends Room{
    public Floor groundFloor = Blocks.metalFloor.asFloor();
    public Seq<BaseRoom> nodes = new Seq<>();
    
-   public static final Seq<BaseRoom> all = new Seq<>();
    public final int id; 
    
    @Nullable Rand rand;
@@ -23,20 +22,18 @@ public class BaseRoom extends Room{
 
    public BaseRoom(int px, int py, int w, int h) {
       super(px, py, w, h);
-      this.id = all.size;
-      all.add(this);
+      this.id = ErkVars.rooms.size;
+      ErkVars.rooms.add(this);
    }
    
    public BaseRoom(int x, int y, int w, int h, Floor ground) {
       super(x, y, w, h);
-      this.id = all.size;
+      this.id = ErkVars.rooms.size;
       this.groundFloor = ground;
-      all.add(this);
+      ErkVars.rooms.add(this);
    }
    
    public void generate() {
-      ErkVars.rooms.clear();
-      
       seed = Vars.state.rules.sector.planet.id;
       rand = new Rand(seed + id + 5);
       
@@ -46,7 +43,6 @@ public class BaseRoom extends Room{
             if (tile != null) tile.setFloor(groundFloor);
          }
       }
-      ErkVars.rooms.add(this);
    }
    
    public BaseRoom addNode(BaseRoom room) {
@@ -60,7 +56,7 @@ public class BaseRoom extends Room{
    
    public String localized() {
       //filter out objects based on their class being this class
-      Seq<BaseRoom> select = all.select(r -> r.getClass() == getClass());
+      Seq<BaseRoom> select = ErkVars.rooms.select(r -> r.getClass() == getClass());
       return Core.bundle.format(bundleName(), "#" + (select.size - 1));
    }
 }

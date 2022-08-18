@@ -79,17 +79,13 @@ public class ErekirExpansion extends Mod{
             ErekirSettings.load();
             DropGenerator.handleIcons();
             addToResupply();
-            
-            ErkVars.load();
         });
         
         Events.on(WorldLoadEvent.class, e -> {
            if (headless) return;
            
            ErkUtil.allDrops(b -> b.addButton());
-           for (BaseRoom room : ErkVars.rooms) {
-              WorldUI.createFadingText(room, room.localized());
-           }
+           ErkVars.rooms.clear();
         });
         
         Events.on(DisposeEvent.class, e -> {
