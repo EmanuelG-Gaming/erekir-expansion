@@ -34,9 +34,9 @@ public class MouseFollowBulletType extends BasicBulletType{
       } 
       float d = b.dst2(v);
       if (d > Math.pow(range, 2)) {
-         float angle = v.angleTo(b);
+         float angle = b.angleTo(v);
          //snap to the closest range
-         v.trns(angle, (float) Math.sqrt(d) - range).add(b.x, b.y);
+         v.trns(angle, range).add(b.x, b.y);
       }
       b.data = v;
    }
