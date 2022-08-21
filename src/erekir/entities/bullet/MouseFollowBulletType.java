@@ -4,7 +4,7 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
 import mindustry.gen.*;
-import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.defense.turrets.Turret.*;
 import mindustry.entities.bullet.*;
 
 /** A bullet that points toward the mouse once initialized. */
@@ -35,7 +35,7 @@ public class MouseFollowBulletType extends BasicBulletType{
       if (d > Math.pow(range, 2)) {
          float angle = v.angleTo(b);
          //snap to the closest range
-         v.set(Tmp.v1.set(v.x, v.y).trns(angle, Math.sqrt(d) - range));
+         v.set(Tmp.v1.set(v.x, v.y).trns(angle, (float) Math.sqrt(d) - range));
       }
       b.data = v;
    }
