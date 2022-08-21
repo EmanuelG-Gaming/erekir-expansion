@@ -15,6 +15,7 @@ public class BaseRoom extends Room{
    public Floor groundFloor = Blocks.metalFloor.asFloor();
    public Seq<BaseRoom> nodes = new Seq<>();
    
+   public static final Seq<BaseRoom> all = new Seq<>();
    public final int id; 
    
    @Nullable Rand rand;
