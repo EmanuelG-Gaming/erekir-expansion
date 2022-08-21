@@ -962,10 +962,10 @@ public class ErkUnitTypes implements AltContentList{
                
                shoot.shots = 8;
                
-               bullet = new BasicBulletType(4f, 15f){{
+               bullet = new BasicBulletType(3f, 15f){{
                   width = 8f;
                   height = 11f;
-                  lifetime = 20f;
+                  lifetime = 90f;
                   hitColor = backColor = trailColor = Liquids.ozone.color;
                   frontColor = Color.valueOf("ffccde");
                   trailWidth = 1f;
@@ -973,6 +973,7 @@ public class ErkUnitTypes implements AltContentList{
                   hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
                   shootEffect = Fx.none;
                   smokeEffect = Fx.shootSmokeSquareSparse;
+                  maxRange = 150f;
                }};
             }}
          );
