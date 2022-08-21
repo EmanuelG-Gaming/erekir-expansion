@@ -25,7 +25,7 @@ public class MouseFollowBulletType extends BasicBulletType{
       
       if (b.owner instanceof Unitc) {
          Unitc owner = (Unitc) b.owner;
-         v.set(owner.aimX, owner.aimY);
+         v.set(owner.aimX(), owner.aimY());
       }
       else if (b.owner instanceof Turret.TurretBuild) {
          Vec2 t = ((TurretBuild) b.owner).targetPos;
