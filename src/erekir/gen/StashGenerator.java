@@ -45,7 +45,6 @@ public class StashGenerator extends BlankPlanetGenerator{
         Floor background = Blocks.empty.asFloor();
         
         rooms.clear();
-        ErkVars.generating = true;
         
         float range = 20f;
         
@@ -112,10 +111,6 @@ public class StashGenerator extends BlankPlanetGenerator{
 
         //state.rules.showSpawns = true;
         //state.rules.spawns = Waves.generate(0.5f, rand, false, true, false);
-        for (BaseRoom room : ErkVars.rooms) {
-            WorldUI.createFadingText(room, room.localized());
-        }
-        ErkVars.generating = false;
     }
     
     public void addRooms(int x, int y, float range, int amount, Cons2<Integer, Integer> cons) {

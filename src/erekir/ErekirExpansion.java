@@ -85,7 +85,6 @@ public class ErekirExpansion extends Mod{
            if (headless) return;
            
            ErkUtil.allDrops(b -> b.addButton());
-           ErkVars.rooms.clear();
         });
         
         Events.on(DisposeEvent.class, e -> {

@@ -64,6 +64,7 @@ public class WorldUI{
        createPickupButton(bloc, icon == "nothingness" ? new TextureRegionDrawable(Core.atlas.find("erekir-expansion-" + icon)) : ui.getIcon(icon), run);
    }
    
+   /*
    public static void createFadingText(BaseRoom room, String text) {
       Table table = new Table(Styles.black3).margin(4f);
 
@@ -97,4 +98,5 @@ public class WorldUI{
 
       table.getChildren().first().act(0);
    }
+   */
 }

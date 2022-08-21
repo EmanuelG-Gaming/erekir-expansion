@@ -22,15 +22,15 @@ public class BaseRoom extends Room{
 
    public BaseRoom(int px, int py, int w, int h) {
       super(px, py, w, h);
-      this.id = ErkVars.rooms.size;
-      ErkVars.rooms.add(this);
+      this.id = all.size;
+      all.add(this);
    }
    
    public BaseRoom(int x, int y, int w, int h, Floor ground) {
       super(x, y, w, h);
-      this.id = ErkVars.rooms.size;
+      this.id = all.size;
       this.groundFloor = ground;
-      ErkVars.rooms.add(this);
+      all.add(this);
    }
    
    public void generate() {
@@ -55,8 +55,6 @@ public class BaseRoom extends Room{
    }
    
    public String localized() {
-      //filter out objects based on their class being this class
-      Seq<BaseRoom> select = ErkVars.rooms.select(r -> r.getClass() == getClass());
-      return Core.bundle.format(bundleName(), "#" + (select.size - 1));
+      return Core.bundle.get(bundleName());
    }
 }

@@ -32,16 +32,21 @@ import static mindustry.Vars.*;
 public class ErkUnitTypes implements AltContentList{
     public static UnitType
     
-    //ground insect
+    //ground - beryllium
     gem, geode, mineralMissile, mineral,
     
-    //flying
+    //flying - beryllium
     aggregate, agglomerateMissile, agglomerate, accumulate,
     attractor,
     
+    //flying - tungsten
     spread, apart, shredderMissile, shredder,
     dissolve,
     
+    //ground - ozone
+    condensate,
+    
+    //flying - ozone
     melt;
     
     @Override
@@ -902,9 +907,48 @@ public class ErkUnitTypes implements AltContentList{
               	hitColor = backColor = Color.valueOf("feb380");
 	              frontColor = Color.white;
                 lifetime = 50f;
-                hitEffect = Fx.hitLaserColor;
+                hitEffect = despawnEffect = Fx.hitLaserColor;
              }};
          }});
+      }};
+      
+      condensate = new ErekirUnitType("condensate"){{
+          health = 4500;
+	        speed = 0.85f;
+ 	        hitSize = 27;
+	        drag = 0.07f;
+	        accel = 0.37f;
+	        rotateSpeed = 4f;
+          armor = 5f;
+          mechFrontSway = 0.4f;
+          aimDst = 2.55f;
+          range = 150f;
+          ammoType = new LiquidAmmoType(Liquids.ozone);
+         
+          constructor = MechUnit::create;
+          
+          weapons.add(new Weapon("erekir-expansion-condensate-arm"){{
+             reload = 20f;
+             mirror = true;
+             top = false;
+             x = 53 / 4f;
+             y = 0f;
+             recoil = 3f;
+             shootY = 38 / 4f;
+             shootX = -1f;
+             bullet = new BasicBulletType(4f, 35f){{
+                width = 19f;
+                height = 25f;
+                lifetime = 40f;
+                hitColor = backColor = trailColor = Liquids.ozone.color;
+                frontColor = Color.valueOf("ffccde");
+                trailWidth = 6f;
+                trailLength = 10;
+                hitEffect = despawnEffect = new MultiEffect(Fx.hitSquaresColor, ErkFx.hitSquaresColorSmall);
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+             }};
+          }});
       }};
       
       melt = new ErekirUnitType("melt"){{
