@@ -957,18 +957,19 @@ public class ErkUnitTypes implements AltContentList{
                y = 0f;
                inaccuracy = 45f;
                shootCone = 360f;
-               baseRotation = 35f;
+               baseRotation = 180f + 35f;
                shootSound = Sounds.flame2;
                
                shoot.shots = 8;
                
-               bullet = new BasicBulletType(3f, 15f){{
+               bullet = new MouseFollowBulletType(3f, 15f){{
                   width = 8f;
                   height = 11f;
                   lifetime = 90f;
+                  hitSize = 10f;
                   hitColor = backColor = trailColor = Liquids.ozone.color;
                   frontColor = Color.valueOf("ffccde");
-                  trailWidth = 1f;
+                  trailWidth = 3f;
                   trailLength = 5;
                   hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
                   shootEffect = Fx.none;
