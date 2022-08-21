@@ -975,6 +975,7 @@ public class ErkUnitTypes implements AltContentList{
                   shootEffect = Fx.none;
                   smokeEffect = Fx.shootSmokeSquareSparse;
                   maxRange = 150f;
+                  homingPower = 0.07f;
                }};
             }}
          );
