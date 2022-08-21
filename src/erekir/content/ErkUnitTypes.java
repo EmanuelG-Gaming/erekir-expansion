@@ -914,11 +914,11 @@ public class ErkUnitTypes implements AltContentList{
       
       condensate = new ErekirUnitType("condensate"){{
           health = 4500;
-	        speed = 0.85f;
- 	        hitSize = 27;
-	        drag = 0.07f;
+	        speed = 0.5f;
+ 	        hitSize = 21;
+	        drag = 0.09f;
 	        accel = 0.37f;
-	        rotateSpeed = 4f;
+	        rotateSpeed = 2f;
           armor = 5f;
           mechFrontSway = 0.4f;
           aimDst = 2.55f;
@@ -927,28 +927,55 @@ public class ErkUnitTypes implements AltContentList{
          
           constructor = MechUnit::create;
           
-          weapons.add(new Weapon("erekir-expansion-condensate-arm"){{
-             reload = 20f;
-             mirror = true;
-             top = false;
-             x = 53 / 4f;
-             y = 0f;
-             recoil = 3f;
-             shootY = 38 / 4f;
-             shootX = -1f;
-             bullet = new BasicBulletType(4f, 35f){{
-                width = 19f;
-                height = 25f;
-                lifetime = 40f;
-                hitColor = backColor = trailColor = Liquids.ozone.color;
-                frontColor = Color.valueOf("ffccde");
-                trailWidth = 6f;
-                trailLength = 10;
-                hitEffect = despawnEffect = new MultiEffect(Fx.hitSquaresColor, ErkFx.hitSquaresColorSmall);
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
-             }};
-          }});
+          weapons.add(
+             new Weapon("erekir-expansion-condensate-arm"){{
+                reload = 25f;
+                mirror = true;
+                top = false;
+                x = -53 / 4f;
+                y = 0f;
+                recoil = 3f;
+                shootY = 38 / 4f;
+                shootX = -1f;
+                bullet = new BasicBulletType(4f, 35f){{
+                   width = 15f;
+                   height = 20f;
+                   lifetime = 40f;
+                   hitColor = backColor = trailColor = Liquids.ozone.color;
+                   frontColor = Color.valueOf("ffccde");
+                   trailWidth = 3.5f;
+                   trailLength = 10;
+                   hitEffect = despawnEffect = new MultiEffect(Fx.hitSquaresColor, ErkFx.hitSquaresColorSmall);
+                   shootEffect = Fx.shootBigColor;
+                   smokeEffect = Fx.shootSmokeSquareSparse;
+               }};
+            }},
+            new Weapon(){{
+               reload = 110f;
+               top = false;
+               x = 4f;
+               y = 0f;
+               inaccuracy = 45f;
+               shootCone = 360f;
+               baseRotation = 35f;
+               shootSound = Sounds.flame2;
+               
+               shoot.shots = 8;
+               
+               bullet = new BasicBulletType(4f, 15f){{
+                  width = 8f;
+                  height = 11f;
+                  lifetime = 20f;
+                  hitColor = backColor = trailColor = Liquids.ozone.color;
+                  frontColor = Color.valueOf("ffccde");
+                  trailWidth = 1f;
+                  trailLength = 5;
+                  hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
+                  shootEffect = Fx.none;
+                  smokeEffect = Fx.shootSmokeSquareSparse;
+               }};
+            }}
+         );
       }};
       
       melt = new ErekirUnitType("melt"){{
