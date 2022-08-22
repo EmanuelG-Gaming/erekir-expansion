@@ -958,7 +958,7 @@ public class ErkUnitTypes implements AltContentList{
                inaccuracy = 45f;
                shootCone = 360f;
                baseRotation = 180f + 35f;
-               shootSound = Sounds.flame2;
+               shootSound = Sounds.missile;
                
                shoot.shots = 8;
                
@@ -973,7 +973,7 @@ public class ErkUnitTypes implements AltContentList{
                   trailLength = 5;
                   hitEffect = despawnEffect = ErkFx.hitSquaresColorSmall;
                   shootEffect = smokeEffect = Fx.none;
-                  maxRange = 150f;
+                  maxRange = 110f;
                   homingPower = 0.07f;
                }};
             }}
