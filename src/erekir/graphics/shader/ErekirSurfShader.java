@@ -54,7 +54,6 @@ public class ErekirSurfShader extends Shader{
            setUniformf("u_circle", circleTex.u, circleTex.v, circleTex.u2, circleTex.v2);
           
            noiseTex.bind(1);
-           circleTex.bind(1);
            renderer.effectBuffer.getTexture().bind(0);
 
            setUniformi("u_noise", 1);
