@@ -92,7 +92,7 @@ public class ErekirExpansion extends Mod{
         });
         
         Events.run(Trigger.draw, () -> {
-           //TODO shader?
+           /*
            for (Unit unit : Groups.unit) {
               Floor floor = unit.tileOn() == null ? Blocks.air.asFloor() : unit.tileOn().floor();
               if (floor.isLiquid && floor == ErkBlocks.angryArkyciteFloor) {
@@ -118,6 +118,7 @@ public class ErekirExpansion extends Mod{
                  renderer.minimap.drawLabel(rx, ry, room.localized(), Pal.accent);
               }
            }
+           */
         });
     }
     

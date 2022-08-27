@@ -12,7 +12,7 @@ import static mindustry.graphics.Shaders.getShaderFi;
 
 /** @author xStaBUx */
 public class ErekirSurfShader extends Shader{
-   Texture noiseTex;
+   Texture noiseTex, circleTex;
 
    public ErekirSurfShader(String frag) {
        super(Core.files.internal("shaders/screenspace.vert"), tree.get("shaders/" + frag + ".frag"));
@@ -33,6 +33,7 @@ public class ErekirSurfShader extends Shader{
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
        };
+       circleTex = new Texture(Vars.tree.get("sprites/effects/hollowCircle.png"))
     }
 
     @Override
@@ -42,13 +43,18 @@ public class ErekirSurfShader extends Shader{
         setUniformf("u_campos", Core.camera.position.x - w / 2, Core.camera.position.y - h / 2);
         setUniformf("u_resolution", w, h);
         setUniformf("u_time", Time.time);
-
+        setUniformf("u_circleCoords", Vars.player.unit().x, Vars.player.unit().y);
+        
         if (hasUniform("u_noise")) {
            if (noiseTex == null) noiseTex = Core.assets.get("sprites/" + textureName() + ".png", Texture.class);
+           if (circleTex == null) circleTex = new Texture(Vars.tree.get("sprites/effects/hollowCircle.png"));
+           
            noiseTex.bind(1);
+           circleTex.bind(1);
            renderer.effectBuffer.getTexture().bind(0);
 
            setUniformi("u_noise", 1);
+           setUniformi("u_circle", 1);
         }
     }
 }

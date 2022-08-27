@@ -10,18 +10,20 @@
 
 uniform sampler2D u_texture;
 uniform sampler2D u_noise;
+uniform sampler2D u_circle;
 
 uniform vec2 u_campos;
 uniform vec2 u_resolution;
 uniform float u_time;
+uniform vec2 u_circleCoords;
 
 varying vec2 v_texCoords;
 
 void main() {
-    vec2 c = v_texCoords.xy;
-    vec2 coords = (c * u_resolution) + u_campos;
+    vec2 c = v_texCoords.xy, circle = u_circlsCoords.xy;
+    vec2 coords = (c * u_resolution) + u_campos, coords2 = (circle * u_resolution) + u_campos;
 
-    vec4 orig = texture2D(u_texture, c);
+    vec4 orig = texture2D(u_texture, c), circleDest = texture2D(u_circle, circle);
 
     float atime = u_time / 15000.0;
     float noise = (texture2D(u_noise, (coords) / DSCALE + vec2(atime) * vec2(-0.9, 0.8)).r + texture2D(u_noise, (coords) / DSCALE + vec2(atime * 1.1) * vec2(0.8, -1.0)).r) / 2.0;
@@ -36,7 +38,7 @@ void main() {
     ) - vec2(0.5)) * 20.0 / u_resolution;
 
     vec4 color = texture2D(u_texture, c);
-
+    
     if (noise > 0.85) {
        if (color.g >= (S2).g - 0.1) {
           color.rgb = S3;
@@ -51,5 +53,8 @@ void main() {
        color = max(S1, color);
     }
 
+    color.rgb *= vec3(circleDest.rgb);
+    color.a *= clamp(circleDest.a - 0.5, 0.0, 1.0);
+    
     gl_FragColor = color;
 }
