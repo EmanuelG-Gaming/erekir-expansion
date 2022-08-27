@@ -15,12 +15,13 @@ uniform sampler2D u_circle;
 uniform vec2 u_campos;
 uniform vec2 u_resolution;
 uniform float u_time;
-uniform vec2 u_circleCoords;
+uniform vec2 u_playerPos;
 
+varying vec2 v_circleCoords;
 varying vec2 v_texCoords;
 
 void main() {
-    vec2 c = v_texCoords.xy, circle = u_circlsCoords.xy;
+    vec2 c = v_texCoords.xy, circle = v_circleCoords.xy;
     vec2 coords = (c * u_resolution) + u_campos, coords2 = (circle * u_resolution) + u_campos;
 
     vec4 orig = texture2D(u_texture, c), circleDest = texture2D(u_circle, circle);
@@ -36,7 +37,8 @@ void main() {
         texture2D(u_noise, (coords) / NSCALE + vec2(btime) * vec2(-0.9, 0.8)).r,
         texture2D(u_noise, (coords) / NSCALE + vec2(btime * 1.1) * vec2(0.8, -1.0)).r
     ) - vec2(0.5)) * 20.0 / u_resolution;
-
+    circle += vec2(u_playerPos.x, u_playerPos.y);
+    
     vec4 color = texture2D(u_texture, c);
     
     if (noise > 0.85) {

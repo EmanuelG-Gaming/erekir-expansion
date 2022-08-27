@@ -43,7 +43,7 @@ public class ErekirSurfShader extends Shader{
         setUniformf("u_campos", Core.camera.position.x - w / 2, Core.camera.position.y - h / 2);
         setUniformf("u_resolution", w, h);
         setUniformf("u_time", Time.time);
-        setUniformf("u_circleCoords", player.unit().x, player.unit().y);
+        setUniformf("u_playerPos", player.unit().x, player.unit().y);
         
         if (hasUniform("u_noise")) {
            if (noiseTex == null) noiseTex = Core.assets.get("sprites/" + textureName() + ".png", Texture.class);
