@@ -12,8 +12,9 @@ import static mindustry.graphics.Shaders.getShaderFi;
 
 /** @author xStaBUx */
 public class ErekirSurfShader extends Shader{
-   Texture noiseTex, circleTex;
-
+   Texture noiseTex;
+   TextureRegion circleTex;
+   
    public ErekirSurfShader(String frag) {
        super(Core.files.internal("shaders/screenspace.vert"), tree.get("shaders/" + frag + ".frag"));
        loadNoise();
@@ -33,7 +34,7 @@ public class ErekirSurfShader extends Shader{
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
        };
-       circleTex = new Texture(tree.get("sprites/effects/hollowCircle.png"));
+       circleTex = Core.atlas.find("erekir-expansion-hollowCircle");
     }
 
     @Override
@@ -47,14 +48,16 @@ public class ErekirSurfShader extends Shader{
         
         if (hasUniform("u_noise")) {
            if (noiseTex == null) noiseTex = Core.assets.get("sprites/" + textureName() + ".png", Texture.class);
-           if (circleTex == null) circleTex = new Texture(tree.get("sprites/effects/hollowCircle.png"));
+           if (circleTex == null) circleTex = Core.atlas.find("erekir-expansion-hollowCircle");
+           
+           setUniformf("u_circle", circleTex.u, circleTex.v, circleTex.u2, circleTex.v2);
           
            noiseTex.bind(1);
            circleTex.bind(1);
            renderer.effectBuffer.getTexture().bind(0);
 
            setUniformi("u_noise", 1);
-           setUniformi("u_circle", 1);
+           //setUniformi("u_circle", 1);
         }
     }
 }
