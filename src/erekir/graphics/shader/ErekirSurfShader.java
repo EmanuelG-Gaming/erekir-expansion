@@ -33,7 +33,7 @@ public class ErekirSurfShader extends Shader{
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
        };
-       circleTex = new Texture(Vars.tree.get("sprites/effects/hollowCircle.png"))
+       circleTex = new Texture(tree.get("sprites/effects/hollowCircle.png"));
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ErekirSurfShader extends Shader{
         
         if (hasUniform("u_noise")) {
            if (noiseTex == null) noiseTex = Core.assets.get("sprites/" + textureName() + ".png", Texture.class);
-           if (circleTex == null) circleTex = new Texture(Vars.tree.get("sprites/effects/hollowCircle.png"));
-           
+           if (circleTex == null) circleTex = new Texture(tree.get("sprites/effects/hollowCircle.png"));
+          
            noiseTex.bind(1);
            circleTex.bind(1);
            renderer.effectBuffer.getTexture().bind(0);
