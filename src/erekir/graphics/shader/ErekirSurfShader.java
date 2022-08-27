@@ -4,6 +4,7 @@ import arc.Core;
 import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.Texture.*;
+import arc.graphics.g2d.*;
 import arc.graphics.gl.*;
 import mindustry.graphics.Shaders;
 
