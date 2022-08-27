@@ -39,7 +39,6 @@ public class ErekirSurfShader extends Shader{
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
        };
-       circleTex = Core.atlas.find(circleName());
     }
 
     @Override
