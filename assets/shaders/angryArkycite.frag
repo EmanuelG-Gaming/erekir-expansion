@@ -55,7 +55,7 @@ void main() {
        color = max(S1, color);
     }
     
-    if (circleDest > 0.5) {
+    if (circleDest.a > 0.5) {
        color.rgb *= vec3(circleDest.rgb);
     }
     
