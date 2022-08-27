@@ -29,13 +29,17 @@ public class ErekirSurfShader extends Shader{
    public String textureName() {
        return "noise";
    }
-
+   
+   public String circleName() {
+      return "large-orb-back";
+   }
+   
    public void loadNoise() {
        Core.assets.load("sprites/" + textureName() + ".png", Texture.class).loaded = t -> {
            t.setFilter(Texture.TextureFilter.linear);
            t.setWrap(Texture.TextureWrap.repeat);
        };
-       circleTex = Core.atlas.find("erekir-expansion-hollowCircle");
+       circleTex = Core.atlas.find(circleName());
     }
 
     @Override
@@ -49,7 +53,7 @@ public class ErekirSurfShader extends Shader{
         
         if (hasUniform("u_noise")) {
            if (noiseTex == null) noiseTex = Core.assets.get("sprites/" + textureName() + ".png", Texture.class);
-           if (circleTex == null) circleTex = Core.atlas.find("erekir-expansion-hollowCircle");
+           if (circleTex == null) circleTex = Core.atlas.find(circleName());
            
            setUniformf("u_circle", circleTex.u, circleTex.v, circleTex.u2, circleTex.v2);
           
