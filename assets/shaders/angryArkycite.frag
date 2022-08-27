@@ -54,9 +54,10 @@ void main() {
     if (orig.g > 0.01) {
        color = max(S1, color);
     }
-
-    color.rgb *= vec3(circleDest.rgb);
-    color.a *= clamp(circleDest.a - 0.5, 0.0, 1.0);
+    
+    if (circleDest > 0.5) {
+       color.rgb *= vec3(circleDest.rgb);
+    }
     
     gl_FragColor = color;
 }
