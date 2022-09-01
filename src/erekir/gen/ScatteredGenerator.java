@@ -32,13 +32,11 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         
         rooms.clear();
         
-        for (int x = 0; x < width; x++) {
-           for (int y = 0; y < height; y++) {
-               if (rand.chance(0.05)) {
-                  rooms.add(new BaseRoom(x, y, 4, 4));
-               }
+        tiles.eachTile(t -> {
+           if (rand.chance(0.0004)) {
+              rooms.add(new BaseRoom(x, y, 3, 3));
            }
-        }
+        });
         
         //background
         tiles.eachTile(t -> t.setFloor(background));
@@ -46,18 +44,12 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         //stash/room structure
         consRooms(room -> room.generate());
         
-        int rx = rooms.random(rand).x, ry = rooms.random(rand).y;
-        Schematics.placeLaunchLoadout(rx, ry);
+        Baseroom start = rooms.random(rand);
+        BaseRoom far = getFurthestRoom(start);
         
-        //search for the furthest platform to place the spawn
-        consRooms(room -> {
-           float cdist = 0;
-           float dst = Mathf.dst2(rx, ry, room.x, room.y);
-           if (dst > cdist) {
-              cdist = dst;
-              tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
-           } 
-        });
+        Schematics.placeLaunchLoadout(start.x, start.y);
+        tiles.getn(far.x, far.y).setOverlay(Blocks.spawn);
+           
         
         state.rules.planetBackground = new PlanetParams(){{
             planet = Planets.erekir;
@@ -77,6 +69,20 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
           room.get(r);
        }
     } 
+    
+    public BaseRoom getFurthestRoom(BaseRoom from) {
+       BaseRoom result = null;
+       float cdist = 0;
+       
+       consRooms(room -> {
+          float dst = Mathf.dst2(from.x, from.y, room.x, room.y);
+          if ((result == null || dst > cdist)) {
+             cdist = dst;
+             result = room;
+          } 
+       });
+       return result;
+    }
     
     @Override
     public Schematic getDefaultLoadout() {
