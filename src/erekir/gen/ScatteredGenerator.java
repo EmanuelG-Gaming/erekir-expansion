@@ -44,7 +44,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         tiles.eachTile(t -> t.setFloor(background));
         
         //stash/room structure
-        consRooms(room::generate);
+        consRooms(room -> room.generate());
         
         int rx = rooms.random(rand).x, ry = rooms.random(rand).y;
         Schematics.placeLaunchLoadout(rx, ry);
