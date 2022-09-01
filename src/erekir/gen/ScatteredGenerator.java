@@ -23,6 +23,9 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
     int seed;
     int baseSeed = 5;
     
+    private static BaseRoom result;
+    private static float cdist;
+    
     @Override
     public void generate() {
         seed = state.rules.sector.planet.id;
@@ -71,8 +74,8 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
     } 
     
     public BaseRoom getFurthestRoom(BaseRoom from) {
-       BaseRoom result = null;
-       float cdist = 0;
+       result = null;
+       cdist = 0;
        
        consRooms(room -> {
           float dst = Mathf.dst2(from.x, from.y, room.x, room.y);
