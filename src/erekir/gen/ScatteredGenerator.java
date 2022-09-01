@@ -76,7 +76,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
        for (BaseRoom r : rooms) {
           room.get(r);
        }
-    }
+    } 
     
     @Override
     public Schematic getDefaultLoadout() {
