@@ -90,7 +90,7 @@ public class StashGenerator extends BlankPlanetGenerator{
         tiles.eachTile(t -> t.setFloor(background));
         
         //stash/room structure
-        generateRooms(rooms, room -> room.generate());
+        generateRooms(rooms, room::generate);
          
         tiles.getn(dx - width / 4, dy - height / 4).setOverlay(Blocks.spawn);
 

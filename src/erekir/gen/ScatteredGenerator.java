@@ -44,7 +44,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         tiles.eachTile(t -> t.setFloor(background));
         
         //stash/room structure
-        consRooms(room -> room::generate);
+        consRooms(room::generate);
         
         int rx = rooms.random(rand).x, ry = rooms.random(rand).y;
         Schematics.placeLaunchLoadout(rx, ry);
@@ -54,7 +54,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
            float cdist = 0;
            float dst = Mathf.dst2(rx, ry, room.x, room.y);
            if (dst > cdist) {
-              cDist = dst;
+              cdist = dst;
               tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
            } 
         });
