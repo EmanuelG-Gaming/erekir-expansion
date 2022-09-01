@@ -116,5 +116,26 @@ public class ErkFx {
           Tmp.v1.trns(Angles.angle(dx, dy, px, py), h * heightIncrease);
           Fill.circle(dx + Tmp.v1.x, dy + Tmp.v1.y, 2.5f + e.fout() * 1.5f);
       });
+  }).layer(Layer.flyingUnit + 0.01f), 
+  
+  meltPlasmaColor = new Effect(40f, e -> {
+      Color pal = e.color;
+      
+      Draw.color(pal.cpy().mul(1.25f), pal, Color.gray, e.fin());
+      Draw.alpha(0.85f * e.fout());
+      
+      float h = 25f;
+      float heightIncrease = e.fin();
+      
+      Angles.randLenVectors(e.id, 8, e.finpow() * 30f + 6f, e.rotation, 10f, (x, y) -> {
+          float dx = e.x + x;
+          float dy = e.y + y;
+          float px = dx + (dx - Core.camera.position.x);
+          float py = dy + (dy - Core.camera.position.y);
+          
+          //height vector
+          Tmp.v1.trns(Angles.angle(dx, dy, px, py), h * heightIncrease);
+          Fill.circle(dx + Tmp.v1.x, dy + Tmp.v1.y, 2.5f + e.fout() * 1.5f);
+      });
   }).layer(Layer.flyingUnit + 0.01f);
 }

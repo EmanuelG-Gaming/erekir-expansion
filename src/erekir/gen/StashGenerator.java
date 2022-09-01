@@ -14,8 +14,6 @@ import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 import erekir.world.blocks.environment.*;
 import erekir.room.*;
-import erekir.ui.ingame.*;
-import erekir.ErkVars;
 
 import static mindustry.Vars.*;
 
@@ -39,7 +37,6 @@ public class StashGenerator extends BlankPlanetGenerator{
     public void generate() {
         seed = state.rules.sector.planet.id;
         rand = new Rand(seed + baseSeed);
-        rooms.clear();
         
         int dx = width / 2, dy = height / 2;
         Floor background = Blocks.empty.asFloor();
@@ -54,8 +51,8 @@ public class StashGenerator extends BlankPlanetGenerator{
         int defenseRooms = rand.random(1, 2);
         
         MainStashRoom r = new MainStashRoom(dx, dy, pw, ph);
-        rooms.add(((BaseRoom) r));
-        mainRoom = (BaseRoom) r;
+        rooms.add(r);
+        mainRoom = r;
         
         //empty rooms
         addRooms(dx, dy, pw + 13f + rand.random(range), emptyRooms, (x, y) -> {
