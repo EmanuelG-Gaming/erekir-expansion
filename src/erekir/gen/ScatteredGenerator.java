@@ -34,7 +34,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         
         tiles.eachTile(t -> {
            if (rand.chance(0.0004)) {
-              rooms.add(new BaseRoom(x, y, 3, 3));
+              rooms.add(new BaseRoom(t.x, t.y, 3, 3));
            }
         });
         
@@ -44,7 +44,7 @@ public class ScatteredGenerator extends BlankPlanetGenerator{
         //stash/room structure
         consRooms(room -> room.generate());
         
-        Baseroom start = rooms.random(rand);
+        BaseRoom start = rooms.random(rand);
         BaseRoom far = getFurthestRoom(start);
         
         Schematics.placeLaunchLoadout(start.x, start.y);
