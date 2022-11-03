@@ -1,6 +1,7 @@
 package erekir.gen;
 
 import arc.Core;
+import arc.math.*;
 import arc.struct.*;
 import mindustry.type.*;
 import erekir.world.blocks.environment.*;
@@ -10,18 +11,11 @@ import static mindustry.Vars.*;
 /** Generates drop builds based on the current non-hidden items. */
 public class DropGenerator{
    private static ItemProp last;
-   private static int[] amounts = {
-      4, 4, 3,
-      5, 5, 3,
-      1, 3, 4,
-      3, 1, 1,
-      2, 3, 2,
-      4, 3, 2,
-      1, 1
-   };
-   
+
    /** Contains only drops with shown vanilla items! */
    public static Seq<ItemProp> generated = new Seq<ItemProp>();
+   
+   public static Rand rnd = new Rand();
    
    //funny generating code
    public static void generateDrops() {
@@ -41,7 +35,9 @@ public class DropGenerator{
 
    public static void setToDrop() {
       generated.each(b -> {
-         setAmount(b, amounts[b.dropItem.id]);
+         int d = b.dropItem.id;
+         rnd.setSeed(d + 71);
+         setAmount(b, rnd.random(1, 5));
       });
    }
    
