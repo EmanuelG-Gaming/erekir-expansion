@@ -1,6 +1,9 @@
 # Erekir Expansion
+__(Development closed, as of 8th of June 2023)__
+
 A Java mod meant to add new things to the current Erekir's progression.
-Notice that I will slow down the development of the mod. I was working on a JS Mindustry mod, and newly, a C++ SDL2 game.
+
+~~Notice that I will slow down the development of the mod. I was working on a JS Mindustry mod, and newly, a C++ SDL2 game.~~
 
 Fun Fact: I used my private JS mod version, Flar Expansion v1.0 to remove some of the Erekir content and place it in this standalone mod, so it'll not harm the previous mod's reputation.
 
